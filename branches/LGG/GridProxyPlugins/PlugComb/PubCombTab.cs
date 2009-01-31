@@ -1,0 +1,140 @@
+﻿/*
+ * Copyright (c) 2009, Gregory Hendrickson (LordGregGreg Back)
+ *All rights reserved.
+ *
+ *Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ *
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the  Gregory Hendrickson nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+ *THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Net;
+using OpenMetaverse;
+using OpenMetaverse.Packets;
+using GridProxy;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace PubComb
+{
+
+    public class PubComb : ProxyPlugin
+    {
+        public ProxyFrame frame;
+        public Proxy proxy;
+
+        public Aux_SharedInfo SharedInfo;
+
+        
+        public TabItem tabform;
+        private Thread tabformthread;
+        List<GTabPlug> plugins = new List<GTabPlug>();
+
+        public PubComb(ProxyFrame frame)
+        {
+            this.frame = frame;
+            this.proxy = frame.proxy;
+            SharedInfo = new Aux_SharedInfo(this);
+
+            plugins.Add(new SpamBlocker(this));
+            plugins.Add(new ClientDetection(this));
+            plugins.Add(new LyraPlugin(this));
+            plugins.Add(new HandicapPlugin(this));
+            plugins.Add(new PennyPlugin(this));
+            plugins.Add(new PAnim(this));
+            plugins.Add(new DisableCapsPlugin(this));
+            plugins.Add(new IMLocatePlugin(this));
+            plugins.Add(new LeetPlugin(this));
+            plugins.Add(new CinderellaPlugin(this));
+            plugins.Add(new ProfileFunPlugin(this));
+            plugins.Add(new SitAnywherePlugin(this));
+            plugins.Add(new HighPlugin(this));
+            plugins.Add(new RadarChatPlugin(this));
+            plugins.Add(new FileProtectPlugin(this));
+            //plugins.Add(new InvFunPlugin(this));
+            plugins.Add(new RainbowParticlesPlugin(this));
+            plugins.Add(new coin(this));
+            plugins.Add(new RetreatPlugin(this));
+            plugins.Add(new AwesomeSauce(this));
+            plugins.Add(new ProTextPlug(this));
+
+            tabformthread = new Thread(new ThreadStart(delegate()
+            {
+                tabform = new TabItem(this);
+                Application.Run(tabform);
+            }));
+            tabformthread.SetApartmentState(ApartmentState.STA);
+            tabformthread.Start();
+
+            
+        }
+        public void addMahTabs()
+        {
+
+            foreach (GTabPlug p in plugins)
+              p.LoadNow();
+            
+        }
+
+        public override void Init()
+        {
+            SayToUser("Mega plugin loaded");
+        }
+
+        public class Aux_SharedInfo
+        {
+            public ProxyFrame frame;
+            public IPAddress ip;
+            public int port;
+            public ulong RegionHandle = 0;
+            public Vector3 Position = new Vector3();
+            public string AgentName = "(waiting)";
+            public Vector3 CameraAtAxis;
+            public Vector3 CameraLeftAxis;
+            public Vector3 CameraUpAxis;
+            public float Far;
+
+            public Aux_SharedInfo(PubComb plugin)
+            {
+                this.frame = plugin.frame;
+            }
+        }
+        public void SendUserAlert(string message)
+        {
+            AlertMessagePacket packet = new AlertMessagePacket();
+            packet.AlertData.Message = Utils.StringToBytes(message);
+            proxy.InjectPacket(packet, Direction.Incoming);
+        }
+        public void SendAgentUserAlert(string message)
+        {
+            AgentAlertMessagePacket packet = new AgentAlertMessagePacket();
+            packet.AgentData = new AgentAlertMessagePacket.AgentDataBlock();
+            packet.AgentData.AgentID = frame.AgentID;
+            packet.AlertData.Message = Utils.StringToBytes(message);
+            packet.AlertData.Modal = true;
+            proxy.InjectPacket(packet, Direction.Incoming);
+
+        }
+        
+        public void SayToUser(string message)
+        {
+            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
+            packet.ChatData.FromName = Utils.StringToBytes("Seakip");
+            packet.ChatData.SourceID = UUID.Random();
+            packet.ChatData.OwnerID = frame.AgentID;
+            packet.ChatData.SourceType = (byte)2;
+            packet.ChatData.ChatType = (byte)1;
+            packet.ChatData.Audible = (byte)1;
+            packet.ChatData.Position = new Vector3(0, 0, 0);
+            packet.ChatData.Message = Utils.StringToBytes(message);
+            proxy.InjectPacket(packet, Direction.Incoming);
+        }
+    }
+}

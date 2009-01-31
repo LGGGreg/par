@@ -1,0 +1,406 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Net;
+using System.Threading;
+using OpenMetaverse;
+using OpenMetaverse.Packets;
+using GridProxy;
+
+public class useful : ProxyPlugin
+{
+    private ProxyFrame frame;
+    private Proxy proxy;
+
+    private ulong RegionHandle = 0;
+    private Vector3 CameraCenter = Vector3.Zero;
+
+    private static List<UUID> PeopleWhoIMedMe = new List<UUID>();
+
+    public class SimInfo
+    {
+        public uint Handle;
+        public int x;
+        public int y;
+    }
+
+    public useful(ProxyFrame frame)
+    {
+        this.frame = frame;
+        this.proxy = frame.proxy;
+        this.proxy.AddDelegate(PacketType.AgentMovementComplete, Direction.Incoming, delegate(Packet packet, IPEndPoint sim)
+        {
+            RegionHandle = ((AgentMovementCompletePacket)packet).Data.RegionHandle;
+            return packet;
+        });
+        this.proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, delegate(Packet packet, IPEndPoint sim)
+        {
+            CameraCenter = ((AgentUpdatePacket)packet).AgentData.CameraCenter;
+            return packet;
+        });
+        //this.proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(OutChatFromViewerHandler));
+        this.proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(OutAgentUpdateHandler));
+        this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(InImprovedInstantMessageHandler));
+        this.proxy.AddDelegate(PacketType.ViewerEffect, Direction.Incoming, new PacketDelegate(InViewerEffectHandler));
+        this.proxy.AddDelegate(PacketType.AlertMessage, Direction.Incoming, new PacketDelegate(InAlertMessageHandler));
+        this.proxy.AddDelegate(PacketType.AvatarPropertiesRequest, Direction.Outgoing, new PacketDelegate(OutAvatarPropertiesRequestHandler));
+        //this.proxy.AddDelegate(PacketType.AvatarSitResponse, Direction.Incoming, new PacketDelegate(InAvatarSitResponseHandler));
+        this.proxy.AddDelegate(PacketType.TerminateFriendship, Direction.Incoming, new PacketDelegate(InTerminateFriendshipHandler));
+        this.proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(InObjectUpdateHandler));
+    }
+
+    public override void Init()
+    {
+        SayToUser("Useful plugin loaded");
+    }
+
+    private void SayToUser(string message)
+    {
+        ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
+        packet.ChatData.FromName = Utils.StringToBytes("Useful Plugin");
+        packet.ChatData.SourceID = UUID.Random();
+        packet.ChatData.OwnerID = frame.AgentID;
+        packet.ChatData.SourceType = (byte)2;
+        packet.ChatData.ChatType = (byte)1;
+        packet.ChatData.Audible = (byte)1;
+        packet.ChatData.Position = new Vector3(0, 0, 0);
+        packet.ChatData.Message = Utils.StringToBytes(message);
+        proxy.InjectPacket(packet, Direction.Incoming);
+    }
+
+    private Packet OutAgentUpdateHandler(Packet packet, IPEndPoint sim)
+    {
+        // slproxy sometimes loses track of which sim you're in...
+        proxy.activeCircuit = sim;
+        return packet;
+    }
+
+    private Packet InImprovedInstantMessageHandler(Packet packet, IPEndPoint sim)
+    {
+        if (packet.Header.Resent)
+            return packet;
+        if (RegionHandle != 0)
+        {
+            SoundTriggerPacket sound = new SoundTriggerPacket();
+            sound.SoundData.SoundID = new UUID("4c366008-65da-2e84-9b74-f58a392b94c6");
+            sound.SoundData.OwnerID = frame.AgentID;
+            sound.SoundData.ObjectID = frame.AgentID;
+            sound.SoundData.ParentID = UUID.Zero;
+            sound.SoundData.Handle = RegionHandle;
+            sound.SoundData.Position = CameraCenter;
+            sound.SoundData.Gain = 0.5f;
+            sound.Header.Reliable = false;
+            proxy.InjectPacket(sound, Direction.Incoming);
+        }
+
+        ImprovedInstantMessagePacket im = (ImprovedInstantMessagePacket)packet;
+        if (im.MessageBlock.Dialog == (byte)InstantMessageDialog.StartTyping)
+        {
+            if (PeopleWhoIMedMe.Contains(im.AgentData.AgentID) == false)
+            {
+                PeopleWhoIMedMe.Add(im.AgentData.AgentID);
+                ImprovedInstantMessagePacket im2 = new ImprovedInstantMessagePacket();
+                im2.AgentData = new ImprovedInstantMessagePacket.AgentDataBlock();
+                im2.AgentData.AgentID = im.AgentData.AgentID;
+                im2.AgentData.SessionID = im.AgentData.SessionID;
+                im2.MessageBlock = new ImprovedInstantMessagePacket.MessageBlockBlock();
+                im2.MessageBlock.FromGroup = im.MessageBlock.FromGroup;
+                im2.MessageBlock.ToAgentID = im.MessageBlock.ToAgentID;
+                im2.MessageBlock.ParentEstateID = im.MessageBlock.ParentEstateID;
+                im2.MessageBlock.RegionID = im.MessageBlock.RegionID;
+                im2.MessageBlock.Position = im.MessageBlock.Position;
+                im2.MessageBlock.Offline = im.MessageBlock.Offline;
+                im2.MessageBlock.Dialog = 0;
+                im2.MessageBlock.ID = im.MessageBlock.ID;
+                im2.MessageBlock.Timestamp = im.MessageBlock.Timestamp;
+                im2.MessageBlock.FromAgentName = im.MessageBlock.FromAgentName;
+                im2.MessageBlock.Message = Utils.StringToBytes("/me is typing a message...");
+                im2.MessageBlock.BinaryBucket = im.MessageBlock.BinaryBucket;
+                proxy.InjectPacket(im2, Direction.Incoming);
+            }
+        }
+        else if (im.MessageBlock.Dialog == 22) // teleport lure
+        {
+            string[] bbfields = Utils.BytesToString(im.MessageBlock.BinaryBucket).Split('|');
+            if (bbfields.Length < 5)
+                return packet;
+            ushort MapX;
+            ushort MapY;
+            double RegionX;
+            double RegionY;
+            double RegionZ;
+            try
+            {
+                MapX = (ushort)(uint.Parse(bbfields[0]) / 256);
+                MapY = (ushort)(uint.Parse(bbfields[1]) / 256);
+                RegionX = double.Parse(bbfields[2]);
+                RegionY = double.Parse(bbfields[3]);
+                RegionZ = double.Parse(bbfields[4]);
+            }
+            catch
+            {
+                SayToUser("WARNING! " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure IM seems to have unusual data in its BinaryBucket!");
+                return packet;
+            }
+
+            // request region name
+
+            System.Timers.Timer myTimer = new System.Timers.Timer(10000);
+
+            string RegionName = null;
+            PacketDelegate replyCallback = delegate(Packet p, IPEndPoint s)
+            {
+                MapBlockReplyPacket reply = (MapBlockReplyPacket)p;
+                foreach (MapBlockReplyPacket.DataBlock block in reply.Data)
+                {
+                    if ((block.X == MapX) && (block.Y == MapY))
+                    {
+                        RegionName = Utils.BytesToString(block.Name);
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append(Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure is to ");
+                        sb.Append(RegionName + " " + RegionX.ToString() + ", " + RegionY.ToString() + ", " + RegionZ.ToString() + " ");
+                        sb.Append("secondlife://" + RegionName.Replace(" ", "%20") + "/" + RegionX.ToString() + "/" + RegionY.ToString() + "/" + RegionZ.ToString());
+                        SayToUser(sb.ToString());
+                    }
+                }
+                return null;
+            };
+
+            System.Timers.ElapsedEventHandler timerCallback = delegate(object sender, System.Timers.ElapsedEventArgs e)
+            {
+                if (RegionName == null)
+                {
+                    SayToUser("Couldn't resolve the destination of " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure: " + Utils.BytesToString(im.MessageBlock.BinaryBucket));
+                }
+                proxy.RemoveDelegate(PacketType.MapBlockReply, Direction.Incoming, replyCallback);
+                myTimer.Stop();
+            };
+
+            proxy.AddDelegate(PacketType.MapBlockReply, Direction.Incoming, replyCallback);
+            myTimer.Elapsed += timerCallback;
+            myTimer.Start();
+
+            MapBlockRequestPacket MapBlockRequest = new MapBlockRequestPacket();
+            MapBlockRequest.AgentData = new MapBlockRequestPacket.AgentDataBlock();
+            MapBlockRequest.AgentData.AgentID = frame.AgentID;
+            MapBlockRequest.AgentData.SessionID = frame.SessionID;
+            MapBlockRequest.AgentData.Flags = 0;
+            MapBlockRequest.AgentData.Godlike = false;
+            MapBlockRequest.PositionData = new MapBlockRequestPacket.PositionDataBlock();
+            MapBlockRequest.PositionData.MinX = MapX;
+            MapBlockRequest.PositionData.MaxX = MapX;
+            MapBlockRequest.PositionData.MinY = MapY;
+            MapBlockRequest.PositionData.MaxY = MapY;
+            proxy.InjectPacket(MapBlockRequest, Direction.Outgoing);
+        }
+        else if (im.MessageBlock.Dialog == (byte)InstantMessageDialog.InventoryOffered)
+        {
+            if (im.MessageBlock.BinaryBucket[0] == (byte)AssetType.Simstate)
+            {
+                SayToUser(Utils.BytesToString(im.MessageBlock.FromAgentName) + " offered you a SimState :O");
+                return null;
+            }
+        }
+        else if (im.MessageBlock.Dialog == 9)
+        {
+            if (im.MessageBlock.BinaryBucket[0] == (byte)AssetType.Simstate)
+            {
+                SayToUser(im.AgentData.AgentID.ToString() + " offered you a SimState from an object at " + im.MessageBlock.Position.ToString() + " :O Message = " + Utils.BytesToString(im.MessageBlock.Message));
+                return null;
+            }
+        }
+        // Don't get spammed bro
+        if (im.MessageBlock.Dialog == 0)
+        {
+            im.MessageBlock.ID = frame.AgentID.Equals(im.AgentData.AgentID) ? frame.AgentID : im.AgentData.AgentID ^ frame.AgentID;
+            packet = (Packet)im;
+        }
+        return packet;
+    }
+
+    private Packet InViewerEffectHandler(Packet packet, IPEndPoint sim)
+    {
+        ViewerEffectPacket p = (ViewerEffectPacket)packet;
+        foreach (ViewerEffectPacket.EffectBlock block in p.Effect)
+        {
+            if (block.Type == (byte)EffectType.PointAt)
+            {
+                if (block.TypeData.Length >= 56)
+                {
+                    Vector3d v = new Vector3d(block.TypeData, 32);
+                    if ((v.X < -1024f) || (v.X > 1024f) || (v.Y < -1024f) || (v.Y > 1024f) || (v.Z < -1024f) || (v.Z > 1024f))
+                    {
+                        v = new Vector3d();
+                        SayToUser("Possible ViewerEffect crash packet from " + block.AgentID.ToString());
+                    }
+                    Buffer.BlockCopy(v.GetBytes(), 0, block.TypeData, 32, 24);
+                }
+            }
+        }
+        return (Packet)p;
+    }
+
+    private Packet InAlertMessageHandler(Packet packet, IPEndPoint sim)
+    {
+        AlertMessagePacket AlertMessage = (AlertMessagePacket)packet;
+        string message = Utils.BytesToString(AlertMessage.AlertData.Message);
+        if (message.StartsWith("Can't move object "))
+        {
+            int begin = message.IndexOf("{");
+            if (begin != -1)
+            {
+                int end = message.IndexOf("}") - 1;
+                int length = end - begin;
+                string location = message.Substring(begin + 1, length);
+                string[] numbers = location.Split(",".ToCharArray());
+                begin = message.IndexOf("} in region ") + 12;
+                end = message.IndexOf("because your objects are not allowed on this parcel.", begin) - 1;
+                length = end - begin;
+                string region = message.Substring(begin, length);
+                string slurl = "secondlife://" + region.Replace(" ", "%20") + "/" + numbers[0].Trim() + "/" + numbers[1].Trim() + "/" + numbers[2].Trim();
+                message += " " + slurl + " ";
+                if (message.Length > 255)
+                {
+                    message = message.Substring(0, 255);
+                }
+                AlertMessage.AlertData.Message = Utils.StringToBytes(message);
+                packet = (Packet)AlertMessage;
+            }
+        }
+        return packet;
+    }
+
+    private Packet OutAvatarPropertiesRequestHandler(Packet requestpacket, IPEndPoint sim)
+    {
+        if (requestpacket.Header.Resent)
+            return requestpacket;
+        AvatarPropertiesRequestPacket packet = (AvatarPropertiesRequestPacket)requestpacket;
+        UUID uuid = packet.AgentData.AvatarID;
+        System.Timers.Timer timer = new System.Timers.Timer(5000);
+        bool found = false;
+        PacketDelegate replyCallback = delegate(Packet replypacket, IPEndPoint blarg)
+        {
+            if (!found)
+            {
+                UUIDNameReplyPacket reply = (UUIDNameReplyPacket)replypacket;
+                foreach (UUIDNameReplyPacket.UUIDNameBlockBlock block in reply.UUIDNameBlock)
+                {
+                    if (block.ID == uuid)
+                    {
+                        found = true;
+                        string firstname = Utils.BytesToString(block.FirstName);
+                        string lastname = Utils.BytesToString(block.LastName);
+                        SayToUser(firstname + " " + lastname + " = " + uuid.ToString());
+                        return replypacket;
+                    }
+                }
+            }
+            return replypacket;
+        };
+        proxy.AddDelegate(PacketType.UUIDNameReply, Direction.Incoming, replyCallback);
+        timer.Elapsed += delegate(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            proxy.RemoveDelegate(PacketType.UUIDNameReply, Direction.Incoming, replyCallback);
+            timer.Stop();
+        };
+        UUIDNameRequestPacket request = new UUIDNameRequestPacket();
+        request.UUIDNameBlock = new UUIDNameRequestPacket.UUIDNameBlockBlock[1];
+        request.UUIDNameBlock[0] = new UUIDNameRequestPacket.UUIDNameBlockBlock();
+        request.UUIDNameBlock[0].ID = uuid;
+        request.Header.Reliable = true;
+        proxy.InjectPacket(request, Direction.Outgoing);
+        timer.Start();
+        return packet;
+
+    }
+
+    // try to stop autopilot when sit response is received
+    //private Packet InAvatarSitResponseHandler(Packet packet, IPEndPoint sim)
+    //{
+    //    if (LastAgentUpdate != null)
+    //    {
+    //        AgentUpdatePacket p = LastAgentUpdate;
+    //        p.AgentData.ControlFlags = 524288; // (uint)AgentManager.ControlFlags.AGENT_CONTROL_NUDGE_AT_POS;
+    //        proxy.InjectPacket(p, Direction.Outgoing);
+    //        p.AgentData.ControlFlags = 0;
+    //        proxy.InjectPacket(p, Direction.Outgoing);
+    //    }
+    //    return packet;
+    //}
+
+    private Packet InTerminateFriendshipHandler(Packet packet, IPEndPoint sim)
+    {
+        if (packet.Header.Resent)
+            return packet;
+        UUID uuid = ((TerminateFriendshipPacket)packet).ExBlock.OtherID;
+        string name = "(waiting)";
+        ManualResetEvent evt = new ManualResetEvent(false);
+        PacketDelegate nameHandler = delegate(Packet packet2, IPEndPoint sim2)
+        {
+            foreach (UUIDNameReplyPacket.UUIDNameBlockBlock block in ((UUIDNameReplyPacket)packet2).UUIDNameBlock)
+            {
+                if (block.ID == uuid)
+                {
+                    name = Utils.BytesToString(block.FirstName) + " " + Utils.BytesToString(block.LastName);
+                    evt.Set();
+                }
+            }
+            return packet2;
+        };
+        Thread myThread = new Thread(new ThreadStart(delegate
+        {
+            proxy.AddDelegate(PacketType.UUIDNameReply, Direction.Incoming, nameHandler);
+            UUIDNameRequestPacket request = new UUIDNameRequestPacket();
+            request.UUIDNameBlock = new UUIDNameRequestPacket.UUIDNameBlockBlock[1];
+            request.UUIDNameBlock[0] = new UUIDNameRequestPacket.UUIDNameBlockBlock();
+            request.UUIDNameBlock[0].ID = uuid;
+            request.Header.Reliable = true;
+            proxy.InjectPacket(request, Direction.Outgoing);
+            evt.WaitOne(10000, false);
+            proxy.RemoveDelegate(PacketType.UUIDNameReply, Direction.Incoming, nameHandler);
+            SayToUser("Friendship terminated with " + name);
+        }));
+        myThread.Start();
+        return packet;
+    }
+
+    private Packet InObjectUpdateHandler(Packet packet, IPEndPoint sim)
+    {
+        ObjectUpdatePacket update = (ObjectUpdatePacket)packet;
+        foreach (ObjectUpdatePacket.ObjectDataBlock block in update.ObjectData)
+        {
+            if (block.PCode == 0x2f)
+            {
+                string nv = Utils.BytesToString(block.NameValue);
+                string[] nvs = nv.Split('\n');
+                int titlecount = 0;
+                int firstnamecount = 0;
+                int lastnamecount = 0;
+                int unknowncount = 0;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (nvs[i].IndexOf("Title ") == 0)
+                        titlecount++;
+                    else if (nvs[i].IndexOf("FirstName ") == 0)
+                        firstnamecount++;
+                    else if (nvs[i].IndexOf("LastName ") == 0)
+                        lastnamecount++;
+                    else
+                        unknowncount++;
+                }
+
+                if (!((titlecount == 1) && (firstnamecount == 1) && (lastnamecount == 1) && (unknowncount == 0)))
+                {
+                    SayToUser("Suspicious avatar NameValues, see console for details.");
+                    Console.WriteLine(" = = = = Suspicious Namevalues: = = = =");
+                    Console.WriteLine(nv);
+                    nv = "Title STRING RW SV dick\n";
+                    block.NameValue = Utils.StringToBytes(nv);
+                }
+            }
+        }
+        return (Packet)update;
+    }
+}
