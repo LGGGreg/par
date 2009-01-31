@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="OpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>147, 17</value>
+  </metadata>
+  <metadata name="Tooltips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>386, 18</value>
+  </metadata>
+  <data name="LoopCheckbox.ToolTip" xml:space="preserve">
+    <value>Determines if your animation will loop when played.
+Looped animations will run through the portion defined between loop in 
+     and loop out indefinitely until stopped.
+
+Loop In and Loop Out are ignored if this is not checked.</value>
+  </data>
+  <data name="AddJointSelect.ToolTip" xml:space="preserve">
+    <value>This determines the name of the new joint.
+This also determines the name to rename a joint to.
+
+Joints that begin with "m" are part of the skeleton and will move and deform the avatars mesh.
+Joints that DO NOT begin with "m" are attachment points. These modify the location and rotation of the attachment point, but is otherwise invisible if changed.</value>
+  </data>
+  <data name="JointList.ToolTip" xml:space="preserve">
+    <value>This contains the list of joints that are defined in the animation.
+Each joint has keyframe data attached to it. 
+Removing a joint removes its keyframes.
+
+You may use UP TO 20 joints in a single animation. 
+Any animation that defines in excess of 20 joints to animate 
+     are not read and discarded.</value>
+  </data>
+  <data name="RotKeyframes.ToolTip" xml:space="preserve">
+    <value>This list contains the rotation keyframes for the currently selected joint.
+It is NOT required that you have any keyframes of a specific type for a joint.
+Currently there is no limit to the number of keyframes per joint.
+
+Keyframes are sorted by their time index.
+Motions loop better when they use fewer keyframes. 
+The engines interpolation looks smoother than your keyframes ever will.</value>
+  </data>
+  <data name="PosKeyframes.ToolTip" xml:space="preserve">
+    <value>This list contains the positional keyframes for the currently selected joint.
+It is NOT required that you have any keyframes of a specific type for a joint.
+Currently there is no limit to the number of keyframes per joint.
+
+Keyframes are sorted by their time index.
+Motions loop better when they use fewer keyframes. 
+The engines interpolation looks smoother than your keyframes ever will.
+</value>
+  </data>
+  <data name="Priority.ToolTip" xml:space="preserve">
+    <value>The base priority of the animation.
+
+0: Normal
+1: High
+2: Higher
+3: Very High
+4: Highest
+
+NOTES: Most base animations use a priority of at least two.
+Use the lowest possible priority to obtain the animation you need.
+Use joint priorities for more control.
+Priority of 4 will override any motion that is currently running on a joint.
+A priority 4 animation that is started after another priority 4 will override 
+     the running priority 4.</value>
+  </data>
+  <data name="Duration.ToolTip" xml:space="preserve">
+    <value>Determines the complete duration of the animation in seconds.
+
+Set this value first as it determines the maximum value for many others.
+(Loop in, Loop Out, Ease in, Ease out, Time Index for any joint.)
+
+Keyframes try to keep their current times unless rescaling.
+Setting this value lower than the time index of a keyframe will result in the 
+     time index for that keyframe being reset to the maximum duration.
+The above is a technical limitation of the file format.</value>
+  </data>
+  <data name="LoopInTime.ToolTip" xml:space="preserve">
+    <value>Determines the point in time(in seconds) that a looped 
+     animation will jump to when the loop is to restart.
+
+This time index is jumped to immediately after looping, there is
+     no pause between the time loop out time and the loop in time.
+(Your character does not sit there doing nothing for the time before 
+     loop in)
+Motions are NOT interpolated between loop out and loop in.</value>
+  </data>
+  <data name="LoopOutTime.ToolTip" xml:space="preserve">
+    <value>Determines the point in time(in seconds) that a looped 
+     animation will play to before jumping to its loop in time.
+
+There is no pause between the loop out time and the loop in time 
+     during playback. 
+(Your character does not sit there doing nothing during the time before 
+     your loop in time.)
+Motions are NOT interpolated between the loop in and loop out.</value>
+  </data>
+  <data name="EaseInDuration.ToolTip" xml:space="preserve">
+    <value>The amount of time in seconds that an animation will 
+     take before it takes full control over the joints.
+
+Until this time is hit your joint data is blended with any 
+     current joint motions with yours taking increasing priority 
+     over the previous.
+(If the characters arm was at its side and your animation 
+     depicts it as straight out, the character would move its 
+     arms from its sides to straight out in a smooth motion over 
+     the ease in duration.)
+
+Your animation continues to play during this time, plan accordingly. 
+     (Motions before this time will not play with full intensity)</value>
+  </data>
+  <data name="EaseOutDuration.ToolTip" xml:space="preserve">
+    <value>The duration in seconds that an animation will "ease out" of its motion.
+
+When the animation is requested to stop, the time index at the complete 
+     animations duration minus this duration is jumped to and then played.
+(That sentence needs revising, I know.)
+The above is ALSO true in a loop. This time index can be AFTER the loop out 
+     point and it will still play. Used correctly this can be used to achieve advanced effects.
+
+Any keyframe that lies on the exact animation duration is ALWAYS played 
+     when the animation is stopped, even if you have no ease out duration.</value>
+  </data>
+  <data name="RotTime.ToolTip" xml:space="preserve">
+    <value>Time index for the selected keyframe.
+
+A time index is defined as the point in time in seconds that a joint will reach its target keyframes rotation or position.
+Time you want this keyframe to play.</value>
+  </data>
+  <data name="PosTime.ToolTip" xml:space="preserve">
+    <value>Time index for the selected keyframe.
+
+A time index is defined as the point in time in seconds that a joint will reach its target keyframes rotation or position.
+Time you want this keyframe to play.
+</value>
+  </data>
+  <data name="MergeButton.ToolTip" xml:space="preserve">
+    <value>Opens an animation file and inserts its keyframe and joint data into the current one.
+
+This does not mean its motions will move fluidly between two animations. 
+Conflicting keyframe data can cause odd results.
+Merging animations of different durations, while possible, is often problematic in outcome.
+If not rescaling, times beyond the current animations duration will be set to the current
+     animations duration.</value>
+  </data>
+  <metadata name="MergeOpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>253, 17</value>
+  </metadata>
+  <data name="RescaleTimeCheck.ToolTip" xml:space="preserve">
+    <value>If this checkbox is checked, when changing duration of the animation 
+     times are rescaled to fit within the new duration.
+This checkbox also applies to merging animations. If the animation to
+    merge is not the same duration, its time indexes will be scaled to fit
+    within the current animations duration.</value>
+  </data>
+</root>
