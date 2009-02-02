@@ -95,16 +95,40 @@ namespace PubComb
             public int port;
             public ulong RegionHandle = 0;
             public Vector3 Position = new Vector3();
-            public string AgentName = "(waiting)";
             public Vector3 CameraAtAxis;
             public Vector3 CameraLeftAxis;
             public Vector3 CameraUpAxis;
+            public Dictionary<UUID, String> key2name = new Dictionary<UUID, string>();
+            public Dictionary<String, UUID> name2key = new Dictionary<string, UUID>();
             public float Far;
 
             public Aux_SharedInfo(PubComb plugin)
             {
                 this.frame = plugin.frame;
             }
+        }
+        
+        public void sendDialog(UUID what, String msg, int chan)
+        {
+            ScriptDialogReplyPacket sdrp = new ScriptDialogReplyPacket();
+            sdrp.AgentData = new ScriptDialogReplyPacket.AgentDataBlock();
+            sdrp.AgentData.AgentID = frame.AgentID;
+            sdrp.AgentData.SessionID = frame.SessionID;
+            sdrp.Data = new ScriptDialogReplyPacket.DataBlock();
+            sdrp.Data.ButtonIndex = 1;
+            sdrp.Data.ButtonLabel = Utils.StringToBytes(msg);
+            sdrp.Data.ChatChannel = (int)chan;
+            sdrp.Data.ObjectID = what;
+            proxy.InjectPacket(sdrp, Direction.Outgoing);
+        }
+        public void RequestNameFromKey(UUID key)
+        {
+            UUIDNameRequestPacket nrp = new UUIDNameRequestPacket();
+            nrp.UUIDNameBlock = new UUIDNameRequestPacket.UUIDNameBlockBlock[1];
+            nrp.UUIDNameBlock[0] = new UUIDNameRequestPacket.UUIDNameBlockBlock();
+            nrp.UUIDNameBlock[0].ID = key;
+            proxy.InjectPacket(nrp, Direction.Outgoing);
+
         }
         public void SendUserAlert(string message)
         {

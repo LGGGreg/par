@@ -52,6 +52,10 @@ namespace PubComb
         {
             saveData();
         }
+        public void addDebugInfo(string d)
+        {
+            textBox1.Text += "\n" + d;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

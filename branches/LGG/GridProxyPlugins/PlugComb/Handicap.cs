@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2009, Gregory Hendrickson (LordGregGreg Back) & Day Oh
+ * Copyright (c) 2009, Day Oh & Gregory Hendrickson (LordGregGreg Back)
  *All rights reserved.
  *
  *Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -203,6 +203,10 @@ namespace PubComb
                         {
                             uint GlobalX = uint.Parse(Utils.BytesToString(genMsg.ParamList[0].Parameter));
                             uint GlobalY = uint.Parse(Utils.BytesToString(genMsg.ParamList[1].Parameter));
+                            form.addDebugInfo(genMsg.ParamList[2].Parameter.ToString());
+                            form.addDebugInfo(Utils.BytesToHexString(genMsg.ParamList[2].Parameter,"Durr").Trim());
+                            form.addDebugInfo(float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()).ToString());
+                            form.addDebugInfo("\n");
                             float Z = float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()) + 2.0f;
                             
 

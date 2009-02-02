@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using OpenMetaverse;
 
 namespace PubComb
 {
@@ -96,6 +97,74 @@ namespace PubComb
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox2uuid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            rc.plugin.sendDialog(new UUID(textBox2uuid.Text), textBox2DIAGmsg.Text, 0);
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {
+                textBox2uuid.Text = rc.shared.name2key[listBox2.SelectedItem.ToString()].ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            rc.KickUser(new UUID(textBox2uuid.Text));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            rc.TeleportHomeUser(new UUID(textBox2uuid.Text));
+        }
+
+        private void button1bansingle_Click(object sender, EventArgs e)
+        {
+            rc.BanUser(new UUID(textBox2uuid.Text), false);
+        }
+
+        private void button1ban_Click(object sender, EventArgs e)
+        {
+            rc.BanUser(new UUID(textBox2uuid.Text), true);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            rc.EjectUser(new UUID(textBox2uuid.Text), true);
+        }
+
+        private void button1eject_Click(object sender, EventArgs e)
+        {
+            rc.EjectUser(new UUID(textBox2uuid.Text), false);
+        }
+
+        private void button1freeze_Click(object sender, EventArgs e)
+        {
+            rc.FreezeUser(new UUID(textBox2uuid.Text), true);
+        }
+
+        private void button1unfrsze_Click(object sender, EventArgs e)
+        {
+            rc.FreezeUser(new UUID(textBox2uuid.Text), false);
         }
     }
 }

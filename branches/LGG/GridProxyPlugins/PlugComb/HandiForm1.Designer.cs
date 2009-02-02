@@ -31,17 +31,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1enabled = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.checkBox1enabled);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(374, 106);
+            this.panel1.Size = new System.Drawing.Size(537, 106);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -68,12 +70,22 @@
             this.checkBox1enabled.UseVisualStyleBackColor = true;
             this.checkBox1enabled.CheckedChanged += new System.EventHandler(this.checkBox1enabled_CheckedChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(31, 37);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(463, 37);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Debug info:";
+            // 
             // HandiForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(374, 147);
+            this.ClientSize = new System.Drawing.Size(537, 388);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Red;
             this.Name = "HandiForm1";
@@ -90,5 +102,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBox1enabled;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

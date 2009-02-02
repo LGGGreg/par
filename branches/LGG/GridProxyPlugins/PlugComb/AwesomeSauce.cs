@@ -308,7 +308,7 @@ namespace PubComb
         private Packet ServerRequestsMyDataToStart(Packet packet, IPEndPoint sim)
         {
             RequestXferPacket requestRecived = (RequestXferPacket)packet;
-            if (Enabled)
+            if (true)
             {
 
                 if (requestRecived.XferID.VFileType == (short)AssetType.LSLText)
@@ -796,7 +796,7 @@ namespace PubComb
 
                 }
             }
-            form.log("we let this confirm packet go! " + packet.ToString(), System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
+            //form.log("we let this confirm packet go! " + packet.ToString(), System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
             return packet;
         }
         /*private Packet UpdateInventory(Packet packet, IPEndPoint sim)

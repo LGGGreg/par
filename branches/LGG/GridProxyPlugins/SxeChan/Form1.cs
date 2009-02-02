@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*
+ * Copyright (c) 2009, Gregory Hendrickson (LordGregGreg Back)
+ *All rights reserved.
+ *
+ *Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ *
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the  Gregory Hendrickson nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+ *THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +26,8 @@ namespace SxeChan
     public partial class Form1 : Form
     {
          public int chan = 1337;
-         public string chanel = "#IRCPLUG";
-         public string server = "us.undernet.org";
+         public string chanel = "#PARplugins";
+         public string server = "chat.freenode.net";
          public int port = 6667;
          public bool lsn = true;
         private SxePlugin sp;
@@ -50,17 +63,17 @@ namespace SxeChan
         public void loadDefaults()
         {
             this.chan = 1337;
-            this.chanel = "#IRCPLUG";
-            this.server = "us.undernet.org";
+            this.chanel = "#PARplugins";
+            this.server = "chat.freenode.net";
             this.port = 6667;
             this.lsn = true;
         }
         public void readData()
         {
             loadDefaults();
-            if (File.Exists("SxeChan.settings"))
+            if (File.Exists("SxeChanNew.settings"))
             {
-                StreamReader re = File.OpenText("SxeChan.settings");
+                StreamReader re = File.OpenText("SxeChanNew.settings");
                 lsn = false;
                 chan = int.Parse(re.ReadLine().Trim());
                 chanel = re.ReadLine();
@@ -77,6 +90,7 @@ namespace SxeChan
                 re.Close();
             }
             setForm(server, chan.ToString(), chanel, port.ToString(), lsn);
+            sp.start();//server, chan.ToString(), chanel, port.ToString(), lsn);
             //girc.setport(port);
             //girc.setserver(server);
             //girc.setchanel(chanel);
@@ -94,6 +108,11 @@ namespace SxeChan
         private void button2_Click(object sender, EventArgs e)
         {
             sp.openwindow();
+        }
+
+        private void textBox2irchan_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

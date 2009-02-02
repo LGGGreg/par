@@ -69,6 +69,7 @@
             this.textBox2irchan.Name = "textBox2irchan";
             this.textBox2irchan.Size = new System.Drawing.Size(180, 13);
             this.textBox2irchan.TabIndex = 3;
+            this.textBox2irchan.TextChanged += new System.EventHandler(this.textBox2irchan_TextChanged);
             // 
             // label2
             // 

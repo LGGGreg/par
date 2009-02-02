@@ -48,7 +48,7 @@ namespace PubComb
             form = new FileProtectForm1(this);
             this.frame = plug.frame;
             this.proxy = plug.proxy;
-
+            this.proxy.AddDelegate(PacketType.RequestXfer, Direction.Incoming, new PacketDelegate(disbale));
         }
         public Packet disbale(Packet p, IPEndPoint sim)
         {

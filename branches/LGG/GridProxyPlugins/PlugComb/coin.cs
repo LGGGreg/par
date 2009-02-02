@@ -32,6 +32,7 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Coin");
+            form.CorrectImage();
         }
         public CoinState state = CoinState.Heads;
 
@@ -60,7 +61,6 @@ namespace PubComb
             new UUID("d5a124d6-9166-a6dd-39aa-434463162f46") // black black
         };
         int lolcounter = 0;
-
         public AgentSetAppearancePacket cloneASA(AgentSetAppearancePacket p)
         {
             AgentSetAppearancePacket o = new AgentSetAppearancePacket();
@@ -158,7 +158,7 @@ namespace PubComb
             }
             return p;
         }
-        
+
         public coin(PubComb plug)
         {
             plugin = plug;
@@ -187,8 +187,8 @@ namespace PubComb
                     p = replacer_lols(p);
             }
             p.AgentData.SerialNum = 1;
-            frame.proxy.InjectPacket(p, Direction.Outgoing);
-            return null;
+            //frame.proxy.InjectPacket(p, Direction.Outgoing);
+            return p;
         }
 
        
