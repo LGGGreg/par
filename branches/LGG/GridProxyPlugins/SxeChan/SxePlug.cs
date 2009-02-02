@@ -359,7 +359,7 @@ namespace SxeChan
         public Packet SimChat(Packet p, IPEndPoint s)
         {
             ChatFromViewerPacket ch = (ChatFromViewerPacket)p;
-            if (ch.ChatData.Channel == this.chan)
+            if (ch.ChatData.Channel == form.getChan())
             {
 
                 girc.irc.SendMessage(SendType.Message, chanel, Utils.BytesToString(ch.ChatData.Message), Priority.High);

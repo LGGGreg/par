@@ -25,18 +25,22 @@ namespace SxeChan
 
     public partial class Form1 : Form
     {
-         public int chan = 1337;
-         public string chanel = "#PARplugins";
-         public string server = "chat.freenode.net";
-         public int port = 6667;
-         public bool lsn = true;
+         private int chan = 1337;
+         private string chanel = "#PARplugins";
+         private string server = "chat.freenode.net";
+         private int port = 6667;
+         private bool lsn = true;
         private SxePlugin sp;
         public Form1(SxePlugin s)
         {
             InitializeComponent();
             sp = s;
         }
-
+        public int getChan()
+        {
+            return int.Parse(textBox4slchan.Text);
+        }
+        
         protected override void OnClosing(CancelEventArgs e)
         {
             e.Cancel = true;
