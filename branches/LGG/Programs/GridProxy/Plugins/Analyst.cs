@@ -51,7 +51,8 @@ public class Analyst : ProxyPlugin
     private string logGrep = null;
     private Dictionary<PacketType, Dictionary<BlockField, object>> modifiedPackets = new Dictionary<PacketType, Dictionary<BlockField, object>>();
     private Assembly openmvAssembly;
-    private StreamWriter output;
+    private StreamWriter output; 
+
 
     public Analyst(ProxyFrame frame)
     {
@@ -395,6 +396,8 @@ public class Analyst : ProxyPlugin
                                 fval = frame.AgentID;
                             else if (lineValue == "$SessionID")
                                 fval = frame.SessionID;
+                            else if (lineValue.StartsWith("|"))
+                                fval = Hex2Bytes(CleanHex(lineValue));
                             else
                                 fval = MagicCast(name, block, lineField, lineValue);
 
@@ -434,6 +437,44 @@ public class Analyst : ProxyPlugin
             }
         }
     }
+    private string CleanHex(string text)
+    {
+        int index;
+
+        // Remove spaces
+        text = text.Replace(" ", "");
+
+        // Remove "|" and stuff before it
+        index = text.IndexOf("|");
+        if (index != -1)
+            text = text.Substring(index + 1);
+
+        // Remove comments
+        index = text.IndexOf("//");
+        if (index != -1)
+            text = text.Substring(0, index);
+
+        return text;
+    }
+
+    // Blaaaaaaaarg
+    private byte[] Hex2Bytes(string text)
+    {
+        int index;
+        string pair;
+        byte[] output = new byte[text.Length / 2];
+        int paircount = (int)(text.Length / 2);
+        if (paircount > 0)
+        {
+            for (index = 0; index < paircount; index++)
+            {
+                pair = text.Substring(index * 2, 2);
+                output[index] = Convert.ToByte(pair, 16);
+            }
+        }
+        return output;
+    }
+
 
     // SayToUser: send a message to the user as in-world chat
     private void SayToUser(string message)
@@ -614,6 +655,7 @@ public class Analyst : ProxyPlugin
     {
         return Modify(packet, endPoint, Direction.Incoming);
     }
+
 
     // ModifyOut: modify an outgoing packet
     private Packet ModifyOut(Packet packet, IPEndPoint endPoint)

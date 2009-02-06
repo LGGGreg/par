@@ -31,7 +31,6 @@ namespace PubComb
 
         public int xtrafx_Index = 0;
         public RainbowParticlesPlugin rp;
-        public byte[][] xtrafxb;
         public static String xtrafxString;
         public xtrafxMode Mode = xtrafxMode.Quad;
 
@@ -44,7 +43,7 @@ namespace PubComb
         {
             string[] colors = input.ToLower().Split(new char[3] { ' ', ',', ':' });
             xtrafxString = input;
-            xtrafxb = new byte[colors.Length][];
+            rp.plug.SharedInfo.rainbow= new byte[colors.Length][];
             rp.plug.SayToUser("The colors we got were " + input + " and we got " + colors.Length.ToString() + " colors");
             lock (listBox1.Items)
             {
@@ -56,43 +55,43 @@ namespace PubComb
                     switch (colors[i])
                     {
                         case "red":
-                            xtrafxb[i] = new byte[] { 0xFF, 0x00, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0x00, 0xFF };
                             break;
                         case "orange":
-                            xtrafxb[i] = new byte[] { 0xFF, 0x80, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x80, 0x00, 0xFF };
                             break;
                         case "yellow":
-                            xtrafxb[i] = new byte[] { 0xFF, 0xFF, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0x00, 0xFF };
                             break;
                         case "lime":
-                            xtrafxb[i] = new byte[] { 0x80, 0xFF, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x80, 0xFF, 0x00, 0xFF };
                             break;
                         case "green":
-                            xtrafxb[i] = new byte[] { 0x00, 0xFF, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x00, 0xFF };
                             break;
                         case "turquoise":
-                            xtrafxb[i] = new byte[] { 0x00, 0xFF, 0x80, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x80, 0xFF };
                             break;
                         case "cyan":
-                            xtrafxb[i] = new byte[] { 0x00, 0xFF, 0xFF, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0xFF, 0xFF };
                             break;
                         case "blue":
-                            xtrafxb[i] = new byte[] { 0x00, 0x00, 0xFF, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0xFF, 0xFF };
                             break;
                         case "purple":
-                            xtrafxb[i] = new byte[] { 0x80, 0x00, 0xFF, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x80, 0x00, 0xFF, 0xFF };
                             break;
                         case "pink":
-                            xtrafxb[i] = new byte[] { 0xFF, 0x00, 0xFF, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0xFF, 0xFF };
                             break;
                         case "black":
-                            xtrafxb[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
                             break;
                         case "white":
-                            xtrafxb[i] = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
                             break;
                         default:
-                            xtrafxb[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
+                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
                             rp.plug.SayToUser("Unknown color: " + colors[i] + " set to black");
                             break;
                     }
@@ -178,6 +177,7 @@ namespace PubComb
             {
                 temp += listBox1.Items[i].ToString() + " ";
             }
+            if(temp!="")
             setColorFromString(temp.Remove(temp.Length-1));
         }
 
@@ -288,6 +288,11 @@ namespace PubComb
                 listBox1.Items.Add(comboBox1.Text.ToString());
             }
             doList();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

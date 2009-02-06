@@ -226,9 +226,9 @@ namespace PubComb
                             proxy.InjectPacket(tp, Direction.Outgoing);
                             return null;
                         }
-                        catch
+                        catch(Exception e)
                         {
-                            SayToUser("Fail");
+                            SayToUser("Fail"+e.ToString());
                         }
                     }
                 }

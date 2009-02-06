@@ -64,7 +64,7 @@ namespace PubComb
             a.AgentData.AgentID = frame.AgentID;
             a.AgentData.BodyRotation = Quaternion.Identity;
             a.AgentData.CameraAtAxis = shared.CameraAtAxis;
-            a.AgentData.CameraCenter = shared.Position;
+            a.AgentData.CameraCenter = shared.CameraPosition;
             a.AgentData.CameraLeftAxis = shared.CameraLeftAxis;
             a.AgentData.CameraUpAxis = shared.CameraUpAxis;
             a.AgentData.ControlFlags = 131072;

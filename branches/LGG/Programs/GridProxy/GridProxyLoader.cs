@@ -152,7 +152,7 @@ namespace GridProxy
                 toggle = (!toggle);
                 proxy.writeinthis(">", ConsoleColor.Black, toggle ? ConsoleColor.Red : ConsoleColor.DarkRed);
             }
-            proxy.writeinthis("SLRAD Proxy Ready SLRAD", ConsoleColor.Black, ConsoleColor.Red);
+            proxy.writeinthis("PAR   Proxy Ready   PAR", ConsoleColor.Black, ConsoleColor.Red);
             for (int i = 0; i < 40 - 13; i++)
             {
 

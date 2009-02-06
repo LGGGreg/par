@@ -64,6 +64,8 @@ namespace PubComb
             plugins.Add(new RetreatPlugin(this));
             plugins.Add(new AwesomeSauce(this));
             plugins.Add(new ProTextPlug(this));
+            plugins.Add(new ViewerEffectLogPlugin(this));
+            plugins.Add(new AvatarTracker(this));
 
             tabformthread = new Thread(new ThreadStart(delegate()
             {
@@ -90,14 +92,18 @@ namespace PubComb
 
         public class Aux_SharedInfo
         {
+            public String AgentName;
             public ProxyFrame frame;
             public IPAddress ip;
+            public byte[][] rainbow;
             public int port;
             public ulong RegionHandle = 0;
-            public Vector3 Position = new Vector3();
+            public Vector3 AvPosition = new Vector3();
+            public Vector3 CameraPosition = new Vector3();
             public Vector3 CameraAtAxis;
             public Vector3 CameraLeftAxis;
             public Vector3 CameraUpAxis;
+            public Dictionary<string, Aux_Simulator> Aux_Simulators = new Dictionary<string, Aux_Simulator>();
             public Dictionary<UUID, String> key2name = new Dictionary<UUID, string>();
             public Dictionary<String, UUID> name2key = new Dictionary<string, UUID>();
             public float Far;
@@ -107,7 +113,62 @@ namespace PubComb
                 this.frame = plugin.frame;
             }
         }
-        
+        public class Aux_Simulator
+        {
+            public string IP;
+            public List<Aux_CoarseLocation> CoarseLocations = new List<Aux_CoarseLocation>();
+            public Dictionary<UUID, Aux_Avatar> Avatars = new Dictionary<UUID, Aux_Avatar>();
+
+            public Aux_Simulator(string ip)
+            {
+                IP = ip;
+            }
+
+            public Aux_Avatar AvatarByLocalID(UInt32 localid)
+            {
+                foreach (KeyValuePair<UUID, Aux_Avatar> UUIDandAvatar in Avatars)
+                {
+                    if (UUIDandAvatar.Value.LocalID == localid)
+                    {
+                        return UUIDandAvatar.Value;
+                    }
+                }
+                return null;
+            }
+        }
+
+        public class Aux_CoarseLocation
+        {
+            public int X;
+            public int Y;
+            public int Z;
+            public UUID UUID;
+
+            public Aux_CoarseLocation(int x, int y, UUID uuid)
+            {
+                X = x;
+                Y = y;
+                UUID = uuid;
+            }
+        }
+
+        public class Aux_Avatar
+        {
+            public string sim_IP;
+            public UUID UUID;
+            public uint LocalID;
+            public string Name;
+            public Vector3 Position;
+
+            public Aux_Avatar(UUID uuid, string sim, uint localid, string name, Vector3 position)
+            {
+                sim_IP = sim;
+                UUID = uuid;
+                LocalID = localid;
+                Name = name;
+                Position = position;
+            }
+        }
         public void sendDialog(UUID what, String msg, int chan)
         {
             ScriptDialogReplyPacket sdrp = new ScriptDialogReplyPacket();

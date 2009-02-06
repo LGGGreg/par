@@ -42,6 +42,13 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="AvatarForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AvatarForm1.Designer.cs">
+      <DependentUpon>AvatarForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AvatarInfo.cs" />
     <Compile Include="AweseomeSauceForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +212,13 @@
     <Compile Include="TabItem.Designer.cs">
       <DependentUpon>TabItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="VELogForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VELogForm1.Designer.cs">
+      <DependentUpon>VELogForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewerEffectLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -214,6 +228,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AvatarForm1.resx">
+      <DependentUpon>AvatarForm1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AweseomeSauceForm1.resx">
       <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabItem.resx">
       <DependentUpon>TabItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VELogForm1.resx">
+      <DependentUpon>VELogForm1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

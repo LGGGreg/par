@@ -78,7 +78,7 @@ namespace PubComb
         }
         private Packet ToHigh(Packet p, IPEndPoint s)
         {
-            if (shared.Position.Z > 4096 + shared.Far) return null;
+            if (shared.CameraPosition.Z > 4096 + shared.Far) return null;
             return p;
         }
         public void doHigh(int c)
@@ -103,7 +103,7 @@ namespace PubComb
         }
         public void tpHigh(int c)
         {
-            Vector3 where = new Vector3(shared.Position.X, shared.Position.Y, (float)c);
+            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)c);
             TeleportLocationRequestPacket tp = new TeleportLocationRequestPacket();
             tp.AgentData = new TeleportLocationRequestPacket.AgentDataBlock();
             tp.AgentData.AgentID = frame.AgentID;
@@ -116,7 +116,7 @@ namespace PubComb
         }
         public void platHigh(int c)
         {
-            Vector3 where = new Vector3(shared.Position.X, shared.Position.Y, (float)(c-5));
+            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)(c-5));
             System.Timers.Timer myTimer = new System.Timers.Timer(10000);
             PacketDelegate replyCallback = delegate(Packet p, IPEndPoint s)
             {

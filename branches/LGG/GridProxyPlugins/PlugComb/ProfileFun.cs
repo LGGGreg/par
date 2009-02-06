@@ -63,7 +63,7 @@ namespace PubComb
             proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, delegate(Packet packet, IPEndPoint sim)
             {
                 AgentUpdatePacket.AgentDataBlock p = ((AgentUpdatePacket)packet).AgentData;
-                shared.Position = p.CameraCenter;
+                shared.CameraPosition = p.CameraCenter;
                 shared.CameraAtAxis = p.CameraAtAxis;
                 shared.CameraLeftAxis = p.CameraLeftAxis;
                 shared.CameraUpAxis = p.CameraUpAxis;
@@ -155,7 +155,7 @@ namespace PubComb
                                         {
                                             regionNames.Add(shared.RegionHandle, regionName);
                                         }
-                                        form.updateWeb(form.getBase() + "secondlife://" + regionName.Replace(" ", "%20") + "/" + shared.Position.X.ToString() + "/" + shared.Position.Y.ToString() + "/" + shared.Position.Z.ToString());
+                                        form.updateWeb(form.getBase() + "secondlife://" + regionName.Replace(" ", "%20") + "/" + shared.CameraPosition.X.ToString() + "/" + shared.CameraPosition.Y.ToString() + "/" + shared.CameraPosition.Z.ToString());
 
                                     }
                                 }
@@ -182,7 +182,7 @@ namespace PubComb
 
                         else
                         {
-                            form.updateWeb(form.getBase() + "secondlife://" + this.regionNames[this.shared.RegionHandle].Replace(" ", "%20") + "/" + shared.Position.X.ToString() + "/" + shared.Position.Y.ToString() + "/" + shared.Position.Z.ToString());
+                            form.updateWeb(form.getBase() + "secondlife://" + this.regionNames[this.shared.RegionHandle].Replace(" ", "%20") + "/" + shared.CameraPosition.X.ToString() + "/" + shared.CameraPosition.Y.ToString() + "/" + shared.CameraPosition.Z.ToString());
 
                         }
                     }

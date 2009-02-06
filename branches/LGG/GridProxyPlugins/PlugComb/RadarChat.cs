@@ -59,19 +59,29 @@ namespace PubComb
             UUIDNameReplyPacket n = (UUIDNameReplyPacket)p;
             lock (shared.key2name)
             {
-                foreach(UUIDNameReplyPacket.UUIDNameBlockBlock b in n.UUIDNameBlock)
+                lock (shared.name2key)
                 {
-                    if(!shared.key2name.ContainsKey(b.ID))
+                    foreach (UUIDNameReplyPacket.UUIDNameBlockBlock b in n.UUIDNameBlock)
                     {
-                        string name = Utils.BytesToString(b.FirstName) + " " + Utils.BytesToString(b.LastName);
-                        shared.key2name.Add(b.ID, name);
-                        shared.name2key.Add(name, b.ID);
-                        lock (pending)
+                        if (!shared.key2name.ContainsKey(b.ID))
                         {
-                            if (pending.Contains(b.ID))
+                            string name = Utils.BytesToString(b.FirstName) + " " + Utils.BytesToString(b.LastName);
+                            shared.key2name.Add(b.ID, name);
+                            if (!shared.name2key.ContainsKey(name))
                             {
-                                pending.Remove(b.ID);
-                                form.listBox2.Items.Add(shared.key2name[b.ID]);
+                                shared.name2key.Add(name, b.ID);
+                            }
+                            lock (pending)
+                            {
+                                if (pending.Contains(b.ID))
+                                {
+                                    pending.Remove(b.ID);
+                                    lock (form.listBox2.Items)
+                                    {
+                                        if(!form.listBox2.Items.Contains(shared.key2name[b.ID]))
+                                            form.listBox2.Items.Add(shared.key2name[b.ID]);
+                                    }
+                                }
                             }
                         }
                     }

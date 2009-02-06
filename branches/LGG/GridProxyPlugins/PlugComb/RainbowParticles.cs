@@ -169,6 +169,12 @@ namespace PubComb
                     Mode = xtrafxMode.Speak;
                     SendUserAlert("XtraFX Mode changed to speaking on chanel 9000.");
                 }
+
+                else if (message.Contains("circle"))
+                {
+                    Mode = xtrafxMode.Circles;
+                    SendUserAlert("XtraFX Mode changed to circles.");
+                }
                 else
                     SendUserAlert("Mode not found.");
 
@@ -199,6 +205,7 @@ namespace PubComb
                 {
                     if (effect.Type == (byte)EffectType.Beam)
                     {
+                        
                         if (form.Mode == xtrafxMode.Speak)
                         {
                             oldTime = System.Environment.TickCount;
@@ -220,10 +227,11 @@ namespace PubComb
                         }
 
                         inject = true;
-                        Buffer.BlockCopy(form.xtrafxb[form.xtrafx_Index], 0, effect.Color, 0, 4);
+                        Buffer.BlockCopy(
+                            plug.SharedInfo.rainbow[form.xtrafx_Index], 0, effect.Color, 0, 4);
                         form.xtrafx_Index++;
 
-                        if (form.xtrafx_Index >= form.xtrafxb.Length)
+                        if (form.xtrafx_Index >= plug.SharedInfo.rainbow.Length)
                         {
                             form.xtrafx_Index = 0;
                         }
@@ -265,6 +273,28 @@ namespace PubComb
                                 }
                             }
                         }
+                        if (form.Mode == xtrafxMode.Circles)
+                        {
+                            Vector3d TargetPosition = new Vector3d(effect.TypeData, 32);
+                            int MapX = ((int)(plug.SharedInfo.RegionHandle >> 32) );
+                            int MapY = ((int)(plug.SharedInfo.RegionHandle & 0x00000000FFFFFFFF) );
+                            Vector3d myPos = new Vector3d(
+                                MapX + plug.SharedInfo.AvPosition.X,
+                                MapY + plug.SharedInfo.AvPosition.Y,
+                                 plug.SharedInfo.AvPosition.Z);
+                            Vector3d myLine = TargetPosition - myPos;
+                            float duration = effect.Duration * (float)(((double)38 - (myLine.Length()*(2/3))) / 20);
+                            if (duration > effect.Duration) duration = effect.Duration;
+                                
+                            //proxy.writethis("my pos is " + myPos.ToString() + " and target is " + TargetPosition.ToString() + " and myline is " + myLine.ToString(),ConsoleColor.Cyan,ConsoleColor.Black);
+                            for (int i = 0; i < (int)Math.Round(myLine.Length()); i++)
+                            {
+                                Vector3d circlePos = myPos + (Vector3d.Normalize(myLine)*i);
+                               sendSwirlPoint(circlePos,effect.Color,duration);
+                            }
+                            sendSwirlPoint(TargetPosition,effect.Color, duration);
+                        }
+
 
 
                     }
@@ -280,6 +310,28 @@ namespace PubComb
                 }
             }
             return packet;
+        }
+        public void sendSwirlPoint(Vector3d vec,byte[] color, float dur)
+        {
+            ViewerEffectPacket v = new ViewerEffectPacket();
+            v.AgentData = new ViewerEffectPacket.AgentDataBlock();
+            v.AgentData.AgentID = frame.AgentID;
+            v.AgentData.SessionID = frame.SessionID;
+            v.Effect = new ViewerEffectPacket.EffectBlock[1];
+            v.Effect[0] = new ViewerEffectPacket.EffectBlock();
+            v.Effect[0].ID = UUID.Random();
+            v.Effect[0].AgentID = frame.AgentID;
+            v.Effect[0].Type = (byte)EffectType.Beam;
+            v.Effect[0].Duration = dur;
+            v.Effect[0].Color = color;
+            v.Effect[0].TypeData = new byte[56];
+                Buffer.BlockCopy(UUID.Zero.GetBytes(),0,v.Effect[0].TypeData,0,16);
+                Buffer.BlockCopy(UUID.Zero.GetBytes(),0,v.Effect[0].TypeData,16,16);
+                Buffer.BlockCopy(vec.GetBytes(), 0, v.Effect[0].TypeData, 32, 24);
+                
+            v.Header.Reliable = false;
+            proxy.InjectPacket(v, Direction.Outgoing);
+
         }
         public void shoutOut(int c, string m)
         {

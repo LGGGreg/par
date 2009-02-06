@@ -42,6 +42,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox2swirlall = new System.Windows.Forms.CheckBox();
             this.button1unfrsze = new System.Windows.Forms.Button();
             this.button1freeze = new System.Windows.Forms.Button();
             this.button1ban = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.button3ejectnban = new System.Windows.Forms.Button();
             this.button1eject = new System.Windows.Forms.Button();
+            this.checkBox2swilyone = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -160,6 +162,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(707, 355);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -236,6 +239,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.checkBox2swirlall, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.button1unfrsze, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.button1freeze, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.button1ban, 0, 2);
@@ -244,16 +248,34 @@
             this.tableLayoutPanel2.Controls.Add(this.button3kick, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel12, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.checkBox2swilyone, 0, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.36449F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.63551F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.78788F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.21212F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(230, 262);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // checkBox2swirlall
+            // 
+            this.checkBox2swirlall.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox2swirlall.AutoSize = true;
+            this.checkBox2swirlall.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox2swirlall.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.checkBox2swirlall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox2swirlall.Location = new System.Drawing.Point(3, 203);
+            this.checkBox2swirlall.Name = "checkBox2swirlall";
+            this.checkBox2swirlall.Size = new System.Drawing.Size(109, 26);
+            this.checkBox2swirlall.TabIndex = 10;
+            this.checkBox2swirlall.Text = "Swirly ALL";
+            this.checkBox2swirlall.UseVisualStyleBackColor = true;
+            this.checkBox2swirlall.CheckedChanged += new System.EventHandler(this.checkBox2swirlall_CheckedChanged);
             // 
             // button1unfrsze
             // 
@@ -261,9 +283,9 @@
             this.button1unfrsze.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1unfrsze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1unfrsze.ForeColor = System.Drawing.Color.Red;
-            this.button1unfrsze.Location = new System.Drawing.Point(3, 225);
+            this.button1unfrsze.Location = new System.Drawing.Point(3, 167);
             this.button1unfrsze.Name = "button1unfrsze";
-            this.button1unfrsze.Size = new System.Drawing.Size(109, 34);
+            this.button1unfrsze.Size = new System.Drawing.Size(109, 30);
             this.button1unfrsze.TabIndex = 8;
             this.button1unfrsze.Text = "UnFreeze";
             this.button1unfrsze.UseVisualStyleBackColor = false;
@@ -275,9 +297,9 @@
             this.button1freeze.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1freeze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1freeze.ForeColor = System.Drawing.Color.Red;
-            this.button1freeze.Location = new System.Drawing.Point(118, 225);
+            this.button1freeze.Location = new System.Drawing.Point(118, 167);
             this.button1freeze.Name = "button1freeze";
-            this.button1freeze.Size = new System.Drawing.Size(109, 34);
+            this.button1freeze.Size = new System.Drawing.Size(109, 30);
             this.button1freeze.TabIndex = 7;
             this.button1freeze.Text = "Freeze";
             this.button1freeze.UseVisualStyleBackColor = false;
@@ -289,9 +311,9 @@
             this.button1ban.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1ban.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1ban.ForeColor = System.Drawing.Color.Red;
-            this.button1ban.Location = new System.Drawing.Point(3, 186);
+            this.button1ban.Location = new System.Drawing.Point(118, 135);
             this.button1ban.Name = "button1ban";
-            this.button1ban.Size = new System.Drawing.Size(109, 33);
+            this.button1ban.Size = new System.Drawing.Size(109, 26);
             this.button1ban.TabIndex = 5;
             this.button1ban.Text = "Ban All Estates";
             this.button1ban.UseVisualStyleBackColor = false;
@@ -303,9 +325,9 @@
             this.button1bansingle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1bansingle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1bansingle.ForeColor = System.Drawing.Color.Red;
-            this.button1bansingle.Location = new System.Drawing.Point(118, 186);
+            this.button1bansingle.Location = new System.Drawing.Point(3, 135);
             this.button1bansingle.Name = "button1bansingle";
-            this.button1bansingle.Size = new System.Drawing.Size(109, 33);
+            this.button1bansingle.Size = new System.Drawing.Size(109, 26);
             this.button1bansingle.TabIndex = 4;
             this.button1bansingle.Text = "Ban Single Estate";
             this.button1bansingle.UseVisualStyleBackColor = false;
@@ -317,9 +339,9 @@
             this.button4tphome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button4tphome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4tphome.ForeColor = System.Drawing.Color.Red;
-            this.button4tphome.Location = new System.Drawing.Point(118, 137);
+            this.button4tphome.Location = new System.Drawing.Point(118, 107);
             this.button4tphome.Name = "button4tphome";
-            this.button4tphome.Size = new System.Drawing.Size(109, 43);
+            this.button4tphome.Size = new System.Drawing.Size(109, 22);
             this.button4tphome.TabIndex = 3;
             this.button4tphome.Text = "Tp Home";
             this.button4tphome.UseVisualStyleBackColor = false;
@@ -331,9 +353,9 @@
             this.button3kick.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3kick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3kick.ForeColor = System.Drawing.Color.Red;
-            this.button3kick.Location = new System.Drawing.Point(3, 137);
+            this.button3kick.Location = new System.Drawing.Point(3, 107);
             this.button3kick.Name = "button3kick";
-            this.button3kick.Size = new System.Drawing.Size(109, 43);
+            this.button3kick.Size = new System.Drawing.Size(109, 22);
             this.button3kick.TabIndex = 2;
             this.button3kick.Text = "Kick";
             this.button3kick.UseVisualStyleBackColor = false;
@@ -345,7 +367,7 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(118, 3);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(109, 128);
+            this.panel12.Size = new System.Drawing.Size(109, 98);
             this.panel12.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -358,9 +380,9 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(109, 128);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.2653F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.7347F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(109, 98);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // textBox2DIAGmsg
@@ -368,10 +390,10 @@
             this.textBox2DIAGmsg.BackColor = System.Drawing.Color.Black;
             this.textBox2DIAGmsg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2DIAGmsg.ForeColor = System.Drawing.Color.Red;
-            this.textBox2DIAGmsg.Location = new System.Drawing.Point(3, 67);
+            this.textBox2DIAGmsg.Location = new System.Drawing.Point(3, 64);
             this.textBox2DIAGmsg.Multiline = true;
             this.textBox2DIAGmsg.Name = "textBox2DIAGmsg";
-            this.textBox2DIAGmsg.Size = new System.Drawing.Size(103, 58);
+            this.textBox2DIAGmsg.Size = new System.Drawing.Size(103, 31);
             this.textBox2DIAGmsg.TabIndex = 0;
             this.textBox2DIAGmsg.Text = "Hello there..";
             // 
@@ -383,7 +405,7 @@
             this.button2.ForeColor = System.Drawing.Color.Red;
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 58);
+            this.button2.Size = new System.Drawing.Size(103, 55);
             this.button2.TabIndex = 1;
             this.button2.Text = "Send Long Dist Chat (You wont hear the reply)";
             this.button2.UseVisualStyleBackColor = false;
@@ -399,9 +421,9 @@
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(109, 128);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.95918F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.04082F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(109, 98);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // button3ejectnban
@@ -410,9 +432,9 @@
             this.button3ejectnban.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3ejectnban.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3ejectnban.ForeColor = System.Drawing.Color.Red;
-            this.button3ejectnban.Location = new System.Drawing.Point(3, 67);
+            this.button3ejectnban.Location = new System.Drawing.Point(3, 49);
             this.button3ejectnban.Name = "button3ejectnban";
-            this.button3ejectnban.Size = new System.Drawing.Size(103, 58);
+            this.button3ejectnban.Size = new System.Drawing.Size(103, 46);
             this.button3ejectnban.TabIndex = 3;
             this.button3ejectnban.Text = "Eject and Ban";
             this.button3ejectnban.UseVisualStyleBackColor = false;
@@ -426,11 +448,26 @@
             this.button1eject.ForeColor = System.Drawing.Color.Red;
             this.button1eject.Location = new System.Drawing.Point(3, 3);
             this.button1eject.Name = "button1eject";
-            this.button1eject.Size = new System.Drawing.Size(103, 58);
+            this.button1eject.Size = new System.Drawing.Size(103, 40);
             this.button1eject.TabIndex = 2;
             this.button1eject.Text = "Eject";
             this.button1eject.UseVisualStyleBackColor = false;
             this.button1eject.Click += new System.EventHandler(this.button1eject_Click);
+            // 
+            // checkBox2swilyone
+            // 
+            this.checkBox2swilyone.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox2swilyone.AutoSize = true;
+            this.checkBox2swilyone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox2swilyone.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.checkBox2swilyone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox2swilyone.Location = new System.Drawing.Point(3, 235);
+            this.checkBox2swilyone.Name = "checkBox2swilyone";
+            this.checkBox2swilyone.Size = new System.Drawing.Size(109, 24);
+            this.checkBox2swilyone.TabIndex = 9;
+            this.checkBox2swilyone.Text = "Swirly";
+            this.checkBox2swilyone.UseVisualStyleBackColor = true;
+            this.checkBox2swilyone.CheckedChanged += new System.EventHandler(this.checkBox2swilyone_CheckedChanged);
             // 
             // panel10
             // 
@@ -627,6 +664,7 @@
             this.panel9.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -686,5 +724,7 @@
         private System.Windows.Forms.Button button3ejectnban;
         private System.Windows.Forms.Button button1eject;
         private System.Windows.Forms.Button button1unfrsze;
+        private System.Windows.Forms.CheckBox checkBox2swilyone;
+        private System.Windows.Forms.CheckBox checkBox2swirlall;
     }
 }

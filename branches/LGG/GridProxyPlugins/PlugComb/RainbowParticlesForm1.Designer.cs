@@ -260,6 +260,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(459, 95);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel6
             // 
@@ -363,7 +364,6 @@
             this.radioButton4circles.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton4circles.AutoSize = true;
             this.radioButton4circles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton4circles.Enabled = false;
             this.radioButton4circles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.radioButton4circles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.radioButton4circles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -443,11 +443,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(296, 3);
+            this.label3.Location = new System.Drawing.Point(271, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 24);
+            this.label3.Size = new System.Drawing.Size(188, 24);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Day Oh: Color Change, Quad, Circle\r\nLGG: Gui, Color Settings, SL Particles";
+            this.label3.Text = "Day Oh: Color Change, Quad, Circle\r\nLGG: Gui, Color Settings, SL Particles, Spiny" +
+                "";
             // 
             // label1
             // 
