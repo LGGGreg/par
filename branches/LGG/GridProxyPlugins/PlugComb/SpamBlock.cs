@@ -39,7 +39,7 @@ namespace PubComb
             public rights(ChangeUserRightsPacket pp)
             {
                 p = pp;
-                time = DateTime.Now ;
+                time =System.DateTime.Now ;
             }
             public ChangeUserRightsPacket p;
             public DateTime time;
@@ -48,7 +48,7 @@ namespace PubComb
         {
             public ims(ImprovedInstantMessagePacket im)
             {
-                i = im; time = DateTime.Now ;
+                i = im; time = System.DateTime.Now ;
             }
             public ImprovedInstantMessagePacket i;
             public DateTime time;
@@ -57,7 +57,11 @@ namespace PubComb
         {
             public diags(ScriptDialogPacket ss)
             {
-                s = ss; time = DateTime.Now;
+                s = ss; time = System.DateTime.Now;
+            }
+            public override string ToString()
+            {
+                return time.ToLongTimeString();
             }
             public ScriptDialogPacket s;
             public DateTime time;
@@ -131,10 +135,10 @@ namespace PubComb
                         }
                         if (whos.Count == 1 && types.Count < 3 && msgs.Count < 4 && lastIM.Count == 5)
                         {
-                            TimeSpan duration = lastIM[0].time - lastIM[4].time;
+                            TimeSpan duration = lastIM[4].time - lastIM[0].time;
 
 
-                            if (duration.Milliseconds < 2000)
+                            if (duration.TotalMilliseconds < 2000)
                             {
                                 proxy.writeinthis("DIM", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
@@ -186,9 +190,9 @@ namespace PubComb
                         }
                         if (whos.Count == 1 && lastrights.Count == 3)
                         {
-                            TimeSpan duration = lastIM[0].time - lastIM[2].time;
+                            TimeSpan duration = this.lastrights[2].time - lastrights[0].time;
 
-                            if (duration.Milliseconds < 2000)
+                            if (duration.TotalMilliseconds < 2000)
                             {
                                 proxy.writeinthis("DR", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
@@ -217,8 +221,9 @@ namespace PubComb
 
                         lock (lastDialogs)
                         {
+                            
                             lastDialogs.Add(new diags((ScriptDialogPacket)packet));
-                            if (lastDialogs.Count > 10)
+                            if (lastDialogs.Count > 5)
                             {
                                 lastDialogs.RemoveAt(0);
                             }
@@ -227,20 +232,24 @@ namespace PubComb
                         List<UUID> whos = new List<UUID>();
                         lock (lastDialogs)
                         {
+                            //proxy.writethis("new", ConsoleColor.Black, ConsoleColor.Blue);
                             foreach (diags d in lastDialogs)
                             {
                                 ScriptDialogPacket p = d.s;
                                 UUID who = p.Data.ObjectID;
                                 if (!whos.Contains(who))
                                     whos.Add(who);
+
+                                //proxy.writethis(d.ToString(), ConsoleColor.Black, ConsoleColor.Cyan);
                             }
 
                         }
-                        if (whos.Count == 1 && lastDialogs.Count == 10)
+                        
+                        if (whos.Count == 1 && lastDialogs.Count == 5)
                         {
-                            TimeSpan duration = lastIM[0].time - lastIM[9].time;
-
-                            if (duration.Milliseconds < 3000)
+                            TimeSpan duration = lastDialogs[4].time - lastDialogs[0].time;
+                            //proxy.writethis(durationToString(), ConsoleColor.Black, ConsoleColor.DarkCyan);
+                            if (duration.TotalMilliseconds < 1400)
                             {
                                 proxy.writeinthis("DD", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;

@@ -1036,8 +1036,8 @@ namespace PubComb
                 return input;
             }
             writethis("Bad Animation Found", ConsoleColor.Red, ConsoleColor.Gray);
-            SayToUser("An animation download has been blocked");
-            sendNotAnim(tranferid);
+            //SayToUser("An animation download has been blocked");
+            //sendNotAnim(tranferid);
             return null;
         }
         

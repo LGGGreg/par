@@ -330,6 +330,7 @@ namespace PubComb
                 Buffer.BlockCopy(vec.GetBytes(), 0, v.Effect[0].TypeData, 32, 24);
                 
             v.Header.Reliable = false;
+            v.Header.Resent = false;
             proxy.InjectPacket(v, Direction.Outgoing);
 
         }

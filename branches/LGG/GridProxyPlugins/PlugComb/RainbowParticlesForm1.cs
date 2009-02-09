@@ -109,7 +109,7 @@ namespace PubComb
             else if (Mode == xtrafxMode.Quad) tw.WriteLine("Single");
             else if (Mode == xtrafxMode.Speak) tw.WriteLine("Speak");
             else if (Mode == xtrafxMode.Circles) tw.WriteLine("Circles");
-            else if (Mode == xtrafxMode.Disabled) tw.WriteLine("Disabled");
+            else  tw.WriteLine("Disabled");
             tw.Close();
         }
         public void readData()
