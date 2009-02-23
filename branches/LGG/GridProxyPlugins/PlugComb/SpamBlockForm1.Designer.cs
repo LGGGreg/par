@@ -30,12 +30,14 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox2map = new System.Windows.Forms.CheckBox();
+            this.checkBox1sound = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.checkBox3dig = new System.Windows.Forms.CheckBox();
             this.checkBox2mod = new System.Windows.Forms.CheckBox();
             this.checkBox1im = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +56,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.checkBox2map);
+            this.panel2.Controls.Add(this.checkBox1sound);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.checkBox3dig);
             this.panel2.Controls.Add(this.checkBox2mod);
@@ -66,6 +70,45 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(419, 247);
             this.panel2.TabIndex = 1;
+            // 
+            // checkBox2map
+            // 
+            this.checkBox2map.AutoSize = true;
+            this.checkBox2map.BackColor = System.Drawing.Color.Black;
+            this.checkBox2map.Checked = true;
+            this.checkBox2map.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2map.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2map.ForeColor = System.Drawing.Color.Red;
+            this.checkBox2map.Location = new System.Drawing.Point(15, 175);
+            this.checkBox2map.Name = "checkBox2map";
+            this.checkBox2map.Size = new System.Drawing.Size(167, 21);
+            this.checkBox2map.TabIndex = 6;
+            this.checkBox2map.Text = "Map Request Spam";
+            this.checkBox2map.UseVisualStyleBackColor = false;
+            // 
+            // checkBox1sound
+            // 
+            this.checkBox1sound.AutoSize = true;
+            this.checkBox1sound.BackColor = System.Drawing.Color.Black;
+            this.checkBox1sound.Checked = true;
+            this.checkBox1sound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1sound.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1sound.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1sound.Location = new System.Drawing.Point(15, 148);
+            this.checkBox1sound.Name = "checkBox1sound";
+            this.checkBox1sound.Size = new System.Drawing.Size(118, 21);
+            this.checkBox1sound.TabIndex = 5;
+            this.checkBox1sound.Text = "Sound Spam";
+            this.checkBox1sound.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Plugin By LGG";
             // 
             // checkBox3dig
             // 
@@ -96,7 +139,6 @@
             this.checkBox2mod.TabIndex = 2;
             this.checkBox2mod.Text = "Mod Rights Spam";
             this.checkBox2mod.UseVisualStyleBackColor = false;
-            this.checkBox2mod.CheckedChanged += new System.EventHandler(this.checkBox2mod_CheckedChanged);
             // 
             // checkBox1im
             // 
@@ -137,15 +179,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Spam To Block";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 209);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Plugin By LGG";
-            // 
             // SpamBlockForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,5 +209,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.CheckBox checkBox1sound;
+        public System.Windows.Forms.CheckBox checkBox2map;
     }
 }

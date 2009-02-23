@@ -205,10 +205,21 @@ namespace PubComb
                             uint GlobalY = uint.Parse(Utils.BytesToString(genMsg.ParamList[1].Parameter));
                             form.addDebugInfo(genMsg.ParamList[2].Parameter.ToString());
                             form.addDebugInfo(Utils.BytesToHexString(genMsg.ParamList[2].Parameter,"Durr").Trim());
-                            form.addDebugInfo(float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()).ToString());
+                            //float Z = float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()) + 2.0f;
+                            //float Z = (float)(System.Convert.ToDouble(genMsg.ParamList[2].Parameter));
+                            string before = System.Text.Encoding.GetEncoding("utf-8").GetString(genMsg.ParamList[2].Parameter);
+                            if (!before.Contains("."))
+                            {
+                                //this is some 64 shit agian
+
+                                StringBuilder sb = new StringBuilder((int)Int64.MaxValue, (int)Int64.MinValue);
+                                sb.Append(genMsg.ParamList[2].Parameter);
+                                before = sb.ToString();                                
+
+                            }
+                            float Z = float.Parse(before);  
+                            form.addDebugInfo(Z.ToString());
                             form.addDebugInfo("\n");
-                            float Z = float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()) + 2.0f;
-                            
 
                             uint MapX = (uint)(GlobalX & 0xFFFFFF00);
                             uint MapY = (uint)(GlobalY & 0xFFFFFF00);

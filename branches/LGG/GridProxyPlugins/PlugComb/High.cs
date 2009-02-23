@@ -48,8 +48,37 @@ namespace PubComb
             this.frame = plug.frame;
             this.proxy = plug.proxy;
             this.frame.AddCommand("/high", new ProxyFrame.CommandDelegate(this.CmdHigh));
+            this.frame.AddCommand("/tp", new ProxyFrame.CommandDelegate(this.CmdTp));
             this.proxy.AddDelegate(PacketType.ObjectSelect, Direction.Outgoing, new PacketDelegate(this.ToHigh));
             this.proxy.AddDelegate(PacketType.ObjectDeselect, Direction.Outgoing, new PacketDelegate(this.ToHigh));
+        }
+        private void CmdTp(String[] words)
+        {
+            if (words.Length >= 4)
+            {
+                float x=0;
+                float y=0;
+                float z=0;
+                try
+                {
+                    x = float.Parse(words[1].Trim());
+                    y = float.Parse(words[2].Trim());
+                    z = float.Parse(words[3].Trim());
+                }
+                catch
+                {
+                    plugin.SayToUser("Usage: \"/tp 100 100 25\" ");
+                    return;
+                }
+                Vector3 go = new Vector3(x,y,z);
+                plugin.SayToUser("Tping to " + go.ToString());
+                doTp(go);
+
+            }
+            else
+            {
+                plugin.SayToUser("Usage: \"/tp 100 100 25\" ");
+            }
         }
         private void CmdHigh(string[] words)
         {
@@ -101,9 +130,8 @@ namespace PubComb
             
             
         }
-        public void tpHigh(int c)
+        public void doTp(Vector3 where)
         {
-            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)c);
             TeleportLocationRequestPacket tp = new TeleportLocationRequestPacket();
             tp.AgentData = new TeleportLocationRequestPacket.AgentDataBlock();
             tp.AgentData.AgentID = frame.AgentID;
@@ -113,6 +141,11 @@ namespace PubComb
             tp.Info.Position = where;
             tp.Info.LookAt = where;
             proxy.InjectPacket(tp, Direction.Outgoing);
+        }
+        public void tpHigh(int c)
+        {
+            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)c);
+            doTp(where);
         }
         public void platHigh(int c)
         {

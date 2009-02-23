@@ -66,10 +66,35 @@ namespace PubComb
             public ScriptDialogPacket s;
             public DateTime time;
         }
+        class sounds
+        {
+            public sounds(UUID sound, UUID r)
+            {
+                soundUUID = sound;
+                owner = r;
+                time = System.DateTime.Now;
+            }
+            public UUID soundUUID;
+            public UUID owner;
+            public DateTime time;
+        }
+        class maps
+        {
+            public maps(ScriptTeleportRequestPacket p)
+            {
+                m = p;
+                time = System.DateTime.Now;
+            }
+            public ScriptTeleportRequestPacket m;
+            public DateTime time;
+        }
 
         private List<rights> lastrights = new List<rights>();
         private List<ims> lastIM = new List<ims>();
         private List<diags> lastDialogs = new List<diags>();
+        private List<sounds> lastSounds = new List<sounds>();
+        private List<maps> lastMaps = new List<maps>();
+
         private List<uint> recSeq = new List<uint>();
         public void LoadNow()
         {
@@ -86,7 +111,117 @@ namespace PubComb
             this.proxy.AddDelegate(PacketType.ChangeUserRights, Direction.Incoming, new PacketDelegate(this.UserRights));
             this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(this.InIM));
             this.proxy.AddDelegate(PacketType.ScriptDialog, Direction.Incoming, new PacketDelegate(this.Dialogs));
+            this.proxy.AddDelegate(PacketType.SoundTrigger, Direction.Incoming, new PacketDelegate(this.InTSound));
+            this.proxy.AddDelegate(PacketType.AttachedSound, Direction.Incoming, new PacketDelegate(this.InASound));
+            this.proxy.AddDelegate(PacketType.ScriptTeleportRequest, Direction.Incoming, new PacketDelegate(this.InMap));
         }
+        private Packet InTSound(Packet packet, IPEndPoint sim)
+        {
+            lock (recSeq)
+            {
+                if (!recSeq.Contains(packet.Header.Sequence))
+                {
+                    recSeq.Add(packet.Header.Sequence);
+                    if (recSeq.Count > 43)
+                    {
+                        recSeq.RemoveAt(0);
+                    }
+
+                    if (form.checkBox1sound.Checked)
+                    {
+
+                        lock (lastSounds)
+                        {
+                            lastSounds.Add(new sounds(((SoundTriggerPacket)packet).SoundData.SoundID,((SoundTriggerPacket)packet).SoundData.OwnerID));
+                            if (lastSounds.Count > 5)
+                            {
+                                lastSounds.RemoveAt(0);
+                            }
+                        }
+                        List<UUID> sids = new List<UUID>();
+                        List<UUID> whos = new List<UUID>();
+                        lock (lastSounds)
+                        {
+                            foreach (sounds pa in lastSounds)
+                            {
+                                if (!sids.Contains(pa.soundUUID))
+                                    sids.Add(pa.soundUUID);
+
+                                UUID who = pa.owner;
+                                if (!whos.Contains(who))
+                                    whos.Add(who);
+                            }
+
+                        }
+                        if (whos.Count == 1 && sids.Count < 4 && lastSounds.Count == 5)
+                        {
+                            TimeSpan duration = lastSounds[4].time - lastSounds[0].time;
+                            if (duration.TotalMilliseconds < 4000)
+                            {
+                                proxy.writeinthis("DS", ConsoleColor.Black, ConsoleColor.Red);
+                                return null;
+                            }
+                        }
+                    }
+                }
+                else return null;
+            }
+            return packet;
+        }
+        private Packet InASound(Packet packet, IPEndPoint sim)
+        {
+            lock (recSeq)
+            {
+                if (!recSeq.Contains(packet.Header.Sequence))
+                {
+                    recSeq.Add(packet.Header.Sequence);
+                    if (recSeq.Count > 43)
+                    {
+                        recSeq.RemoveAt(0);
+                    }
+
+                    if (form.checkBox1sound.Checked)
+                    {
+
+                        lock (lastSounds)
+                        {
+                            lastSounds.Add(new sounds(((AttachedSoundPacket)packet).DataBlock.SoundID, ((AttachedSoundPacket)packet).DataBlock.OwnerID));
+                            if (lastSounds.Count > 5)
+                            {
+                                lastSounds.RemoveAt(0);
+                            }
+                        }
+                        List<UUID> sids = new List<UUID>();
+                        List<UUID> whos = new List<UUID>();
+                        lock (lastSounds)
+                        {
+                            foreach (sounds pa in lastSounds)
+                            {
+                                if (!sids.Contains(pa.soundUUID))
+                                    sids.Add(pa.soundUUID);
+
+                                UUID who = pa.owner;
+                                if (!whos.Contains(who))
+                                    whos.Add(who);
+                            }
+
+                        }
+                        if (whos.Count == 1 && sids.Count < 4 && lastSounds.Count == 5)
+                        {
+                            TimeSpan duration = lastSounds[4].time - lastSounds[0].time;
+                            if (duration.TotalMilliseconds < 2000)
+                            {
+                                proxy.writeinthis("DAS", ConsoleColor.Black, ConsoleColor.Red);
+                                return null;
+                            }
+                        }
+                    }
+                }
+                else return null;
+            }
+            return packet;
+        }
+        
         private Packet InIM(Packet packet, IPEndPoint sim)
         {
             lock (recSeq)
@@ -94,7 +229,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 13)
+                    if (recSeq.Count > 43)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -158,7 +293,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 13)
+                    if (recSeq.Count > 43)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -211,7 +346,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 13)
+                    if (recSeq.Count > 43)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -261,7 +396,63 @@ namespace PubComb
             }
             return packet;
         }
-    
+        private Packet InMap(Packet packet, IPEndPoint sim)
+        {
+
+            lock (recSeq)
+            {
+                if (!recSeq.Contains(packet.Header.Sequence))
+                {
+                    recSeq.Add(packet.Header.Sequence);
+                    if (recSeq.Count > 43)
+                    {
+                        recSeq.RemoveAt(0);
+                    }
+                    if (form.checkBox2map.Checked)
+                    {
+                        ScriptTeleportRequestPacket stp = (ScriptTeleportRequestPacket)packet;
+                        lock (lastMaps)
+                        {
+                            lastMaps.Add(new maps(stp));
+                            if (lastMaps.Count > 3)
+                            {
+                                lastMaps.RemoveAt(0);
+                            }
+                        }
+
+                        List<String> whos = new List<string>();
+                        List<Vector3> whares = new List<Vector3>();
+                        lock (lastMaps)
+                        {
+                            foreach (maps m in lastMaps)
+                            {
+                                ScriptTeleportRequestPacket mp =m.m;
+                                String who = Utils.BytesToString(mp.Data.ObjectName);
+                                Vector3 whare = mp.Data.SimPosition;
+                                if (!whos.Contains(who))
+                                    whos.Add(who);
+                                if (!whares.Contains(whare))
+                                    whares.Add(whare);
+                            }
+
+                        }
+                        if (whos.Count == 1 && whares.Count <=3 && lastMaps.Count == 3)
+                        {
+                            TimeSpan duration = this.lastMaps[2].time - lastMaps[0].time;
+                            
+                            if (duration.TotalMilliseconds < 3500)
+                            {
+                                proxy.writeinthis("DM", ConsoleColor.Black, ConsoleColor.Red);
+                                return null;
+                            }
+                        }
+                    }
+                }
+                else return null;
+            }
+            return packet;
+        }
+        
         
         
     }

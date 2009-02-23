@@ -336,14 +336,18 @@ namespace PubComb
         }
         public void shoutOut(int c, string m)
         {
-
-            ChatFromViewerPacket chat = new ChatFromViewerPacket();
-            chat.AgentData.AgentID = frame.AgentID;
-            chat.AgentData.SessionID = frame.SessionID;
-            chat.ChatData.Channel = c;
-            chat.ChatData.Type = (byte)2;
-            chat.ChatData.Message = Utils.StringToBytes(m);
-            proxy.InjectPacket(chat, Direction.Outgoing);
+            //proxy.writeinthis(m, ConsoleColor.Black, ConsoleColor.DarkYellow);
+            ScriptDialogReplyPacket p = new ScriptDialogReplyPacket();
+            p.AgentData = new ScriptDialogReplyPacket.AgentDataBlock();
+            p.AgentData.AgentID = frame.AgentID;
+            p.AgentData.SessionID = frame.SessionID;
+            p.Data = new ScriptDialogReplyPacket.DataBlock();
+            p.Data.ButtonIndex = 1;
+            p.Data.ButtonLabel = Utils.StringToBytes(m);
+            p.Data.ChatChannel = (int)c;
+            p.Data.ObjectID = frame.AgentID;
+            p.Header.Reliable = true;
+            proxy.InjectPacket(p, Direction.Outgoing);
         }
     }
 }

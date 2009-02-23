@@ -48,9 +48,5 @@ namespace PubComb
             return checkBox3dig.Checked;
         }
 
-        private void checkBox2mod_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
