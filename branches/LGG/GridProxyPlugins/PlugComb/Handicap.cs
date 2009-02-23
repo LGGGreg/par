@@ -204,20 +204,29 @@ namespace PubComb
                             uint GlobalX = uint.Parse(Utils.BytesToString(genMsg.ParamList[0].Parameter));
                             uint GlobalY = uint.Parse(Utils.BytesToString(genMsg.ParamList[1].Parameter));
                             form.addDebugInfo(genMsg.ParamList[2].Parameter.ToString());
-                            form.addDebugInfo(Utils.BytesToHexString(genMsg.ParamList[2].Parameter,"Durr").Trim());
+                            form.addDebugInfo(Utils.BytesToHexString(genMsg.ParamList[2].Parameter,"Version43").Trim());
                             //float Z = float.Parse(Utils.BytesToString(genMsg.ParamList[2].Parameter).Trim()) + 2.0f;
                             //float Z = (float)(System.Convert.ToDouble(genMsg.ParamList[2].Parameter));
                             string before = System.Text.Encoding.GetEncoding("utf-8").GetString(genMsg.ParamList[2].Parameter);
                             if (!before.Contains("."))
                             {
-                                //this is some 64 shit agian
-
-                                StringBuilder sb = new StringBuilder((int)Int64.MaxValue, (int)Int64.MinValue);
-                                sb.Append(genMsg.ParamList[2].Parameter);
-                                before = sb.ToString();                                
-
+                                string hex = Utils.BytesToHexString(genMsg.ParamList[2].Parameter, "Durr").Trim();
+                                string[] parts = hex.Split('\n');
+                                int where = 0;
+                                for (int i = 0; i < parts.Length; i++)
+                                {
+                                    if (parts[i] == "2E")
+                                    {
+                                        where = i;
+                                    }
+                                }
+                                before.Insert(where - 1, ".");
+                                form.addDebugInfo("i hate c# " + before);
                             }
-                            float Z = float.Parse(before);  
+                            float Z = (float)Double.Parse(before, System.Globalization.NumberStyles.Float,new System.Globalization.CultureInfo("en-us").NumberFormat)+2.0f;
+        
+
+                            //float Z =Utils.TryParseDouble float.Parse(before);  
                             form.addDebugInfo(Z.ToString());
                             form.addDebugInfo("\n");
 
@@ -239,7 +248,7 @@ namespace PubComb
                         }
                         catch(Exception e)
                         {
-                            SayToUser("Fail"+e.ToString());
+                            form.addDebugInfo("Fail"+e.ToString());
                         }
                     }
                 }
