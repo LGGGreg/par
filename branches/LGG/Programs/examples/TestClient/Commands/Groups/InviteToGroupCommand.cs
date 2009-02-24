@@ -40,7 +40,7 @@ namespace OpenMetaverse.TestClient
         {
             testC = testClient;
             Name = "invitetogroup";
-            Description = "invites and avatar to a group the bot is in. Usage: invitetogroup AvatarName|AvatarUUID , GroupName|UUIDGroupId";
+            Description = "invites and avatar to a group the bot is in. Usage: invitetogroup AvatarName|AvatarUUID GroupName|UUIDGroupId";
             Category = CommandCategory.Groups;
         }
 
@@ -63,7 +63,7 @@ namespace OpenMetaverse.TestClient
                     // Send the Query
                     Client.Avatars.RequestAvatarNameSearch(targetAvatarName, UUID.Random());
 
-                    NameSearchEvent.WaitOne(20000, false);
+                    NameSearchEvent.WaitOne(60000, false);
                 }
 
                 if (Name2Key.ContainsKey(targetAvatarName.ToLower()))
