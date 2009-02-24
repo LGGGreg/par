@@ -37,17 +37,13 @@ namespace PubComb
             string web = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
             if (File.Exists("profileweb.settings"))
             {
-                StreamReader re = File.OpenText("profileweb.settings");
-                if (re.ReadLine() == "Enabled")
-                    t = true;
-                
-
-
-                re.Close();
                 try
                 {
-                    StreamReader rte = File.OpenText("profileweb.settings");
-                    string at = rte.ReadLine();
+                    StreamReader re = File.OpenText("profileweb.settings");
+                    if (re.ReadLine() == "Enabled")
+                        t = true;
+                
+                    string at = re.ReadLine();
                     if (!string.IsNullOrEmpty(at))
                         web = at;
                 }
@@ -91,7 +87,6 @@ namespace PubComb
             {
                 textBox1website.Enabled = true;
             }
-            saveData();
         }
         public bool autoupdate()
         {
@@ -100,6 +95,7 @@ namespace PubComb
         private void button1_Click(object sender, EventArgs e)
         {
             pf.updateProfile(textBox1image.Text, textBox1rlimage.Text, textBox1about.Text, textBox1rlabout.Text, textBox1website.Text);
+            saveData();
 
         }
         public void updateWeb(string web)
@@ -119,7 +115,7 @@ namespace PubComb
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            saveData();
+           
         }
     }
 
