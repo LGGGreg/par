@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -46,6 +47,20 @@ namespace PubComb
         public bool getCheckDiag()
         {
             return checkBox3dig.Checked;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (File.Exists("mutesound.on"))
+            {
+                
+                File.Delete("mutesound.on");
+            }
+            else
+            {
+                File.Create("mutesound.on");
+            }
         }
 
     }

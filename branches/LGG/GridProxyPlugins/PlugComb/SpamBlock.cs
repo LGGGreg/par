@@ -122,7 +122,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -133,7 +133,7 @@ namespace PubComb
                         lock (lastSounds)
                         {
                             lastSounds.Add(new sounds(((SoundTriggerPacket)packet).SoundData.SoundID,((SoundTriggerPacket)packet).SoundData.OwnerID));
-                            if (lastSounds.Count > 5)
+                            if (lastSounds.Count > 3)
                             {
                                 lastSounds.RemoveAt(0);
                             }
@@ -153,10 +153,10 @@ namespace PubComb
                             }
 
                         }
-                        if (whos.Count == 1 && sids.Count < 4 && lastSounds.Count == 5)
+                        if (whos.Count == 1 && sids.Count ==1 && lastSounds.Count == 3)
                         {
-                            TimeSpan duration = lastSounds[4].time - lastSounds[0].time;
-                            if (duration.TotalMilliseconds < 4000)
+                            TimeSpan duration = lastSounds[2].time - lastSounds[0].time;
+                            if (duration.TotalMilliseconds < 1000)
                             {
                                 proxy.writeinthis("DS", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
@@ -175,7 +175,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -186,7 +186,7 @@ namespace PubComb
                         lock (lastSounds)
                         {
                             lastSounds.Add(new sounds(((AttachedSoundPacket)packet).DataBlock.SoundID, ((AttachedSoundPacket)packet).DataBlock.OwnerID));
-                            if (lastSounds.Count > 5)
+                            if (lastSounds.Count > 3)
                             {
                                 lastSounds.RemoveAt(0);
                             }
@@ -206,10 +206,10 @@ namespace PubComb
                             }
 
                         }
-                        if (whos.Count == 1 && sids.Count < 4 && lastSounds.Count == 5)
+                        if (whos.Count == 1 && sids.Count ==1 && lastSounds.Count == 3)
                         {
-                            TimeSpan duration = lastSounds[4].time - lastSounds[0].time;
-                            if (duration.TotalMilliseconds < 2000)
+                            TimeSpan duration = lastSounds[2].time - lastSounds[0].time;
+                            if (duration.TotalMilliseconds < 1000)
                             {
                                 proxy.writeinthis("DAS", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
@@ -229,7 +229,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -293,7 +293,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -346,7 +346,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }
@@ -404,7 +404,7 @@ namespace PubComb
                 if (!recSeq.Contains(packet.Header.Sequence))
                 {
                     recSeq.Add(packet.Header.Sequence);
-                    if (recSeq.Count > 43)
+                    if (recSeq.Count > 200)
                     {
                         recSeq.RemoveAt(0);
                     }

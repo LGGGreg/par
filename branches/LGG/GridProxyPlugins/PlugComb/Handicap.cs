@@ -55,11 +55,11 @@ namespace PubComb
             this.frame = plug.frame;
             this.proxy = plug.proxy;
             //plug.tabform.addATab(form, "Handicap");
-            this.proxy.AddDelegate(PacketType.GenericMessage, Direction.Outgoing, new PacketDelegate(OutAutoPilot));
+            //this.proxy.AddDelegate(PacketType.GenericMessage, Direction.Outgoing, new PacketDelegate(OutAutoPilot));
             this.proxy.AddDelegate(PacketType.GenericMessage, Direction.Incoming, new PacketDelegate(OutAutoPilot));
             this.proxy.AddDelegate(PacketType.ScriptDialogReply, Direction.Outgoing, new PacketDelegate(OutDialogFromViewer));
             this.proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(OutChatFromViewerHandler));
-            this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Outgoing, new PacketDelegate(SendingIM));
+            //this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Outgoing, new PacketDelegate(SendingIM));
             }
        
         private void SayToUser(string message)
@@ -241,8 +241,8 @@ namespace PubComb
                             tp.Info = new TeleportLocationRequestPacket.InfoBlock();
                             tp.Info.RegionHandle = RegionHandle;
                             tp.Info.Position = new Vector3((float)(GlobalX & 0xFF), (float)(GlobalY & 0xFF), Z);
-                            tp.Info.LookAt = tp.Info.Position;
-                            Console.Write(tp.ToString());
+                            tp.Info.LookAt = Vector3.Zero;//adeon said this was relative to pos..//tp.Info.Position;
+                            //Console.Write(tp.ToString());
                             proxy.InjectPacket(tp, Direction.Outgoing);
                             return null;
                         }

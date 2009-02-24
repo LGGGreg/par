@@ -323,6 +323,7 @@
             this.textBox1.Size = new System.Drawing.Size(268, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 

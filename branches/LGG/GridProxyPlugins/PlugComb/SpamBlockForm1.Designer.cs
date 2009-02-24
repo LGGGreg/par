@@ -38,6 +38,7 @@
             this.checkBox1im = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.checkBox2map);
             this.panel2.Controls.Add(this.checkBox1sound);
             this.panel2.Controls.Add(this.label2);
@@ -179,6 +181,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Spam To Block";
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(268, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 51);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Toggle IM Beep Sound";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SpamBlockForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,5 +224,6 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.CheckBox checkBox1sound;
         public System.Windows.Forms.CheckBox checkBox2map;
+        private System.Windows.Forms.Button button1;
     }
 }

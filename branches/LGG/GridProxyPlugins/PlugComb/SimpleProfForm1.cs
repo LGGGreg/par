@@ -34,16 +34,31 @@ namespace PubComb
         public void readData()
         {
             bool t = false;
+            string web = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
             if (File.Exists("profileweb.settings"))
             {
                 StreamReader re = File.OpenText("profileweb.settings");
                 if (re.ReadLine() == "Enabled")
                     t = true;
+                
 
 
                 re.Close();
+                try
+                {
+                    StreamReader rte = File.OpenText("profileweb.settings");
+                    string at = rte.ReadLine();
+                    if (!string.IsNullOrEmpty(at))
+                        web = at;
+                }
+                catch(Exception a)
+                {
+                    web = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
+                }
+
 
             }
+            textBox1.Text = web;
             checkBox1.Checked=t;
         }
         private void saveData()
@@ -51,6 +66,7 @@ namespace PubComb
             TextWriter tw = new StreamWriter("profileweb.settings");
             if (checkBox1.Checked) tw.WriteLine("Enabled");
             else tw.WriteLine("Disabled");
+            tw.WriteLine(textBox1.Text);
             tw.Close();
         }
         protected override void OnClosing(CancelEventArgs e)
@@ -99,6 +115,11 @@ namespace PubComb
         private void SimpleProfForm1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            saveData();
         }
     }
 
