@@ -39,6 +39,7 @@
             this.buttonLoad = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkBox1lossless = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -47,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.checkBox1lossless);
             this.panel1.Controls.Add(this.checkBox1trans);
             this.panel1.Controls.Add(this.checkBox1mod);
             this.panel1.Controls.Add(this.checkBox1copy);
@@ -56,7 +58,7 @@
             this.panel1.ForeColor = System.Drawing.Color.Red;
             this.panel1.Location = new System.Drawing.Point(0, 301);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(411, 46);
+            this.panel1.Size = new System.Drawing.Size(447, 46);
             this.panel1.TabIndex = 1;
             // 
             // checkBox1trans
@@ -64,7 +66,7 @@
             this.checkBox1trans.AutoSize = true;
             this.checkBox1trans.Checked = true;
             this.checkBox1trans.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1trans.Location = new System.Drawing.Point(141, 27);
+            this.checkBox1trans.Location = new System.Drawing.Point(121, 26);
             this.checkBox1trans.Name = "checkBox1trans";
             this.checkBox1trans.Size = new System.Drawing.Size(53, 17);
             this.checkBox1trans.TabIndex = 7;
@@ -76,7 +78,7 @@
             this.checkBox1mod.AutoSize = true;
             this.checkBox1mod.Checked = true;
             this.checkBox1mod.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1mod.Location = new System.Drawing.Point(83, 27);
+            this.checkBox1mod.Location = new System.Drawing.Point(68, 26);
             this.checkBox1mod.Name = "checkBox1mod";
             this.checkBox1mod.Size = new System.Drawing.Size(47, 17);
             this.checkBox1mod.TabIndex = 6;
@@ -101,7 +103,7 @@
             this.progressBar1.ForeColor = System.Drawing.Color.Red;
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(211, 23);
+            this.progressBar1.Size = new System.Drawing.Size(247, 23);
             this.progressBar1.TabIndex = 4;
             // 
             // panel2
@@ -110,7 +112,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.buttonLoad);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(211, 0);
+            this.panel2.Location = new System.Drawing.Point(247, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 46);
             this.panel2.TabIndex = 3;
@@ -153,7 +155,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(411, 40);
+            this.panel3.Size = new System.Drawing.Size(447, 40);
             this.panel3.TabIndex = 2;
             // 
             // pictureBox1
@@ -161,15 +163,27 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 40);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(411, 261);
+            this.pictureBox1.Size = new System.Drawing.Size(447, 261);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // checkBox1lossless
+            // 
+            this.checkBox1lossless.AutoSize = true;
+            this.checkBox1lossless.Checked = true;
+            this.checkBox1lossless.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1lossless.Location = new System.Drawing.Point(180, 26);
+            this.checkBox1lossless.Name = "checkBox1lossless";
+            this.checkBox1lossless.Size = new System.Drawing.Size(70, 17);
+            this.checkBox1lossless.TabIndex = 8;
+            this.checkBox1lossless.Text = "LossLess";
+            this.checkBox1lossless.UseVisualStyleBackColor = true;
             // 
             // CinderForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 347);
+            this.ClientSize = new System.Drawing.Size(447, 347);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -197,6 +211,7 @@
         private System.Windows.Forms.Button button2free;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox checkBox1lossless;
 
     }
 }

@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkBox2map = new System.Windows.Forms.CheckBox();
             this.checkBox1sound = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@
             this.checkBox1im = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.checkBox2map);
             this.panel2.Controls.Add(this.checkBox1sound);
@@ -70,8 +72,19 @@
             this.panel2.ForeColor = System.Drawing.Color.Red;
             this.panel2.Location = new System.Drawing.Point(0, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(419, 247);
+            this.panel2.Size = new System.Drawing.Size(419, 358);
             this.panel2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(268, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 51);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Toggle IM Beep Sound";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox2map
             // 
@@ -181,23 +194,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Spam To Block";
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(268, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 51);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Toggle IM Beep Sound";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.textBox1.BackColor = System.Drawing.Color.Black;
+            this.textBox1.ForeColor = System.Drawing.Color.Red;
+            this.textBox1.Location = new System.Drawing.Point(18, 266);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(379, 80);
+            this.textBox1.TabIndex = 8;
             // 
             // SpamBlockForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(419, 264);
+            this.ClientSize = new System.Drawing.Size(419, 375);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Red;
@@ -225,5 +237,6 @@
         public System.Windows.Forms.CheckBox checkBox1sound;
         public System.Windows.Forms.CheckBox checkBox2map;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }

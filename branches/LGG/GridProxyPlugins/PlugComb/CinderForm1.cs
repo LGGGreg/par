@@ -133,7 +133,7 @@ namespace PubComb
 
                     Console.Write("Encoding image...");
 
-                    UploadData = OpenJPEG.EncodeFromImage(bitmap,false);
+                    UploadData = OpenJPEG.EncodeFromImage(bitmap,checkBox1lossless.Checked);
                     button2free.Enabled = true;
                     Console.Write("Finished encoding");
                 }

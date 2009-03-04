@@ -223,7 +223,6 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(230, 297);
             this.panel9.TabIndex = 1;
-            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
             // panel11
             // 
@@ -512,7 +511,6 @@
             this.textBox2uuid.Name = "textBox2uuid";
             this.textBox2uuid.Size = new System.Drawing.Size(145, 29);
             this.textBox2uuid.TabIndex = 1;
-            this.textBox2uuid.TextChanged += new System.EventHandler(this.textBox2uuid_TextChanged);
             // 
             // panel8
             // 
@@ -558,7 +556,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(721, 74);
             this.panel3.TabIndex = 0;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label3
             // 
@@ -598,7 +595,6 @@
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Channel To Speak On";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // numericUpDown1
             // 

@@ -39,6 +39,7 @@ namespace PubComb
         private PubComb.Aux_SharedInfo SharedInfo;
         private ClientDetectForm1 form;
         private string lastSim = "";
+        public Dictionary<UUID, string> uid2name = new Dictionary<UUID, string>();
         private Dictionary<uint,UUID> local2global = new Dictionary<uint,UUID>();
         private Dictionary<UUID, string> avclients = new Dictionary<UUID, string>();
         private ObjectUpdatePacket.RegionDataBlock rb = new ObjectUpdatePacket.RegionDataBlock();
@@ -101,38 +102,9 @@ namespace PubComb
                     }
                     if (client == "")
                     {
-                        if (t.Contains("c252d89d-6f7c-7d90-f430-d140d2e3fbbe"))
+                        if (uid2name.ContainsKey(new UUID(t)))
                         {
-                            //vlife jcool410
-                            client = "VLife";
-                        }
-                        else if (t.Contains("adcbe893-7643-fd12-f61c-0b39717e2e32"))
-                        {
-                            client = "tyk3n";
-                        }
-                        else if (t.Contains("f3fd74a6-fee7-4b2f-93ae-ddcb5991da04") || t.Contains("77662f23-c77a-9b4d-5558-26b757b2144c"))
-                        {
-                            client = "PSL";
-                        }
-                        else if (t.Contains("5aa5c70d-d787-571b-0495-4fc1bdef1500"))
-                        {
-                            client = "LGG";
-                        }
-                        else if (t.Contains("8183e823-c443-2142-6eb6-2ab763d4f81c"))
-                        {
-                            client = "Day Oh";
-                        }
-                        else if (t.Contains("0f6723d2-5b23-6b58-08ab-308112b33786"))
-                        {
-                            client = "Cryo";
-                        }
-                        else if (t.Contains("abbca853-30ba-49c1-a1e7-2a5b9a70573f"))
-                        {
-                            client = "NoobLife";
-                        }
-                        else if (t.Contains("0bcd5f5d-a4ce-9ea4-f9e8-15132653b3d8"))
-                        {
-                            client = "MoyMix";
+                            client = uid2name[new UUID(t)];
                         }
                     }
                     //Console.WriteLine("4");

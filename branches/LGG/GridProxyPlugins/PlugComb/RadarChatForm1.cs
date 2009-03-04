@@ -34,6 +34,7 @@ namespace PubComb
         public System.Timers.Timer allTimer = new System.Timers.Timer(9000);
         int colorIndex = 0;
         public DateTime start;
+        public DateTime starta;
         public RadarChatForm1(RadarChatPlugin r)
         {
             rc = r;
@@ -120,7 +121,7 @@ namespace PubComb
         }
         public void allFire(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (((TimeSpan)(System.DateTime.Now - start)).TotalSeconds > 60)
+            if (((TimeSpan)(System.DateTime.Now - starta)).TotalSeconds > 60)
             {
                 allTimer.Stop();
                 checkBox2swirlall.Checked = false;
@@ -203,31 +204,6 @@ namespace PubComb
             saveData();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox2uuid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             rc.plugin.sendDialog(new UUID(textBox2uuid.Text), textBox2DIAGmsg.Text, 0);
@@ -303,7 +279,7 @@ namespace PubComb
         {
             if (checkBox2swirlall.Checked)
             {
-                start = System.DateTime.Now;
+                starta = System.DateTime.Now;
                 allTimer.Start();
             }
             else

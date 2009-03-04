@@ -47,7 +47,7 @@ namespace PubComb
                     if (!string.IsNullOrEmpty(at))
                         web = at;
                 }
-                catch(Exception a)
+                catch(Exception ar)
                 {
                     web = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
                 }

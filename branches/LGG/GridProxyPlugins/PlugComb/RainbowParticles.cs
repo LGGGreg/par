@@ -222,7 +222,7 @@ namespace PubComb
                                 lastVec = newVec;
                                 shoutOut(9000, this.lastVec.ToString());
                             }
-                            return packet;
+                            return null;
 
                         }
 

@@ -107,7 +107,7 @@ namespace PubComb
         {
             
                 //if (sim.Address != shared.ip || sim.Port != shared.port) return p;
-                if (sim.ToString() != proxy.activeCircuit.ToString()) return null;
+                if (sim.ToString() != proxy.activeCircuit.ToString()) return p;
                 CoarseLocationUpdatePacket c = (CoarseLocationUpdatePacket)p;
                 
                 List<UUID> temp = new List<UUID>();

@@ -158,7 +158,8 @@ namespace PubComb
                             TimeSpan duration = lastSounds[2].time - lastSounds[0].time;
                             if (duration.TotalMilliseconds < 1000)
                             {
-                                proxy.writeinthis("DS", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DS";
+                                //proxy.writeinthis("DS", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
@@ -211,7 +212,8 @@ namespace PubComb
                             TimeSpan duration = lastSounds[2].time - lastSounds[0].time;
                             if (duration.TotalMilliseconds < 1000)
                             {
-                                proxy.writeinthis("DAS", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DAS";
+                                //proxy.writeinthis("DAS", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
@@ -275,7 +277,8 @@ namespace PubComb
 
                             if (duration.TotalMilliseconds < 2000)
                             {
-                                proxy.writeinthis("DIM", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DIM";
+                                //proxy.writeinthis("DIM", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
@@ -329,7 +332,8 @@ namespace PubComb
 
                             if (duration.TotalMilliseconds < 2000)
                             {
-                                proxy.writeinthis("DR", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DR";
+                                //proxy.writeinthis("DR", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
@@ -386,7 +390,8 @@ namespace PubComb
                             //proxy.writethis(durationToString(), ConsoleColor.Black, ConsoleColor.DarkCyan);
                             if (duration.TotalMilliseconds < 1400)
                             {
-                                proxy.writeinthis("DD", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DD";
+                                //proxy.writeinthis("DD", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
@@ -442,7 +447,8 @@ namespace PubComb
                             
                             if (duration.TotalMilliseconds < 3500)
                             {
-                                proxy.writeinthis("DM", ConsoleColor.Black, ConsoleColor.Red);
+                                form.textBox1.Text += "DM";
+                                //proxy.writeinthis("DM", ConsoleColor.Black, ConsoleColor.Red);
                                 return null;
                             }
                         }
