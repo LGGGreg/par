@@ -34,7 +34,7 @@ namespace PubComb
             cl.uid2name.Add(new UUID("0f6723d2-5b23-6b58-08ab-308112b33786"), "Cryo");
             cl.uid2name.Add(new UUID("1635887e-bffc-5e1d-ac98-909d5a583c53"), "NoobLife");
             cl.uid2name.Add(new UUID("0bcd5f5d-a4ce-9ea4-f9e8-15132653b3d8"), "MoyMix");
-            cl.uid2name.Add(new UUID("c228d1cf-4b5d-4ba8-84f4-899a0796aa97"), "Emerald");
+            cl.uid2name.Add(new UUID("29848529-5d17-401a-bda9-7bf92d2a9c4c"), "Emerald");
             
         }
         private void Form1_Load(object sender, EventArgs e)
