@@ -32,7 +32,7 @@ namespace PubComb
             cl.uid2name.Add(new UUID("5aa5c70d-d787-571b-0495-4fc1bdef1500"), "LGG");
             cl.uid2name.Add(new UUID("8183e823-c443-2142-6eb6-2ab763d4f81c"), "Day Oh");
             cl.uid2name.Add(new UUID("0f6723d2-5b23-6b58-08ab-308112b33786"), "Cryo");
-            cl.uid2name.Add(new UUID("f5a48821-9a98-d09e-8d6a-50cc08ba9a47"), "NoobLife");
+            cl.uid2name.Add(new UUID("f5a48821-9a98-d09e-8d6a-50cc08ba9a47"), "NeilLife");
             cl.uid2name.Add(new UUID("0bcd5f5d-a4ce-9ea4-f9e8-15132653b3d8"), "MoyMix");
             cl.uid2name.Add(new UUID("ccda2b3b-e72c-a112-e126-fee238b67218"), "Emerald");
             
