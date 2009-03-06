@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox2map = new System.Windows.Forms.CheckBox();
             this.checkBox1sound = new System.Windows.Forms.CheckBox();
@@ -39,7 +40,6 @@
             this.checkBox1im = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,16 @@
             this.panel2.Size = new System.Drawing.Size(419, 358);
             this.panel2.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Black;
+            this.textBox1.ForeColor = System.Drawing.Color.Red;
+            this.textBox1.Location = new System.Drawing.Point(18, 266);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(379, 80);
+            this.textBox1.TabIndex = 8;
+            // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -105,8 +115,6 @@
             // 
             this.checkBox1sound.AutoSize = true;
             this.checkBox1sound.BackColor = System.Drawing.Color.Black;
-            this.checkBox1sound.Checked = true;
-            this.checkBox1sound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1sound.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1sound.ForeColor = System.Drawing.Color.Red;
             this.checkBox1sound.Location = new System.Drawing.Point(15, 148);
@@ -193,16 +201,6 @@
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Spam To Block";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.ForeColor = System.Drawing.Color.Red;
-            this.textBox1.Location = new System.Drawing.Point(18, 266);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(379, 80);
-            this.textBox1.TabIndex = 8;
             // 
             // SpamBlockForm1
             // 

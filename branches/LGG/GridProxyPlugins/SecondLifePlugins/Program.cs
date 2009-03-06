@@ -26,8 +26,6 @@ namespace SecondLifePlugins
         [STAThread]
         static void Main(string [] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             bool a = false;
             if (args.Length >= 1) a = true;
 

@@ -32,6 +32,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -39,6 +41,8 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,11 +75,46 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.numericUpDown1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(75, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(138, 43);
             this.panel4.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Port:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.Black;
+            this.numericUpDown1.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown1.Location = new System.Drawing.Point(69, 3);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            80000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            8080,
+            0,
+            0,
+            0});
             // 
             // button3
             // 
@@ -156,6 +195,9 @@
             this.Text = "SecondLife Plugins Loader";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -172,6 +214,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

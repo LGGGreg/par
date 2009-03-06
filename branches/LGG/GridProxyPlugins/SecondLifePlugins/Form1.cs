@@ -49,11 +49,13 @@ namespace SecondLifePlugins
             saveData();
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = "GridProxyApp.exe";
-            string args = "";
+            string args = "  --proxy-login-port="+((int)(numericUpDown1.Value)).ToString();
             for (int i = 0; i < checkedListBox1.CheckedIndices.Count; i++)
             {
                 args += " --load=\"" + dict[checkedListBox1.CheckedIndices[i]].getPath() + "\" ";
             }
+            //MessageBox.Show(args);
+            Console.WriteLine(args);
             //MessageBox.Show(args);
             proc.StartInfo.Arguments = args;
             //MessageBox.Show(args);
@@ -108,6 +110,11 @@ namespace SecondLifePlugins
 
             bformatter.Serialize(stream, dict);
             stream.Close();
+            TextWriter tw = new StreamWriter("PluginLoadPort.prefs");
+            tw.WriteLine(numericUpDown1.Value);
+            
+            tw.Close();
+                
 
         }
         private void loadData()
@@ -147,6 +154,14 @@ namespace SecondLifePlugins
             {
                 //loadDefaults();
             }
+
+            if (File.Exists("PluginLoadPort.prefs"))
+            {
+                StreamReader re = File.OpenText("PluginLoadPort.prefs");
+                numericUpDown1.Value = Decimal.Parse(re.ReadLine().Trim());
+
+            }
+                
         }
 
         private void button1_Click(object sender, EventArgs e)
