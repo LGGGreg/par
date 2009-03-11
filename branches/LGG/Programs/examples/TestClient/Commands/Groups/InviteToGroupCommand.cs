@@ -28,7 +28,7 @@ namespace OpenMetaverse.TestClient
         ManualResetEvent GetGroupsSearchEvent = new ManualResetEvent(false);
         private UUID avatarid;
         private UUID groupid = UUID.Zero;
-        private UUID GqueryID = UUID.Zero;//for calbacks and stuff
+        private UUID GqueryID = UUID.Zero;//for calbacks and stuffs
         private UUID AqueryID = UUID.Zero;
         private string targetGroupName;
         private string targetAvatarName;
