@@ -32,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -62,6 +63,13 @@
     </Compile>
     <Compile Include="CinderForm1.Designer.cs">
       <DependentUpon>CinderForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CliInt.cs" />
+    <Compile Include="CliIntForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CliIntForm1.designer.cs">
+      <DependentUpon>CliIntForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="ProTextionClass1.cs" />
     <Compile Include="ClientDetect.cs" />
@@ -242,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientDetectForm1.resx">
       <DependentUpon>ClientDetectForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CliIntForm1.resx">
+      <DependentUpon>CliIntForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoinForm1.resx">
       <DependentUpon>CoinForm1.cs</DependentUpon>

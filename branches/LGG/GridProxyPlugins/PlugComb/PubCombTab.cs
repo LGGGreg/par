@@ -60,12 +60,14 @@ namespace PubComb
             plugins.Add(new FileProtectPlugin(this));
             //plugins.Add(new InvFunPlugin(this));
             plugins.Add(new RainbowParticlesPlugin(this));
-            plugins.Add(new coin(this));
+            //causing problems :(
+            //plugins.Add(new coin(this));
             plugins.Add(new RetreatPlugin(this));
             plugins.Add(new AwesomeSauce(this));
             plugins.Add(new ProTextPlug(this));
             plugins.Add(new ViewerEffectLogPlugin(this));
             plugins.Add(new AvatarTracker(this));
+            plugins.Add(new CliIntPlugin(this));
 
             tabformthread = new Thread(new ThreadStart(delegate()
             {

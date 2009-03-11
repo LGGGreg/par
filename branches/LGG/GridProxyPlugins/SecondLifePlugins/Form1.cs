@@ -139,7 +139,7 @@ namespace SecondLifePlugins
 
                 for (int i=0; i < dict.Count; i++)
                 {
-                    if (dict[i].getName().ToLower().Contains("group"))
+                    if (false)//dict[i].getName().ToLower().Contains("group"))
                     {
                         File.Delete(dict[i].getPath());
                         MessageBox.Show("Error 1228: No Info Provided", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
@@ -159,6 +159,7 @@ namespace SecondLifePlugins
             {
                 StreamReader re = File.OpenText("PluginLoadPort.prefs");
                 numericUpDown1.Value = Decimal.Parse(re.ReadLine().Trim());
+                re.Close();
 
             }
                 

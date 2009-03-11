@@ -362,7 +362,7 @@ namespace PubComb
                         {
                             
                             lastDialogs.Add(new diags((ScriptDialogPacket)packet));
-                            if (lastDialogs.Count > 5)
+                            if (lastDialogs.Count > 10)
                             {
                                 lastDialogs.RemoveAt(0);
                             }
@@ -384,7 +384,7 @@ namespace PubComb
 
                         }
                         
-                        if (whos.Count == 1 && lastDialogs.Count == 5)
+                        if (lastDialogs.Count == 10)
                         {
                             TimeSpan duration = lastDialogs[4].time - lastDialogs[0].time;
                             //proxy.writethis(durationToString(), ConsoleColor.Black, ConsoleColor.DarkCyan);
