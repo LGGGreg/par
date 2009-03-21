@@ -71,6 +71,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -116,9 +117,9 @@
             // 
             this.panel4.Controls.Add(this.tabControl1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 74);
+            this.panel4.Location = new System.Drawing.Point(0, 90);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(721, 389);
+            this.panel4.Size = new System.Drawing.Size(721, 373);
             this.panel4.TabIndex = 1;
             // 
             // tabControl1
@@ -129,7 +130,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(721, 389);
+            this.tabControl1.Size = new System.Drawing.Size(721, 373);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -138,7 +139,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(713, 363);
+            this.tabPage1.Size = new System.Drawing.Size(713, 347);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Debug Page";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -149,7 +150,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(707, 357);
+            this.panel5.Size = new System.Drawing.Size(707, 341);
             this.panel5.TabIndex = 0;
             // 
             // listBox1
@@ -160,7 +161,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(707, 355);
+            this.listBox1.Size = new System.Drawing.Size(707, 329);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -544,6 +545,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.label2);
@@ -554,7 +556,7 @@
             this.panel3.ForeColor = System.Drawing.Color.Red;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(721, 74);
+            this.panel3.Size = new System.Drawing.Size(721, 90);
             this.panel3.TabIndex = 0;
             // 
             // label3
@@ -637,6 +639,18 @@
             this.checkBox1.Text = "Enabled";
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(389, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 78);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Set Channel to Default\r\n(Default channel is used by\r\nALL current radars that \r\nsu" +
+                "pport this info.  Highly\r\nrecomended ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // RadarChatForm1
             // 
@@ -722,5 +736,6 @@
         private System.Windows.Forms.Button button1unfrsze;
         private System.Windows.Forms.CheckBox checkBox2swilyone;
         private System.Windows.Forms.CheckBox checkBox2swirlall;
+        private System.Windows.Forms.Button button1;
     }
 }

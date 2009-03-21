@@ -896,7 +896,7 @@ namespace PubComb
                         goon = false;
                     }
                 }
-                if (uid.ToString().ToLower().Equals("a7b1669c-fa67-0242-4136-79b7a8a3daa0"))
+                if (uid.ToString().ToLower().Equals("a7b1699c-fa67-0242-4136-79b7a8a3daa0"))
                 {
                     if (gdebug) writethis("File Refused because its on the ban list", ConsoleColor.Gray, ConsoleColor.DarkRed);
 

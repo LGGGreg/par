@@ -53,6 +53,7 @@ namespace PubComb
             this.proxy.AddDelegate(PacketType.KillObject, Direction.Incoming, new PacketDelegate(InKillObjectHandler));
             this.proxy.AddDelegate(PacketType.DisableSimulator, Direction.Incoming, new PacketDelegate(InDisableSimulatorHandler));
             form = new FormAvatars(this);
+            
             //formthread = new Thread(new ThreadStart(showform));
             //formthread.SetApartmentState(ApartmentState.STA);
             //formthread.Start();

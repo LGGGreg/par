@@ -73,7 +73,7 @@ namespace PubComb
                 re.Close();
                 
             }
-            setCheck(pass);
+            setCheck(false);//turn off
         }
         private void saveData()
         {

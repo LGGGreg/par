@@ -269,7 +269,13 @@ namespace PubComb
         public void SendUserAlert(string message)
         {
             AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
+            byte[] t = Utils.StringToBytes(message);
+            while (t.Length > 250)
+            {
+                message = Utils.BytesToString(t);
+                t = Utils.StringToBytes(message.Remove(message.Length-2));
+            }
+            packet.AlertData.Message = t;
 
             proxy.InjectPacket(packet, Direction.Incoming);
 

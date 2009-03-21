@@ -345,7 +345,7 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Red;
             this.Name = "SimpleProfForm1";
-            this.Text = "SimpleProfForm1";
+            this.Text = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
             this.Load += new System.EventHandler(this.SimpleProfForm1_Load);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

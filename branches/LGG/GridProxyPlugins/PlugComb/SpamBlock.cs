@@ -352,7 +352,7 @@ namespace PubComb
                     recSeq.Add(packet.Header.Sequence);
                     if (recSeq.Count > 200)
                     {
-                        recSeq.RemoveAt(0);
+                        recSeq.Clear();
                     }
                     if (form.getCheckDiag())
                     {
@@ -362,7 +362,7 @@ namespace PubComb
                         {
                             
                             lastDialogs.Add(new diags((ScriptDialogPacket)packet));
-                            if (lastDialogs.Count > 10)
+                            if (lastDialogs.Count > 4)
                             {
                                 lastDialogs.RemoveAt(0);
                             }
@@ -384,11 +384,11 @@ namespace PubComb
 
                         }
                         
-                        if (lastDialogs.Count == 10)
+                        if (lastDialogs.Count == 4)
                         {
-                            TimeSpan duration = lastDialogs[4].time - lastDialogs[0].time;
+                            TimeSpan duration = lastDialogs[3].time - lastDialogs[0].time;
                             //proxy.writethis(durationToString(), ConsoleColor.Black, ConsoleColor.DarkCyan);
-                            if (duration.TotalMilliseconds < 1400)
+                            if (duration.TotalMilliseconds < 400)
                             {
                                 form.textBox1.Text += "DD";
                                 //proxy.writeinthis("DD", ConsoleColor.Black, ConsoleColor.Red);
