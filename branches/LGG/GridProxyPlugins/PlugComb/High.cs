@@ -149,7 +149,7 @@ namespace PubComb
         }
         public void platHigh(int c)
         {
-            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)(c-5));
+            Vector3 where = new Vector3(shared.CameraPosition.X, shared.CameraPosition.Y, (float)(c - 5));
             System.Timers.Timer myTimer = new System.Timers.Timer(10000);
             PacketDelegate replyCallback = delegate(Packet p, IPEndPoint s)
             {
@@ -162,14 +162,11 @@ namespace PubComb
                 myTimer.Stop();
             };
 
-
-
             proxy.AddDelegate(PacketType.ObjectDeselect, Direction.Outgoing, replyCallback);
             proxy.AddDelegate(PacketType.ObjectSelect, Direction.Outgoing, replyCallback);
             myTimer.Elapsed += timerCallback;
             myTimer.Start();
 
-            
             ObjectAddPacket a = new ObjectAddPacket();
             a.AgentData = new ObjectAddPacket.AgentDataBlock();
             a.AgentData.AgentID = frame.AgentID;
@@ -179,12 +176,12 @@ namespace PubComb
             a.ObjectData.PCode = 9;
             a.ObjectData.Material = 4;
             a.ObjectData.AddFlags = 2;
-            a.ObjectData.PathCurve = 0x10;
+            a.ObjectData.PathCurve = 48;
             a.ObjectData.ProfileCurve = 1;
             a.ObjectData.PathBegin = 0;
             a.ObjectData.PathEnd = 0;
-            a.ObjectData.PathScaleX = 100;
-            a.ObjectData.PathScaleY = 100;
+            a.ObjectData.PathScaleX = 0;
+            a.ObjectData.PathScaleY = 0;
             a.ObjectData.PathShearX = 0;
             a.ObjectData.PathShearY = 0;
             a.ObjectData.PathTwist = 0;
@@ -202,26 +199,12 @@ namespace PubComb
             a.ObjectData.RayEnd = where;
             a.ObjectData.RayTargetID = UUID.Zero;
             a.ObjectData.RayEndIsIntersection = 0;
-            a.ObjectData.Scale = new Vector3((float)1,(float)1,(float)1);
-            a.ObjectData.Rotation = Quaternion.Identity;
+            a.ObjectData.Scale = new Vector3((float)0.01, (float)10, (float)10);
+            a.ObjectData.Rotation = new Quaternion((float)0, (float)0.70711, (float)0, (float)0.70711);
             a.ObjectData.State = 0;
             a.Header.Reliable = true;
 
             proxy.InjectPacket(a, Direction.Outgoing);
-
-            a.ObjectData.RayEnd = a.ObjectData.RayStart = new Vector3(where.X - 5, where.Y - 5, where.Z);
-            a.ObjectData.Scale = new Vector3((float)10, (float)10, (float).4);
-            proxy.InjectPacket(a, Direction.Outgoing);
-
-            a.ObjectData.RayEnd = a.ObjectData.RayStart = new Vector3(where.X - 5, where.Y + 5, where.Z);
-            proxy.InjectPacket(a, Direction.Outgoing);
-
-            a.ObjectData.RayEnd = a.ObjectData.RayStart = new Vector3(where.X + 5, where.Y + 5, where.Z);
-            proxy.InjectPacket(a, Direction.Outgoing);
-
-            a.ObjectData.RayEnd = a.ObjectData.RayStart = new Vector3(where.X + 5, where.Y - 5, where.Z);
-            proxy.InjectPacket(a, Direction.Outgoing);
-
         }
 
     }
