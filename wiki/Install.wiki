@@ -1,0 +1,26 @@
+#summary These are some basic text based Install Instructions for the Par Plugin Pack
+#labels Featured,Phase-Deploy,Phase-Requirements
+
+= Intructions =
+
+To Get Par working with your viewer... watch the tutorial here - http://www.youtube.com/watch?v=MBNUogQLH0U&feature=channel_page
+
+OR
+
+  #  Don't Use Linux or Mac.
+  #  Go to the main web site ->   http://code.google.com/p/par/􀀀
+  #  Click the "Download" tab at the top􀀁
+  #  Download the file "PAR - Plugins For SL VXX.zip"
+  #  Unzip the contents somewhere.   You should have two folders, "plugins", "shadow files" and a .bat  file􀀂
+  #  Double click to run the batch file.  (if  you get an error here, you need to install dot net http://www.microsoft.com/downloads/details.aspx?familyid=10cc340b-f857-4a14-83f5-25634c3bf043&displaylang=en)
+  # A window pops up.. click on the top left "add plugins" button.􀀃
+  #  Navigate to the folder you extracted named "plugins" and select  everything inside (click drag), then press open.
+  #  Press the "start" button .   A few windows (dont close them) should come up.  If you get an error here, please double check you added ONLY the files in the "plugins" folder.􀀄
+  # Make a copy of your shortcut to second life, and rename it to "Par - Second life"
+  #  Right click on this shortcut, select "properties",
+  # In the window that pops up, edit the "target" field only.  Use your arrow keys to (press right arrow) move to the very end of the text
+  #  Copy the next line, and paste it in there at the very end.􀀅
+ -loginuri http://localhost:8080/ 
+  # Press "OK" then double click your new shortcut, you done!
+ 
+ To run par after the installtion, simple double click the batch file, press start, and double click the shortcut
