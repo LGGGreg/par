@@ -1,26 +1,30 @@
 #summary These are some basic text based Install Instructions for the Par Plugin Pack
 #labels Featured,Phase-Deploy,Phase-Requirements
 
-= Intructions =
+== Instructions for Windows ==
 
-To Get Par working with your viewer... watch the tutorial here - http://www.youtube.com/watch?v=MBNUogQLH0U&feature=channel_page
+To get PAR working with your viewer, watch the tutorial [http://www.youtube.com/watch?v=MBNUogQLH0U&feature=channel_page here].
 
-OR
-
-  #  Don't Use Linux or Mac.
-  #  Go to the main web site ->   http://code.google.com/p/par/􀀀
-  #  Click the "Download" tab at the top􀀁
-  #  Download the file "PAR - Plugins For SL VXX.zip"
-  #  Unzip the contents somewhere.   You should have two folders, "plugins", "shadow files" and a .bat  file􀀂
-  #  Double click to run the batch file.  (if  you get an error here, you need to install dot net http://www.microsoft.com/downloads/details.aspx?familyid=10cc340b-f857-4a14-83f5-25634c3bf043&displaylang=en)
-  # A window pops up.. click on the top left "add plugins" button.􀀃
-  #  Navigate to the folder you extracted named "plugins" and select  everything inside (click drag), then press open.
-  #  Press the "start" button .   A few windows (dont close them) should come up.  If you get an error here, please double check you added ONLY the files in the "plugins" folder.􀀄
-  # Make a copy of your shortcut to second life, and rename it to "Par - Second life"
-  #  Right click on this shortcut, select "properties",
-  # In the window that pops up, edit the "target" field only.  Use your arrow keys to (press right arrow) move to the very end of the text
-  #  Copy the next line, and paste it in there at the very end.􀀅
- -loginuri http://localhost:8080/ 
-  # Press "OK" then double click your new shortcut, you done!
+ #  Go to the main web site at http://code.google.com/p/par/ (You're already here, lol)
+ #  Click the "Download" tab at the top.
+ #  Download the file "PAR - Plugins For SL v##.zip"
+ #  Unzip the contents somewhere.   You should have two folders, "Plugins", "Shadow Files" and a .bat file
+ #  Double click to run the batch file.  (if  you get an error here, you need to install [http://www.microsoft.com/downloads/details.aspx?familyid=10cc340b-f857-4a14-83f5-25634c3bf043&displaylang=en Microsoft .NET Framework])
+ # A window pops up. Click on the top left "add plugins" button.
+ #  Navigate to the folder you extracted named "plugins" and select  everything inside (click drag), then press open.
+ #  Press the "start" button .   A few windows (dont close them) should come up.  If you get an error here, please double check you added ONLY the files in the "plugins" folder.
+ # Make a copy of your shortcut to second life, and rename it to "Par - Second life"
+ #  Right click on this shortcut, select "properties",
+ # In the window that pops up, edit the "target" field only.  Use your arrow keys to (press right arrow) move to the very end of the text
+ #  Copy the next line, and paste it in there at the very end. <code>-loginuri http://localhost:8080/ </code>
+ # Press "OK" then double click your new shortcut, you done!
  
- To run par after the installtion, simple double click the batch file, press start, and double click the shortcut
+ To run par after the installation, simple double click the batch file, press start, and double click the shortcut
+
+== Linux Installation Instructions ==
+
+ # Download one of the binary ZIPs and extract it to a directory somewhere.
+  * You can also check out the nexis branch on SVN if you wish to try pubcomb's GTK flavor.  <b>Note: PAR-GTK is, at the time of writing, horribly screwed up.</b>
+ # Save the PAR Linux Loader bash script as "linuxloader" in the root of your PAR folder and execute the following in terminal to make it executable: <code>chmod +x ./linuxloader</code>
+ # Execute linuxloader either by doubleclicking it in your window manager and selecting "Run in Terminal" or by executing  through the terminal itself.
+ # Open your SL install directory in terminal and execute: <code>./secondlife --loginuri http://localhost:8080/</code>
