@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +9,6 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PubComb</RootNamespace>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
@@ -265,7 +264,6 @@
     <Compile Include="gtk-gui\PubComb.TabItemGTK.cs" />
     <Compile Include="AvatarFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.AvatarFormGTK.cs" />
-    <None Include="Resources\partiny.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -276,6 +274,8 @@
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="Mono.Posix" />
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
@@ -287,11 +287,6 @@
     <Reference Include="GridProxy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OpenMetaverse\GridProxy.dll</HintPath>
-    </Reference>
-    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <Reference Include="MonoDevelop.Components, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <Package>monodevelop</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -376,5 +371,6 @@
       <DependentUpon>VELogForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gtk-gui\gui.stetic" />
+    <EmbeddedResource Include="..\..\..\..\..\branches\LGG\GridProxyPlugins\PlugComb-GTK\Resources\partiny.png" />
   </ItemGroup>
 </Project>

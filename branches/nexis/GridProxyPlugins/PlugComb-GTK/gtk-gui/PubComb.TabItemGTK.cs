@@ -21,7 +21,7 @@ namespace PubComb {
         
         private Gtk.HBox hbox4;
         
-        private Gtk.Image imgPARLogo;
+        private Gtk.Image image1;
         
         private Gtk.Label lblCredit;
         
@@ -51,16 +51,14 @@ namespace PubComb {
             this.hbox4.Name = "hbox4";
             this.hbox4.Spacing = 6;
             // Container child hbox4.Gtk.Box+BoxChild
-            this.imgPARLogo = new Gtk.Image();
-            this.imgPARLogo.Name = "imgPARLogo";
-            this.imgPARLogo.Ypad = 5;
-            this.imgPARLogo.Pixbuf = Gdk.Pixbuf.LoadFromResource("partiny.png");
-            this.hbox4.Add(this.imgPARLogo);
-            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox4[this.imgPARLogo]));
+            this.image1 = new Gtk.Image();
+            this.image1.Name = "image1";
+            this.image1.Pixbuf = new Gdk.Pixbuf(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "./Resources/LOST.jpg"));
+            this.hbox4.Add(this.image1);
+            Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox4[this.image1]));
             w2.Position = 0;
             w2.Expand = false;
             w2.Fill = false;
-            w2.Padding = ((uint)(10));
             // Container child hbox4.Gtk.Box+BoxChild
             this.lblCredit = new Gtk.Label();
             this.lblCredit.Name = "lblCredit";

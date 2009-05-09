@@ -20,7 +20,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using GridProxy;
 using System.Threading;
-using System.Windows.Forms;
+using Gtk;
 
 namespace PubComb
 {
@@ -40,6 +40,8 @@ namespace PubComb
 		// PLUGINS BELOW HAVE BEEN COMMENTED OUT SINCE THEY HAVE NOT BEEN CONVERTED TO GTK YET, OR CRASH.
         public PubComb(ProxyFrame frame)
         {
+			Application.Init();
+			
             this.frame = frame;
             this.proxy = frame.proxy;
             SharedInfo = new Aux_SharedInfo(this);
@@ -73,10 +75,12 @@ namespace PubComb
             tabformthread = new Thread(new ThreadStart(delegate()
             {
                 tabform = new TabItemGTK(this);
-                tabform.Show();
+                tabform.ShowAll();
             }));
-            tabformthread.SetApartmentState(ApartmentState.STA);
-            tabformthread.Start();            
+			tabformthread.SetApartmentState(ApartmentState.STA);
+            tabformthread.Start();
+
+            Application.Run();
         }
         public void addMahTabs()
         {

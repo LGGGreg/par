@@ -20,8 +20,12 @@ namespace PubComb
 		public void addATab(Window w,string title)
 		{
 			Label tabname = new Label(title);
-			//Label tabBody = new Label();
-			nbTabs.AppendPage(w,tabname);
+			Container c = new Frame();
+			foreach(Widget child in w.Children)
+			{
+				c.Add(child);
+			}
+			nbTabs.AppendPage(c,tabname);
 		}
 	}
 	public interface GTabPlug

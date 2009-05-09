@@ -1,21 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="SpamBlockFormGTK.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CinderForm1.cs" ctype="Workbench">
     <Files>
       <File FileName="RainbowParticlesFormGTK.cs" Line="234" Column="29" />
       <File FileName="RetreatFormGTK.cs" Line="3" Column="17" />
-      <File FileName="SpamBlockFormGTK.cs" Line="3" Column="17" />
+      <File FileName="SpamBlockFormGTK.cs" Line="16" Column="17" />
+      <File FileName="CinderellaPlugin.cs" Line="46" Column="18" />
+      <File FileName="CinderForm1.cs" Line="161" Column="10" />
+      <File FileName="CinderForm1.Designer.cs" Line="45" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Packages" expanded="True" />
-          <Node name="PubComb-GTK" expanded="True" selected="True">
-            <Option id="ShowAllFiles" value="False" />
-            <Node name="Resources" expanded="True" />
-            <Node name="AvatarForm1.cs" expanded="True" />
-            <Node name="RainbowParticlesForm1.cs" expanded="True" />
-            <Node name="VELogForm1.cs" expanded="True" />
-          </Node>
+          <Node name="PubComb-GTK" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -26,5 +22,5 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Any CPU" ctype="Workspace" />
 </Properties>

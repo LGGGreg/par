@@ -42,7 +42,8 @@ namespace PubComb
         public Proxy proxy;
         private PubComb plugin;
         public Dictionary<UUID, Primitive.ParticleSystem> buffer = new Dictionary<UUID, Primitive.ParticleSystem>();
-        UUID uploadID, specialID;
+        UUID uploadID;
+		UUID specialID;
         public CurrentUploadType curentUpload;
         public class lsotoolXfer
         {

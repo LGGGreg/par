@@ -27,6 +27,7 @@ namespace PubComb
         {
             return (n & (n - 1)) == 0 && n != 0;
         }
+		// TODO: Not used.
         private void LoadOther()
         {
             progressBar1.Fraction = 0;
@@ -157,11 +158,6 @@ namespace PubComb
             button2free.Sensitive = true;
             progressBar1.Fraction = 1;
         
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-           
         }
         public void setProgress(int p)
         {

@@ -77,7 +77,6 @@ namespace PubComb {
             w2.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
             this.hbox1 = new Gtk.HBox();
-            this.hbox1.Name = "hbox1";
             this.hbox1.Spacing = 6;
             // Container child hbox1.Gtk.Box+BoxChild
             this.lblBeamType = new Gtk.Label();

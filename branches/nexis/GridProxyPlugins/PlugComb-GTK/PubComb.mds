@@ -1,16 +1,16 @@
-<Combine name="PubComb" fileversion="2.0">
+<Combine fileversion="2.0" name="PubComb">
   <Configurations active="Debug|Any CPU">
     <Configuration name="Debug|Any CPU" ctype="CombineConfiguration">
-      <Entry build="True" name="PubComb" configuration="Debug|Any CPU" />
+      <Entry build="True" name="PubComb-GTK" configuration="Debug|Any CPU" />
     </Configuration>
     <Configuration name="Release|Any CPU" ctype="CombineConfiguration">
-      <Entry build="True" name="PubComb" configuration="Release|Any CPU" />
+      <Entry build="True" name="PubComb-GTK" configuration="Release|Any CPU" />
     </Configuration>
   </Configurations>
-  <StartMode startupentry="PubComb" single="True">
-    <Execute type="None" entry="PubComb" />
+  <StartMode startupentry="PubComb-GTK" single="True">
+    <Execute type="None" entry="PubComb-GTK" />
   </StartMode>
   <Entries>
-    <Entry filename="PubComb.csproj" />
+    <Entry filename="PubComb-GTK.csproj" />
   </Entries>
 </Combine>

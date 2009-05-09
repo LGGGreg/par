@@ -38,8 +38,7 @@ namespace PubComb
         public Thread formthread;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form,"Avatar Loc");
-            
+            plugin.tabform.addATab(form,"Avatar Loc"); 
         }
         public AvatarTracker(PubComb plugin)
         {
