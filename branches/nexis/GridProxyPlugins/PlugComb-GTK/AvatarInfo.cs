@@ -36,6 +36,18 @@ namespace PubComb
 
         private AvatarFormGTK form;
         public Thread formthread;
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Avatar Loc");
+	            //form.readData();
+			} else {
+				Console.WriteLine("[AvatarInfo] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form,"Avatar Loc"); 

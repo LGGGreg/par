@@ -28,6 +28,18 @@ namespace PubComb
 {
     public class ClientDetection:GTabPlug
     {
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+				// @TODO Redo ClientDetectForm1 in GTK.
+	            //tabform.addATab(form, "Client Detection");
+	            //form.readData();
+				Console.WriteLine("[ClientDetection] TODO: Redo ClientDetectionForm1 in GTK.");
+			} else {
+				Console.WriteLine("[ClientDetection] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             //plugin.tabform.addATab(form, "Client Detection");

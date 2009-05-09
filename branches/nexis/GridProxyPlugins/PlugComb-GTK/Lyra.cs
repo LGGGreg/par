@@ -35,10 +35,15 @@ namespace PubComb
         private LyraFormGTK form;
         private string brand;
         private bool pass = true;
-        public void LoadNow()
+        public void LoadNow(ref TabItemGTK tabform)
         {
-            plugin.tabform.addATab(form, "Lyra");
-            form.readData();
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Lyra");
+	            form.readData();
+			} else {
+				Console.WriteLine("[LYRA] BUG:  tabform is NULL.  Cannot add tab.");
+			}
         }
         public LyraPlugin(PubComb plug)
         {

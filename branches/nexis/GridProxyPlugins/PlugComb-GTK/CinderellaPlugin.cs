@@ -137,6 +137,17 @@ namespace PubComb
             //formthread.Start();
 
         }
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Cinderella");
+			} else {
+				Console.WriteLine("[CinderellaPlugin] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Cinderella");

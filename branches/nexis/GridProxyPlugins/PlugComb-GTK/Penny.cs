@@ -56,6 +56,16 @@ namespace PubComb
             proxy.AddDelegate(PacketType.AgentSetAppearance, Direction.Outgoing,new PacketDelegate(ApHand));
 
         }
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Penny");
+	            form.readData();
+			} else {
+				Console.WriteLine("[Penny] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Penny");

@@ -35,6 +35,17 @@ namespace PubComb
         private FileProtectForm1 form;
         private PubComb.Aux_SharedInfo shared;
         public List<UUID> avs = new List<UUID>();
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            //tabform.addATab(form, "FileProtect");
+	            //form.readData();
+				Console.WriteLine("[FileProtect] TODO: Recode FileProtectForm1 in GTK");
+			} else {
+				Console.WriteLine("[FileProtect] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             //plugin.tabform.addATab(form, "File Protect");

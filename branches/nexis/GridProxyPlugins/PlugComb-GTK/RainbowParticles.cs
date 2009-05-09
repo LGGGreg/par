@@ -57,6 +57,16 @@ namespace PubComb
         public RainbowParticlesFormGTK form;
 
 
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Selection Beams");
+	            form.readData();
+			} else {
+				Console.WriteLine("[RainbowParticles] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             plug.tabform.addATab(form, "Selection Beams");

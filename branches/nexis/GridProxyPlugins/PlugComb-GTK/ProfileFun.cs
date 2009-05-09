@@ -38,6 +38,18 @@ namespace PubComb
         private bool setData = false;
         private System.Timers.Timer RefreshDownloadsTimer = new System.Timers.Timer(5000.0);
         private Dictionary<ulong, string> regionNames = new Dictionary<ulong, string>();
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Profile Fun");
+	            form.readData();
+				getProfile();
+			} else {
+				Console.WriteLine("[ProfileFun] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Profile Fun");

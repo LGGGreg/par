@@ -42,6 +42,16 @@ namespace PubComb
             plugin.tabform.addATab(form, "HandiCap");
             form.readData();
         }
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Handicap");
+	            form.readData();
+			} else {
+				Console.WriteLine("[Handicap] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public HandicapPlugin(PubComb plug)
         {
             //formthread = new Thread(new ThreadStart(delegate()

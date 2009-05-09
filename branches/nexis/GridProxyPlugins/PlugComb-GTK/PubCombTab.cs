@@ -46,7 +46,7 @@ namespace PubComb
             this.proxy = frame.proxy;
             SharedInfo = new Aux_SharedInfo(this);
 
-//            plugins.Add(new SpamBlocker(this));
+            plugins.Add(new SpamBlocker(this));
 //            plugins.Add(new ClientDetection(this));
             plugins.Add(new LyraPlugin(this));
             plugins.Add(new HandicapPlugin(this));
@@ -55,7 +55,7 @@ namespace PubComb
 //            plugins.Add(new DisableCapsPlugin(this));
 //            plugins.Add(new IMLocatePlugin(this));
             plugins.Add(new LeetPlugin(this));
-            plugins.Add(new CinderellaPlugin(this));
+//            plugins.Add(new CinderellaPlugin(this));
 //            plugins.Add(new ProfileFunPlugin(this));
 //            plugins.Add(new SitAnywherePlugin(this));
 //            plugins.Add(new HighPlugin(this));
@@ -74,19 +74,27 @@ namespace PubComb
 
             tabformthread = new Thread(new ThreadStart(delegate()
             {
-                tabform = new TabItemGTK(this);
-                tabform.ShowAll();
+            	this.tabform = new TabItemGTK(this);
+            	this.tabform.ShowAll();
             }));
 			tabformthread.SetApartmentState(ApartmentState.STA);
             tabformthread.Start();
 
             Application.Run();
         }
-        public void addMahTabs()
+        public void addMahTabs(TabItemGTK tabform)
         {
-
             foreach (GTabPlug p in plugins)
-              p.LoadNow();
+			{
+				try
+				{
+              		p.LoadNow(ref tabform);
+				}
+				catch(Exception e)
+				{
+					Console.WriteLine(e.ToString());
+				}
+			}
             
         }
 

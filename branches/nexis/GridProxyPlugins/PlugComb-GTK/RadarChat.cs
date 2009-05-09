@@ -58,6 +58,18 @@ namespace PubComb
 		public List<AvatarBlip> Blips = new List<AvatarBlip>();
         public List<UUID> avs = new List<UUID>();
         public List<UUID> pending = new List<UUID>();
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Radar Chat");
+	            form.readData();
+			} else {
+				Console.WriteLine("[RadarChat] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Radar Chat");

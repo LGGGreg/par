@@ -98,10 +98,21 @@ namespace PubComb
             this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Outgoing, new PacketDelegate(SendingIM));
 
         }
+												
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Leet Speak");
+	            //form.readData();
+			} else {
+				Console.WriteLine("[LeetPlugin] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+												
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Leet Speak");
-            
         }
         
         private void SayToUser(string message)

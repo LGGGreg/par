@@ -637,6 +637,16 @@ namespace PubComb
         private PAnimFormGTK form;
         private string brand;
         private Dictionary<UUID, gd1> dls = new Dictionary<UUID, gd1>();
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "PAnim");
+	            form.readData();
+			} else {
+				Console.WriteLine("[PAnim] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "PAnim");

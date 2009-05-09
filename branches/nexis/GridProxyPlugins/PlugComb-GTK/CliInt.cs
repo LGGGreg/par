@@ -43,6 +43,17 @@ namespace PubComb
         private Vector3 mpos = new Vector3();
         private uint mid = new uint();
         public InventoryItem interceptor = new InventoryItem(UUID.Zero);
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "CliInt");
+	            form.readData();
+			} else {
+				Console.WriteLine("[CliInt] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
 
         public void LoadNow()
         {

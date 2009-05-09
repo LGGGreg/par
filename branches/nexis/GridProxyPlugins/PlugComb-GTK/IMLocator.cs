@@ -54,6 +54,18 @@ namespace PubComb
         private bool enabled = true;
         private List<uint> recSeq = new List<uint>();
         //private ImprovedInstantMessagePacket lastIM = null;
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            //tabform.addATab(form, brand);
+	            //form.readData();
+				Console.WriteLine("[IMLocator] TODO:  Rewrite IMHistForm1 in GTK");
+			} else {
+				Console.WriteLine("[IMLocator] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
         public void LoadNow()
         {
             //plugin.tabform.addATab(form, "IMHistory");

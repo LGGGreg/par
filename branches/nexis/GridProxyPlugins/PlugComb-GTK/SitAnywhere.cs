@@ -35,6 +35,18 @@ namespace PubComb
         private Proxy proxy;
         private SitAnywhereFormGTK form;
         private PubComb.Aux_SharedInfo shared;
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Sit Anywhere");
+	            //form.readData();
+			} else {
+				Console.WriteLine("[SitAnywhere] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "SitAnywhere");

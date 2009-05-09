@@ -36,6 +36,18 @@ namespace PubComb
         private RetreatFormGTK form;
 
         private UUID currentBastard = UUID.Zero;
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "Retreat");
+	            form.readData();
+			} else {
+				Console.WriteLine("[Retreat] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Retreat");

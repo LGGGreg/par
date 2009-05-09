@@ -96,6 +96,18 @@ namespace PubComb
         private List<maps> lastMaps = new List<maps>();
 
         private List<uint> recSeq = new List<uint>();
+		
+		public void LoadNow(ref TabItemGTK tabform)
+        {
+			if(tabform!=null)
+			{
+	            tabform.addATab(form, "SpamBlock");
+	            //form.readData();
+			} else {
+				Console.WriteLine("[LYRA] BUG:  tabform is NULL.  Cannot add tab.");
+			}
+        }
+		
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "SpamBlock");

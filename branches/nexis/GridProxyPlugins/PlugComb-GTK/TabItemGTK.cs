@@ -15,21 +15,33 @@ namespace PubComb
 		{
 			pc=o;
 			this.Build();
+			this.pc.addMahTabs(this);
 		}
 		
 		public void addATab(Window w,string title)
 		{
-			Label tabname = new Label(title);
-			Container c = new Frame();
-			foreach(Widget child in w.Children)
+			try
 			{
-				c.Add(child);
+				// HACK
+				//w.HideAll();
+				Widget wc = w.Child;
+				
+				Label tabname = new Label(title);
+				nbTabs.AppendPage(wc,tabname);
+				
+				w.Dispose();
+				Console.WriteLine("Disposing of "+title+".");
+				
+				nbTabs.ShowAll();
 			}
-			nbTabs.AppendPage(c,tabname);
+			catch(Exception)
+			{
+				Console.WriteLine("Failed to load "+title+".");
+			}
 		}
 	}
 	public interface GTabPlug
 	{
-	    void LoadNow();
+	    void LoadNow(ref TabItemGTK tabform);
 	}
 }
