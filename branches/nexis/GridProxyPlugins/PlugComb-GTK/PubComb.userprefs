@@ -1,0 +1,30 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpamBlockFormGTK.cs" ctype="Workbench">
+    <Files>
+      <File FileName="RainbowParticlesFormGTK.cs" Line="234" Column="29" />
+      <File FileName="RetreatFormGTK.cs" Line="3" Column="17" />
+      <File FileName="SpamBlockFormGTK.cs" Line="3" Column="17" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Packages" expanded="True" />
+          <Node name="PubComb-GTK" expanded="True" selected="True">
+            <Option id="ShowAllFiles" value="False" />
+            <Node name="Resources" expanded="True" />
+            <Node name="AvatarForm1.cs" expanded="True" />
+            <Node name="RainbowParticlesForm1.cs" expanded="True" />
+            <Node name="VELogForm1.cs" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+</Properties>

@@ -1,0 +1,16 @@
+<Combine name="PubComb" fileversion="2.0">
+  <Configurations active="Debug|Any CPU">
+    <Configuration name="Debug|Any CPU" ctype="CombineConfiguration">
+      <Entry build="True" name="PubComb" configuration="Debug|Any CPU" />
+    </Configuration>
+    <Configuration name="Release|Any CPU" ctype="CombineConfiguration">
+      <Entry build="True" name="PubComb" configuration="Release|Any CPU" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="PubComb" single="True">
+    <Execute type="None" entry="PubComb" />
+  </StartMode>
+  <Entries>
+    <Entry filename="PubComb.csproj" />
+  </Entries>
+</Combine>

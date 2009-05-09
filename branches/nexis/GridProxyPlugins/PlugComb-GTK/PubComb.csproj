@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D6C8460-B38E-4061-9348-6BC1D8E8B5E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PubComb</RootNamespace>
+    <AssemblyName>PubComb</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PubComb</RootNamespace>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputType>Library</OutputType>
+    <DebugSymbols>true</DebugSymbols>
+    <RootNamespace>PubComb</RootNamespace>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <None Include="AvatarForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="AvatarForm1.Designer.cs">
+      <DependentUpon>AvatarForm1.cs</DependentUpon>
+    </None>
+    <Compile Include="AvatarInfo.cs" />
+    <Compile Include="CinderellaPlugin.cs" />
+    <Compile Include="CinderForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CinderForm1.Designer.cs">
+      <DependentUpon>CinderForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetect.cs" />
+    <Compile Include="ClientDetectForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientDetectForm1.Designer.cs">
+      <DependentUpon>ClientDetectForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileProtect.cs" />
+    <Compile Include="FileProtectForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileProtectForm1.Designer.cs">
+      <DependentUpon>FileProtectForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMHistForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMHistForm1.Designer.cs">
+      <DependentUpon>IMHistForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMLocator.cs" />
+    <Compile Include="leetForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="leetForm1.Designer.cs">
+      <DependentUpon>leetForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeetPlugin.cs" />
+    <Compile Include="LyraForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LyraForm1.Designer.cs">
+      <DependentUpon>LyraForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handicap.cs" />
+    <Compile Include="HandiForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandiForm1.Designer.cs">
+      <DependentUpon>HandiForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lyra.cs" />
+    <Compile Include="PAnim.cs" />
+    <Compile Include="Penny.cs" />
+    <Compile Include="PennyForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PennyForm1.Designer.cs">
+      <DependentUpon>PennyForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileFun.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ProtAnimForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtAnimForm1.Designer.cs">
+      <DependentUpon>ProtAnimForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PubCombTab.cs" />
+    <Compile Include="RadarChat.cs" />
+    <Compile Include="RadarChatForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadarChatForm1.Designer.cs">
+      <DependentUpon>RadarChatForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RainbowParticles.cs" />
+    <None Include="RainbowParticlesForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="RainbowParticlesForm1.Designer.cs">
+      <DependentUpon>RainbowParticlesForm1.cs</DependentUpon>
+    </None>
+    <None Include="RetreatForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="RetreatForm1.Designer.cs">
+      <DependentUpon>RetreatForm1.cs</DependentUpon>
+    </None>
+    <Compile Include="RetreatPlugin.cs" />
+    <Compile Include="SimpleProfForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimpleProfForm1.Designer.cs">
+      <DependentUpon>SimpleProfForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SitAnywhere.cs" />
+    <Compile Include="SitAnywhereForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SitAnywhereForm1.Designer.cs">
+      <DependentUpon>SitAnywhereForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpamBlock.cs" />
+    <Compile Include="SpamBlockForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpamBlockForm1.Designer.cs">
+      <DependentUpon>SpamBlockForm1.cs</DependentUpon>
+    </Compile>
+    <None Include="TabItem.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="TabItem.Designer.cs">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
+    <None Include="VELogForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="VELogForm1.Designer.cs">
+      <DependentUpon>VELogForm1.cs</DependentUpon>
+    </None>
+    <None Include="ViewerEffectLogger.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="frmMain.cs" />
+    <Compile Include="gtk-gui\PubComb.frmMain.cs" />
+    <None Include="AwesomeSauce.cs" />
+    <None Include="AweseomeSauceForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="AweseomeSauceForm1.Designer.cs">
+      <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
+    </None>
+    <None Include="CliIntForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="CliIntForm1.Designer.cs">
+      <DependentUpon>CliIntForm1.cs</DependentUpon>
+    </None>
+    <None Include="ProTextionClass1.cs" />
+    <None Include="ProTextionForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="ProTextionForm1.Designer.cs">
+      <DependentUpon>ProTextionForm1.cs</DependentUpon>
+    </None>
+    <None Include="coin.cs" />
+    <None Include="CoinForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="CoinForm1.Designer.cs">
+      <DependentUpon>CoinForm1.cs</DependentUpon>
+    </None>
+    <None Include="CapsForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="DisableCaps.cs" />
+    <None Include="CapsForm1.Designer.cs">
+      <DependentUpon>CapsForm1.cs</DependentUpon>
+    </None>
+    <Compile Include="CliIntFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.CliIntFormGTK.cs" />
+    <Compile Include="CliInt.cs" />
+    <None Include="GregInventoryTree.cs">
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HighForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="High.cs" />
+    <None Include="InvFunForm1.Designer.cs">
+      <DependentUpon>InvFunForm1.cs</DependentUpon>
+    </None>
+    <None Include="InventoryFun.cs" />
+    <None Include="InvFunForm1.cs">
+      <SubType>Form</SubType>
+    </None>
+    <Compile Include="LeetFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.LeetFormGTK.cs" />
+    <Compile Include="HandicapFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.HandicapFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.LyraFormGTK.cs" />
+    <None Include="app.config" />
+    <None Include="Resources\coin-heads.PNG" />
+    <None Include="Resources\coin-tails.PNG" />
+    <None Include="Resources\LOST.jpg" />
+    <Compile Include="gtk-gui\PubComb.PAnimFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.PennyFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.ProfileFunFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.RadarChatFormGTK.cs" />
+    <Compile Include="LyraFormGTK.cs" />
+    <Compile Include="PAnimFormGTK.cs" />
+    <Compile Include="PennyFormGTK.cs" />
+    <Compile Include="ProfileFunFormGTK.cs" />
+    <Compile Include="RadarChatFormGTK.cs" />
+    <Compile Include="RainbowParticlesFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.RainbowParticlesFormGTK.cs" />
+    <Compile Include="RetreatFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.RetreatFormGTK.cs" />
+    <Compile Include="SitAnywhereFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.SitAnywhereFormGTK.cs" />
+    <Compile Include="SpamBlockFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.SpamBlockFormGTK.cs" />
+    <Compile Include="TabItemGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.TabItemGTK.cs" />
+    <Compile Include="AvatarFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.AvatarFormGTK.cs" />
+    <None Include="Resources\partiny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="GridProxy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\GridProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="MonoDevelop.Components, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Package>monodevelop</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AvatarForm1.resx">
+      <DependentUpon>AvatarForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AweseomeSauceForm1.resx">
+      <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapsForm1.resx">
+      <DependentUpon>CapsForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CinderForm1.resx">
+      <DependentUpon>CinderForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientDetectForm1.resx">
+      <DependentUpon>ClientDetectForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CliIntForm1.resx">
+      <DependentUpon>CliIntForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoinForm1.resx">
+      <DependentUpon>CoinForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileProtectForm1.resx">
+      <DependentUpon>FileProtectForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighForm1.resx">
+      <DependentUpon>HighForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMHistForm1.resx">
+      <DependentUpon>IMHistForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvFunForm1.resx">
+      <DependentUpon>InvFunForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="leetForm1.resx">
+      <DependentUpon>leetForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LyraForm1.resx">
+      <DependentUpon>LyraForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandiForm1.resx">
+      <DependentUpon>HandiForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PennyForm1.resx">
+      <DependentUpon>PennyForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtAnimForm1.resx">
+      <DependentUpon>ProtAnimForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProTextionForm1.resx">
+      <DependentUpon>ProTextionForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadarChatForm1.resx">
+      <DependentUpon>RadarChatForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RainbowParticlesForm1.resx">
+      <DependentUpon>RainbowParticlesForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RetreatForm1.resx">
+      <DependentUpon>RetreatForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleProfForm1.resx">
+      <DependentUpon>SimpleProfForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SitAnywhereForm1.resx">
+      <DependentUpon>SitAnywhereForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpamBlockForm1.resx">
+      <DependentUpon>SpamBlockForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabItem.resx">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VELogForm1.resx">
+      <DependentUpon>VELogForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gtk-gui\gui.stetic" />
+  </ItemGroup>
+</Project>

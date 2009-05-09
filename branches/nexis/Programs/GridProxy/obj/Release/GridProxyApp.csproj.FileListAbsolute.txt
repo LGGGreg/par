@@ -1,0 +1,12 @@
+C:\Users\Shadow\Desktop\trunk\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Shadow\Desktop\trunk\bin\GridProxyApp.exe
+C:\Users\Shadow\Desktop\trunk\Programs\GridProxy\obj\Release\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\newest openmetaverse\bin\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\newest openmetaverse\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Shadow\Desktop\Second Life\newest openmetaverse\Programs\GridProxy\obj\Release\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\Google Code Svn\branches\LGG\bin\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\Google Code Svn\branches\LGG\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Shadow\Desktop\Second Life\Google Code Svn\branches\LGG\Programs\GridProxy\obj\Release\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\bin\GridProxyApp.exe
+C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\GridProxyApp.exe
