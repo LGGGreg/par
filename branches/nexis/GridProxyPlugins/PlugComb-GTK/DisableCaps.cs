@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ***NO LONGER WORKS, AS GRIDPROXY REMOVED THE BLOCKCAPS INTERFACE.***
  * 
  * Copyright (c) 2009, Gregory Hendrickson (LordGregGreg Back)

@@ -2,6 +2,7 @@
 using System;
 using Gtk;
 using System.IO;
+using GridProxy;
 namespace PubComb
 {
 	
@@ -123,7 +124,7 @@ namespace PubComb
 		
 		private void updateBlocked()
         {
-			dcp.
+			Proxy p = new Proxy(new ProxyConfig("Derp","Derp"));
             lock (dcp.proxy.BlockCaps)
             {
                 dcp.proxy.BlockCaps.Clear();
@@ -138,7 +139,7 @@ namespace PubComb
 		protected virtual void OnCmdMoveLeftActivated (object sender, System.EventArgs e)
 		{
 			TreeIter i;
-			if(nodDisabled.Selection.GetSelected(i))
+			if(nodDisabled.Selection.GetSelected(out i))
 			{
 				string sel=(string)nsDisabled.GetValue(i,0);
 				if(!String.IsNullOrEmpty(sel))
@@ -149,7 +150,7 @@ namespace PubComb
 		protected virtual void OnCmdMoveRightActivated (object sender, System.EventArgs e)
 		{
 			TreeIter i;
-			if(nodEnabled.Selection.GetSelected(i))
+			if(nodEnabled.Selection.GetSelected(out i))
 			{
 				string sel=(string)nsEnabled.GetValue(i,0);
 				if(!String.IsNullOrEmpty(sel))

@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -6,8 +7,6 @@
     <ProjectGuid>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>
-    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>GridProxy</AssemblyName>
@@ -15,62 +14,74 @@
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>
     </AppDesignerFolder>
     <RootNamespace>GridProxy</RootNamespace>
-    <StartupObject>
-    </StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
-    <Optimize>False</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
     <RegisterForComInterop>False</RegisterForComInterop>
     <RemoveIntegerChecks>False</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <NoStdLib>False</NoStdLib>
     <NoWarn>1591,1574,0419,0618</NoWarn>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
-    <DebugSymbols>False</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
-    <Optimize>True</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
     <RegisterForComInterop>False</RegisterForComInterop>
     <RemoveIntegerChecks>False</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <NoStdLib>False</NoStdLib>
     <NoWarn>1591,1574,0419,0618</NoWarn>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System">
-      <Name>System</Name>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="HttpServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\HttpServer.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml">
-      <Name>System.Xml</Name>
+    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.Http, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.StructuredData, Version=0.6.1.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.StructuredData.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.Utilities, Version=0.6.1.17452, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -143,28 +154,6 @@
     <Compile Include="XmlRpcCS\XmlRpcXmlTokens.cs">
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\HttpServer\HttpServer.csproj">
-      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
-      <Name>HttpServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
-      <Project>{BC2860B5-EA88-4D9C-9873-7BF56EAFC7A9}</Project>
-      <Name>OpenMetaverse.Http</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
-      <Project>{DC187B75-EE04-4A0D-B4A4-56EFA62535E3}</Project>
-      <Name>OpenMetaverse.StructuredData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
-      <Project>{D8BA1862-3FC4-4C62-8209-8CABA7667116}</Project>
-      <Name>OpenMetaverse</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\Types\OpenMetaverseTypes.csproj">
-      <Project>{528E86C4-38DD-435F-9458-4165C2B12D0A}</Project>
-      <Name>OpenMetaverseTypes</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
