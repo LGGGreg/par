@@ -182,7 +182,7 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="frmMain.cs" />
     <Compile Include="gtk-gui\PubComb.frmMain.cs" />
-    <None Include="AwesomeSauce.cs" />
+    <Compile Include="AwesomeSauce.cs" />
     <None Include="AweseomeSauceForm1.cs">
       <SubType>Form</SubType>
     </None>
@@ -264,6 +264,10 @@
     <Compile Include="gtk-gui\PubComb.TabItemGTK.cs" />
     <Compile Include="AvatarFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.AvatarFormGTK.cs" />
+    <Compile Include="AwesomeSauceFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.AwesomeSauceFormGTK.cs" />
+    <None Include="CapsFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.CapsFormGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -32,7 +32,7 @@ namespace PubComb
         private Proxy proxy;
         private PubComb plugin;
         public static bool Enabled = true;
-        public AweseomeSauceForm1 form;
+        public AwesomeSauceFormGTK form;
         //private Thread formthread;
         //private Form1 form;
         public string indicator, trigger;
@@ -75,15 +75,15 @@ namespace PubComb
                 VFileID = vfileid;
             }
         }
-        public void LoadNow()
+        public void LoadNow(ref TabItemGTK tabform)
         {
-            plugin.tabform.addATab(form, "AwesomeSauce");
+            tabform.addATab(form, "AwesomeSauce");
         }
         public AwesomeSauce(PubComb p)
         {
             plugin = p;
             currentRegion = UUID.Zero.GetULong();
-            form = new AweseomeSauceForm1(this);
+            form = new AwesomeSauceFormGTK(this);
             this.frame = p.frame;
             this.proxy = frame.proxy;
             //this.proxy.AddDelegate(PacketType.ScriptDialogReply, Direction.Outgoing, new PacketDelegate(OutDialogFromViewer));
@@ -263,13 +263,13 @@ namespace PubComb
                     if(lines[0].Contains("(COMPILE_PROTECTED)"))
                     {
                         
-                        form.log("We got a script meant to be protected!",  System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
+                        form.Log("We got a script meant to be protected!",  System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
                         SendUserAlert("Uploading Script Protected");
                         start = 4;
                     }
                     else
                     {
-                        form.log("This Script was not meant to be protected ABANDON SHIP!", System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
+                        form.Log("This Script was not meant to be protected ABANDON SHIP!", System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
                         currentuploads.Remove(sxpp.XferID.ID);
                         if(OutgoingXfers.ContainsKey(sxpp.XferID.ID))
                         {
@@ -279,7 +279,7 @@ namespace PubComb
                     }
                 }
                     
-                form.log("We got a script packet sent from client with the actual stuff, get it!", System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
+                form.Log("We got a script packet sent from client with the actual stuff, get it!", System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
                 Buffer.BlockCopy(sxpp.DataPacket.Data, start, currentuploads[sxpp.XferID.ID].oldscriptdata,
                     currentuploads[sxpp.XferID.ID].curentdatalenght, sxpp.DataPacket.Data.Length-start);
                 currentuploads[sxpp.XferID.ID].curentdatalenght += sxpp.DataPacket.Data.Length-start;
@@ -287,7 +287,7 @@ namespace PubComb
                 if ((sxpp.XferID.Packet & 0x80000000) != 0)
                 {
 
-                    form.log("we got the final packet sent from viewer to server, going to start upload now", System.Drawing.Color.Blue, System.Drawing.Color.Black);
+                    form.Log("we got the final packet sent from viewer to server, going to start upload now", System.Drawing.Color.Blue, System.Drawing.Color.Black);
                     
                     currentuploads[sxpp.XferID.ID].oldmaxsize = currentuploads[sxpp.XferID.ID].curentdatalenght;
                     if (requests2Process.ContainsKey(sxpp.XferID.ID))
@@ -313,13 +313,13 @@ namespace PubComb
 
                 if (requestRecived.XferID.VFileType == (short)AssetType.LSLText)
                 {
-                    form.log("Server requestd us to start something lsl " +
+                    form.Log("Server requestd us to start something lsl " +
                         requestRecived.XferID.VFileType.ToString()+" and its vfile id was "+requestRecived.XferID.VFileID.ToString()
                         ,System.Drawing.Color.Magenta,System.Drawing.Color.Black);
                 
                     if (uploadsLookingForXferId.ContainsKey(requestRecived.XferID.VFileID))
                     {
-                        form.log("We were expecting this! its vfile matches the asset id agreed upon , adding for later processing", System.Drawing.Color.Magenta, System.Drawing.Color.DarkGray);
+                        form.Log("We were expecting this! its vfile matches the asset id agreed upon , adding for later processing", System.Drawing.Color.Magenta, System.Drawing.Color.DarkGray);
                         
                         uploadsLookingForXferId[requestRecived.XferID.VFileID].xferID = requestRecived.XferID.ID;
                         if (!currentuploads.ContainsKey(requestRecived.XferID.ID))
@@ -344,7 +344,7 @@ namespace PubComb
                         /*
                         if (uploadsLookingForXferId[requestRecived.XferID.VFileID].oldscriptdata.Length > 0)
                         {
-                            form.log("Old Script data finished in first packet", System.Drawing.Color.Blue, System.Drawing.Color.Black);
+                            form.Log("Old Script data finished in first packet", System.Drawing.Color.Blue, System.Drawing.Color.Black);
                             if (requests2Process.ContainsKey(requestRecived.XferID.ID))
                             {
                                 ProcessRequest(requests2Process[requestRecived.XferID.ID]);
@@ -368,11 +368,11 @@ namespace PubComb
                 if (data.Contains("//-->(LGG_PROTECTED)"))
                 {
                     string incache = "Scripts Cache\\" + data.Substring(20, 36) + ".lsl";
-                    form.log("Detected a localy saved script, looking.." + incache, System.Drawing.Color.DarkBlue, System.Drawing.Color.Cyan);
+                    form.Log("Detected a localy saved script, looking.." + incache, System.Drawing.Color.DarkBlue, System.Drawing.Color.Cyan);
 
                     if (File.Exists(incache))
                     {
-                        form.log("Found !localy saved script, loading..", System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
+                        form.Log("Found !localy saved script, loading..", System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
 
                         using (StreamReader r = new StreamReader(incache))
                         {
@@ -385,7 +385,7 @@ namespace PubComb
 
                             tosend.TransferInfo.Size = newdata.Length + (1000 - (newdata.Length % 1000));
                             proxy.InjectPacket(tosend, Direction.Incoming);
-                            form.log("Injecting info with size " + tosend.TransferInfo.Size.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
+                            form.Log("Injecting info with size " + tosend.TransferInfo.Size.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
 
 
                             int start = 0;
@@ -401,7 +401,7 @@ namespace PubComb
                                 send.TransferData.Status = (int)StatusCode.OK;
                                 proxy.InjectPacket(send, Direction.Incoming);
                                 start += 1000;
-                                form.log("Injecting Packet number " + pnum.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
+                                form.Log("Injecting Packet number " + pnum.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
 
 
                             }
@@ -410,7 +410,7 @@ namespace PubComb
                             tpp.TransferData.Data = temp;
                             tpp.TransferData.Status = (int)StatusCode.Done;
                             tpp.TransferData.Packet = pnum++;
-                            form.log("Injecting Packet number " + pnum.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
+                            form.Log("Injecting Packet number " + pnum.ToString(), System.Drawing.Color.Blue, System.Drawing.Color.Cyan);
 
 
                         }
@@ -420,7 +420,7 @@ namespace PubComb
                     }
                     else
                     {
-                        form.log("oh shit.. cant find the script... f*" + incache, System.Drawing.Color.DarkBlue, System.Drawing.Color.Cyan);
+                        form.Log("oh shit.. cant find the script... f*" + incache, System.Drawing.Color.DarkBlue, System.Drawing.Color.Cyan);
 
                     }
                 }
@@ -474,7 +474,7 @@ namespace PubComb
                 }
                 if (type == 10)
                 {
-                    form.log("we got a incomming scrippt text.. it could be one we need", System.Drawing.Color.Black, System.Drawing.Color.Blue);
+                    form.Log("we got a incomming scrippt text.. it could be one we need", System.Drawing.Color.Black, System.Drawing.Color.Blue);
                     if (scriptInfos.ContainsKey(ti.TransferInfo.TransferID))
                     {
                         scriptInfos[ti.TransferInfo.TransferID] = ti;
@@ -679,7 +679,7 @@ namespace PubComb
         }*/
         private void ProcessRequest(RequestXferPacket requestRecived)
         {
-            form.log("precesing the read request packet now", System.Drawing.Color.Green, System.Drawing.Color.Black);
+            form.Log("precesing the read request packet now", System.Drawing.Color.Green, System.Drawing.Color.Black);
             
             currentuploads[requestRecived.XferID.ID].proxySending = true;
             byte[][] datapackets = OpenBytecode(requestRecived.XferID.ID);
@@ -703,7 +703,7 @@ namespace PubComb
 
             // Start sending the new packets to the sim
             OutgoingXfers[requestRecived.XferID.ID].PacketIndex = 0;
-            form.log("sent first packet with data\n" + Utils.BytesToString(OutgoingXfers[requestRecived.XferID.ID].Packets[0].DataPacket.Data), System.Drawing.Color.Yellow, System.Drawing.Color.DarkGreen);
+            form.Log("sent first packet with data\n" + Utils.BytesToString(OutgoingXfers[requestRecived.XferID.ID].Packets[0].DataPacket.Data), System.Drawing.Color.Yellow, System.Drawing.Color.DarkGreen);
             proxy.InjectPacket(OutgoingXfers[requestRecived.XferID.ID].Packets[0], Direction.Outgoing);
             //this.Scriptdata = OpenBytecode(fileDest);     
        
@@ -780,7 +780,7 @@ namespace PubComb
                         }*/
 
 
-                        form.log("blocked " + ConfirmXferPacket.XferID.Packet.ToString() + ";", System.Drawing.Color.DarkCyan, System.Drawing.Color.Black);
+                        form.Log("blocked " + ConfirmXferPacket.XferID.Packet.ToString() + ";", System.Drawing.Color.DarkCyan, System.Drawing.Color.Black);
 
                         OutgoingXfers.Remove(XferID);
                         currentuploads.Remove(XferID);
@@ -790,13 +790,13 @@ namespace PubComb
                     // Don't send this to the client
                     //if (currentuploads.ContainsKey(XferID))
                       //  if (currentuploads[XferID].proxySending) 
-                    form.log("blocked " + ConfirmXferPacket.XferID.Packet.ToString() + ";", System.Drawing.Color.DarkCyan, System.Drawing.Color.Black);
+                    form.Log("blocked " + ConfirmXferPacket.XferID.Packet.ToString() + ";", System.Drawing.Color.DarkCyan, System.Drawing.Color.Black);
 
                             return null;
 
                 }
             }
-            //form.log("we let this confirm packet go! " + packet.ToString(), System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
+            //form.Log("we let this confirm packet go! " + packet.ToString(), System.Drawing.Color.DarkBlue, System.Drawing.Color.Black);
             return packet;
         }
         /*private Packet UpdateInventory(Packet packet, IPEndPoint sim)
@@ -865,9 +865,9 @@ namespace PubComb
                     asetUp.AssetBlock.AssetData = new byte[] { };
                     //proxy.InjectPacket(asetUp, Direction.Outgoing);
                     //proxy
-                    curentUpload.VFileAssetID = UUID.Combine(curentUpload.uploadID, frame.SecureSessionID);
+                    curentUpload.VFileAssetID = UUID.Combine(curentUpload.uploadID, frame.SessionID);
 
-                    form.log("We are expecintg a vfile id of " + curentUpload.VFileAssetID.ToString(), System.Drawing.Color.Black, System.Drawing.Color.Magenta);
+                    form.Log("We are expecintg a vfile id of " + curentUpload.VFileAssetID.ToString(), System.Drawing.Color.Black, System.Drawing.Color.Magenta);
                     if (this.uploadsLookingForXferId.ContainsKey(curentUpload.VFileAssetID))
                     {
                         this.uploadsLookingForXferId[curentUpload.VFileAssetID] = curentUpload;

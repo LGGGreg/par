@@ -1,4 +1,6 @@
 ﻿/*
+ * ***NO LONGER WORKS, AS GRIDPROXY REMOVED THE BLOCKCAPS INTERFACE.***
+ * 
  * Copyright (c) 2009, Gregory Hendrickson (LordGregGreg Back)
  *All rights reserved.
  *
@@ -33,18 +35,18 @@ namespace PubComb
         public PubComb plugin;
         private ProxyFrame frame;
         public Proxy proxy;
-        private CapsForm1 form;
+        private CapsFormGTK form;
         private string brand;
-        public void LoadNow()
+        public void LoadNow(ref TabItemGTK tabform)
         {
-            plugin.tabform.addATab(form, "DisableCaps");
+            tabform.addATab(form, "DisableCaps");
             form.readData();
         }
         public DisableCapsPlugin(PubComb plug)
         {
             //formthread = new Thread(new ThreadStart(delegate()
             //{
-                form = new CapsForm1(this);
+                form = new CapsFormGTK(this);
               //  Application.Run(form);
             //}));
             //formthread.SetApartmentState(ApartmentState.STA);

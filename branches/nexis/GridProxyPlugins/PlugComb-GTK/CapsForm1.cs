@@ -44,21 +44,15 @@ namespace PubComb
                     }
                     r.Close();
                 }
-                
-
-
             }
             updateBlocked();
-            
         }
         private void move(object item, bool inllist1)
         {
-           
             lock (listBox1.Items)
             {
                 lock (listBox2.Items)
                 {
-
                     if (inllist1)
                     {
                         //listBox1.Items.Remove(item);

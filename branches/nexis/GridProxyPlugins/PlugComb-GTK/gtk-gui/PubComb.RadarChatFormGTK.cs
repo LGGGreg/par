@@ -306,6 +306,7 @@ namespace PubComb {
             w22.Position = 0;
             // Container child vbox2.Gtk.Box+BoxChild
             this.hbox1 = new Gtk.HBox();
+            this.hbox1.Name = "hbox1";
             this.hbox1.Spacing = 6;
             // Container child hbox1.Gtk.Box+BoxChild
             this.cmdSend = new Gtk.Button();
