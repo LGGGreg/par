@@ -15,7 +15,7 @@
       <widget class="Gtk.Notebook" id="nbMain">
         <property name="MemberName" />
         <property name="CanFocus">True</property>
-        <property name="CurrentPage">0</property>
+        <property name="CurrentPage">2</property>
         <child>
           <widget class="Gtk.VBox" id="vbox6">
             <property name="MemberName" />

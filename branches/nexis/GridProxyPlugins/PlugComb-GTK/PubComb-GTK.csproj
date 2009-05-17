@@ -371,7 +371,10 @@
       <DependentUpon>VELogForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gtk-gui\gui.stetic" />
-    <EmbeddedResource Include="..\..\..\..\..\branches\LGG\GridProxyPlugins\PlugComb-GTK\Resources\partiny.png" />
+    <EmbeddedResource Include="..\..\Images\partiny.png">
+      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
+      <LogicalName>PubComb.partiny</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">

@@ -72,13 +72,13 @@ namespace PubComb
 //            plugins.Add(new AvatarTracker(this));
             plugins.Add(new CliIntPlugin(this));
 
-            tabformthread = new Thread(new ThreadStart(delegate()
-            {
+            //tabformthread = new Thread(new ThreadStart(delegate()
+            //{
             	this.tabform = new TabItemGTK(this);
             	this.tabform.ShowAll();
-            }));
-			tabformthread.SetApartmentState(ApartmentState.STA);
-            tabformthread.Start();
+            //}));
+			//tabformthread.SetApartmentState(ApartmentState.STA);
+            //tabformthread.Start();
 
             Application.Run();
         }

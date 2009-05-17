@@ -15,6 +15,7 @@ namespace PubComb
 		{
 			pc=o;
 			this.Build();
+			//this.parLogo.ImageProp=
 			this.pc.addMahTabs(this);
 		}
 		
@@ -27,9 +28,10 @@ namespace PubComb
 				Widget wc = w.Child;
 				
 				Label tabname = new Label(title);
-				nbTabs.AppendPage(wc,tabname);
-				
+				wc.Reparent(nbTabs);
+				nbTabs.SetTabLabel(wc,tabname);
 				w.Dispose();
+				
 				Console.WriteLine("Disposing of "+title+".");
 				
 				nbTabs.ShowAll();

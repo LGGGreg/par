@@ -5,7 +5,7 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="../bin/Debug/PubComb-GTK.dll" internal="true" />
+    <widget-library name="../../../Package/Plugins/PubComb-GTK.dll" internal="true" />
   </import>
   <widget class="Gtk.Window" id="PubComb.frmMain" design-size="599 300">
     <property name="MemberName" />
@@ -1840,9 +1840,9 @@ Thanks to PSL for initial concept, and Bilo Parx For logged packet.</property>
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
                 <child>
-                  <widget class="Gtk.Image" id="image1">
+                  <widget class="Gtk.Image" id="parLogo">
                     <property name="MemberName" />
-                    <property name="Pixbuf">file:./Resources/LOST.jpg</property>
+                    <property name="Pixbuf">resource:PubComb.partiny</property>
                   </widget>
                   <packing>
                     <property name="Position">0</property>
