@@ -35,7 +35,7 @@ namespace PubComb
         private System.IO.MemoryStream ms;
         private Proxy proxy;
         public static bool Enabled = false;
-        private Thread formthread;
+        //private Thread formthread; // GTK threading OK
         private ShadowFormGTK form;
         public string indicator, brand, trigger;
 
