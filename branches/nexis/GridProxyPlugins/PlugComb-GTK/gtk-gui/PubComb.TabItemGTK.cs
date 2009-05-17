@@ -47,6 +47,7 @@ namespace PubComb {
             this.nbTabs.CanFocus = true;
             this.nbTabs.Name = "nbTabs";
             this.nbTabs.CurrentPage = 0;
+            this.nbTabs.Scrollable = true;
             // Container child nbTabs.Gtk.Notebook+NotebookChild
             this.hbox4 = new Gtk.HBox();
             this.hbox4.Name = "hbox4";

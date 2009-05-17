@@ -1834,6 +1834,7 @@ Thanks to PSL for initial concept, and Bilo Parx For logged packet.</property>
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="CurrentPage">0</property>
+            <property name="Scrollable">True</property>
             <child>
               <widget class="Gtk.HBox" id="hbox4">
                 <property name="MemberName" />

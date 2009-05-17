@@ -1,0 +1,148 @@
+[get a in world copy of this notecard by iming lordgreggreg back]
+All Plugins are written and copywrighted to LordGregGreg Back or Day Oh unless otherwise noted.(there are lots of otherwise notes!)
+
+[[[[[[[AS OF JANUARY 30TH THESE PLUGINS HAVE GONE OPEN SOURCE AND ARE NOW HOSTED ON GOOGLE CODE WITH LICENSES AND ALL THAT JAZZ]]]]]]]]]
+
+MainSite -- > 
+http://code.google.com/p/par/
+
+Downloads --- > 
+http://code.google.com/p/par/downloads/list?can=2&q=&sort=&colspec=Filename+Summary+Uploaded+Size+DownloadCount+UploadedBy+Type+Opsys
+
+Tutorials -- > my you tube channel.  latest vid is. 
+ http://www.youtube.com/watch?v=MBNUogQLH0U
+
+IM lordgregreg back if you have tried everything and still need help.  
+IM Lordgreggreg back if you would like to be added to a group to know about updates.
+
+[Please note, some dlls have been packed into PubComb to make the gui not so crazy, functionality is the same]
+--PubComb.dll
+   Plugin Container system to put other plugins into the same gui.
+   Do not load any plugin that PubComb already has, else you get duplicates.
+   Currently Includes [ClientDetection.dll,IMLocator.dll,Lyra.dll,Handicap.dll,Penny.dll,DisableCaps.dll,LeetSpeak.dll,Cinderella.dll,ProfileFun.dll. GetHigh.dll, SpamProtection.dll, SitAntwhere.dll,FileProtection.dll, RadarChat.dll, ProTextion.dll, AwesomeSauce.dll,Coin.dll, SelectionBeams.dll, Retreat.dll]
+--Coin.dll
+    [Included in PubComb, no need to load]
+    Made by day oh as a fancy type of penny (he made penny to, lul).  Click the gui window to change modes. heads = normal mode.  tails = replace texture with "day oh" identified texture. Lost picture = texture identification to rotate (some people will see your title change)
+--SelectionBeeam.dll
+    [Included in PubComb, no need to load]
+    This replaces the beamparticles and merges it in with day oh (origiotor of the multi color particles ) 's selection beam mods.  It has a nice gui to let you pick whih effect you want.  buttons are prety self explantitory.  If you are using it under "SL Particle mode" here are the instrcutionns. (SL particle mode lets you change the texture of te beam.    to use , waer this object. ?? Wear it on your hand. And have thee plugins loaded.  To modify, simply delete the texture inside the contents of this item, and replace with w/e you want.  or if you are a scripter, everything is full perm
+--RadarChat.dll
+    [Included in PubComb, no need to load]
+    Adds api support to MEGA boost your radar to be the best in SL!!.  No probes, no lag, instant response and updates. Your radar will need to be able to support the chat messages it sends with the keys of everyone in the sim.  Scans and updated 2Billion meters instantly.  Here is the api.  Client will send messages with all av keys, [sessionIdentifier (always incrementing)][number of keys this session][uuid1][uuid2]...[uuidN-1][uuidN] ;seperated by a delimiter of your choice. It might be multiple messages if the first one needs to be too long. It will send these chats every time the avartars in the sim changes (someone leaves or enters) and also forced if you llTriggerSound("76c78607-93f9-f55a-5238-e19b1a181389",1);
+If you would like help making  your radar support this extra information, here is an example script, ???? and even a full radar that I made open source!    (just attach, amke your plugin speak on -90, and press the rainbow button).  Any improvements are welcome if you are a lsl scripter with some extra time!??,  Also, Hen Streeter has already made his multi gadget support this! So if you want the fastest multi tool in sl, get it here ??.  And if you sell your own, gime a lm and I will add it to the notecard.
+--RadarChat  Enhancement!
+  [Included in PubComb, no need to load]
+  For land owners  looking for a way to quikly get a full list of all avatars in your sim, and qucikly ban them, i have made an extensive gui for this.
+--FileProtect.dll
+    [Included in PubComb, no need to load]
+    Prevents people from getting acces to files on your computer through second life.  To use, just make sure the check box is checked.
+--GetHigh.dll
+   [Included in PubComb, no need to load]
+   This will let you go to any high you want, and even rez a platform there for you.  So you ?
+can chill at 1Million in the air:P.  To use, either use the gui, or say "/high 9001"
+--SpamProtection.dll
+   [Included in PubComb, no need to load]
+   Added in IM, Calling Card, Inventory Offers, Script Dialog, and mod right spam protection.  Much smarter than past version of it that blocked anything repeated.
+--SitAnywhere.dll
+   [Included in PubComb, no need to load]
+    Allows you to sit anywhere, even in the air, just say "/sit" or press the button
+--ProfileFun.dll
+   [Included in PubComb, no need to load]
+    Allows you to modify your profile more than SL lets you.  Allows you to automaticaly set you "web" url to a link that will tp anyone to you.  (Don't enable that unless you want everyone to know where you are)    
+--DisableCaps.dll
+   [Included in PubComb, no need to load]
+    This will let you turn off diferent sim capabilities.  It really is a power user ?
+function, so here is what you can do with it.  If you disable UpdateScriptTask, and ?
+UpdateScriptAgent, then you can use AweseomeSauce.dll to protect your scripts.  Special Thanks to my friend who taught me caps!
+--ProtAnim.dll
+   [Included in PubComb, no need to load]
+    This will prevent evil animations from crashing your client.  Set the level to "Block only animations that can crash you"and leave it alone.  if you have been recently crashed by this method, you may need to clear your cache first.
+-ClientDetection.dll:
+   [Included in PubComb, no need to load]
+    This will allow you to detect if someone is using a special client ( like this proxy) or other ones.  It can be usefull to see who else has a way to shield their texture layers..  To use, just load, a (LGG) or soemthing will apear next to peoples name tags if they have something special. (note, this is very easily avoided, and by no means is it a way to know what a person is really using)
+-IMLocator.dll:
+   [Included in PubComb, no need to load]
+    It has become popular now for spamers and harasing people to use object to IM thier victim, because thhey are normaly untracable, and can be made to look like anyone sent them.  
+    No longer, this plugin lets you see exactly who is behind them, and exactly where (and a SLURL!)  that object is ANYWHERE IN SL. To use, just load, and make sure the enebaled check box is enabled
+--useful.dll  : 
+    initially made by a freind of mine, moddded by me.  prevents viewer effect crashes, gives you avatars UUID when you open their profiles, helps make  teleports more stable, and many other wonderful adjustments, updated to also block calling card and mod right spam.
+    to use. just load it,. all is automatice
+--away.dll:
+    (curently crashes you if you enable it sometimes, sorry) allows you to ut up and auto awway message, kinda like an auto responder.  It is for people who dont like the "busy" system.
+    to use, load the dll,  say "/away MyAway Message"  to turn it on, and then "/away" to turn it off
+-- awesomeSauce.dll
+    [Included in PubComb, no need to load]
+    does not work unless you disable UpdateScriptTask, and UpdateScriptAgent capabilities with DisableCaps.dll (put them into the dropped side, and tp or relog).  It wil allow you to replace the text of scripts with anything you want, yet still have them run correctly.  Prompted from an old security vulnerability that has seince been fixed. Just add "(COMPILE_PROTECTED)" at the top of your script, and the rest is automatic. Your script wil be saved to your hard drive, and the server script will contain the top three lines of it only (maybe put copywright comments there).  This way the most they can steal are your comments.
+---Cinderella.dll
+   [Included in PubComb, no need to load]
+    allows you to upload any image for free localy to the sim.  They are temporary, will eventualy expire from your cache, and will not load for others on a diferent sim.  They DO  for other if they are on the same sim.
+    to use: load the plugins.  use a 32 OS (sorry).  load the image, then click upload, (via the gui) done.  more help here http://www.kosetsusl.com/super1337hax/cinderellaTutorial.html
+---Handicap.dll
+   [Included in PubComb, no need to load]
+    lets you double click on the ground, anywhere, or any person, or object, and instantly teleport there.  
+    to use; load the plugin, then, in local chat, say "handi-".  a menu will pop up, choose the "help" button.?? ????
+---leetSpeak.dll
+   [Included in PubComb, no need to load]
+    lets you convert your chat into 1337 speak.  multiple complexity levels suported
+    to use: load the plugin, use the gui to active it, and turn it on a level higher than 0.  then type normally in open chat. (works in IMs to, evne though you dont see it)  chat commands also suported if you dont like the gui. "ls-on"  "ls-off" "ls-level X" where X is between 0 and 9
+---moneyFool.dll
+    emuilates it like you have money.  give you 1million fake  linden.  (do not use the, you will just end uup using  your own money)  great for screen shots
+    to activeate, load the plugin, then say "money-" and choose your options from the menu
+---protextion.dll
+    [Included in PubComb, no need to load]
+    passivly protects your viewer from dangeruous stuff that can crash it.  2 protection methods here.
+    to use: load the dll, runs automatically
+---Retreat.dll
+    [Included in PubComb, no need to load]
+    Allerts you if someone removes your from thier freinds list
+    to use: load the plugin, and wait for someone to get pissed at you, lol
+--Shadow.dll
+    Allows 100% impenetrable security in SL chat and IMs.  Safe form chat bots, Lindens, anything.  more help and info here > http://www.kosetsusl.com/super1337hax/shadowTutorial.html
+--Lyra.dll
+   [Included in PubComb, no need to load]
+    Alows you to become phantom and completly impentrable form all attacks instantly. without sitting, rezzing, or being in script enebaled area.
+    To use:: use the gui to type in a trigger in the box.  Supose my triger is "ppp"..   Then,  if you wish to become phantom, type "ppp" in chat.  and "ppp" to disable
+---Penny.dll
+   [Included in PubComb, no need to load]
+    Based almost compllty off a freinds program.  It hides un necisary clothing data that can be used by malicous people to steal all your cloths.
+    to use: just load it, and make sure the gui check box is checked.
+--SxeChan.dll
+    Lets  you re-rout your chat data to a irc server.  Specify the port and server name and stuff in the gui window.  Speack on the sl channel to send it to IRC ex "/1337 hello irc people".
+    You may laso respond in the window that pops up.
+ --NeilSay.dll
+    Plugin made by neil1234 Mimulus that alows you to always shout or whisper in chat, and disable sounds.  Chat commands are "/whisper-on" "/whisper-off" "/shout-on" "/shout-off" "/sound-on" "/sound-off"
+    
+    
+Faq:
+Q.Will you help me crash someone?
+A. No.
+
+Q. Will you help me steal something?
+A. No
+
+Q. Can you break the tos with plugins? and will you teach me how?
+A.  See my profile pics ffs.
+
+Q.    Voice Not working?
+A. Do this: go to debug settings ( Advanced>Debug Settings [advance windows menu apears at the top of your screen after you press  ctrl-alt-shift-d] )
+in sl,  a window should pop up named "Debug Settings" with a huge drop down box; go to "vivoxDebugServerName" change it to "bhr.vivox.com" and then restart SL;
+
+
+Q. I get a "Faild to Initialize" message when I try to click the exe
+A. This is because you don't have a recent version on the dotNet framework. Go Here  to get it :) http://www.microsoft.com/downloads/details.aspx?familyid=10cc340b-f857-4a14-83f5-25634c3bf043&displaylang=en
+
+Q. I get an error when i get the start bbutton, and my program looks like this before hand. ??
+A. You have loaded up the dlls from the wrong folder.  Remove them all, and then carefully make sure you only load plugins inside the folder named "Plugins"
+
+Q. I can't log in when i use the -loginuri part.
+A. You probably have an extra space, or you didnt spell something coorrectly, here, you can copy this part
+"C:\Program Files\SecondLife\SecondLife.exe" -multiple -loginuri http://localhost:8080/ 
+
+Q. When i first logged in,, i was tlaking encrypted and i could not stop it!
+A. go and change your preferences, and then relog, this wil create a settings file for you, and fix the error (a fix will be out later)
+
+Q. When i log in, all i see is ocean and I am at 10,10,10
+A. This happens if the irc plugin is having a hard time connecting (like if rein turned off her server -.-). just wait a few minutes and you should be ok, or change the server you connect to.
+
+Q. I get an error concerning the plugin openjpqg-dotnet
+A. You are trying to load PLugins From the wrong folder.  Make sure that you extracted correctly. there should be two folders, one called "ShadowFiles" another called "plugins" .  Make sure you load ONLY the ones from the plugins folder.
