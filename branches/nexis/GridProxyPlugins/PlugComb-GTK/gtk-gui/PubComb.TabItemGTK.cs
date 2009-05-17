@@ -35,7 +35,8 @@ namespace PubComb {
             this.UIManager.InsertActionGroup(w1, 0);
             this.AddAccelGroup(this.UIManager.AccelGroup);
             this.Name = "PubComb.TabItemGTK";
-            this.Title = Mono.Unix.Catalog.GetString("TabItemGTK");
+            this.Title = Mono.Unix.Catalog.GetString("PubComb Plugin Collection (for GTK)  - Protocol Awareness & Research");
+            this.Icon = Gdk.Pixbuf.LoadFromResource("PubComb.partiny");
             this.WindowPosition = ((Gtk.WindowPosition)(4));
             // Container child PubComb.TabItemGTK.Gtk.Container+ContainerChild
             this.vbox6 = new Gtk.VBox();

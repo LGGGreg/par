@@ -1822,7 +1822,8 @@ Thanks to PSL for initial concept, and Bilo Parx For logged packet.</property>
   <widget class="Gtk.Window" id="PubComb.TabItemGTK" design-size="657 350">
     <action-group name="Default" />
     <property name="MemberName" />
-    <property name="Title" translatable="yes">TabItemGTK</property>
+    <property name="Title" translatable="yes">PubComb Plugin Collection (for GTK)  - Protocol Awareness &amp; Research</property>
+    <property name="Icon">resource:PubComb.partiny</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
       <widget class="Gtk.VBox" id="vbox6">
@@ -2010,7 +2011,9 @@ Saves script source locally, debug log is below.</property>
             <property name="MemberName" />
             <property name="LabelProp" translatable="yes">Plugin by LGG
 
-&lt;b&gt;ADVANCED USE ONLY, YOU COULD ROYALLY SCREW UP YOUR GAME.&lt;/b&gt;</property>
+&lt;b&gt;ADVANCED USE ONLY, YOU COULD ROYALLY SCREW UP YOUR GAME.&lt;/b&gt;
+
+Doubleclick to enable/disable a capability.</property>
             <property name="UseMarkup">True</property>
             <property name="Justify">Center</property>
           </widget>
@@ -2037,79 +2040,39 @@ Saves script source locally, debug log is below.</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.VBox" id="vbox3">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="Spacing">6</property>
+                <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.Label" id="label3">
+                  <widget class="Gtk.TreeView" id="nodEnabled">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Enabled CAPS</property>
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                    <signal name="RowActivated" handler="OnNodEnabledRowActivated" />
                   </widget>
-                  <packing>
-                    <property name="Position">0</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Expand">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
-                    <property name="MemberName" />
-                    <property name="ShadowType">In</property>
-                    <child>
-                      <widget class="Gtk.TreeView" id="nodEnabled">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="ShowScrollbars">True</property>
-                      </widget>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="Position">1</property>
-                    <property name="AutoSize">True</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
-                <property name="AutoSize">False</property>
+                <property name="AutoSize">True</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.VBox" id="vbox4">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow1">
                 <property name="MemberName" />
-                <property name="Spacing">6</property>
+                <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.Label" id="label4">
+                  <widget class="Gtk.TreeView" id="nodDisabled">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Disabled CAPS</property>
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                    <signal name="RowActivated" handler="OnNodDisabledRowActivated" />
                   </widget>
-                  <packing>
-                    <property name="Position">0</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Expand">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow1">
-                    <property name="MemberName" />
-                    <property name="ShadowType">In</property>
-                    <child>
-                      <widget class="Gtk.TreeView" id="nodDisabled">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="ShowScrollbars">True</property>
-                      </widget>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="Position">1</property>
-                    <property name="AutoSize">True</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
                 <property name="Position">1</property>
-                <property name="AutoSize">False</property>
+                <property name="AutoSize">True</property>
               </packing>
             </child>
           </widget>
@@ -2121,44 +2084,65 @@ Saves script source locally, debug log is below.</property>
         <child>
           <widget class="Gtk.HButtonBox" id="hbuttonbox1">
             <property name="MemberName" />
-            <property name="Size">2</property>
+            <property name="Size">0</property>
             <property name="LayoutStyle">Spread</property>
-            <child>
-              <widget class="Gtk.Button" id="cmdMoveLeft">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-go-back Menu</property>
-                <property name="Label" translatable="yes">Enable CAPS</property>
-                <property name="UseUnderline">True</property>
-                <property name="BorderWidth">3</property>
-                <signal name="Activated" handler="OnCmdMoveLeftActivated" />
-              </widget>
-              <packing>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="cmdMoveRight">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-go-forward Menu</property>
-                <property name="Label" translatable="yes">Disable CAPS</property>
-                <property name="UseUnderline">True</property>
-                <signal name="Activated" handler="OnCmdMoveRightActivated" />
-              </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
           </widget>
           <packing>
             <property name="Position">3</property>
             <property name="AutoSize">False</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="PubComb.ProTextionFormGTK" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">ProTextionFormGTK</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.VBox" id="vbox3">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.Label" id="lblTitle">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Plugin by LGG.
+
+Thanks to Thomas for the JPEG help!</property>
+            <property name="Justify">Center</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">False</property>
+            <property name="Expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.HSeparator" id="hseparator1">
+            <property name="MemberName" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="chkEnabled">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">Protect me from image crashes.</property>
+            <property name="Active">True</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>

@@ -195,7 +195,7 @@
     <None Include="CliIntForm1.Designer.cs">
       <DependentUpon>CliIntForm1.cs</DependentUpon>
     </None>
-    <None Include="ProTextionClass1.cs" />
+    <Compile Include="ProTextion.cs" />
     <None Include="ProTextionForm1.cs">
       <SubType>Form</SubType>
     </None>
@@ -268,6 +268,8 @@
     <Compile Include="gtk-gui\PubComb.AwesomeSauceFormGTK.cs" />
     <Compile Include="CapsFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.CapsFormGTK.cs" />
+    <Compile Include="ProTextionFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.ProTextionFormGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -372,7 +374,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gtk-gui\gui.stetic" />
     <EmbeddedResource Include="..\..\Images\partiny.png">
-      <Gettext-ScanForTranslations>false</Gettext-ScanForTranslations>
       <LogicalName>PubComb.partiny</LogicalName>
     </EmbeddedResource>
   </ItemGroup>

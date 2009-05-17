@@ -74,21 +74,22 @@ namespace PubComb
             plugins.Add(new DisableCapsPlugin(this));
 //            plugins.Add(new IMLocatePlugin(this));
             plugins.Add(new LeetPlugin(this));
-//            plugins.Add(new CinderellaPlugin(this));
+//			Too complicated to fuck with atm
+//          plugins.Add(new CinderellaPlugin(this));
             plugins.Add(new ProfileFunPlugin(this));
             plugins.Add(new SitAnywherePlugin(this));
 //            plugins.Add(new HighPlugin(this));
-//            plugins.Add(new RadarChatPlugin(this));
+            plugins.Add(new RadarChatPlugin(this));
 //            plugins.Add(new FileProtectPlugin(this));
 //            //plugins.Add(new InvFunPlugin(this));
 //            plugins.Add(new RainbowParticlesPlugin(this));
 //            //causing problems :(
 //            //plugins.Add(new coin(this));
 //            plugins.Add(new RetreatPlugin(this));
-//            plugins.Add(new AwesomeSauce(this));
-//            plugins.Add(new ProTextPlug(this));
+            plugins.Add(new AwesomeSauce(this));
+            plugins.Add(new ProTextPlug(this));
 //            plugins.Add(new ViewerEffectLogPlugin(this));
-//            plugins.Add(new AvatarTracker(this));
+            plugins.Add(new AvatarTracker(this));
             plugins.Add(new CliIntPlugin(this));
 
             //tabformthread = new Thread(new ThreadStart(delegate()

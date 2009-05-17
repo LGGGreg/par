@@ -30,7 +30,7 @@ namespace PubComb
     {
         private ProxyFrame frame;
         private Proxy proxy;
-        private PubComb plugin;
+        //private PubComb plugin;
         public static bool Enabled = true;
         public AwesomeSauceFormGTK form;
         //private Thread formthread;
@@ -43,7 +43,7 @@ namespace PubComb
         private Dictionary<UUID, TransferInfoPacket> scriptInfos = new Dictionary<UUID, TransferInfoPacket>();
         //public Dictionary<UUID, UUID> trans2Item = new Dictionary<UUID, UUID>();
         public string brand = "asauce";
-        private ulong currentRegion;
+        //private ulong currentRegion;
         //private List<CurrentUploadType> name2SaveBuffer = new List<CurrentUploadType>();
         public class CurrentUploadType
         {
@@ -81,8 +81,8 @@ namespace PubComb
         }
         public AwesomeSauce(PubComb p)
         {
-            plugin = p;
-            currentRegion = UUID.Zero.GetULong();
+            //plugin = p;
+            //currentRegion = UUID.Zero.GetULong();
             form = new AwesomeSauceFormGTK(this);
             this.frame = p.frame;
             this.proxy = frame.proxy;

@@ -10,10 +10,10 @@ namespace PubComb
 {
     public partial class ProTextionForm1 : Form
     {
-        public ProTextPlug p;
-        public ProTextionForm1(ProTextPlug pp)
+        //public ProTextPlug p;
+        public ProTextionForm1(ProTextPlug)
         {
-            p = pp;
+            //p = pp;
             InitializeComponent();
         }
         public bool getEnabled()

@@ -19,9 +19,11 @@ namespace PubComb
 			nsDisabled=new Gtk.ListStore(typeof(String));
 			dcp=l;
 			this.Build();
+			Console.WriteLine("Test");
 			this.nodEnabled.Model=nsEnabled;
 			this.nodDisabled.Model=nsDisabled;
-			
+			this.nodEnabled.AppendColumn("Enabled CAPS",new CellRendererText(),"text",0);
+			this.nodDisabled.AppendColumn("Disabled CAPS",new CellRendererText(),"text",0);
 			string[] caps = {
 				"ChatSessionRequest",
 	            "CopyInventoryFromNotecard",
@@ -76,7 +78,8 @@ namespace PubComb
                     string line;
                     while ((line = r.ReadLine()) != null)
                     {
-                        Move(line, false);                        
+						// Broken as hell, just let the user redo it since this is unsafe anyway.
+                        //Move(line, false);                        
                     }
                     r.Close();
                 }
@@ -92,75 +95,62 @@ namespace PubComb
             }
             tw.Close();
         }
-		private void Move(string item, bool enabled)
-	    {
-			if(String.IsNullOrEmpty(item))
-				return;
-			if(enabled)
-			{
-				TreeIter i=new TreeIter();
-				while(nsEnabled.IterNext(ref i))
-				{
-					string line=(string)nsEnabled.GetValue(i,0);
-					if(line==item)
-					{
-						nsEnabled.Remove(ref i);
-						nsDisabled.AppendValues(line);
-					}
-				}
-			} else {
-				TreeIter i=new TreeIter();
-				while(nsDisabled.IterNext(ref i))
-				{
-					string line=(string)nsDisabled.GetValue(i,0);
-					if(line==item)
-					{
-						nsDisabled.Remove(ref i);
-						nsEnabled.AppendValues(line);
-					}
-				}
-			}
-		}
+		
 		
 		private void updateBlocked()
         {
-			//Proxy p = new Proxy(new ProxyConfig("Derp","Derp"));
 			try
 			{
-            lock (dcp.proxy.BlockCaps)
-            {
-                dcp.proxy.BlockCaps.Clear();
-                foreach (string line in nsDisabled)
-                {
-                    dcp.proxy.BlockCaps.Add(line);
-                }
-                saveData();
-            }
+	            lock (dcp.proxy.BlockCaps)
+	            {
+	                dcp.proxy.BlockCaps.Clear();
+	                foreach (string line in nsDisabled)
+	                {
+	                    dcp.proxy.BlockCaps.Add(line);
+	                }
+	                saveData();
+	            }
 			} catch(Exception e)
 			{
 				Console.WriteLine(e.ToString());
+				//Con
 			}
         }
 
-		protected virtual void OnCmdMoveLeftActivated (object sender, System.EventArgs e)
+		protected virtual void OnNodEnabledRowActivated (object o, Gtk.RowActivatedArgs args)
 		{
-			TreeIter i;
-			if(nodDisabled.Selection.GetSelected(out i))
+			    
+			if(o!=null)
 			{
-				string sel=(string)nsDisabled.GetValue(i,0);
-				if(!String.IsNullOrEmpty(sel))
-					Move(sel,false);
+		        //Gtk.NodeSelection selection = (Gtk.NodeSelection) o;
+		        //TreeNode node = (TreeNode) selection.SelectedNode;
+				TreeIter i = new TreeIter();
+				if(nsEnabled.GetIter(out i,args.Path))
+				{
+					string l=(string)nsEnabled.GetValue(i,0);
+					nsEnabled.Remove(ref i);
+					nsDisabled.AppendValues(new string[]{l});
+					saveData();
+					updateBlocked();
+				}
 			}
 		}
 
-		protected virtual void OnCmdMoveRightActivated (object sender, System.EventArgs e)
+		protected virtual void OnNodDisabledRowActivated (object o, Gtk.RowActivatedArgs args)
 		{
-			TreeIter i;
-			if(nodEnabled.Selection.GetSelected(out i))
+			if(o!=null)
 			{
-				string sel=(string)nsEnabled.GetValue(i,0);
-				if(!String.IsNullOrEmpty(sel))
-					Move(sel,true);
+		        //Gtk.NodeSelection selection = (Gtk.NodeSelection) o;
+		        //TreeNode node = (TreeNode) selection.SelectedNode;
+				TreeIter i = new TreeIter();
+				if(nsDisabled.GetIter(out i,args.Path))
+				{
+					string l=(string)nsDisabled.GetValue(i,0);
+					nsDisabled.Remove(ref i);
+					nsEnabled.AppendValues(new string[]{l});
+					saveData();
+					updateBlocked();
+				}
 			}
 		}
 	}
