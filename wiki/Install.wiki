@@ -24,7 +24,7 @@ To get PAR working with your viewer, watch the tutorial [http://www.youtube.com/
 == Linux Installation Instructions ==
 
  # Download one of the binary ZIPs and extract it to a directory somewhere.
-  * You can also check out the nexis branch on SVN if you wish to try pubcomb's GTK flavor.  <b>Note: PAR-GTK is, at the time of writing, horribly screwed up.</b>
+  * You can also check out the nexis branch on SVN if you wish to try pubcomb's GTK flavor.  <s>Note: PAR-GTK is, at the time of writing, horribly screwed up.</s>
  # Save the PAR Linux Loader bash script as "linuxloader" in the root of your PAR folder and execute the following in terminal to make it executable: <code>chmod +x ./linuxloader</code>
  # Execute linuxloader either by doubleclicking it in your window manager and selecting "Run in Terminal" or by executing  through the terminal itself.
  # Open your SL install directory in terminal and execute: <code>./secondlife --loginuri http://localhost:8080/</code>
