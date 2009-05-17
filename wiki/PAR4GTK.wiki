@@ -1,0 +1,26 @@
+#summary Introduction of the GTK Branch
+#labels Phase-Design,Featured
+
+= Introduction =
+
+Because of the issues with the old GUI that LordGregGreg provided, Rob (In the SVN as NexisEntertainment@gmail.com) decided to recode all the GUI elements in PAR with a new system using the widely used GTK graphics library.
+
+This means that this:
+
+[OLD PIC HERE]
+
+turns into this:
+
+http://flex.nexisonline.net/static/pargtk_001.jpg
+
+In addition to being pretty, it'll work on Linux, Mac, AND Windows.
+
+== Roadmap ==
+ # Alpha
+  * *Initial conversion* - Conversion of at least 25% of all forms (Including main form) to GTK. (*DONE!*)
+   * PubComb - About 50-65% complete.
+   * Shadow - DONE
+   * Loader - Complete
+  * *Complete conversion* - All forms and messageboxes converted to GTK.  
+ # Beta
+ # 1.0 and binary release.
