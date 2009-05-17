@@ -15,12 +15,12 @@ namespace PubComb
     
     public partial class CinderForm1 : Window
     {
-        private CinderellaPlugin gaylord;
+        private CinderellaPlugin plug;
         private byte[] UploadData = null;
         private string FileName = String.Empty;
         public CinderForm1(CinderellaPlugin free) : base(Gtk.WindowType.Toplevel)
         {
-            this.gaylord = free;
+            this.plug = free;
             InitializeComponent();
         }
         private bool IsPowerOfTwo(uint n)
@@ -199,7 +199,6 @@ namespace PubComb
                 LoadImage();
                 button2free.Sensitive = true;
             }
-            
         }
 
 

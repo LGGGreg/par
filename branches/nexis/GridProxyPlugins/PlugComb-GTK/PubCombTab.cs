@@ -74,8 +74,8 @@ namespace PubComb
             plugins.Add(new DisableCapsPlugin(this));
 //            plugins.Add(new IMLocatePlugin(this));
             plugins.Add(new LeetPlugin(this));
-//			Too complicated to fuck with atm
-//          plugins.Add(new CinderellaPlugin(this));
+// 			May or may not work;  GTK and Winforms do not play well together...
+          	plugins.Add(new CinderellaPlugin(this));
             plugins.Add(new ProfileFunPlugin(this));
             plugins.Add(new SitAnywherePlugin(this));
 //            plugins.Add(new HighPlugin(this));

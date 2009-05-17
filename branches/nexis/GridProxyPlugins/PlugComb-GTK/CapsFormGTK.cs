@@ -78,7 +78,7 @@ namespace PubComb
                     string line;
                     while ((line = r.ReadLine()) != null)
                     {
-						// Broken as hell, just let the user redo it since this is unsafe anyway.
+						// Broken as hell, just let the user redo it since this is an unsafe plugin anyway.
                         //Move(line, false);                        
                     }
                     r.Close();

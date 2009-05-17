@@ -114,7 +114,7 @@ namespace PubComb
             Simstate = 22,
         }
         public static Dictionary<ulong, lsotoolXfer> OutgoingXfers = new Dictionary<ulong, lsotoolXfer>();
-        private CinderForm1 form;
+        private CinderellaFormGTK form;
         private int grabbed = 200;
 
         public CinderellaPlugin(PubComb plug)
@@ -130,7 +130,7 @@ namespace PubComb
             
             //formthread = new Thread(new ThreadStart(delegate()
             //{
-                form = new CinderForm1(this);
+                form = new CinderellaFormGTK(this);
               //  Application.Run(form);
             //}));
             //formthread.SetApartmentState(ApartmentState.STA);

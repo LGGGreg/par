@@ -56,12 +56,12 @@
     </None>
     <Compile Include="AvatarInfo.cs" />
     <Compile Include="CinderellaPlugin.cs" />
-    <Compile Include="CinderForm1.cs">
+    <None Include="CinderForm1.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CinderForm1.Designer.cs">
+    </None>
+    <None Include="CinderForm1.Designer.cs">
       <DependentUpon>CinderForm1.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="ClientDetect.cs" />
     <Compile Include="ClientDetectForm1.cs">
       <SubType>Form</SubType>
@@ -270,6 +270,8 @@
     <Compile Include="gtk-gui\PubComb.CapsFormGTK.cs" />
     <Compile Include="ProTextionFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.ProTextionFormGTK.cs" />
+    <Compile Include="CinderellaFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.CinderellaFormGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
