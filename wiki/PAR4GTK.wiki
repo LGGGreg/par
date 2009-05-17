@@ -24,3 +24,16 @@ In addition to being pretty, it'll work on Linux, Mac, AND Windows.
   * *Complete conversion* - All forms and messageboxes converted to GTK.  
  # Beta
  # 1.0 and binary release.
+
+== Hands Dirty ==
+
+PAR-GTK is being developed on Ubuntu Jaunty Jackalope (9.04) using the latest mono packages.  MonoDevelop is the primary IDE, but it saves as MSBuild 2003 files.
+
+To download the code, you must have Subversion installed.
+
+{{{
+# Checkout the latest PAR-GTK code in readonly mode.
+svn co http://par.googlecode.com/svn/branches/nexis/ par-gtk
+}}}
+
+Extract OpenMetaverse 0.6.2's binaries into par-gtk/OpenMetaverse and you should be set.
