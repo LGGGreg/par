@@ -7,7 +7,7 @@ Because of the issues with the old GUI that LordGregGreg provided, Rob (In the S
 
 This means that this:
 
-_Old pic here_
+[http://flex.nexisonline.net/static/screens/parwin_001.jpg]
 
 turns into this:
 
