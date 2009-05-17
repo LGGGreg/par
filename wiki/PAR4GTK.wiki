@@ -7,11 +7,11 @@ Because of the issues with the old GUI that LordGregGreg provided, Rob (In the S
 
 This means that this:
 
-[OLD PIC HERE]
+_Old pic here_
 
 turns into this:
 
-http://flex.nexisonline.net/static/pargtk_001.jpg
+[http://flex.nexisonline.net/static/screens/pargtk_001.jpg]
 
 In addition to being pretty, it'll work on Linux, Mac, AND Windows.
 
