@@ -1,0 +1,59 @@
+<PluginList>
+	<Plugin Filename="NeilSay.dll" Name="NeilSay" Author="neil1234 Mimulus" Version="Unknown">
+		<![CDATA[
+Plugin made by neil1234 Mimulus 
+that allows you to always shout 
+or whisper in chat, and disable 
+sounds.
+		
+Chat commands are: 
+			
+ - /whisper-on
+ - /whisper-off
+ - /shout-on
+ - /shout-off
+ - /sound-on
+ - /sound-off
+		]]>
+	</Plugin>
+	<Plugin Filename="PubComb-GTK.dll" Name="PubComb (GTK)" Author="Fred Rookstown" Version="0.1">
+		<![CDATA[
+Original Pubcomb, but rewritten to use the GTK GUI platform.]]>
+	</Plugin>
+	<Plugin Filename="PubComb-NoGUI.dll" Name="PubComb" Author="Multiple authors" Version="Unknown">
+		<![CDATA[
+Combination of many different 
+DLLs. 
+
+(GUI disabled on Linux, use 
+chat commands.)]]>
+	</Plugin>
+	<!--<Plugin Filename="useful.dll" Name="Useful" Author="Greg's Friend" Version="Unknown">
+		<![CDATA[
+Initially made by a friend of 
+LordGregGreg Back.  
+
+Prevents viewer effect crashes, 
+gives you avatars UUID when 
+you open their profiles, helps 
+make teleports more stable, 
+and many other wonderful 
+adjustments. 
+
+Updated to also block 
+calling card and mod right 
+spam.
+		]]>
+	</Plugin>-->
+	<Plugin Filename="Shadow-GTK.dll" Name="Shadow (GTK)" Author="Unknown" Version="Unknown">
+		<![CDATA[
+Rewritten to work on Linux.
+		
+Allows 100% impenetrable 
+security in SL chat 
+and IMs.  
+
+Safe from chat bots, Lindens, 
+anything.]]>
+	</Plugin>
+</PluginList>
