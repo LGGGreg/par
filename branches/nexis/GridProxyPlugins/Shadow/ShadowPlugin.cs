@@ -24,7 +24,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using GridProxy;
 using System.Threading;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace PubComb
 {
@@ -36,7 +36,7 @@ namespace PubComb
         private Proxy proxy;
         public static bool Enabled = false;
         private Thread formthread;
-        private ShadowForm1 form;
+        private ShadowFormGTK form;
         public string indicator, brand, trigger;
 
 
@@ -46,14 +46,8 @@ namespace PubComb
             fish.Mode = CipherMode.ECB;
             ms = new System.IO.MemoryStream();
 
-            formthread = new Thread(new ThreadStart(delegate()
-            {
-                form = new ShadowForm1(this);
-                Application.Run(form);
-            }));
-            formthread.SetApartmentState(ApartmentState.STA);
-            formthread.Start();
-
+			// Removed stupid threading stuff, not needed with GTK.
+            form = new ShadowFormGTK(this);
 
             this.frame = frame;
             this.proxy = frame.proxy;
@@ -132,7 +126,7 @@ namespace PubComb
                     
                 }
 
-                form.setBox(Enabled);
+                //form.setBox(Enabled);
                 return null;
             }
             return packet;
@@ -169,6 +163,7 @@ namespace PubComb
                 if (im.MessageBlock.Dialog == (byte)0)
                 {
                     string message = Utils.BytesToString(im.MessageBlock.Message);
+					// TODO:  This could include people saying the word "typing" in their message...
                     if (message.ToLower().Contains("typing"))
                     {
                         //ignoe
@@ -184,11 +179,9 @@ namespace PubComb
                     {
                         if (message.StartsWith(this.brand))
                         {
-                            form.log("we got a IM that needs decryption :" + message,Color.Orange);
+                            form.AddInternalLog("We received an IM that needs decryption :" + message);
                             im.MessageBlock.Message = Utils.StringToBytes(shadow_decrypt(message.Substring(this.brand.Length)));
                         }
-                        
-
                     }
                 }
             }
@@ -208,7 +201,7 @@ namespace PubComb
                 {
                     if (!message.ToLower().Contains("typing") && message.Length > 1)
                     {
-                        form.log("We were guna send the IM with :" + message, Color.OrangeRed);
+                        form.AddInternalLog("We were going to send the IM with: " + message);
                         im.MessageBlock.Message = Utils.StringToBytes(this.brand+"" + shadow_encrypt(Utils.BytesToString(im.MessageBlock.Message)));
                     }
                 }
@@ -222,7 +215,7 @@ namespace PubComb
                 message = message.Substring(this.trigger.Length);
                 if (!message.ToLower().Contains("typing") && message.Length > 1)
                 {
-                    form.log("we were guna send the IM with :" + message, Color.OrangeRed);
+                    form.AddInternalLog("We were going to send the IM with :" + message);
                     im.MessageBlock.Message = Utils.StringToBytes(this.brand+"" + shadow_encrypt(Utils.BytesToString(im.MessageBlock.Message)));
                 }
             }
@@ -233,15 +226,15 @@ namespace PubComb
             fish = new Twofish();
             fish.Mode = CipherMode.ECB;
             ms = new System.IO.MemoryStream();
-            //form.log("we were guna send the IM with " + plainText);
+            //form.AddInternalLog("we were guna send the IM with " + plainText);
             byte [] plainBytes = Utils.StringToBytes(plainText);
             ICryptoTransform encode = new ToBase64Transform();
-            ICryptoTransform encrypt = fish.CreateEncryptor(form.getKey(),plainBytes);
+            ICryptoTransform encrypt = fish.CreateEncryptor(form.ShadowKey,plainBytes);
             CryptoStream cryptostream = new CryptoStream(new CryptoStream(ms,encode,CryptoStreamMode.Write),encrypt,CryptoStreamMode.Write);
             cryptostream.Write(plainBytes,0,plainBytes.Length);
 			cryptostream.Close();
             byte[] bytOut = ms.ToArray();
-            form.log("We encrypted "+plainText+" to "+Utils.BytesToString(bytOut),Color.DarkRed);
+            form.AddEncryptedChat(plainText,Utils.BytesToString(bytOut));
             return Utils.BytesToString(bytOut);
         }
         public string shadow_decrypt(string encyptedText)
@@ -250,19 +243,19 @@ namespace PubComb
             fish.Mode = CipherMode.ECB;
             ms = new System.IO.MemoryStream();
 
-            //form.log("we were sent the IM with " + encyptedText);
+            //form.AddInternalLog("we were sent the IM with " + encyptedText);
             byte[] encyptedBytes = Utils.StringToBytes(encyptedText);
 
             ICryptoTransform decode = new FromBase64Transform();
 
             //create DES Decryptor from our des instance
-            ICryptoTransform decrypt = fish.CreateDecryptor(form.getKey(), encyptedBytes);
+            ICryptoTransform decrypt = fish.CreateDecryptor(form.ShadowKey, encyptedBytes);
             System.IO.MemoryStream msD = new System.IO.MemoryStream();
             CryptoStream cryptostreamDecode = new CryptoStream(new CryptoStream(msD,decrypt,CryptoStreamMode.Write),decode,CryptoStreamMode.Write);
             cryptostreamDecode.Write(encyptedBytes, 0, encyptedBytes.Length);
             cryptostreamDecode.Close();
             byte[] bytOutD = msD.ToArray(); // we should now have our plain text back	
-            form.log("We decrypted "+encyptedText+" to " + Utils.BytesToString(bytOutD),Color.Red);
+            //form.AddInternalLog("We decrypted "+encyptedText+" to " + Utils.BytesToString(bytOutD),Color.Red);
             return ""+this.indicator+""+Utils.BytesToString(bytOutD);
         }
         public string handeledViewerOutput(string mssage)
@@ -271,7 +264,7 @@ namespace PubComb
             if (mssage.ToLower().Contains(this.brand.ToLower()+"-on"))
             {
                 Enabled = true;
-                form.setBox(Enabled);
+                form.ShadowEnabled=Enabled;
 
                 SendUserAlert("Encryption Enabled");
                 return "die";
@@ -281,7 +274,7 @@ namespace PubComb
                 Enabled = false;
 
                 SendUserAlert("Encryption Disabled");
-                form.setBox(Enabled);
+                form.ShadowEnabled=Enabled;;
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower()+"-key"))
@@ -315,8 +308,9 @@ namespace PubComb
                     {
                         if (message.Trim().Length > 0)
                         {
-                            form.log("We guna send a chat of " + message, Color.Yellow);
-                            ChatFromViewer.ChatData.Message = Utils.StringToBytes(this.brand+"" + shadow_encrypt(message));
+							string enc=shadow_encrypt(message);
+							form.AddEncryptedChat(message,enc);
+							ChatFromViewer.ChatData.Message = Utils.StringToBytes(this.brand+"" +enc);
 
                         }
 
@@ -334,7 +328,7 @@ namespace PubComb
                 {
                     if (message.Trim().Length > 0)
                     {
-                        form.log("We guna send a chat of " + message, Color.Yellow);
+                        form.AddChat("Me",message);
                         ChatFromViewer.ChatData.Message = Utils.StringToBytes(this.brand+"" + shadow_encrypt(message));
 
                     }
@@ -353,8 +347,9 @@ namespace PubComb
                 //Console.WriteLine(chatMsg);
                 if (chatMsg.StartsWith(this.brand))
                 {
-                    form.log("We got a chat with " + chatMsg, Color.GreenYellow);
-                    chat.ChatData.Message = Utils.StringToBytes(shadow_decrypt(chatMsg.Substring(this.brand.Length)));
+					string dm=shadow_decrypt(chatMsg.Substring(this.brand.Length));
+                    form.AddDecryptedChat(Utils.BytesToString(chat.ChatData.FromName), dm);
+                    chat.ChatData.Message = Utils.StringToBytes(dm);
                 }
             //}
             return chat;
