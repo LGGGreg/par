@@ -58,8 +58,6 @@ namespace PubComb {
             this.vbox4.Add(this.cmdSit);
             Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox4[this.cmdSit]));
             w3.Position = 2;
-            w3.Expand = false;
-            w3.Fill = false;
             this.Add(this.vbox4);
             if ((this.Child != null)) {
                 this.Child.ShowAll();

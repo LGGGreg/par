@@ -124,7 +124,9 @@ namespace PubComb
 		
 		private void updateBlocked()
         {
-			Proxy p = new Proxy(new ProxyConfig("Derp","Derp"));
+			//Proxy p = new Proxy(new ProxyConfig("Derp","Derp"));
+			try
+			{
             lock (dcp.proxy.BlockCaps)
             {
                 dcp.proxy.BlockCaps.Clear();
@@ -134,6 +136,10 @@ namespace PubComb
                 }
                 saveData();
             }
+			} catch(Exception e)
+			{
+				Console.WriteLine(e.ToString());
+			}
         }
 
 		protected virtual void OnCmdMoveLeftActivated (object sender, System.EventArgs e)
