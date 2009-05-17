@@ -47,8 +47,9 @@ namespace PubComb
             ms = new System.IO.MemoryStream();
 
 			// Removed stupid threading stuff, not needed with GTK.
+			Gtk.Application.Init();
             form = new ShadowFormGTK(this);
-
+			
             this.frame = frame;
             this.proxy = frame.proxy;
             this.proxy.AddDelegate(PacketType.ScriptDialogReply, Direction.Outgoing, new PacketDelegate(OutDialogFromViewer));
@@ -61,6 +62,7 @@ namespace PubComb
         public override void Init()
         {
             SayToUser("/me loaded:  Say \"/"+this.brand+"\" to get help");
+			Gtk.Application.Run();
         }
         private void SayToUser(string message)
         {
