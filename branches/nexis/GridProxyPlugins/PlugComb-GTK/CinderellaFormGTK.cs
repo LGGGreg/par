@@ -28,6 +28,7 @@ namespace PubComb
             return (n & (n - 1)) == 0 && n != 0;
         }
 		// TODO: Not used.
+		/*
         private void LoadOther()
         {
             pbLoadStatus.Fraction = 0;
@@ -39,6 +40,7 @@ namespace PubComb
 			cmdOpen.Sensitive = true;
            	//cmdSave.Sensitive = false;
         }
+		*/
 		
         private void LoadImage()
         {

@@ -70,7 +70,7 @@ namespace PubComb
 		
 		public void readData()
         {
-            
+            /* Broken
             if (File.Exists("DisableCaps.settings"))
             {
                 using (StreamReader r = new StreamReader("DisableCaps.settings"))
@@ -84,6 +84,7 @@ namespace PubComb
                     r.Close();
                 }
             }
+            */
             updateBlocked();
         }
 		private void saveData()

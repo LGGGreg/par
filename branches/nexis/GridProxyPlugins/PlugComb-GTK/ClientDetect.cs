@@ -45,10 +45,10 @@ namespace PubComb
             //plugin.tabform.addATab(form, "Client Detection");
             //form.readData();
         }
-        private PubComb plugin;
+        //private PubComb plugin;
         private ProxyFrame frame;
         private Proxy proxy;
-        private PubComb.Aux_SharedInfo SharedInfo;
+        //private PubComb.Aux_SharedInfo SharedInfo;
         private ClientDetectForm1 form;
         private string lastSim = "";
         public Dictionary<UUID, string> uid2name = new Dictionary<UUID, string>();
@@ -62,11 +62,11 @@ namespace PubComb
 
 //          form = new ClientDetectForm1(this);
 
-			this.plugin = plugin;
+			//this.plugin = plugin;
             
             this.frame = plugin.frame;
             this.proxy = plugin.frame.proxy;
-            this.SharedInfo = plugin.SharedInfo;
+            //this.SharedInfo = plugin.SharedInfo;
 
             this.proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(inObj));
             this.proxy.AddDelegate(PacketType.AvatarAppearance, Direction.Incoming, new PacketDelegate(inClo));
@@ -330,6 +330,7 @@ namespace PubComb
             form.setList(n); 
 
         }
+		/* Not used
         private void SendUserAlert(string message)
         {
             AlertMessagePacket packet = new AlertMessagePacket();
@@ -360,11 +361,12 @@ namespace PubComb
                 }
             return packet;
         }
+        
         private Packet InDisableSimulatorHandler(Packet packet, IPEndPoint sim)
         {
             avclients.Clear();
             return packet;
         }
-    
+    	*/
     }
 }

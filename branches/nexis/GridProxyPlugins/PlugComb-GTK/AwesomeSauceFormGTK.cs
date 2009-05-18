@@ -5,11 +5,11 @@ namespace PubComb
 {	
 	public partial class AwesomeSauceFormGTK : Gtk.Window
 	{
-		AwesomeSauce a;
+		//AwesomeSauce a;
 		public AwesomeSauceFormGTK(AwesomeSauce p) : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			a=p;
+			//a=p;
 			this.Build();
 		}
 		

@@ -33,10 +33,10 @@ namespace PubComb
     {
         //private Pui
         public PubComb plugin;
-        private ProxyFrame frame;
+        //private ProxyFrame frame;
         public Proxy proxy;
         private CapsFormGTK form;
-        private string brand;
+        //private string brand;
         public void LoadNow(ref TabItemGTK tabform)
         {
             tabform.addATab(form, "DisableCaps");
@@ -53,11 +53,12 @@ namespace PubComb
             //formthread.Start();
                 plugin = plug;
              //   plugin.tabform.addATab(form, "Disable Caps");
-            this.frame = plug.frame;
+            //this.frame = plug.frame;
             this.proxy = plug.proxy;
-            this.brand = "Disable Caps";
+            //this.brand = "Disable Caps";
            
         }
+		/*
         private void SayToUser(string message)
         {
 
@@ -71,7 +72,7 @@ namespace PubComb
             packet.ChatData.Position = new Vector3(0, 0, 0);
             packet.ChatData.Message = Utils.StringToBytes(message);
             proxy.InjectPacket(packet, Direction.Incoming);
-        }
+        }*/
         public void SendUserAlert(string message)
         {
             AlertMessagePacket packet = new AlertMessagePacket();
@@ -80,6 +81,7 @@ namespace PubComb
             proxy.InjectPacket(packet, Direction.Incoming);
 
         }
+		/*
         private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
         {
             Random rand = new Random();
@@ -100,6 +102,6 @@ namespace PubComb
             }
             packet.Buttons = temp;
             proxy.InjectPacket(packet, Direction.Incoming);
-        }
+        }*/
     }
 }

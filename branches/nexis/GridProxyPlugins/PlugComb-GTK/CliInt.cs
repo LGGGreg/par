@@ -187,22 +187,22 @@ namespace PubComb
                 ObjectUpdatePacket.ObjectDataBlock block = update.ObjectData[b];
                 if (block.FullID == frame.AgentID)
                 {
-                    Vector4 collisionPlane = Vector4.Zero;
+                    //Vector4 collisionPlane = Vector4.Zero;
                     Vector3 position;
-                    Vector3 velocity;
-                    Vector3 acceleration;
-                    Quaternion rotation;
-                    Vector3 angularVelocity;
+                    //Vector3 velocity;
+                    //Vector3 acceleration;
+                    //Quaternion rotation;
+                    //Vector3 angularVelocity;
                     //NameValue[] nameValues;
                     //bool attachment = false;
-                    PCode pcode = (PCode)block.PCode;
+                    //PCode pcode = (PCode)block.PCode;
                     #region Decode Additional packed parameters in ObjectData
                     int pos = 0;
                     switch (block.ObjectData.Length)
                     {
                         case 76:
                             // Collision normal for avatar
-                            collisionPlane = new Vector4(block.ObjectData, pos);
+                            //collisionPlane = new Vector4(block.ObjectData, pos);
                             pos += 16;
 
                             goto case 60;
@@ -211,22 +211,22 @@ namespace PubComb
                             position = new Vector3(block.ObjectData, pos);
                             pos += 12;
                             // Velocity
-                            velocity = new Vector3(block.ObjectData, pos);
+                            //velocity = new Vector3(block.ObjectData, pos);
                             pos += 12;
                             // Acceleration
-                            acceleration = new Vector3(block.ObjectData, pos);
+                            //acceleration = new Vector3(block.ObjectData, pos);
                             pos += 12;
                             // Rotation (theta)
-                            rotation = new Quaternion(block.ObjectData, pos, true);
+                            //rotation = new Quaternion(block.ObjectData, pos, true);
                             pos += 12;
                             // Angular velocity (omega)
-                            angularVelocity = new Vector3(block.ObjectData, pos);
+                            //angularVelocity = new Vector3(block.ObjectData, pos);
                             pos += 12;
 
                             break;
                         case 48:
                             // Collision normal for avatar
-                            collisionPlane = new Vector4(block.ObjectData, pos);
+                            //collisionPlane = new Vector4(block.ObjectData, pos);
                             pos += 16;
 
                             goto case 32;
@@ -240,29 +240,30 @@ namespace PubComb
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 3.0f * 256.0f));
                             pos += 6;
                             // Velocity
-                            velocity = new Vector3(
+                            /*velocity = new Vector3(
                                 Utils.UInt16ToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f),
-                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));
+                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));*/
                             pos += 6;
                             // Acceleration
-                            acceleration = new Vector3(
+                            /*acceleration = new Vector3(
                                 Utils.UInt16ToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f),
-                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));
+                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));*/
                             pos += 6;
                             // Rotation (theta)
+						/*
                             rotation = new Quaternion(
                                 Utils.UInt16ToFloat(block.ObjectData, pos, -1.0f, 1.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 2, -1.0f, 1.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 4, -1.0f, 1.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 6, -1.0f, 1.0f));
-                            pos += 8;
+                          */pos += 8;
                             // Angular velocity (omega)
-                            angularVelocity = new Vector3(
+                           /* angularVelocity = new Vector3(
                                 Utils.UInt16ToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.UInt16ToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f),
-                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));
+                                Utils.UInt16ToFloat(block.ObjectData, pos + 4, -256.0f, 256.0f));*/
                             pos += 6;
 
                             break;
@@ -276,29 +277,29 @@ namespace PubComb
                                 Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));
                             pos += 3;
                             // Velocity
-                            velocity = new Vector3(
+                            /*velocity = new Vector3(
                                 Utils.ByteToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.ByteToFloat(block.ObjectData, pos + 1, -256.0f, 256.0f),
-                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));
+                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));*/
                             pos += 3;
                             // Accleration
-                            acceleration = new Vector3(
+                            /*acceleration = new Vector3(
                                 Utils.ByteToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.ByteToFloat(block.ObjectData, pos + 1, -256.0f, 256.0f),
-                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));
+                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));*/
                             pos += 3;
                             // Rotation
-                            rotation = new Quaternion(
+                            /*rotation = new Quaternion(
                                 Utils.ByteToFloat(block.ObjectData, pos, -1.0f, 1.0f),
                                 Utils.ByteToFloat(block.ObjectData, pos + 1, -1.0f, 1.0f),
                                 Utils.ByteToFloat(block.ObjectData, pos + 2, -1.0f, 1.0f),
-                                Utils.ByteToFloat(block.ObjectData, pos + 3, -1.0f, 1.0f));
+                                Utils.ByteToFloat(block.ObjectData, pos + 3, -1.0f, 1.0f));*/
                             pos += 4;
                             // Angular Velocity
-                            angularVelocity = new Vector3(
+                            /*angularVelocity = new Vector3(
                                 Utils.ByteToFloat(block.ObjectData, pos, -256.0f, 256.0f),
                                 Utils.ByteToFloat(block.ObjectData, pos + 1, -256.0f, 256.0f),
-                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));
+                                Utils.ByteToFloat(block.ObjectData, pos + 2, -256.0f, 256.0f));*/
                             pos += 3;
 
                             break;
@@ -748,7 +749,7 @@ namespace PubComb
             packet.AlertData.Message = Utils.StringToBytes(message);
             proxy.InjectPacket(packet, Direction.Incoming);
         }
-
+/*
         /// <summary>
         /// Sends a llDialog to the user.
         /// </summary>
@@ -797,7 +798,7 @@ namespace PubComb
                 );
             Console.WriteLine(line);
         }
-
+*/
         /// <summary>
         /// Produce a string representing a packet's header options.
         /// </summary>

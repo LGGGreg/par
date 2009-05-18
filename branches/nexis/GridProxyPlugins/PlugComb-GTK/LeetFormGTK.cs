@@ -23,11 +23,11 @@ namespace PubComb
 	
 	public partial class LeetFormGTK : Gtk.Window
 	{
-		LeetPlugin lp;
+		//LeetPlugin lp;
 		public LeetFormGTK(LeetPlugin l) : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			lp=l;
+		//	lp=l;
 			this.Build();
 		}
 		

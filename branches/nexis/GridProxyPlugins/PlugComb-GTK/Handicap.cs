@@ -123,6 +123,7 @@ namespace PubComb
             packet.Buttons = temp;
             proxy.InjectPacket(packet, Direction.Incoming);
         }
+		/*
         private Packet SendingIM(Packet packet, IPEndPoint sim)
         {
             ImprovedInstantMessagePacket im = (ImprovedInstantMessagePacket)packet;
@@ -132,7 +133,7 @@ namespace PubComb
                 return null;
             }
             return im;
-        }
+        }*/
         
         public string handeledViewerOutput(string mssage)
         {

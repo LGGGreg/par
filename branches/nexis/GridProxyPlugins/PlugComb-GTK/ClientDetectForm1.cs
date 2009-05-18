@@ -100,10 +100,6 @@ namespace PubComb
             saveData();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
         {

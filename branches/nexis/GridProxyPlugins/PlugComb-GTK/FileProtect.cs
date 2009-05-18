@@ -29,11 +29,11 @@ namespace PubComb
 {
     public class FileProtectPlugin : GTabPlug
     {
-        private PubComb plugin;
-        private ProxyFrame frame;
+        //private PubComb plugin;
+        //private ProxyFrame frame;
         public Proxy proxy;
         private FileProtectForm1 form;
-        private PubComb.Aux_SharedInfo shared;
+        //private PubComb.Aux_SharedInfo shared;
         public List<UUID> avs = new List<UUID>();
 		public void LoadNow(ref TabItemGTK tabform)
         {
@@ -54,10 +54,10 @@ namespace PubComb
         public FileProtectPlugin(PubComb plug)
         {
 
-            plugin = plug;
-            shared = plug.SharedInfo;
+            //plugin = plug;
+            //shared = plug.SharedInfo;
             //form = new FileProtectForm1(this);
-            this.frame = plug.frame;
+            //this.frame = plug.frame;
             this.proxy = plug.proxy;
             this.proxy.AddDelegate(PacketType.RequestXfer, Direction.Incoming, new PacketDelegate(disbale));
         }

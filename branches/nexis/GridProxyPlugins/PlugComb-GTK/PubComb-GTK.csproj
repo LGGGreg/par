@@ -76,33 +76,33 @@
     <Compile Include="FileProtectForm1.Designer.cs">
       <DependentUpon>FileProtectForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMHistForm1.cs">
+    <None Include="IMHistForm1.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IMHistForm1.Designer.cs">
+    </None>
+    <None Include="IMHistForm1.Designer.cs">
       <DependentUpon>IMHistForm1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IMLocator.cs" />
-    <Compile Include="leetForm1.cs">
+    </None>
+    <None Include="IMLocator.cs" />
+    <None Include="leetForm1.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="leetForm1.Designer.cs">
+    </None>
+    <None Include="leetForm1.Designer.cs">
       <DependentUpon>leetForm1.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="LeetPlugin.cs" />
-    <Compile Include="LyraForm1.cs">
+    <None Include="LyraForm1.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LyraForm1.Designer.cs">
+    </None>
+    <None Include="LyraForm1.Designer.cs">
       <DependentUpon>LyraForm1.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="Handicap.cs" />
-    <Compile Include="HandiForm1.cs">
+    <None Include="HandiForm1.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HandiForm1.Designer.cs">
+    </None>
+    <None Include="HandiForm1.Designer.cs">
       <DependentUpon>HandiForm1.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="Lyra.cs" />
     <Compile Include="PAnim.cs" />
     <Compile Include="Penny.cs" />
@@ -272,6 +272,18 @@
     <Compile Include="gtk-gui\PubComb.ProTextionFormGTK.cs" />
     <Compile Include="CinderellaFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.CinderellaFormGTK.cs" />
+    <None Include="IMHistForm1.resx">
+      <DependentUpon>IMHistForm1.cs</DependentUpon>
+    </None>
+    <None Include="leetForm1.resx">
+      <DependentUpon>leetForm1.cs</DependentUpon>
+    </None>
+    <None Include="LyraForm1.resx">
+      <DependentUpon>LyraForm1.cs</DependentUpon>
+    </None>
+    <None Include="HandiForm1.resx">
+      <DependentUpon>HandiForm1.cs</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -321,20 +333,8 @@
     <EmbeddedResource Include="HighForm1.resx">
       <DependentUpon>HighForm1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IMHistForm1.resx">
-      <DependentUpon>IMHistForm1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="InvFunForm1.resx">
       <DependentUpon>InvFunForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="leetForm1.resx">
-      <DependentUpon>leetForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LyraForm1.resx">
-      <DependentUpon>LyraForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HandiForm1.resx">
-      <DependentUpon>HandiForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PennyForm1.resx">
       <DependentUpon>PennyForm1.cs</DependentUpon>

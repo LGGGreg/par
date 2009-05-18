@@ -29,11 +29,11 @@ namespace PubComb
 {
     public class LyraPlugin : GTabPlug
     {
-        private PubComb plugin;
-        private ProxyFrame frame;
+        //private PubComb plugin;
+        //private ProxyFrame frame;
         private Proxy proxy;
         private LyraFormGTK form;
-        private string brand;
+        //private string brand;
         private bool pass = true;
         public void LoadNow(ref TabItemGTK tabform)
         {
@@ -54,12 +54,12 @@ namespace PubComb
             //}));
             //formthread.SetApartmentState(ApartmentState.STA);
             //formthread.Start();
-            plugin = plug;
+            //plugin = plug;
             form = new LyraFormGTK(this);
             //plug.tabform.addATab(form, "LYRA");
-            this.frame = plug.frame;
+            //this.frame = plug.frame;
             this.proxy = plug.proxy;
-            this.brand = "Lyra";
+            //this.brand = "Lyra";
             proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(SimChat));
             proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(Age));
         }
@@ -95,9 +95,9 @@ namespace PubComb
             return p;
         }
         
+		/*
         private void SayToUser(string message)
         {
-
             ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
             packet.ChatData.FromName = Utils.StringToBytes(this.brand);
             packet.ChatData.SourceID = UUID.Random();
@@ -109,6 +109,7 @@ namespace PubComb
             packet.ChatData.Message = Utils.StringToBytes(message);
             proxy.InjectPacket(packet, Direction.Incoming);
         }
+        */
         public void SendUserAlert(string message)
         {
             AlertMessagePacket packet = new AlertMessagePacket();
@@ -117,6 +118,7 @@ namespace PubComb
             proxy.InjectPacket(packet, Direction.Incoming);
 
         }
+		/*
         private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
         {
             Random rand = new Random();
@@ -138,6 +140,7 @@ namespace PubComb
             packet.Buttons = temp;
             proxy.InjectPacket(packet, Direction.Incoming);
         }
+        */
     }
 
 }

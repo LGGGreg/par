@@ -25,7 +25,7 @@ namespace PubComb
 {
     public partial class HandiForm1 : Form
     {
-        private HandicapPlugin handiPlug;
+        //private HandicapPlugin handiPlug;
         private string brand = "Handicap";
 
         public HandiForm1(HandicapPlugin shad)
@@ -33,7 +33,7 @@ namespace PubComb
             InitializeComponent();
             //webBrowser1.Navigate("about:blank");
 
-            this.handiPlug = shad;
+            //this.handiPlug = shad;
         }
         protected override void OnClosing(CancelEventArgs e)
         {

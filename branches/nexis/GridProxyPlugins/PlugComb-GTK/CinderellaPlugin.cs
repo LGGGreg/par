@@ -43,7 +43,7 @@ namespace PubComb
         private PubComb plugin;
         public Dictionary<UUID, Primitive.ParticleSystem> buffer = new Dictionary<UUID, Primitive.ParticleSystem>();
         UUID uploadID;
-		UUID specialID;
+		//UUID specialID;
         public CurrentUploadType curentUpload;
         public class lsotoolXfer
         {
@@ -287,7 +287,7 @@ namespace PubComb
 
             asetUp.AssetBlock.Tempfile = temp;
             asetUp.AssetBlock.TransactionID = uploadID;
-            specialID = UUID.Combine(uploadID, frame.SessionID);
+            //specialID = UUID.Combine(uploadID, frame.SessionID);
             asetUp.AssetBlock.Type = (sbyte)type;
 
             asetUp.AssetBlock.AssetData = new byte[] { };

@@ -12,10 +12,10 @@ namespace PubComb
     public partial class FileProtectForm1 : Form
     {
         
-        FileProtectPlugin fp;
+        //FileProtectPlugin fp;
         public FileProtectForm1(FileProtectPlugin p)
         {
-            fp = p;
+          //  fp = p;
             InitializeComponent();
         }
         public void readData()

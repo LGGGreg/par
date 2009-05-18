@@ -123,6 +123,8 @@ namespace PubComb
             
             return false;
         }*/
+		
+		/* NOT USED
         private void SayToUser(string message)
         {
 
@@ -137,6 +139,8 @@ namespace PubComb
             packet.ChatData.Message = Utils.StringToBytes(message);
             proxy.InjectPacket(packet, Direction.Incoming);
         }
+        */
+		
         private void SendUserAlert(string message)
         {
             AlertMessagePacket packet = new AlertMessagePacket();

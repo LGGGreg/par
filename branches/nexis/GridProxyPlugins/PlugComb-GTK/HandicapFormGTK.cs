@@ -12,13 +12,13 @@ namespace PubComb
 	
 	public partial class HandicapFormGTK : Gtk.Window
 	{
-		private HandicapPlugin handiPlug;
+		//private HandicapPlugin handiPlug;
         private string brand = "Handicap";
 		
 		public HandicapFormGTK(HandicapPlugin hp) : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			this.handiPlug=hp;
+			//this.handiPlug=hp;
 			this.Build();
 			readData();
 		}
@@ -30,11 +30,6 @@ namespace PubComb
         public bool getcheck()
         {
             return chkEnabled.Active;
-        }
-
-        private void checkBox1enabled_CheckedChanged(object sender, EventArgs e)
-        {
-            
         }
         public void addDebugInfo(string d)
         {

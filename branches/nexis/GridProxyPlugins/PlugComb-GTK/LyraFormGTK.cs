@@ -22,13 +22,11 @@ namespace PubComb
 {
 	public partial class LyraFormGTK : Gtk.Window
 	{
-		LyraPlugin lp;
-		//private Entry txtChatTrig;
-		//private CheckButton chkEnabled;
+		//LyraPlugin lp;
 		public LyraFormGTK(LyraPlugin p) : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			lp=p;
+			//lp=p;
 			this.Build();
 		}
 		
@@ -61,11 +59,10 @@ namespace PubComb
                 string t = re.ReadLine();
                 setBox(t);
 
-
                 re.Close();
                 
             }
-            setCheck(false);//turn off
+            setCheck(pass);//turn off
         }
         private void saveData()
         {
