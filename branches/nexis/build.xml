@@ -1,0 +1,13 @@
+<project name="PAR-GTK" default="compile" basedir=".">
+<target name="checkout">
+  <exec executable="svn">
+    <arg value="up"/>
+  </exec>
+</target>
+<target name="compile" depends="checkout">
+  <exec executable="mdtool">
+    <arg value="build" />
+    <arg value="-f:PAR-GTK.sln" />
+  </exec>
+</target>
+</project>
