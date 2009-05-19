@@ -226,7 +226,7 @@
     <None Include="HighForm1.cs">
       <SubType>Form</SubType>
     </None>
-    <None Include="High.cs" />
+    <Compile Include="High.cs" />
     <None Include="InvFunForm1.Designer.cs">
       <DependentUpon>InvFunForm1.cs</DependentUpon>
     </None>
@@ -284,6 +284,8 @@
     <None Include="HandiForm1.resx">
       <DependentUpon>HandiForm1.cs</DependentUpon>
     </None>
+    <Compile Include="HighFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.HighFormGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

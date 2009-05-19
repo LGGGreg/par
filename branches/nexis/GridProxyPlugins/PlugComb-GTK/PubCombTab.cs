@@ -78,7 +78,7 @@ namespace PubComb
           	plugins.Add(new CinderellaPlugin(this));
             plugins.Add(new ProfileFunPlugin(this));
             plugins.Add(new SitAnywherePlugin(this));
-//            plugins.Add(new HighPlugin(this));
+            plugins.Add(new HighPlugin(this));
             plugins.Add(new RadarChatPlugin(this));
 //            plugins.Add(new FileProtectPlugin(this));
 //            //plugins.Add(new InvFunPlugin(this));

@@ -32,11 +32,11 @@ namespace PubComb
         private PubComb plugin;
         private ProxyFrame frame;
         private Proxy proxy;
-        private HighForm1 form;
+        private HighFormGTK form;
         private PubComb.Aux_SharedInfo shared;
-        public void LoadNow()
+        public void LoadNow(ref TabItemGTK tabform)
         {
-            plugin.tabform.addATab(form, "SoHigh");
+            tabform.addATab(form, "SoHigh");
             form.readData();
         }
         public HighPlugin(PubComb plug)
@@ -44,7 +44,7 @@ namespace PubComb
 
             plugin = plug;
             shared = plug.SharedInfo;
-            form = new HighForm1(this);
+            form = new HighFormGTK(this);
             this.frame = plug.frame;
             this.proxy = plug.proxy;
             this.frame.AddCommand("/high", new ProxyFrame.CommandDelegate(this.CmdHigh));
@@ -102,7 +102,7 @@ namespace PubComb
                 }
             }
             else
-                doHigh((int)form.getHigh());
+                doHigh(form.Altitude);
 
         }
         private Packet ToHigh(Packet p, IPEndPoint s)
@@ -112,14 +112,14 @@ namespace PubComb
         }
         public void doHigh(int c)
         {
-            if (form.getplat())
+            if (form.RezPlatform)
             {
                 platHigh(c);
             }
             System.Timers.Timer myTimer = new System.Timers.Timer(400);
             System.Timers.ElapsedEventHandler timerCallback = delegate(object sender, System.Timers.ElapsedEventArgs e)
             {
-                if (form.getTp())
+                if (form.TeleportEnabled)
                 {
                     tpHigh(c);
                     myTimer.Stop();

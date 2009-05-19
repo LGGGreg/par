@@ -73,6 +73,17 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 0.1
-		StartupItem = LinuxLoader\LinuxLoader\LinuxLoader.csproj
+		StartupItem = Packages.mdproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.TabWidth = 4
+		$1.TabsToSpaces = False
+		$1.NoTabsAfterNonTabs = False
+		$1.RemoveTrailingWhitespace = False
+		$1.EolMarker = Native
+		$0.StandardHeader = $2
+		$2.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
+		$2.inheritsSet = MITX11License
 	EndGlobalSection
 EndGlobal

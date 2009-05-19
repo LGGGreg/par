@@ -25,54 +25,86 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 
+using Gtk;
 using System;
 using System.IO;
+
 namespace PubComb
 {
-	
-	
-	public partial class RetreatFormGTK : Gtk.Window
+	public partial class HighFormGTK : Gtk.Window
 	{
-		private RetreatPlugin rp;
-		public RetreatFormGTK(RetreatPlugin p) : 
+		HighPlugin plugin;
+		public HighFormGTK(HighPlugin p) : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			rp=p;
+			plugin=p;
 			this.Build();
+			readData();
 		}
 		
-		#region Support Functions
-		public void readData()
+        public void readData()
         {
-            bool enabled = true;
-            if (File.Exists("Retreat.settings"))
+            RezPlatform=true;
+			TeleportEnabled=true;
+            Altitude = 50000;
+            if (File.Exists("highHelper.settings"))
             {
-                StreamReader re = File.OpenText("Retreat.settings");
+                StreamReader re = File.OpenText("highHelper.settings");
                 if (re.ReadLine() != "Enabled")
-                    enabled = false;
+                    RezPlatform = false;
+                if (re.ReadLine() != "Enabled")
+                    TeleportEnabled = false;
+                Altitude = int.Parse(re.ReadLine());
 
 
                 re.Close();
+
             }
-
-            chkEnabled.Active = enabled;
         }
-
         private void saveData()
         {
-            TextWriter tw = new StreamWriter("Retreat.settings");
-            if (chkEnabled.Active) tw.WriteLine("Enabled");
+            TextWriter tw = new StreamWriter("highHelper.settings");
+            if (RezPlatform) tw.WriteLine("Enabled");
             else tw.WriteLine("Disabled");
+            if (TeleportEnabled) tw.WriteLine("Enabled");
+            else tw.WriteLine("Disabled");
+            tw.WriteLine(Altitude.ToString());
             tw.Close();
         }
-		
-		// Finally, an appropriately named function.  
-		public bool getEnabled()
+
+        protected virtual void OnChkRezPlatformToggled (object sender, System.EventArgs e)
         {
-            return chkEnabled.Active;
+			saveData();
         }
-#endregion
-		
-		
+
+        protected virtual void OnChkTP2PlatToggled (object sender, System.EventArgs e)
+        {
+			saveData();
+        }
+
+        protected virtual void OnSpinAltitudeChanged (object sender, System.EventArgs e)
+        {
+			saveData();
+        }
+
+        protected virtual void OnCmdGoActivated (object sender, System.EventArgs e)
+        {
+			plugin.doHigh(Altitude);
+        }
+        public bool TeleportEnabled
+        {
+            get{return chkTP2Plat.Active;}
+			set{chkTP2Plat.Active=value;}
+        }
+		public bool RezPlatform
+		{
+			get{return chkRezPlatform.Active;}
+			set{chkRezPlatform.Active=value;}
+		}
+		public int Altitude
+		{
+			get{return (int)Math.Round(spinAltitude.Value);}
+			set{spinAltitude.Value=(double)value;}
+		}
 	}
 }

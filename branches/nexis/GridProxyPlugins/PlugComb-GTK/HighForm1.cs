@@ -42,6 +42,7 @@ namespace PubComb
             hp = p;
             InitializeComponent();
         }
+		
         public void readData()
         {
             bool t = true;
