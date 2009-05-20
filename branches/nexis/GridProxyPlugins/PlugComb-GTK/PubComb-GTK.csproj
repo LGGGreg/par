@@ -221,7 +221,6 @@
     <Compile Include="CliInt.cs" />
     <None Include="GregInventoryTree.cs">
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="HighForm1.cs">
       <SubType>Form</SubType>
@@ -307,10 +306,12 @@
     <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -391,6 +392,7 @@
     <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
       <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
       <Name>GridProxy</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
 </Project>

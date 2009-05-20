@@ -4,10 +4,15 @@
     <arg value="up"/>
   </exec>
 </target>
-<target name="compile" depends="checkout">
+<target name="compile">
   <exec executable="mdtool">
     <arg value="build" />
     <arg value="-f:PAR-GTK.sln" />
   </exec>
+</target>
+<target name="mkbin" depends="compile">
+  <delete dir="Plugins" excludes="LSLObf.*,NeilSay.*,PubComb.*,Shadow.*,en" />
+  <zip destfile="bin/PAR-GTK_Cruised.zip" basedir="Package" excludes="**/.svn/" />
+  <copy file="bin/PAR-GTK_Cruised.zip" todir="/host/www.nexisonline.net/htdocs/PAR/packages/" />
 </target>
 </project>
