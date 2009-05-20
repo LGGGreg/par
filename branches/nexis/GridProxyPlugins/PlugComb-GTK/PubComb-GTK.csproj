@@ -286,6 +286,12 @@
     </None>
     <Compile Include="HighFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.HighFormGTK.cs" />
+    <Compile Include="SitBlock.cs" />
+    <Compile Include="SitBlockForm1.cs" />
+    <Compile Include="SitBlockForm1.Designer.cs" />
+    <None Include="SitBlockForm1.resx" />
+    <Compile Include="SitBlockFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.SitBlockFormGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

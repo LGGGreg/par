@@ -23,6 +23,8 @@ namespace PubComb {
         
         private Gtk.CheckButton chkTP2Plat;
         
+        private Gtk.CheckButton chkTempOnRez;
+        
         private Gtk.HBox hbox2;
         
         private Gtk.Label lblAltitude;
@@ -86,6 +88,19 @@ namespace PubComb {
             w4.Expand = false;
             w4.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
+            this.chkTempOnRez = new Gtk.CheckButton();
+            this.chkTempOnRez.CanFocus = true;
+            this.chkTempOnRez.Name = "chkTempOnRez";
+            this.chkTempOnRez.Label = Mono.Unix.Catalog.GetString("Rez as a temporary object? (Deletes after 60s)");
+            this.chkTempOnRez.Active = true;
+            this.chkTempOnRez.DrawIndicator = true;
+            this.chkTempOnRez.UseUnderline = true;
+            this.vbox1.Add(this.chkTempOnRez);
+            Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.vbox1[this.chkTempOnRez]));
+            w5.Position = 4;
+            w5.Expand = false;
+            w5.Fill = false;
+            // Container child vbox1.Gtk.Box+BoxChild
             this.hbox2 = new Gtk.HBox();
             this.hbox2.Name = "hbox2";
             this.hbox2.Spacing = 6;
@@ -94,10 +109,10 @@ namespace PubComb {
             this.lblAltitude.Name = "lblAltitude";
             this.lblAltitude.LabelProp = Mono.Unix.Catalog.GetString("Altitude to rez at:");
             this.hbox2.Add(this.lblAltitude);
-            Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.hbox2[this.lblAltitude]));
-            w5.Position = 0;
-            w5.Expand = false;
-            w5.Fill = false;
+            Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.hbox2[this.lblAltitude]));
+            w6.Position = 0;
+            w6.Expand = false;
+            w6.Fill = false;
             // Container child hbox2.Gtk.Box+BoxChild
             this.spinAltitude = new Gtk.SpinButton(0, 112000, 1);
             this.spinAltitude.CanFocus = true;
@@ -107,15 +122,15 @@ namespace PubComb {
             this.spinAltitude.Numeric = true;
             this.spinAltitude.Value = 4097;
             this.hbox2.Add(this.spinAltitude);
-            Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.hbox2[this.spinAltitude]));
-            w6.Position = 1;
-            w6.Expand = false;
-            w6.Fill = false;
-            this.vbox1.Add(this.hbox2);
-            Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.vbox1[this.hbox2]));
-            w7.Position = 4;
+            Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.hbox2[this.spinAltitude]));
+            w7.Position = 1;
             w7.Expand = false;
             w7.Fill = false;
+            this.vbox1.Add(this.hbox2);
+            Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox1[this.hbox2]));
+            w8.Position = 5;
+            w8.Expand = false;
+            w8.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
             this.cmdGo = new Gtk.Button();
             this.cmdGo.CanFocus = true;
@@ -123,10 +138,10 @@ namespace PubComb {
             this.cmdGo.UseUnderline = true;
             this.cmdGo.Label = Mono.Unix.Catalog.GetString("Take a Hit");
             this.vbox1.Add(this.cmdGo);
-            Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox1[this.cmdGo]));
-            w8.Position = 5;
-            w8.Expand = false;
-            w8.Fill = false;
+            Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.vbox1[this.cmdGo]));
+            w9.Position = 6;
+            w9.Expand = false;
+            w9.Fill = false;
             this.Add(this.vbox1);
             if ((this.Child != null)) {
                 this.Child.ShowAll();

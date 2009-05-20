@@ -32,19 +32,19 @@ namespace PubComb
         private PubComb plugin;
         private ProxyFrame frame;
         private Proxy proxy;
-        private SitBlockForm1 form;
+        private SitBlockFormGTK form;
         private string brand;
         private bool pass = true;
-        public void LoadNow()
+        public void LoadNow(ref TabItemGTK tabform)
         {
-            plugin.tabform.addATab(form, "Sit Block");
+            tabform.addATab(form, "Sit Block");
             form.readData();
         }
         public SitBlockPlugin(PubComb plug)
         {
 
             plugin = plug;
-            form = new SitBlockForm1(this);
+            form = new SitBlockFormGTK(this);
             this.frame = plug.frame;
             this.proxy = plug.proxy;
             this.brand = "SitBlock";
@@ -53,7 +53,7 @@ namespace PubComb
         }
         public Packet sitp(Packet p, IPEndPoint sim)
         {
-            if (form.checkBox1.Checked)
+            if (form.BlockSits)
             {
                 
                 return null;
@@ -69,7 +69,7 @@ namespace PubComb
             }
             else SendUserAlert("Avatar Phantom Lock Enabled");
 
-            form.setCheck(!pass);
+            form.BlockSits= !pass;
         }
         
         private void SayToUser(string message)

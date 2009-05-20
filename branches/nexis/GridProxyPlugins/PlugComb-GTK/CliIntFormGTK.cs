@@ -57,16 +57,10 @@ namespace PubComb
         {
             return chkEnabled.Active;
         }
-		/// <summary>
-		///Enable Temp On Rez? 
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.Boolean"/>
-		/// </returns>
-        public bool getCheck2()
-        {
-            return chkTempOnRez.Active;
-        }
+        //public bool getCheck2()
+        //{
+        //    return chkTempOnRez.Active;
+        //}
         public void setBox(string s)
         {
             txtInventory.Text = s;
@@ -91,8 +85,8 @@ namespace PubComb
                 if (re.ReadLine() == "Enabled1")
                   pass1 = true;
 				
-				if (re.ReadLine() == "Enabled2")
-                  pass2 = false;
+				//if (re.ReadLine() == "Enabled2")
+                //  pass2 = false;
                 string t = re.ReadLine();
                 setBox(t);
 
@@ -100,7 +94,7 @@ namespace PubComb
                 
             }
             setCheck1(pass1);
-            setCheck1(pass2);
+            //setCheck2(pass2);
         }
 		
 		private void saveData()
@@ -108,8 +102,8 @@ namespace PubComb
             TextWriter tw = new StreamWriter("cliint.settings");
             if (chkEnabled.Active) tw.WriteLine("Enabled1");
             else tw.WriteLine("Disabled1");
-            if (chkTempOnRez.Active) tw.WriteLine("Enabled2");
-            else tw.WriteLine("Disabled2");
+            //if (chkTempOnRez.Active) tw.WriteLine("Enabled2");
+            //else tw.WriteLine("Disabled2");
             tw.WriteLine(getbox());
             tw.Close();
         }
