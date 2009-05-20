@@ -15,6 +15,8 @@
   <zip destfile="bin/PAR-GTK_Cruised.zip" basedir="Package" excludes="**/.svn/" />
   <scp 
 	file="bin/PAR-GTK_Cruised.zip" 
-	todir="root@192.168.9.5:/host/www.nexisonline.net/htdocs/PAR/packages/" />
+	todir="root@192.168.9.5:/host/www.nexisonline.net/htdocs/PAR/packages/" 
+	passphrase=""
+  />
 </target>
 </project>
