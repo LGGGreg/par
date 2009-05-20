@@ -91,8 +91,8 @@
     <MonoDevelop>
       <Properties>
         <Policies>
-          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
           <StandardHeader inheritsSet="MITX11License" />
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
         </Policies>
       </Properties>
     </MonoDevelop>

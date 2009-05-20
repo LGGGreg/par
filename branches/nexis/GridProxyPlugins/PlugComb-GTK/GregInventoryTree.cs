@@ -47,7 +47,6 @@ namespace PubComb
         /// </summary>
         public GregInventoryTree()
         {
-            
             this.BeforeExpand += new TreeViewCancelEventHandler(InventoryTree_BeforeExpand);
         }
         public void setRoot(UUID root)
@@ -171,9 +170,10 @@ namespace PubComb
         }
 
 
-        internal void setPlugin(InvFunPlugin iii)
+        internal InvFunPlugin Plugin
         {
-            this.invp = iii;
+            set {this.invp = value;}
+			get {return invp;}
         }
     }
 

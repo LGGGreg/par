@@ -48,20 +48,8 @@
   </Target>
   -->
   <ItemGroup>
-    <None Include="AvatarForm1.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="AvatarForm1.Designer.cs">
-      <DependentUpon>AvatarForm1.cs</DependentUpon>
-    </None>
     <Compile Include="AvatarInfo.cs" />
     <Compile Include="CinderellaPlugin.cs" />
-    <None Include="CinderForm1.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="CinderForm1.Designer.cs">
-      <DependentUpon>CinderForm1.cs</DependentUpon>
-    </None>
     <Compile Include="ClientDetect.cs" />
     <Compile Include="ClientDetectForm1.cs">
       <SubType>Form</SubType>
@@ -180,21 +168,7 @@
     </None>
     <None Include="ViewerEffectLogger.cs" />
     <Compile Include="gtk-gui\generated.cs" />
-    <Compile Include="frmMain.cs" />
-    <Compile Include="gtk-gui\PubComb.frmMain.cs" />
     <Compile Include="AwesomeSauce.cs" />
-    <None Include="AweseomeSauceForm1.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="AweseomeSauceForm1.Designer.cs">
-      <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
-    </None>
-    <None Include="CliIntForm1.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="CliIntForm1.Designer.cs">
-      <DependentUpon>CliIntForm1.cs</DependentUpon>
-    </None>
     <Compile Include="ProTextion.cs" />
     <None Include="ProTextionForm1.cs">
       <SubType>Form</SubType>
@@ -202,20 +176,7 @@
     <None Include="ProTextionForm1.Designer.cs">
       <DependentUpon>ProTextionForm1.cs</DependentUpon>
     </None>
-    <None Include="coin.cs" />
-    <None Include="CoinForm1.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="CoinForm1.Designer.cs">
-      <DependentUpon>CoinForm1.cs</DependentUpon>
-    </None>
-    <None Include="CapsForm1.cs">
-      <SubType>Form</SubType>
-    </None>
     <Compile Include="DisableCaps.cs" />
-    <None Include="CapsForm1.Designer.cs">
-      <DependentUpon>CapsForm1.cs</DependentUpon>
-    </None>
     <Compile Include="CliIntFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.CliIntFormGTK.cs" />
     <Compile Include="CliInt.cs" />
@@ -291,6 +252,8 @@
     <None Include="SitBlockForm1.resx" />
     <Compile Include="SitBlockFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.SitBlockFormGTK.cs" />
+    <Compile Include="gtk-gui\PubComb.InvFunFormGTK.cs" />
+    <None Include="GregInventoryTreeGTK.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -315,26 +278,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AvatarForm1.resx">
-      <DependentUpon>AvatarForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AweseomeSauceForm1.resx">
-      <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CapsForm1.resx">
-      <DependentUpon>CapsForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CinderForm1.resx">
-      <DependentUpon>CinderForm1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClientDetectForm1.resx">
       <DependentUpon>ClientDetectForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CliIntForm1.resx">
-      <DependentUpon>CliIntForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CoinForm1.resx">
-      <DependentUpon>CoinForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileProtectForm1.resx">
       <DependentUpon>FileProtectForm1.cs</DependentUpon>

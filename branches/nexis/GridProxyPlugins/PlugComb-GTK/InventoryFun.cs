@@ -24,7 +24,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using GridProxy;
 using System.Threading;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
 namespace PubComb
 {
@@ -33,7 +33,7 @@ namespace PubComb
         public PubComb plugin;
         private ProxyFrame frame;
         private Proxy proxy;
-        private InvFunForm1 form;
+        private InvFunFormGTK form;
         private PubComb.Aux_SharedInfo shared;
         private Inventory _Store = new Inventory();
         private List<InventorySearch> _Searches = new List<InventorySearch>();

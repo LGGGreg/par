@@ -7,33 +7,6 @@
   <import>
     <widget-library name="../../../Package/Plugins/PubComb-GTK.dll" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="PubComb.frmMain" design-size="599 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">Pubcomb Config</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <widget class="Gtk.Notebook" id="tabControl1">
-        <property name="MemberName" />
-        <property name="CanFocus">True</property>
-        <property name="CurrentPage">0</property>
-        <child>
-          <widget class="Gtk.Fixed" id="fixed1">
-            <property name="MemberName" />
-            <property name="HasWindow">False</property>
-          </widget>
-        </child>
-        <child>
-          <widget class="Gtk.Label" id="label1">
-            <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">page1</property>
-          </widget>
-          <packing>
-            <property name="type">tab</property>
-          </packing>
-        </child>
-      </widget>
-    </child>
-  </widget>
   <widget class="Gtk.Window" id="PubComb.CliIntFormGTK" design-size="627 354">
     <property name="MemberName" />
     <property name="Title" translatable="yes">CliIntFormGTK</property>
@@ -2604,6 +2577,14 @@ NOTE: Very beta.</property>
           </packing>
         </child>
       </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="PubComb.InvFunFormGTK" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">InvFunFormGTK</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
     </child>
   </widget>
 </stetic-interface>
