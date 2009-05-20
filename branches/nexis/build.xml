@@ -13,8 +13,8 @@
 <target name="mkbin" depends="compile">
   <delete dir="Plugins" excludes="LSLObf.*,NeilSay.*,PubComb.*,Shadow.*,en" />
   <zip destfile="bin/PAR-GTK_Cruised.zip" basedir="Package" excludes="**/.svn/" />
-  <copy 
+  <scp 
 	file="bin/PAR-GTK_Cruised.zip" 
-	todir="/host/www.nexisonline.net/htdocs/PAR/packages/" />
+	todir="root@192.168.9.5:/host/www.nexisonline.net/htdocs/PAR/packages/" />
 </target>
 </project>
