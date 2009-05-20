@@ -68,6 +68,7 @@ namespace PubComb
             plugins.Add(new ViewerEffectLogPlugin(this));
             plugins.Add(new AvatarTracker(this));
             plugins.Add(new CliIntPlugin(this));
+            plugins.Add(new SitBlockPlugin(this));
 
             tabformthread = new Thread(new ThreadStart(delegate()
             {

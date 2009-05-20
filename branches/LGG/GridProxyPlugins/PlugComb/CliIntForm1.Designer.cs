@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CliIntForm1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +49,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textBox1);
@@ -62,9 +65,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(100, 212);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 13);
+            this.label2.Size = new System.Drawing.Size(130, 26);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Plugin By  Gregory Maurer";
+            this.label2.Text = "Plugin By  Gregory Maurer\r\nModdified by LGG";
             // 
             // label1
             // 
@@ -97,6 +100,15 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(233, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(188, 91);
+            this.label3.TabIndex = 7;
+            this.label3.Text = resources.GetString("label3.Text");
+            // 
             // CliIntForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +135,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
 
     }
 }

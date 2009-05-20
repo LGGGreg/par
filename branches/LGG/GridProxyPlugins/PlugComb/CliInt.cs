@@ -43,6 +43,7 @@ namespace PubComb
         private Vector3 mpos = new Vector3();
         private uint mid = new uint();
         public InventoryItem interceptor = new InventoryItem(UUID.Zero);
+        public DateTime lastRez;
 
         public void LoadNow()
         {
@@ -62,7 +63,6 @@ namespace PubComb
             proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(this.UpdateHandler));
             proxy.AddDelegate(PacketType.ImprovedTerseObjectUpdate, Direction.Incoming, new PacketDelegate(this.TerseUpdateHandler));
             interceptor.Name = "idontexist";
-            SayToUser("Initialized.");
         }
 
         private Packet InAlertMessageHandler(Packet packet, IPEndPoint sim)
@@ -80,10 +80,11 @@ namespace PubComb
         public void ScanForInterceptor()
         {
             //SayToUser("Looking for the specified interceptor.");
+            if (form.getCheck1() == true)
             FindIntercept(form.getbox());
         }
 
-        private void ObjectWithVel(Vector3 pos, Vector3 vel)
+        private void ObjectWithVel(Vector3 detpos, Vector3 detvel)
         {
             //Console.WriteLine("ObjectWithVel Called.");
             if (form.getCheck1() == true)
@@ -92,15 +93,20 @@ namespace PubComb
                 if (interceptor.Name != "idontexist")
                 {
                     //Console.WriteLine("Interceptor exists.");
-                    Vector3 rezdif = pos - mpos;
-                    float dist = Vector3.Distance(pos, mpos);
-                    if ((dist > 2.0) && (dist < 1024.0)  && !Vector3.Equals(vel, Vector3.Zero))
+                    Vector3 detnorm = Vector3.Normalize(detvel);
+                    float detdist = Vector3.Distance(plugin.SharedInfo.AvPosition, detpos);
+                    Vector3 detdest = (detnorm*detdist)+detpos;
+                    float detdestrange =Vector3.Distance(detdest,plugin.SharedInfo.AvPosition);
+                   
+                    if (detdestrange<=2.5&&Vector3.Mag(detvel)>=5.0)
                     {
-                        rezdif.Normalize();
-                        rezdif = Vector3.Multiply(rezdif, (float)2.0);
-                        rezdif = Vector3.Add(rezdif, mpos);
-                        //Console.WriteLine("Object is within range. Rez teh interceptor.");
-                        PseudoLLRezObject(interceptor,rezdif);                    
+                        if (
+                        ((TimeSpan)(System.DateTime.Now - lastRez)).TotalMilliseconds > 300)
+                        {
+                            lastRez = System.DateTime.Now;
+                            //Console.WriteLine("Object is within range. Rez teh interceptor.");
+                            PseudoLLRezObject(interceptor, (Vector3.Normalize((detpos - plugin.SharedInfo.AvPosition)) * 2.0f)+plugin.SharedInfo.AvPosition);
+                        }
                         //Console.WriteLine("We rezzed teh interceptor.");
                         //LogPacket((Packet)rez, Direction.Outgoing);
                     }
@@ -663,6 +669,7 @@ namespace PubComb
                                 interceptor = temp;
                                 Console.WriteLine("SUCCESS. We found the interceptor. Full value is: " + interceptor.Name + "/" + 
                                             interceptor.AssetUUID.ToString() + "/" + temp.AssetUUID.ToString());
+                                
                                 PseudoLLRezObject(interceptor,mpos);
                             }
                             else Console.WriteLine("Something went wrong with TryGetValue.");
@@ -697,7 +704,7 @@ namespace PubComb
             if (intercept)
             {
                 //stop packet
-                return null;
+                return packet;
             }
             else
             {
@@ -707,105 +714,6 @@ namespace PubComb
         }
         #endregion InventorySearchers
 
-        #region UserOutput
-
-        /// <summary>
-        /// Says a message in chat (green) to the user.
-        /// </summary>
-        /// <param name="message">The message to be said.</param>
-        private void SayToUser(string message)
-        {
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes(this.brand);
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-
-        /// <summary>
-        /// Sends a User Alert to the user.
-        /// </summary>
-        /// <param name="message">The message to be sent.</param>
-        public void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-
-        /// <summary>
-        /// Sends a llDialog to the user.
-        /// </summary>
-        /// <param name="first">First name for the "owner".</param>
-        /// <param name="last">Last name for the "owner".</param>
-        /// <param name="objectName">Name of the object to appear from.</param>
-        /// <param name="message">The message sent with the dialog.</param>
-        /// <param name="buttons">Options on the dialog. Up to 12.</param>
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-
-        /// <summary>
-        /// Dumps a packet to the console.
-        /// </summary>
-        /// <param name="packet">The packet to output.</param>
-        /// <param name="direction">The direction of the packet.</param>
-        private void LogPacket(Packet packet, Direction direction )
-        {
-            string packetText = packet.ToString();
-            string line = String.Format("{0} {1,21} {2,5} {3}{4}{5}"
-                , direction == Direction.Incoming ? "<--" : "-->"
-                , IPEndPoint.MaxPort
-                , packet.Header.Sequence
-                , InterpretOptions(packet.Header.Flags)
-                , Environment.NewLine
-                , packetText
-                );
-            Console.WriteLine(line);
-        }
-
-        /// <summary>
-        /// Produce a string representing a packet's header options.
-        /// </summary>
-        /// <param name="options">Options in byte form.</param>
-        /// <returns>Options in string form.</returns>
-        public string InterpretOptions(byte options)
-        {
-            return "["
-                 + ((options & Helpers.MSG_APPENDED_ACKS) != 0 ? "Ack" : "   ")
-                 + " "
-                 + ((options & Helpers.MSG_RESENT) != 0 ? "Res" : "   ")
-                 + " "
-                 + ((options & Helpers.MSG_RELIABLE) != 0 ? "Rel" : "   ")
-                 + " "
-                 + ((options & Helpers.MSG_ZEROCODED) != 0 ? "Zer" : "   ")
-                 + "]"
-                 ;
-        }
-
-        #endregion UserOutput
+        
     }
 }

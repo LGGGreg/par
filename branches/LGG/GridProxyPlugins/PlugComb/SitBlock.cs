@@ -60,17 +60,6 @@ namespace PubComb
             }
             return p;
         }
-        public void show(bool p)
-        {
-
-            if (p)
-            {
-                SendUserAlert("Avatar Phantom Lock Disabled");
-            }
-            else SendUserAlert("Avatar Phantom Lock Enabled");
-
-            form.setCheck(!pass);
-        }
         
         private void SayToUser(string message)
         {

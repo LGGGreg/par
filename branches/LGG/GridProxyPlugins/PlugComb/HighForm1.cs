@@ -36,6 +36,7 @@ namespace PubComb
         private Panel panel4;
         private Button button1;
         private Label label2;
+        public CheckBox checkBox3temp;
         HighPlugin hp;
         public HighForm1(HighPlugin p)
         {
@@ -125,6 +126,7 @@ namespace PubComb
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBox3temp = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -164,6 +166,7 @@ namespace PubComb
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Controls.Add(this.checkBox3temp);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.checkBox2);
             this.panel5.Controls.Add(this.checkBox1);
@@ -173,6 +176,19 @@ namespace PubComb
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(284, 136);
             this.panel5.TabIndex = 2;
+            // 
+            // checkBox3temp
+            // 
+            this.checkBox3temp.AutoSize = true;
+            this.checkBox3temp.BackColor = System.Drawing.Color.Black;
+            this.checkBox3temp.Enabled = false;
+            this.checkBox3temp.ForeColor = System.Drawing.Color.Red;
+            this.checkBox3temp.Location = new System.Drawing.Point(164, 77);
+            this.checkBox3temp.Name = "checkBox3temp";
+            this.checkBox3temp.Size = new System.Drawing.Size(87, 17);
+            this.checkBox3temp.TabIndex = 3;
+            this.checkBox3temp.Text = "Rez is temp?";
+            this.checkBox3temp.UseVisualStyleBackColor = false;
             // 
             // label2
             // 

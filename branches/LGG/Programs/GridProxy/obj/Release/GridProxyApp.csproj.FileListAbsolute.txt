@@ -10,3 +10,6 @@ C:\Users\Shadow\Desktop\Second Life\Google Code Svn\branches\LGG\Programs\GridPr
 C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\bin\GridProxyApp.exe
 C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Shadow\Desktop\Second Life\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\GridProxyApp.exe
+C:\Users\Shadow\Desktop\CompSecondLife\Google Code Par\branches\LGG\bin\GridProxyApp.exe
+C:\Users\Shadow\Desktop\CompSecondLife\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Shadow\Desktop\CompSecondLife\Google Code Par\branches\LGG\Programs\GridProxy\obj\Release\GridProxyApp.exe

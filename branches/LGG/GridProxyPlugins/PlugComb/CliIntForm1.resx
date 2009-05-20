@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>WARNING
+These are beta as hell, they can do all
+sorts of horrible stuff like crash your
+internet, stop your inv from loading,
+or who knows what.  At best they can 
+rez a interceptor object in a no script
+zone to protect you.. kinda.. fast?</value>
+  </data>
 </root>
