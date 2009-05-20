@@ -36,4 +36,11 @@ To download the code, you must have Subversion installed.
 svn co http://par.googlecode.com/svn/branches/nexis/ par-gtk
 }}}
 
-I suggest one uses MonoDevelop IDE for the built-in form builder, but I have included the generated *.cs files so that users without monodevelop can build it.
+I suggest one uses MonoDevelop IDE for the built-in form builder, but I have included the generated `*`.cs files so that users without monodevelop can build it.
+
+== Binaries ==
+
+*PLEASE NOTE:*  These binaries are built nightly if Cruise, an automated build server, detects that the build was successful.
+
+
+_None yet, check back later_
