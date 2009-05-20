@@ -40,7 +40,7 @@ I suggest one uses MonoDevelop IDE for the built-in form builder, but I have inc
 
 == Binaries ==
 
-*PLEASE NOTE:*  These binaries are built a few minutes after each commit by Cruise, an automated build server, and only if it detects that the build process was successful.
+*PLEASE NOTE:*  These binaries are built a few minutes after each commit by Cruise, an automated build server, and only if it detects that the build process was successful.  *They are not guaranteed to be stable.*
 
 
- * [http://www.nexisonline.net/htdocs/PAR/packages/PAR-GTK_Cruised.zip PAR-GTK Binaries (Cruised)]
+ * [http://www.nexisonline.net/PAR/packages/PAR-GTK_Cruised.zip PAR-GTK Binaries (Cruised)]
