@@ -36,6 +36,7 @@ namespace PubComb
         private Fixed panel4;
         private Button button1;
         private Label label2;
+        public CheckBox checkBox3temp;
         HighPlugin hp;
         public HighForm1(HighPlugin p)
         {

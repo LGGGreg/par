@@ -47,14 +47,26 @@ namespace PubComb
         {
             return txtInventory.Text;
         }
+		/// <summary>
+		///Enable plugin 
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.Boolean"/>
+		/// </returns>
         public bool getCheck1()
         {
             return chkEnabled.Active;
         }
-        /*public bool getCheck2()
+		/// <summary>
+		///Enable Temp On Rez? 
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.Boolean"/>
+		/// </returns>
+        public bool getCheck2()
         {
-            return checkBox2.Checked;
-        }*/
+            return chkTempOnRez.Active;
+        }
         public void setBox(string s)
         {
             txtInventory.Text = s;
@@ -96,8 +108,8 @@ namespace PubComb
             TextWriter tw = new StreamWriter("cliint.settings");
             if (chkEnabled.Active) tw.WriteLine("Enabled1");
             else tw.WriteLine("Disabled1");
-            //if (checkBox2.Checked) tw.WriteLine("Enabled2");
-            //else tw.WriteLine("Disabled2");
+            if (chkTempOnRez.Active) tw.WriteLine("Enabled2");
+            else tw.WriteLine("Disabled2");
             tw.WriteLine(getbox());
             tw.Close();
         }

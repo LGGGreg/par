@@ -23,6 +23,8 @@ namespace PubComb {
         
         private Gtk.CheckButton chkEnabled;
         
+        private Gtk.CheckButton chkTempOnRez;
+        
         private Gtk.HSeparator hseparator2;
         
         private Gtk.Table table1;
@@ -56,7 +58,7 @@ namespace PubComb {
             // Container child vbox1.Gtk.Box+BoxChild
             this.txtAbout = new Gtk.Label();
             this.txtAbout.Name = "txtAbout";
-            this.txtAbout.LabelProp = Mono.Unix.Catalog.GetString("Plugin by Gregory Maurer");
+            this.txtAbout.LabelProp = Mono.Unix.Catalog.GetString("Plugin by Gregory Maurer, Modified by LGG.");
             this.txtAbout.Justify = ((Gtk.Justification)(2));
             this.vbox1.Add(this.txtAbout);
             Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.vbox1[this.txtAbout]));
@@ -84,13 +86,26 @@ namespace PubComb {
             w4.Expand = false;
             w4.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
-            this.hseparator2 = new Gtk.HSeparator();
-            this.hseparator2.Name = "hseparator2";
-            this.vbox1.Add(this.hseparator2);
-            Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.vbox1[this.hseparator2]));
+            this.chkTempOnRez = new Gtk.CheckButton();
+            this.chkTempOnRez.CanFocus = true;
+            this.chkTempOnRez.Name = "chkTempOnRez";
+            this.chkTempOnRez.Label = Mono.Unix.Catalog.GetString("Rez as a temporary object? (Deletes after 60s)");
+            this.chkTempOnRez.Active = true;
+            this.chkTempOnRez.DrawIndicator = true;
+            this.chkTempOnRez.UseUnderline = true;
+            this.vbox1.Add(this.chkTempOnRez);
+            Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.vbox1[this.chkTempOnRez]));
             w5.Position = 4;
             w5.Expand = false;
             w5.Fill = false;
+            // Container child vbox1.Gtk.Box+BoxChild
+            this.hseparator2 = new Gtk.HSeparator();
+            this.hseparator2.Name = "hseparator2";
+            this.vbox1.Add(this.hseparator2);
+            Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.vbox1[this.hseparator2]));
+            w6.Position = 5;
+            w6.Expand = false;
+            w6.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
             this.table1 = new Gtk.Table(((uint)(1)), ((uint)(2)), false);
             this.table1.Name = "table1";
@@ -102,9 +117,9 @@ namespace PubComb {
             this.lblInventory.LabelProp = Mono.Unix.Catalog.GetString("Path to Objects \n  ex:  test/RezzedIntercept\n\nWhere test is a folder in the root (with few items in it)  and RezzedIntercept is the object to rez.");
             this.lblInventory.Wrap = true;
             this.table1.Add(this.lblInventory);
-            Gtk.Table.TableChild w6 = ((Gtk.Table.TableChild)(this.table1[this.lblInventory]));
-            w6.XOptions = ((Gtk.AttachOptions)(4));
-            w6.YOptions = ((Gtk.AttachOptions)(4));
+            Gtk.Table.TableChild w7 = ((Gtk.Table.TableChild)(this.table1[this.lblInventory]));
+            w7.XOptions = ((Gtk.AttachOptions)(4));
+            w7.YOptions = ((Gtk.AttachOptions)(4));
             // Container child table1.Gtk.Table+TableChild
             this.txtInventory = new Gtk.Entry();
             this.txtInventory.CanFocus = true;
@@ -112,15 +127,15 @@ namespace PubComb {
             this.txtInventory.IsEditable = true;
             this.txtInventory.InvisibleChar = '●';
             this.table1.Add(this.txtInventory);
-            Gtk.Table.TableChild w7 = ((Gtk.Table.TableChild)(this.table1[this.txtInventory]));
-            w7.LeftAttach = ((uint)(1));
-            w7.RightAttach = ((uint)(2));
-            w7.YOptions = ((Gtk.AttachOptions)(4));
+            Gtk.Table.TableChild w8 = ((Gtk.Table.TableChild)(this.table1[this.txtInventory]));
+            w8.LeftAttach = ((uint)(1));
+            w8.RightAttach = ((uint)(2));
+            w8.YOptions = ((Gtk.AttachOptions)(4));
             this.vbox1.Add(this.table1);
-            Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox1[this.table1]));
-            w8.Position = 5;
-            w8.Expand = false;
-            w8.Fill = false;
+            Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.vbox1[this.table1]));
+            w9.Position = 6;
+            w9.Expand = false;
+            w9.Fill = false;
             this.Add(this.vbox1);
             if ((this.Child != null)) {
                 this.Child.ShowAll();

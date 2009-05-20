@@ -46,14 +46,16 @@ namespace PubComb
         {
             RezPlatform=true;
 			TeleportEnabled=true;
+			TempOnRez=false;
             Altitude = 50000;
             if (File.Exists("highHelper.settings"))
             {
                 StreamReader re = File.OpenText("highHelper.settings");
-                if (re.ReadLine() != "Enabled")
-                    RezPlatform = false;
-                if (re.ReadLine() != "Enabled")
-                    TeleportEnabled = false;
+				
+                RezPlatform		=(re.ReadLine().Equals("Enabled"));
+                TeleportEnabled	=(re.ReadLine().Equals("Enabled"));
+				TempOnRez		=(re.ReadLine().Equals("Enabled"));
+				
                 Altitude = int.Parse(re.ReadLine());
 
 
@@ -64,10 +66,13 @@ namespace PubComb
         private void saveData()
         {
             TextWriter tw = new StreamWriter("highHelper.settings");
-            if (RezPlatform) tw.WriteLine("Enabled");
-            else tw.WriteLine("Disabled");
-            if (TeleportEnabled) tw.WriteLine("Enabled");
-            else tw.WriteLine("Disabled");
+			
+			
+			//				Boolean			? ValIfTrue : ValIfFalse
+			tw.WriteLine(RezPlatform 		? "Enabled" : "Disabled");
+			tw.WriteLine(TeleportEnabled 	? "Enabled" : "Disabled");
+			tw.WriteLine(TempOnRez 			? "Enabled" : "Disabled");
+            
             tw.WriteLine(Altitude.ToString());
             tw.Close();
         }
@@ -100,6 +105,11 @@ namespace PubComb
 		{
 			get{return chkRezPlatform.Active;}
 			set{chkRezPlatform.Active=value;}
+		}
+		public bool TempOnRez
+		{
+			get{return chkTempOnRez.Active;}
+			set{chkTempOnRez.Active=value;}
 		}
 		public int Altitude
 		{

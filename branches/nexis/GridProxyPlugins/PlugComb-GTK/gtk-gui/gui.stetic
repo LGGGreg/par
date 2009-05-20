@@ -60,7 +60,7 @@
         <child>
           <widget class="Gtk.Label" id="txtAbout">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">Plugin by Gregory Maurer</property>
+            <property name="LabelProp" translatable="yes">Plugin by Gregory Maurer, Modified by LGG.</property>
             <property name="Justify">Center</property>
           </widget>
           <packing>
@@ -99,11 +99,28 @@
           </packing>
         </child>
         <child>
+          <widget class="Gtk.CheckButton" id="chkTempOnRez">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">Rez as a temporary object? (Deletes after 60s)</property>
+            <property name="Active">True</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="Position">4</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
           <widget class="Gtk.HSeparator" id="hseparator2">
             <property name="MemberName" />
           </widget>
           <packing>
-            <property name="Position">4</property>
+            <property name="Position">5</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -159,7 +176,7 @@ Where test is a folder in the root (with few items in it)  and RezzedIntercept i
             </child>
           </widget>
           <packing>
-            <property name="Position">5</property>
+            <property name="Position">6</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -2456,6 +2473,23 @@ Thanks to Day Oh for inviting me to his sky party :)</property>
           </packing>
         </child>
         <child>
+          <widget class="Gtk.CheckButton" id="chkTempOnRez">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">Rez as a temporary object? (Deletes after 60s)</property>
+            <property name="Active">True</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="Position">4</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
           <widget class="Gtk.HBox" id="hbox2">
             <property name="MemberName" />
             <property name="Spacing">6</property>
@@ -2492,7 +2526,7 @@ Thanks to Day Oh for inviting me to his sky party :)</property>
             </child>
           </widget>
           <packing>
-            <property name="Position">4</property>
+            <property name="Position">5</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -2508,7 +2542,7 @@ Thanks to Day Oh for inviting me to his sky party :)</property>
             <signal name="Activated" handler="OnCmdGoActivated" />
           </widget>
           <packing>
-            <property name="Position">5</property>
+            <property name="Position">6</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
