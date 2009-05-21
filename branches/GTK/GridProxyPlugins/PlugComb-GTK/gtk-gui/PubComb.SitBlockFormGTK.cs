@@ -19,9 +19,9 @@ namespace PubComb {
         
         private Gtk.HSeparator hseparator2;
         
-        private Gtk.CheckButton chkEnabled;
+        private Gtk.CheckButton chkAllSits;
         
-        private Gtk.CheckButton chkMineOnly;
+        private Gtk.CheckButton chkForeignSits;
         
         protected virtual void Build() {
             Stetic.Gui.Initialize(this);
@@ -36,7 +36,7 @@ namespace PubComb {
             // Container child vbox3.Gtk.Box+BoxChild
             this.lblTitle = new Gtk.Label();
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.LabelProp = Mono.Unix.Catalog.GetString("Plugin by LordGregGreg\n\nNOTE: Very beta.");
+            this.lblTitle.LabelProp = Mono.Unix.Catalog.GetString("Plugin by LordGregGreg and N3X15.\n\nNOTE: Very beta.");
             this.lblTitle.Justify = ((Gtk.Justification)(2));
             this.vbox3.Add(this.lblTitle);
             Gtk.Box.BoxChild w1 = ((Gtk.Box.BoxChild)(this.vbox3[this.lblTitle]));
@@ -52,28 +52,26 @@ namespace PubComb {
             w2.Expand = false;
             w2.Fill = false;
             // Container child vbox3.Gtk.Box+BoxChild
-            this.chkEnabled = new Gtk.CheckButton();
-            this.chkEnabled.CanFocus = true;
-            this.chkEnabled.Name = "chkEnabled";
-            this.chkEnabled.Label = Mono.Unix.Catalog.GetString("Block me from sitting on ANYTHING (such as orbiters!)");
-            this.chkEnabled.DrawIndicator = true;
-            this.chkEnabled.UseUnderline = true;
-            this.vbox3.Add(this.chkEnabled);
-            Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox3[this.chkEnabled]));
+            this.chkAllSits = new Gtk.CheckButton();
+            this.chkAllSits.CanFocus = true;
+            this.chkAllSits.Name = "chkAllSits";
+            this.chkAllSits.Label = Mono.Unix.Catalog.GetString("Block me from sitting on ANYTHING!");
+            this.chkAllSits.DrawIndicator = true;
+            this.chkAllSits.UseUnderline = true;
+            this.vbox3.Add(this.chkAllSits);
+            Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox3[this.chkAllSits]));
             w3.Position = 2;
             w3.Expand = false;
             w3.Fill = false;
             // Container child vbox3.Gtk.Box+BoxChild
-            this.chkMineOnly = new Gtk.CheckButton();
-            this.chkMineOnly.Sensitive = false;
-            this.chkMineOnly.CanFocus = true;
-            this.chkMineOnly.Name = "chkMineOnly";
-            this.chkMineOnly.Label = Mono.Unix.Catalog.GetString(".. but only for objects I don't own. (Not ready yet)");
-            this.chkMineOnly.DrawIndicator = true;
-            this.chkMineOnly.UseUnderline = true;
-            this.vbox3.Add(this.chkMineOnly);
-            Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.vbox3[this.chkMineOnly]));
-            w4.PackType = ((Gtk.PackType)(1));
+            this.chkForeignSits = new Gtk.CheckButton();
+            this.chkForeignSits.CanFocus = true;
+            this.chkForeignSits.Name = "chkForeignSits";
+            this.chkForeignSits.Label = Mono.Unix.Catalog.GetString("Stop me from sitting on objects I don't own (like orbiters).");
+            this.chkForeignSits.DrawIndicator = true;
+            this.chkForeignSits.UseUnderline = true;
+            this.vbox3.Add(this.chkForeignSits);
+            Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.vbox3[this.chkForeignSits]));
             w4.Position = 3;
             w4.Expand = false;
             w4.Fill = false;
@@ -81,10 +79,10 @@ namespace PubComb {
             if ((this.Child != null)) {
                 this.Child.ShowAll();
             }
-            this.DefaultWidth = 400;
+            this.DefaultWidth = 401;
             this.DefaultHeight = 300;
             this.Show();
-            this.chkEnabled.Toggled += new System.EventHandler(this.OnChkEnabledToggled);
+            this.chkAllSits.Toggled += new System.EventHandler(this.OnChkEnabledToggled);
         }
     }
 }

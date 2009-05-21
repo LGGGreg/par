@@ -2507,7 +2507,7 @@ Thanks to Day Oh for inviting me to his sky party :)</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="PubComb.SitBlockFormGTK" design-size="400 300">
+  <widget class="Gtk.Window" id="PubComb.SitBlockFormGTK" design-size="401 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">SitBlockFormGTK</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -2518,7 +2518,7 @@ Thanks to Day Oh for inviting me to his sky party :)</property>
         <child>
           <widget class="Gtk.Label" id="lblTitle">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">Plugin by LordGregGreg
+            <property name="LabelProp" translatable="yes">Plugin by LordGregGreg and N3X15.
 
 NOTE: Very beta.</property>
             <property name="Justify">Center</property>
@@ -2542,10 +2542,10 @@ NOTE: Very beta.</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.CheckButton" id="chkEnabled">
+          <widget class="Gtk.CheckButton" id="chkAllSits">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">Block me from sitting on ANYTHING (such as orbiters!)</property>
+            <property name="Label" translatable="yes">Block me from sitting on ANYTHING!</property>
             <property name="DrawIndicator">True</property>
             <property name="HasLabel">True</property>
             <property name="UseUnderline">True</property>
@@ -2559,17 +2559,15 @@ NOTE: Very beta.</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.CheckButton" id="chkMineOnly">
+          <widget class="Gtk.CheckButton" id="chkForeignSits">
             <property name="MemberName" />
-            <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">.. but only for objects I don't own. (Not ready yet)</property>
+            <property name="Label" translatable="yes">Stop me from sitting on objects I don't own (like orbiters).</property>
             <property name="DrawIndicator">True</property>
             <property name="HasLabel">True</property>
             <property name="UseUnderline">True</property>
           </widget>
           <packing>
-            <property name="PackType">End</property>
             <property name="Position">3</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
