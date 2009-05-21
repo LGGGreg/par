@@ -80,6 +80,8 @@ public class Analyst : ProxyPlugin
                 LogAll();
             else if (arg.Contains("--log-whitelist="))
                 LogWhitelist(arg.Substring(arg.IndexOf('=') + 1));
+            else if (arg.Contains("--no-log-blacklist="))
+                NoLogBlacklist(arg.Substring(arg.IndexOf('=') + 1));
             else if (arg.Contains("--output="))
                 SetOutput(arg.Substring(arg.IndexOf('=') + 1));
 
@@ -396,8 +398,6 @@ public class Analyst : ProxyPlugin
                                 fval = frame.AgentID;
                             else if (lineValue == "$SessionID")
                                 fval = frame.SessionID;
-                            else if (lineValue.StartsWith("|"))
-                                fval = Hex2Bytes(CleanHex(lineValue));
                             else
                                 fval = MagicCast(name, block, lineField, lineValue);
 
@@ -416,9 +416,9 @@ public class Analyst : ProxyPlugin
                     return;
                 }
 
-                packet.Header.Flags |= Helpers.MSG_RELIABLE;
+                packet.Header.Reliable = true;
                 //if (protocolManager.Command(name).Encoded)
-                //	packet.Header.Flags |= Helpers.MSG_ZEROCODED;
+                //	packet.Header.Zerocoded = true;
                 proxy.InjectPacket(packet, direction);
 
                 SayToUser("injected " + words[1]);
@@ -437,44 +437,6 @@ public class Analyst : ProxyPlugin
             }
         }
     }
-    private string CleanHex(string text)
-    {
-        int index;
-
-        // Remove spaces
-        text = text.Replace(" ", "");
-
-        // Remove "|" and stuff before it
-        index = text.IndexOf("|");
-        if (index != -1)
-            text = text.Substring(index + 1);
-
-        // Remove comments
-        index = text.IndexOf("//");
-        if (index != -1)
-            text = text.Substring(0, index);
-
-        return text;
-    }
-
-    // Blaaaaaaaarg
-    private byte[] Hex2Bytes(string text)
-    {
-        int index;
-        string pair;
-        byte[] output = new byte[text.Length / 2];
-        int paircount = (int)(text.Length / 2);
-        if (paircount > 0)
-        {
-            for (index = 0; index < paircount; index++)
-            {
-                pair = text.Substring(index * 2, 2);
-                output[index] = Convert.ToByte(pair, 16);
-            }
-        }
-        return output;
-    }
-
 
     // SayToUser: send a message to the user as in-world chat
     private void SayToUser(string message)
@@ -785,6 +747,42 @@ public class Analyst : ProxyPlugin
         }
     }
 
+    private void NoLogBlacklist(string blacklistFile)
+    {
+        try
+        {
+            string[] lines = File.ReadAllLines(blacklistFile);
+            int count = 0;
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i].Trim();
+                if (line.Length == 0)
+                    continue;
+
+                PacketType pType;
+
+                try
+                {
+                    pType = packetTypeFromName(line);
+                    string[] noLogStr = new string[] {"/-log", line};
+                    CmdNoLog(noLogStr);
+                    ++count;
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Bad packet name: " + line);
+                }
+            }
+
+            Console.WriteLine(String.Format("Not logging {0} packet types loaded from blacklist", count));
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Failed to load packet blacklist from " + blacklistFile);
+        }
+    }
+
     private void SetOutput(string outputFile)
     {
         try
@@ -831,15 +829,16 @@ public class Analyst : ProxyPlugin
     // LogPacket: dump a packet to the console
     private void LogPacket(Packet packet, IPEndPoint endPoint, Direction direction)
     {
-        string packetText = packet.ToString();
+        string packetText = Helpers.PacketToString(packet);
 
         if (logGrep == null || (logGrep != null && Regex.IsMatch(packetText, logGrep)))
         {
-            string line = String.Format("{0} {1,21} {2,5} {3}{4}{5}"
+            string line = String.Format("{0}\n{1} {2,21} {3,5} {4}{5}{6}"
+                , packet.Type
                 , direction == Direction.Incoming ? "<--" : "-->"
                 , endPoint
                 , packet.Header.Sequence
-                , InterpretOptions(packet.Header.Flags)
+                , InterpretOptions(packet.Header)
                 , Environment.NewLine
                 , packetText
                 );
@@ -852,16 +851,16 @@ public class Analyst : ProxyPlugin
     }
 
     // InterpretOptions: produce a string representing a packet's header options
-    private static string InterpretOptions(byte options)
+    private static string InterpretOptions(Header header)
     {
         return "["
-             + ((options & Helpers.MSG_APPENDED_ACKS) != 0 ? "Ack" : "   ")
+             + (header.AppendedAcks ? "Ack" : "   ")
              + " "
-             + ((options & Helpers.MSG_RESENT) != 0 ? "Res" : "   ")
+             + (header.Resent ? "Res" : "   ")
              + " "
-             + ((options & Helpers.MSG_RELIABLE) != 0 ? "Rel" : "   ")
+             + (header.Reliable ? "Rel" : "   ")
              + " "
-             + ((options & Helpers.MSG_ZEROCODED) != 0 ? "Zer" : "   ")
+             + (header.Zerocoded ? "Zer" : "   ")
              + "]"
              ;
     }

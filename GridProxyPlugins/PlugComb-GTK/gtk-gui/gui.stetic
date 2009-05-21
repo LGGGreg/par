@@ -2579,12 +2579,4 @@ NOTE: Very beta.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="PubComb.InvFunFormGTK" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">InvFunFormGTK</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
-    </child>
-  </widget>
 </stetic-interface>

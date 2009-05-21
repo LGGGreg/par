@@ -59,29 +59,17 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="HttpServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\HttpServer.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenMetaverse.Http, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenMetaverse.StructuredData, Version=0.6.1.17450, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.StructuredData.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenMetaverse.Utilities, Version=0.6.1.17452, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Utilities.dll</HintPath>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.dll</HintPath>
     </Reference>
     <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.Utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -162,4 +150,18 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
+      <Project>{F5A6A473-F995-491C-90B2-1A652C62344C}</Project>
+      <Name>OpenMetaverse.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
+      <Project>{9FF014E3-9134-49CC-A032-98491D6D6C8D}</Project>
+      <Name>OpenMetaverse.StructuredData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse\HttpServer\HttpServer.csproj">
+      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
+      <Name>HttpServer</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

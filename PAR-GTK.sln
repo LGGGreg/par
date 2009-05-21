@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeilSay", "GridProxyPlugins
 EndProject
 Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "LSLObfTranslation", "GridProxyPlugins\LSLObfTranslation\LSLObfTranslation.mdproj", "{5CFD026B-65DB-4AFF-9B22-8353BD1DDA46}"
 EndProject
-Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "GridProxyPlugins\Packages.mdproj", "{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSLObf", "GridProxyPlugins\LSLObf\LSLObf.csproj", "{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependancies", "Dependancies", "{0CC72689-8DB6-4F00-BEB5-0C6EF26A067A}"
@@ -26,6 +24,29 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridProxyApp", "Programs\GridProxy\GridProxyApp.csproj", "{07C70DEA-D20D-404D-A2A8-31D62F7C4323}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinuxLoader", "LinuxLoader\LinuxLoader\LinuxLoader.csproj", "{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenMetaverse", "OpenMetaverse", "{09C2C775-1ECB-445A-8BB3-F98F3B643821}"
+	ProjectSection(MonoDevelopProperties) = preProject
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
+		$1.IncludeInNewFiles = False
+		$1.inheritsSet = MITX11License
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetaverse", "OpenMetaverse\OpenMetaverse\OpenMetaverse.csproj", "{355C5915-C8DD-4449-8301-ECFF296980B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetaverse.Http", "OpenMetaverse\OpenMetaverse.Http\OpenMetaverse.Http.csproj", "{F5A6A473-F995-491C-90B2-1A652C62344C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetaverseTypes", "OpenMetaverse\OpenMetaverseTypes\OpenMetaverseTypes.csproj", "{32A1C298-C781-4337-9ACD-27D6AFDE0959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetaverse.StructuredData", "OpenMetaverse\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj", "{9FF014E3-9134-49CC-A032-98491D6D6C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "OpenMetaverse\HttpServer\HttpServer.csproj", "{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMetaverse.Utilities", "OpenMetaverse\OpenMetaverse.Utilities\OpenMetaverse.Utilities.csproj", "{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}"
+EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "GridProxyPlugins\Packages.mdproj", "{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,18 +62,26 @@ Global
 		{2104D720-67EB-46A7-A555-91869308F891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2104D720-67EB-46A7-A555-91869308F891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2104D720-67EB-46A7-A555-91869308F891}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A1C298-C781-4337-9ACD-27D6AFDE0959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A1C298-C781-4337-9ACD-27D6AFDE0959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A1C298-C781-4337-9ACD-27D6AFDE0959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A1C298-C781-4337-9ACD-27D6AFDE0959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355C5915-C8DD-4449-8301-ECFF296980B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355C5915-C8DD-4449-8301-ECFF296980B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355C5915-C8DD-4449-8301-ECFF296980B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355C5915-C8DD-4449-8301-ECFF296980B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52118913-AD20-44E4-B2A1-076E264FA59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{52118913-AD20-44E4-B2A1-076E264FA59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52118913-AD20-44E4-B2A1-076E264FA59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,32 +102,53 @@ Global
 		{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF014E3-9134-49CC-A032-98491D6D6C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF014E3-9134-49CC-A032-98491D6D6C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF014E3-9134-49CC-A032-98491D6D6C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF014E3-9134-49CC-A032-98491D6D6C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A6A473-F995-491C-90B2-1A652C62344C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A6A473-F995-491C-90B2-1A652C62344C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A6A473-F995-491C-90B2-1A652C62344C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A6A473-F995-491C-90B2-1A652C62344C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6D6C8460-B38E-4061-9348-6BC1D8E8B5E8} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
 		{60748552-CD01-4F8B-92BE-A74539916FF8} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
 		{52118913-AD20-44E4-B2A1-076E264FA59F} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
 		{5CFD026B-65DB-4AFF-9B22-8353BD1DDA46} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
-		{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
 		{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8} = {68A549EA-A0D5-4CA7-98A5-9B9937EA3DA9}
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5} = {0CC72689-8DB6-4F00-BEB5-0C6EF26A067A}
 		{77DD4278-8DF5-40C2-B7DD-292773EAD325} = {0CC72689-8DB6-4F00-BEB5-0C6EF26A067A}
 		{07C70DEA-D20D-404D-A2A8-31D62F7C4323} = {0CC72689-8DB6-4F00-BEB5-0C6EF26A067A}
 		{2104D720-67EB-46A7-A555-91869308F891} = {77DD4278-8DF5-40C2-B7DD-292773EAD325}
+		{355C5915-C8DD-4449-8301-ECFF296980B6} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
+		{F5A6A473-F995-491C-90B2-1A652C62344C} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
+		{32A1C298-C781-4337-9ACD-27D6AFDE0959} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
+		{9FF014E3-9134-49CC-A032-98491D6D6C8D} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
+		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
+		{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8} = {09C2C775-1ECB-445A-8BB3-F98F3B643821}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 0.1
 		StartupItem = GridProxyPlugins\PlugComb-GTK\PubComb-GTK.csproj
 		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.FileWidth = 120
-		$1.TabWidth = 4
-		$1.TabsToSpaces = False
-		$1.NoTabsAfterNonTabs = False
-		$1.RemoveTrailingWhitespace = False
-		$1.EolMarker = Native
-		$0.StandardHeader = $2
-		$2.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
-		$2.inheritsSet = MITX11License
+		$0.StandardHeader = $1
+		$1.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
+		$1.inheritsSet = MITX11License
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 120
+		$2.TabWidth = 4
+		$2.TabsToSpaces = False
+		$2.NoTabsAfterNonTabs = False
+		$2.RemoveTrailingWhitespace = False
+		$2.EolMarker = Native
 	EndGlobalSection
 EndGlobal

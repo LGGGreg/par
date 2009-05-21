@@ -30,31 +30,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenMetaverse.GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.GUI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenMetaverse.StructuredData, Version=0.6.1.17450, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.StructuredData.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenMetaverse.Utilities, Version=0.6.1.17452, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Utilities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Mono.Posix" />
     <Reference Include="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
@@ -64,6 +39,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Programs\bin\Nini.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +63,18 @@
       <Name>GridProxy</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
+      <Project>{9FF014E3-9134-49CC-A032-98491D6D6C8D}</Project>
+      <Name>OpenMetaverse.StructuredData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
+      <Project>{F5A6A473-F995-491C-90B2-1A652C62344C}</Project>
+      <Name>OpenMetaverse.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.Utilities\OpenMetaverse.Utilities.csproj">
+      <Project>{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}</Project>
+      <Name>OpenMetaverse.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -91,8 +86,8 @@
     <MonoDevelop>
       <Properties>
         <Policies>
-          <StandardHeader inheritsSet="MITX11License" />
           <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
+          <StandardHeader inheritsSet="MITX11License" />
         </Policies>
       </Properties>
     </MonoDevelop>
