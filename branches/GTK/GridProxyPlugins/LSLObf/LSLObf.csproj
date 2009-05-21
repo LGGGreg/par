@@ -50,13 +50,13 @@
       <HintPath>..\..\Programs\bin\Nini.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse, Version=1.0.0.1418, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.dll</HintPath>
+      <HintPath>..\..\Package\ShadowFiles\OpenMetaverse.dll</HintPath>
     </Reference>
     <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverseTypes.dll</HintPath>
+      <HintPath>..\..\Package\ShadowFiles\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
