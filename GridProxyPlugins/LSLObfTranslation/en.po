@@ -1,0 +1,719 @@
+msgid ""
+msgstr ""
+"X-Generator: MonoDevelop Gettext addin\n"
+"Language-Team: \n"
+"PO-Revision-Date: 2009-05-18 22:35:55-0700\n"
+"POT-Creation-Date: 2009-05-18 22:35:54-0700\n"
+"Project-Id-Version: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: nexis\n"
+"Content-Type: text/plain; charset=utf-8\n"
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.frmMain.cs:25
+msgid "Pubcomb Config"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.frmMain.cs:40
+msgid "page1"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CliIntFormGTK.cs:37
+msgid "CliIntFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CliIntFormGTK.cs:48
+msgid "Client Interceptors"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CliIntFormGTK.cs:58
+msgid "Plugin by Gregory Maurer"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CliIntFormGTK.cs:77
+msgid "Check to enable the rezzing of interceptors from your inventory."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CliIntFormGTK.cs:101
+msgid ""
+"Path to Objects \n"
+"  ex:  test/RezzedIntercept\n"
+"\n"
+"Where test is a folder in the root (with few items in it)  and "
+"RezzedIntercept is the object to rez."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:27
+msgid "LeetFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:37
+msgid ""
+"1337 Encoder/Decoder\n"
+"\n"
+"Plugin by LordGregGreg Back"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:48
+msgid "Enable 1337 plugin"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:58
+msgid "Leet Off\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:59
+msgid "LeetLevel 1\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:60
+msgid "LeetLevel 2\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:61
+msgid "LeetLevel 3\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:62
+msgid "LeetLevel 4\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:63
+msgid "LeetLevel 5\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:64
+msgid "LeetLevel 6\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:65
+msgid "LeetLevel 7\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:66
+msgid "LeetLevel 8\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LeetFormGTK.cs:67
+msgid "LeetLevel 9"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HandicapFormGTK.cs:39
+msgid "HandicapFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HandicapFormGTK.cs:48
+msgid ""
+"<b>Handicap</b>\n"
+"\n"
+"Plugin author unknown\n"
+"Thanks to Day Oh for binary parsing stuff."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HandicapFormGTK.cs:60
+msgid "Enable quick teleports?"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HandicapFormGTK.cs:75
+msgid ""
+"<b>Instructions</b>\n"
+"\n"
+"1. Enable the plugin.\n"
+"2. Type <i>handi-</i> in your Second Life client.\n"
+"3. In the menu that appears, push \"Help\"."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HandicapFormGTK.cs:108
+msgid "<b>Debug Data</b>"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LyraFormGTK.cs:33
+msgid "Lyra - Phantom Movelock"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LyraFormGTK.cs:42
+msgid ""
+"<b>Lyra</b>\n"
+"\n"
+"Plugin by LGG, thanks to Day Oh for Teqnique"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LyraFormGTK.cs:62
+msgid "Enable Phantom Lock"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.LyraFormGTK.cs:77
+msgid "Chat trigger to toggle phantom:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:33
+msgid "ProtAnim - By LordGregGreg Back"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:42
+msgid ""
+"<b>Protective AO</b> (Keeps you from crashing)\n"
+"\n"
+"Plugin By LGG.\n"
+"\n"
+"<b>Special thanks:</b>\n"
+"The Animation Specialist, Zwagoth Klaar himself!\n"
+"All Others Who Helped Me With This :)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:68
+msgid "Block All Animations\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:69
+msgid "Block All But Linden Animations\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:70
+msgid "Block Only Animations With New Stuff\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:71
+msgid "Block Only Animations With Crazy Stuff\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:72
+msgid "Block Only Animations With Very Evil Stuff\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:73
+msgid "Block Only Animations That Can Crash You\r"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:74
+msgid "Block Only Animations That Are Known To Crash You"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PAnimFormGTK.cs:81
+msgid "<b>Protection Level:</b>"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PennyFormGTK.cs:27
+msgid "PennyFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PennyFormGTK.cs:36
+msgid ""
+"Protect textures from being stolen.\n"
+"\n"
+"Plugin by Day Oh."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.PennyFormGTK.cs:56
+msgid "Enable Penny"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:75
+msgid "ProfileFunFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:84
+msgid ""
+"Profile Fun\n"
+"\n"
+"Plugin by LGG"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:103
+msgid "Enable autofill of website URL with location URL?"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:118
+msgid "URL Base:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:128
+msgid "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc="
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:171
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:274
+msgid "Image ID:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:179
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:264
+msgid "About:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:189
+msgid "Website:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:224
+msgid "<b>Second Life Profile</b>"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:294
+msgid "<b>First Life Tab</b>"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProfileFunFormGTK.cs:307
+msgid "Update Profile"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:75
+msgid "RadarChat"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:84
+msgid ""
+"Client-side radar\n"
+"\n"
+"Plugin by LGG."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:103
+msgid "Enable radar"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:118
+msgid "Radar channel:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:142
+msgid "Default Channel"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:160
+msgid "Delimiter:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:170
+msgid ","
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:216
+msgid "Eject"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:226
+msgid "Ban"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:237
+msgid "Eject & Ban"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:248
+msgid "TP Home (Kill)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:259
+msgid "Ban on This Estate"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:270
+msgid "Ban on ALL Estates"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:281
+msgid "Freeze"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:292
+msgid "Unfreeze"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RadarChatFormGTK.cs:315
+msgid "Send Message"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:53
+msgid "RainbowParticlesFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:62
+msgid ""
+"Plugin by LGG and Day Oh.\n"
+"GUI Facelift by Fred."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:84
+msgid "Type of Beam:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:92
+msgid "Leave my particles alone"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:93
+msgid "Spinning Circle Beam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:94
+msgid "Quad Beams"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:95
+msgid "Single Color Change Beam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:96
+msgid "SL Particle Beam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:123
+msgid "Red"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:124
+msgid "Orange"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:125
+msgid "Yellow"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:126
+msgid "Lime"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:127
+msgid "Green"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:128
+msgid "Turquoise"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:129
+msgid "Blue"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:130
+msgid "Purple"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:131
+msgid "Pink"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:132
+msgid "Black"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:133
+msgid "White"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:146
+msgid "Add Color"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:182
+msgid "Remove"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:192
+msgid "Move Up"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RainbowParticlesFormGTK.cs:203
+msgid "Move Down"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RetreatFormGTK.cs:27
+msgid "RetreatFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RetreatFormGTK.cs:36
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:50
+msgid "Plugin by LGG."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.RetreatFormGTK.cs:54
+msgid "Alert me when a friend removes me from their contacts list"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SitAnywhereFormGTK.cs:27
+msgid "SitAnywhereFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SitAnywhereFormGTK.cs:36
+msgid ""
+"Plugin By LGG.\n"
+"\n"
+"Thanks to PSL for initial concept, and Bilo Parx For logged packet."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SitAnywhereFormGTK.cs:56
+msgid "SIT"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:41
+msgid "SpamBlockFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:68
+msgid "Block llDialog spam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:81
+msgid "Block Mod Rights spam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:94
+msgid ""
+"IM Spam (Includes inventory offers, friendship requests, and calling cards)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:107
+msgid "Sound spam (can mess with gestures)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.SpamBlockFormGTK.cs:119
+msgid "Map request spam"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.TabItemGTK.cs:37
+msgid "PubComb Plugin Collection (for GTK)  - Protocol Awareness & Research"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.TabItemGTK.cs:66
+msgid ""
+"<b>PAR - PubComb Plugin DLL (GTK GUI)</b>\n"
+"\n"
+"By LordGregGreg Back, Day Oh, and Fred Rookstown.\n"
+"\n"
+"Complete GUI facelift by N3X15 (Fred Rookstown)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.TabItemGTK.cs:77
+msgid "About PAR"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.AvatarFormGTK.cs:29
+msgid "AvatarFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.AvatarFormGTK.cs:38
+msgid "Day Oh's Avatar Info Plugin"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.AwesomeSauceFormGTK.cs:29
+msgid "AwesomeSauceFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.AwesomeSauceFormGTK.cs:38
+msgid ""
+"Plugin by LGG.\n"
+"\n"
+"Saves script source locally, debug log is below."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CapsFormGTK.cs:37
+msgid "CapsFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CapsFormGTK.cs:47
+msgid ""
+"Plugin by LGG\n"
+"\n"
+"<b>ADVANCED USE ONLY, YOU COULD ROYALLY SCREW UP YOUR GAME.</b>\n"
+"\n"
+"Doubleclick to enable/disable a capability."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProTextionFormGTK.cs:27
+msgid "ProTextionFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProTextionFormGTK.cs:36
+msgid ""
+"Plugin by LGG.\n"
+"\n"
+"Thanks to Thomas for the JPEG help!"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.ProTextionFormGTK.cs:54
+msgid "Protect me from image crashes."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:62
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:63
+msgid "_Open"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:65
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:66
+msgid "_Save to SL"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:68
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:69
+msgid "_About"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:74
+msgid "CinderellaFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:83
+msgid ""
+"Plugin by LGG.\n"
+"\n"
+"Interface completely redone by N3X15."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:147
+msgid "_Copy"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:158
+msgid "_Mod"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:169
+msgid "Transfer"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:185
+msgid "Store using lossless compression."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:198
+msgid "<b>Permissions and Upload Settings</b>"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.CinderellaFormGTK.cs:213
+msgid "Waiting..."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:37
+msgid "HighFormGTK"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:46
+msgid ""
+"Plugin by LGG.\n"
+"\n"
+"Thanks to Day Oh for inviting me to his sky party :)"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:65
+msgid "Rez a platform up high."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:78
+msgid "TP me to platform after rezzing it."
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:94
+msgid "Altitude to rez at:"
+msgstr ""
+
+#: ../PlugComb-GTK/gtk-gui/PubComb.HighFormGTK.cs:123
+msgid "Take a Hit"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:83
+msgid "ShadowFormGTK"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:133
+msgid "Send"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:157
+msgid "Chat"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:180
+msgid "Enable Shadow Plugin"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:193
+msgid "<b>The Basics</b>"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:251
+msgid "Trigger:"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:261
+msgid "Decryption Key:"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:271
+msgid "Brand:"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:317
+msgid "<b>Decryption Settings</b>"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:332
+msgid "Options"
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:346
+msgid ""
+"<b>About Shadow</b>\n"
+"\n"
+"This program was made by LordGregGreg for the purpose of allowing secure "
+"communications in an insecure world.  \n"
+"\n"
+"<i>Rob Nelson (Goes by N3X15 or Fred Rookstown, depending on where you look) "
+"also recoded the entire GUI so it would work reliably on Mac and Linux.  "
+"Worship him.</i>\n"
+"\n"
+"Messages sent with this plugin are encrypted BEFORE they are sent from your "
+"computer and decrypted AFTER the client computer recives them, (and before "
+"the client displays them).  This makes it impossible for chat interception on "
+"any level.\n"
+"\n"
+"Special Thanks to \"Philip Linden\" (yeah, thats not his actual sl name) and "
+"the OpenMetaverse project, and all it's contributors.\n"
+"\n"
+"Also special thanks to ManyMonkeys for implementing TwoFish, and also the "
+"inventors of TwoFish!\n"
+"\n"
+"If you plan to decompile and use this code, that is fine.  But please leave "
+"this message and access to it intact, that is all I ask. :)\n"
+"\n"
+"Go to http://code.google.com/p/par/wiki/ShadowTutorial for more info."
+msgstr ""
+
+#: ../Shadow/gtk-gui/PubComb.ShadowFormGTK.cs:358
+msgid "About"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:49
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:50
+msgid "_File"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:52
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:53
+msgid "_Exit"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:57
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:58
+msgid "_LAUNCH!"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:60
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:61
+msgid "Enable Plugin"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:63
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:64
+msgid "Disable"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:69
+msgid "PAR Loader for GTK"
+msgstr ""
+
+#: ../../LinuxLoader/LinuxLoader/gtk-gui/MainWindow.cs:124
+msgid "Click a plugin to view its data here."
+msgstr ""
+

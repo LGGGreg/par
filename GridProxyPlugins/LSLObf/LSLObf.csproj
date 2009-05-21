@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EA3ACC4-437D-40EA-BE02-A398AB4F62E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <Description>LSL Obfuscator	</Description>
+    <AssemblyName>LSLObf</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Package\Plugins</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse.GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.GUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse.StructuredData, Version=0.6.1.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.StructuredData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse.Utilities, Version=0.6.1.17452, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverse.Utilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Nini, Version=1.1.0.0, Culture=neutral, PublicKeyToken=691faec150a7fa7b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Programs\bin\Nini.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="LSLObfPlugin.cs" />
+    <Compile Include="Obfuscator.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainFormGTK.cs" />
+    <Compile Include="gtk-gui\LSLObf.MainFormGTK.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
+      <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
+      <Name>GridProxy</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader inheritsSet="MITX11License" />
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60748552-CD01-4F8B-92BE-A74539916FF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <BaseDirectory>..\..\Shadow</BaseDirectory>
+    <AssemblyName>Shadow-GTK</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Plugins</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shadow\ShadowPlugin.cs" />
+    <Compile Include="..\..\Shadow\gtk-gui\generated.cs" />
+    <Compile Include="..\..\Shadow\ShadowFormGTK.cs" />
+    <Compile Include="..\..\Shadow\gtk-gui\PubComb.ShadowFormGTK.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Shadow\ShadowForm1.cs" />
+    <None Include="..\..\Shadow\ShadowForm1.Designer.cs" />
+    <None Include="..\..\Shadow\ShadowPrefsForm2.cs" />
+    <None Include="..\..\Shadow\ShadowPrefsForm2.Designer.cs" />
+    <None Include="..\..\Shadow\ShadowForm1.resx" />
+    <None Include="..\..\Shadow\ShadowPrefsForm2.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Programs\GridProxy\GridProxy.csproj">
+      <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
+      <Name>GridProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Twofish\Twofish.csproj">
+      <Project>{2104D720-67EB-46A7-A555-91869308F891}</Project>
+      <Name>Twofish</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Shadow\gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

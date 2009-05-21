@@ -1,0 +1,6 @@
+Name: PubComb-GTK
+Description: PubComb-GTK
+Version: 0.1
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/PubComb.dll

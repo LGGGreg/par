@@ -1,4 +1,5 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -6,7 +7,6 @@
     <ProjectGuid>{07C70DEA-D20D-404D-A2A8-31D62F7C4323}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon></ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>GridProxyApp</AssemblyName>
@@ -14,70 +14,60 @@
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder></AppDesignerFolder>
+    <AppDesignerFolder>
+    </AppDesignerFolder>
     <RootNamespace>GridProxyApp</RootNamespace>
-    <StartupObject></StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <DocumentationFile></DocumentationFile>
-    <DebugSymbols>True</DebugSymbols>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
-    <Optimize>False</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Package\ShadowFiles</OutputPath>
     <RegisterForComInterop>False</RegisterForComInterop>
     <RemoveIntegerChecks>False</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <NoStdLib>False</NoStdLib>
     <NoWarn>1591,1574,0419,0618</NoWarn>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile></DocumentationFile>
-    <DebugSymbols>False</DebugSymbols>
+    <DocumentationFile>
+    </DocumentationFile>
     <FileAlignment>4096</FileAlignment>
-    <Optimize>True</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
     <RegisterForComInterop>False</RegisterForComInterop>
     <RemoveIntegerChecks>False</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <NoStdLib>False</NoStdLib>
     <NoWarn>1591,1574,0419,0618</NoWarn>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System">
-        <Name>System</Name>
-    </Reference>
-    <Reference Include="System.Xml">
-        <Name>System.Xml</Name>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GridProxy\GridProxy.csproj">
-      <Name>GridProxy</Name>
+    <ProjectReference Include="GridProxy.csproj">
       <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\Types\OpenMetaverseTypes.csproj">
-      <Name>OpenMetaverseTypes</Name>
-      <Project>{528E86C4-38DD-435F-9458-4165C2B12D0A}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>GridProxy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

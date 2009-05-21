@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD355B75-F27E-4E62-9E21-F2641F78D80B}</ProjectGuid>
+    <Packages>
+      <Packages xmlns="">
+        <Package name="Linux Binaries">
+          <Builder targetFile="PubComb-GTK.tar.gz" platform="Linux" configuration="Debug" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="PubComb.csproj" />
+          </Builder>
+        </Package>
+        <Package name="MSBuild (Visual Studio 2008) Sources">
+          <Builder targetFile="PubComb.tar.gz" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="PubComb.csproj" />
+              <SolutionItemReference path="Packages.mdproj" />
+            </ChildEntries>
+            <RootEntry path="PubComb.sln" id="{C9AEAB7C-52DB-4217-93D8-485168FF096F}" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

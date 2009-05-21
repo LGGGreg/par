@@ -1,0 +1,16 @@
+<Combine fileversion="2.0">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="LinuxLoader" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="LinuxLoader" configuration="Release" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="LinuxLoader" single="True">
+    <Execute type="None" entry="LinuxLoader" />
+  </StartMode>
+  <Entries>
+    <Entry filename="LinuxLoader.mdp" />
+  </Entries>
+</Combine>

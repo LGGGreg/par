@@ -1,0 +1,25 @@
+<project name="PAR-GTK" default="compile" basedir=".">
+
+<target name="checkout">
+  <exec executable="svn">
+    <arg value="up"/>
+  </exec>
+</target>
+
+<target name="compile">
+  <exec executable="mdtool">
+    <arg value="build" />
+    <arg value="-f:PAR-GTK.sln" />
+  </exec>
+</target>
+
+<!-- Executes on Cruise after a successful build. -->
+<target name="mkbin">
+  <delete dir="Plugins" excludes="LSLObf.*,NeilSay.*,PubComb.*,Shadow.*,en" />
+  <zip destfile="bin/PAR-GTK_Cruised.zip" basedir="Package" excludes="**/.svn/" />
+  <exec executable="scp">
+	<arg value="bin/PAR-GTK_Cruised.zip" />
+	<arg value="root@192.168.9.5:/host/www.nexisonline.net/htdocs/PAR/packages/" />
+  </exec>
+</target>
+</project>

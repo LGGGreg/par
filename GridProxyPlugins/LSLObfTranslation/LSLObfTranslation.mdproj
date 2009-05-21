@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>TranslationProject</ItemType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CFD026B-65DB-4AFF-9B22-8353BD1DDA46}</ProjectGuid>
+    <translations>
+      <translations>
+        <Translation isoCode="en" />
+      </translations>
+    </translations>
+    <outputType>RelativeToOutput</outputType>
+  </PropertyGroup>
+</Project>

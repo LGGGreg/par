@@ -1,0 +1,46 @@
+<CombineEntry name="Packages" fileversion="2.0" ctype="PackagingProject">
+  <Packages>
+    <Package name="MonoDevelop Project Model Sources">
+      <Builder rootEntry="LinuxLoader.mds" targetFile="LinuxLoader-mds.tar.gz" format="MonoDevelop.Projects.MonoDevelopFileFormat" ctype="SourcesZipPackageBuilder">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+    <Package name="SharpDevelop 1.0 Project Model Sources">
+      <Builder rootEntry="LinuxLoader.mds" targetFile="LinuxLoader-cmbx.tar.gz" format="MonoDevelop.Projects.SharpDevelopFileFormat" ctype="SourcesZipPackageBuilder">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+    <Package name="Visual Studio .NET 2005 Sources">
+      <Builder rootEntry="LinuxLoader.mds" targetFile="LinuxLoader-sln.tar.gz" format="MonoDevelop.Prj2Make.MSBuildFileFormat" ctype="SourcesZipPackageBuilder">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+    <Package name="Linux Binaries">
+      <Builder rootEntry="LinuxLoader.mds" targetFile="../Desktop/PAR/LinuxLoader-linux.tar.bz2" platform="Linux" ctype="BinariesZipPackageBuilder">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+    <Package name="Windows Binaries">
+      <Builder rootEntry="LinuxLoader.mds" targetFile="LinuxLoader-windows.tar.gz" platform="Windows" ctype="BinariesZipPackageBuilder">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+    <Package name="Tarball">
+      <Builder rootEntry="LinuxLoader.mds" TargetDirectory="/home/nexis/Desktop/PAR/" DefaultConfiguration="Debug" ctype="TarballDeployTarget">
+        <ChildEntries>
+          <Entry>LinuxLoader/LinuxLoader.mdp</Entry>
+        </ChildEntries>
+      </Builder>
+    </Package>
+  </Packages>
+</CombineEntry>
