@@ -58,6 +58,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Package\ShadowFiles\OpenMetaverseTypes.dll</HintPath>
     </Reference>
+    <Reference Include="OpenMetaverse.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Package\ShadowFiles\OpenMetaverse.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.StructuredData, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Package\ShadowFiles\OpenMetaverse.StructuredData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -66,6 +74,7 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MainFormGTK.cs" />
     <Compile Include="gtk-gui\LSLObf.MainFormGTK.cs" />
+    <Compile Include="Eratosthenes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">

@@ -57,10 +57,9 @@ namespace LSLObf
 		 * 
 		 */
 		// In case the first part of a variable or function is a number.
-		const string PREFIX="o";
+		string PREFIX="o";
 		
 		List<char> CharsUsed = new List<char>();
-		
 		List<String> LiteralStrings = new List<string>();
 		List<String> States			= new List<string>();
 		List<String> llFunctions	= new List<string>();
@@ -83,6 +82,12 @@ namespace LSLObf
 			bool PrevioysWasFSlash=false;
 			bool InComment=false;
 			bool InText=false;
+			bool AssigningVar=false;
+			
+			string WordBuffer="";
+			string VarName="";
+			string Textbuf="";
+			
 			for(int i = 0;i<text.Length;i++)
 			{
 				string c = text.Substring(i,1);
@@ -103,10 +108,46 @@ namespace LSLObf
 				}
 				
 				// Remove comments.
-				if(text.Substring(i,2).Equals("//") || InComment)
+				if((text.Substring(i,2).Equals("//")&&!InText) || InComment)
 				{
 					InComment=true;
 					continue;
+				}
+				
+				if(InText)
+				{
+					if(c=="\""&&!text.Substring(i-1,2).Equals("\\\""))
+					{
+						InText=false;
+						if(AssigningVar) 
+							otext+=VarName+"=\""+Textbuf+"\"";
+						NewStringReplacement(Textbuf);
+						Textbuf="";
+						continue;
+					}
+					Textbuf+=c;
+					continue;	
+				}
+				// Quotes mean a literal string.
+				// Do not count escapes.
+				if(c=="\""&&!text.Substring(i,2).Equals("\\\""))
+				{
+					Textbuf="";
+					InText=true;
+					continue;
+				}
+				if(c=="=")
+				{
+					AssigningVar=true;
+					VarName=WordBuffer;
+				}
+				if(c==";")
+				{
+					AssigningVar=false;
+				}
+				if(!InText && !InComment && !AssigningVar)
+				{
+					WordBuffer+=c;
 				}
 			}
 			return true;
@@ -119,6 +160,35 @@ namespace LSLObf
 		public string ObfuscatedOutput
 		{
 			get{return otext;}
+		}
+		
+		public void NewStringReplacement(string a)
+		{
+			foreach(char c in a.ToCharArray())
+			{
+				if(!CharsUsed.Contains(c))
+					CharsUsed.Add(c);
+			}
+			CharsUsed.Sort();
+			LiteralStrings.Add(a);
+		}
+		
+		public void ProcessStringReplacements()
+		{
+			foreach(string litstring in LiteralStrings)
+			{
+				string s="";
+				string v = "";
+				foreach(char c in litstring.ToCharArray())
+				{
+					int i = CharsUsed.FindIndex(delegate(char test){return c==test;});
+					string vn=this.PREFIX+"0"+i.ToString();
+					s+=vn+"+";
+					otext=String.Format("string {0}=\"{1}\";",vn,c)+otext;
+				}
+				
+				otext=otext.Replace("\""+litstring+"\"",s.Remove(-1));
+			}
 		}
 	}
 }
