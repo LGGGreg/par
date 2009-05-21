@@ -11,5 +11,8 @@
       </translations>
     </translations>
     <outputType>RelativeToOutput</outputType>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug_MAKEOMV</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_MAKEOMV|AnyCPU' " />
 </Project>

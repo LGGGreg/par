@@ -154,4 +154,20 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_MAKEOMV|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Package\ShadowFiles\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <NoWarn>1591,1574,0419,0618</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RemoveIntegerChecks>False</RemoveIntegerChecks>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
 </Project>
