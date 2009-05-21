@@ -33,7 +33,7 @@ To download the code, you must have Subversion installed.
 
 {{{
 # Checkout the latest PAR-GTK code in readonly mode.
-svn co http://par.googlecode.com/svn/branches/nexis/ par-gtk
+svn co http://par.googlecode.com/svn/branches/GTK/ par-gtk
 }}}
 
 I suggest one uses MonoDevelop IDE for the built-in form builder, but I have included the generated `*`.cs files so that users without monodevelop can build it.
