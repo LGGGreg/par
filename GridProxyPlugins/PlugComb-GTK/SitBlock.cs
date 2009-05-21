@@ -35,7 +35,8 @@ namespace PubComb
         private SitBlockFormGTK form;
         private string brand;
         private bool pass = true;
-        public void LoadNow(ref TabItemGTK tabform)
+		
+		public void LoadNow(ref TabItemGTK tabform)
         {
             tabform.addATab(form, "Sit Block");
             form.readData();

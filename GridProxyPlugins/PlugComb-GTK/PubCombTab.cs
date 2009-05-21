@@ -48,7 +48,7 @@ namespace PubComb
     {
         public ProxyFrame frame;
         public Proxy proxy;
-
+		public NexObjectTracker ObjectTracker;
         public Aux_SharedInfo SharedInfo;
 
         
@@ -63,6 +63,8 @@ namespace PubComb
 			
             this.frame = frame;
             this.proxy = frame.proxy;
+			this.ObjectTracker=new NexObjectTracker(frame);
+			
             SharedInfo = new Aux_SharedInfo(this);
 
             plugins.Add(new SpamBlocker(this));
