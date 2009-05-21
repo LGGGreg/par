@@ -26,6 +26,7 @@
 using System.Net;
 using OpenMetaverse;
 using OpenMetaverse.Packets;
+using OpenMetaverse.StructuredData;
 using System;
 using GridProxy;
 
@@ -36,9 +37,11 @@ namespace LSLObf
 		private Proxy proxy;
 		private ProxyFrame frame;
 		private Obfuscator o;
+		private Nini.Config.ConfigBase cfg;
 		
 		public LSLObfPlugin(ProxyFrame frame)
 		{
+			cfg=new Nini.Config.ConfigBase("LSLObf",new Nini.Config.IniConfigSource("LSLObf.ini"));
 			this.frame=frame;
 			this.proxy=frame.proxy;
 		}
@@ -46,7 +49,8 @@ namespace LSLObf
 		public override void Init()
 		{
 			this.frame.AddCommand("/lslobf",new ProxyFrame.CommandDelegate(this.ParseCommand));
-			this.proxy.AddDelegate(PacketType.SendXferPacket,Direction.Outgoing,new PacketDelegate(this.UpdateInventoryHandler));
+			this.frame.proxy.AddCapsDelegate("NewFileAgentInventory",new CapsDelegate(OnNewFile));
+			
 			this.frame.SayToUser(
 				"LSL Obfuscator ready.\n"+
 			    " * /lslobf on - Enables the obfuscator."+
@@ -57,21 +61,18 @@ namespace LSLObf
 		public void ParseCommand(string[] words)
 		{
 		}
-		public Packet UpdateInventoryHandler(Packet p,IPEndPoint IP)
+		public bool OnNewFile(CapsRequest req,CapsStage stage)
 		{
-			TransferRequestPacket packet = (TransferRequestPacket)p;
+			if(!stage.Equals(CapsStage.Request))
+				return false;
 			
-			//Parameters:
-			// 20 byte field. The first 16 bytes are the ASSET_KEY (AssetID), 
-			// and the last four bytes are the ASSET_TYPE. 
-			UUID assetkey = new UUID(packet.TransferInfo.Params,0);
-			uint type = Utils.BytesToUInt(packet.TransferInfo.Params,16);
-			if(type==10) // LSL_TEXT
+			OSDMap data = (OSDMap)OSDParser.DeserializeLLSDXml(req.RawRequest);
+			if(Utils.StringToAssetType(data["asset_type"].AsString()).Equals(AssetType.LSLText))
 			{
-				if(o==null)
-					return p;
+				Console.WriteLine("!!! NewFileAgentInventory Received !!!");
+				Console.WriteLine(data.ToString());
 			}
-			return p;
+			return false;
 		}
 	}
 }
