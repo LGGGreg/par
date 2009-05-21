@@ -28,6 +28,16 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_MAKEOMV|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Package\Plugins</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Mono.Posix" />
@@ -62,18 +72,6 @@
       <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
       <Name>GridProxy</Name>
       <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
-      <Project>{9FF014E3-9134-49CC-A032-98491D6D6C8D}</Project>
-      <Name>OpenMetaverse.StructuredData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
-      <Project>{F5A6A473-F995-491C-90B2-1A652C62344C}</Project>
-      <Name>OpenMetaverse.Http</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.Utilities\OpenMetaverse.Utilities.csproj">
-      <Project>{9ED16F83-0D36-47E5-AC09-BFC079D6CDC8}</Project>
-      <Name>OpenMetaverse.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

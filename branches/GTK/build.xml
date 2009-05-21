@@ -7,15 +7,6 @@
 </target>
 
 <target name="compile">
-  <exec executable="mono" dir="OpenMetaverse">
-    <arg value="bin/Prebuild.exe" />
-    <arg value="/target" />
-    <arg value="nant" />
-  </exec>
-  <exec executable="nant" dir="OpenMetaverse" />
-  <copy todir="Package/ShadowFiles/">
-    <fileset dir="OpenMetaverse/bin/" />
-  </copy>
   <exec executable="mdtool" failonerror="true">
     <arg value="build" />
     <arg value="-f:PAR-GTK.sln" />
