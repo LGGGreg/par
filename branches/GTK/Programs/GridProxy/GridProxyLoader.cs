@@ -131,7 +131,7 @@ namespace GridProxy
                     {
                         string sw = arg.Substring(0, ipos);
                         string val = arg.Substring(ipos + 1);
-
+                        Console.WriteLine("arg '" + sw + "' val '" + val + "'");
                         if (sw == "--load")
                         {
                             //externalPlugin = true;
@@ -230,7 +230,7 @@ namespace GridProxy
                 inventoryRoot = new UUID(
                     (string)((System.Collections.Hashtable)(((System.Collections.ArrayList)values["inventory-root"])[0]))["folder_id"]
                     );
-                //Console.WriteLine("inventory root: " + inventoryRoot);
+                Console.WriteLine("inventory root: " + inventoryRoot);
             }
 
             if (logLogin)

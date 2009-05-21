@@ -30,20 +30,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.dll</HintPath>
     </Reference>
-    <Reference Include="OpenMetaverse.StructuredData, Version=0.6.1.17450, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse.StructuredData, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.StructuredData.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.StructuredData.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenMetaverse.Utilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

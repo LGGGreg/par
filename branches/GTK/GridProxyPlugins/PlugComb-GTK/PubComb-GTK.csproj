@@ -252,7 +252,6 @@
     <None Include="SitBlockForm1.resx" />
     <Compile Include="SitBlockFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.SitBlockFormGTK.cs" />
-    <Compile Include="gtk-gui\PubComb.InvFunFormGTK.cs" />
     <None Include="GregInventoryTreeGTK.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,15 +265,13 @@
     <Reference Include="Mono.Posix" />
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <Reference Include="OpenMetaverse, Version=0.6.2.17450, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverse.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverse.dll</HintPath>
     </Reference>
     <Reference Include="OpenMetaverseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OpenMetaverse\OpenMetaverseTypes.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\OpenMetaverse\bin\OpenMetaverseTypes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
