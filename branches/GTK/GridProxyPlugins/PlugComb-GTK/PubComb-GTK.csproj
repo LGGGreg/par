@@ -253,6 +253,8 @@
     <Compile Include="SitBlockFormGTK.cs" />
     <Compile Include="gtk-gui\PubComb.SitBlockFormGTK.cs" />
     <None Include="GregInventoryTreeGTK.cs" />
+    <Compile Include="NexObjectTracker.cs" />
+    <Compile Include="PCInternalDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
