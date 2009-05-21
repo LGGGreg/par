@@ -54,11 +54,23 @@ namespace PubComb
         }
         public Packet sitp(Packet p, IPEndPoint sim)
         {
-            if (form.BlockSits)
-            {
-                
+            if (form.BlockAllSits)
+            {    
                 return null;
             }
+			if (form.BlockForeignSits)
+			{
+				AgentRequestSitPacket sit=(AgentRequestSitPacket)p;
+				
+				Primitive prim = plugin.ObjectTracker.ObjectsPrimitives.Find(
+					delegate(Primitive pp) { return pp.ID == sit.TargetObject.TargetID;});
+				
+				if(!prim.OwnerID.Equals(frame.AgentID))
+				{
+					frame.SayToUser("Blocking sit request on object "+prim.Properties.Name+", since you don't own it.");
+					return null;
+				}
+			}
             return p;
         }
         public void show(bool p)
@@ -70,7 +82,7 @@ namespace PubComb
             }
             else SendUserAlert("Avatar Phantom Lock Enabled");
 
-            form.BlockSits= !pass;
+            form.BlockAllSits= !pass;
         }
         
         private void SayToUser(string message)

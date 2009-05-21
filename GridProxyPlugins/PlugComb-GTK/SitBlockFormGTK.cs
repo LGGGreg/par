@@ -40,24 +40,24 @@ namespace PubComb
 		}
         public void readData()
         {
-            bool pass = false;
+            chkAllSits.Active=false;
+			chkForeignSits.Active=false;
             
             if (File.Exists("sitBlock.settings"))
             {
                 StreamReader re = File.OpenText("sitBlock.settings");
-                if (re.ReadLine() == "Enabled")
-                    pass = true;
+                chkAllSits.Active		= (re.ReadLine() == "Enabled");
+				chkForeignSits.Active	= (re.ReadLine()=="Enabled");
                 
                 re.Close();
 
             }
-            chkEnabled.Active = pass;
         }
         private void saveData()
         {
             TextWriter tw = new StreamWriter("sitBlock.settings");
-            if (chkEnabled.Active) tw.WriteLine("Enabled");
-            else tw.WriteLine("Disabled");
+            tw.WriteLine(chkAllSits.Active?"Enabled":"Disabled");
+            tw.WriteLine(chkForeignSits.Active?"Enabled":"Disabled");
             
             tw.Close();
         }
@@ -67,10 +67,15 @@ namespace PubComb
 			saveData();
         }
 		
-		public bool BlockSits
+		public bool BlockAllSits
 		{
-			get{ return chkEnabled.Active;}
-			set{ chkEnabled.Active=value; }
+			get{ return this.chkAllSits.Active;}
+			set{ this.chkAllSits.Active=value; }
+		}
+		public bool BlockForeignSits
+		{
+			get{ return chkForeignSits.Active;}
+			set{ chkForeignSits.Active=value; }
 		}
 	}
 }
