@@ -184,7 +184,7 @@ namespace GridProxy
 
         public void LoadPlugin(string name)
         {
-
+			Console.WriteLine("Loading plugin "+name);
             Assembly assembly = Assembly.LoadFile(Path.GetFullPath(name));
             foreach (Type t in assembly.GetTypes())
             {

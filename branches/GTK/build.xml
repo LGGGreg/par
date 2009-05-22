@@ -1,11 +1,5 @@
 <project name="PAR-GTK" default="compile" basedir=".">
-
-<target name="checkout">
-  <exec executable="svn">
-    <arg value="up"/>
-  </exec>
-</target>
-
+<!-- build crap. -->
 <target name="compile">
   <exec executable="mdtool" failonerror="true">
     <arg value="build" />
