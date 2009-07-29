@@ -59,7 +59,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="OpenMetaverse, Version=1.0.0.33138, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="OpenMetaverse, Version=1.0.0.1418, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Package\ShadowFiles\OpenMetaverse.dll</HintPath>
     </Reference>

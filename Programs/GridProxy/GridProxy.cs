@@ -30,9 +30,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-// #define DEBUG_SEQUENCE
-// #define DEBUG_CAPS
-// #define DEBUG_THREADS
+#define DEBUG_SEQUENCE
+#define DEBUG_CAPS
+#define DEBUG_THREADS
 
 using System;
 using System.Collections.Generic;

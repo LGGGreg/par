@@ -63,7 +63,10 @@ namespace PubComb
 			
             this.frame = frame;
             this.proxy = frame.proxy;
+			
+			Console.WriteLine("Initializing NexObjectTracker...");
 			this.ObjectTracker=new NexObjectTracker(frame);
+			Console.WriteLine("Initialized NexObjectTracker.");
 			
             SharedInfo = new Aux_SharedInfo(this);
 
@@ -73,7 +76,9 @@ namespace PubComb
             plugins.Add(new HandicapPlugin(this));
             plugins.Add(new PennyPlugin(this));
             plugins.Add(new PAnim(this));
+// Causing exceptions...
             plugins.Add(new DisableCapsPlugin(this));
+			
 //            plugins.Add(new IMLocatePlugin(this));
             plugins.Add(new LeetPlugin(this));
 // 			May or may not work;  GTK and Winforms do not play well together...
@@ -93,7 +98,7 @@ namespace PubComb
 //            plugins.Add(new ViewerEffectLogPlugin(this));
             plugins.Add(new AvatarTracker(this));
             plugins.Add(new CliIntPlugin(this));
-			plugins.Add(new SitBlockPlugin(this));
+//			plugins.Add(new SitBlockPlugin(this));
 
             //tabformthread = new Thread(new ThreadStart(delegate()
             //{

@@ -128,18 +128,23 @@ namespace PubComb
         {
 			try
 			{
+				Console.WriteLine("Lock");
 	            lock (dcp.proxy.BlockCaps)
 	            {
+					Console.WriteLine(" Clear");
 	                dcp.proxy.BlockCaps.Clear();
 	                foreach (string line in nsDisabled)
 	                {
+						Console.WriteLine("  Add blocked CAPS "+line);
 	                    dcp.proxy.BlockCaps.Add(line);
 	                }
+					Console.WriteLine(" Save");
 	                saveData();
 	            }
+				Console.WriteLine("UnLock");
 			} catch(Exception e)
 			{
-				Console.WriteLine(e.ToString());
+				Console.WriteLine(e.StackTrace.ToString());
 				//Con
 			}
         }
