@@ -75,6 +75,20 @@
     <Compile Include="MainFormGTK.cs" />
     <Compile Include="gtk-gui\LSLObf.MainFormGTK.cs" />
     <Compile Include="Eratosthenes.cs" />
+    <Compile Include="LSL_l.cs" />
+    <Compile Include="Tokens.cs" />
+    <Compile Include="LScript\lllslconstants.cs" />
+    <Compile Include="LScript\lscript_byteformat.cs" />
+    <Compile Include="LScript\indra_constants.cs" />
+    <Compile Include="LScript\llpermissionsflags.cs" />
+    <Compile Include="LScript\llagentconstants.cs" />
+    <Compile Include="LScript\llassettypes.cs" />
+    <Compile Include="LScript\llpartdata.cs" />
+    <Compile Include="LScript\llParcelFlags.cs" />
+    <Compile Include="LScript\llVehicleParams.cs" />
+    <Compile Include="LScript\llRegionFlags.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="LScript\LSLKeywords.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
@@ -93,10 +107,16 @@
     <MonoDevelop>
       <Properties>
         <Policies>
-          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
           <StandardHeader inheritsSet="MITX11License" />
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="MSBuild" />
         </Policies>
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <None Include="LSL.l" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LScript\" />
+  </ItemGroup>
 </Project>

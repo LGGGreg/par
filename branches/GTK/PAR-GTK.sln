@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridProxyApp", "Programs\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinuxLoader", "LinuxLoader\LinuxLoader\LinuxLoader.csproj", "{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSLObf-Console", "LSLObf-Console\LSLObf-Console.csproj", "{3971AA8F-5247-4C9C-8839-F72C128DF6C4}"
+EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{3002E955-244B-4A33-96D1-2D3E69BD9B94}"
+EndProject
 Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "GridProxyPlugins\Packages.mdproj", "{2AEC3917-DB07-46AE-BC4F-C1A79C28E1FB}"
 EndProject
 Global
@@ -52,6 +56,18 @@ Global
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C144782-C4F5-4AD8-81A9-FEBDDC23915D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Debug_MAKEOMV|Any CPU.ActiveCfg = Debug_MAKEOMV|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Debug_MAKEOMV|Any CPU.Build.0 = Debug_MAKEOMV|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3002E955-244B-4A33-96D1-2D3E69BD9B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Debug_MAKEOMV|Any CPU.ActiveCfg = Debug_MAKEOMV|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Debug_MAKEOMV|Any CPU.Build.0 = Debug_MAKEOMV|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3971AA8F-5247-4C9C-8839-F72C128DF6C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Debug_MAKEOMV|Any CPU.ActiveCfg = Debug_MAKEOMV|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Debug_MAKEOMV|Any CPU.Build.0 = Debug_MAKEOMV|Any CPU
 		{3C979E5D-4DA6-4801-BEF9-2A67273559D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -108,9 +124,9 @@ Global
 		version = 0.1
 		StartupItem = LinuxLoader\LinuxLoader\LinuxLoader.csproj
 		Policies = $0
-		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = None
-		$1.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $1
+		$1.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
+		$1.inheritsSet = MITX11License
 		$0.TextStylePolicy = $2
 		$2.FileWidth = 120
 		$2.TabWidth = 4
@@ -118,8 +134,8 @@ Global
 		$2.NoTabsAfterNonTabs = False
 		$2.RemoveTrailingWhitespace = False
 		$2.EolMarker = Native
-		$0.StandardHeader = $3
-		$3.Text = @(c)2009 Rob "N3X15" Nelson, Gregory "LordGregGreg" Hendrickson. All Rights Reserved.\n\nRedistribution and use in source and binary forms, with or without modification, \nare permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this \n\t\tlist of conditions and the following disclaimer.\n\n * Redistributions in binary form must reproduce the above copyright notice, this \n\t\tlist of conditions and the following disclaimer in the documentation and/or \n\t\tother materials provided with the distribution.\n * Neither the name of the  Gregory Hendrickson nor the names of its contributors \n\t\tmay be used to endorse or promote products derived from this software without \n\t\tspecific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND \nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED \nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. \nIN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, \nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR \nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, \nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE \nPOSSIBILITY OF SUCH DAMAGE.
-		$3.inheritsSet = MITX11License
+		$0.DotNetNamingPolicy = $3
+		$3.DirectoryNamespaceAssociation = None
+		$3.ResourceNamePolicy = FileFormatDefault
 	EndGlobalSection
 EndGlobal
