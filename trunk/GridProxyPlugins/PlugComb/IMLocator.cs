@@ -46,11 +46,11 @@ namespace PubComb
     }
     public class IMLocatePlugin : GTabPlug
     {
-        private ProxyFrame frame;
+        public ProxyFrame frame;
         private Proxy proxy;
         private PubComb plugin;
         private IMHistForm1 form;
-        private string brand;
+        //private string brand;
         private bool enabled = true;
         private List<uint> recSeq = new List<uint>();
         //private ImprovedInstantMessagePacket lastIM = null;
@@ -70,7 +70,7 @@ namespace PubComb
             plugin = plug;
             this.frame = plug.frame;
             this.proxy = plug.proxy;
-            this.brand = "IMLocate";
+            //this.brand = "IMLocate";
             proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(IMs));
 
         }
@@ -100,7 +100,7 @@ namespace PubComb
                         return imm;
                     }*/
                     g.p = imm;
-                    if (debug) SayToUser("region key was not zero..:");
+                    if (debug) frame.SayToUser("region key was not zero..:");
                     // request region name
                     RegionHandleRequestPacket rhp = new RegionHandleRequestPacket();
                     rhp.RequestBlock.RegionID = g.regionkey;
@@ -110,7 +110,7 @@ namespace PubComb
 
                     PacketDelegate replyGregCallback = delegate(Packet pa, IPEndPoint s)
                     {
-                        if (debug) SayToUser("got the region handle...");
+                        if (debug) frame.SayToUser("got the region handle...");
                         if (!regionFound)
                         {
                             regionFound = true;
@@ -136,7 +136,7 @@ namespace PubComb
 
                             PacketDelegate replyCallback = delegate(Packet np, IPEndPoint ss)
                             {
-                                if (debug) SayToUser("got the map..:");
+                                if (debug) frame.SayToUser("got the map..:");
                                 if (!mapFound)
                                 {
                                     mapFound = true;
@@ -154,7 +154,7 @@ namespace PubComb
                                             
                                             PacketDelegate replyCallback2 = delegate(Packet replypacket, IPEndPoint blarg)
                                             {
-                                                if (debug) SayToUser("got the name");
+                                                if (debug) frame.SayToUser("got the name");
                                                 
                                                     UUIDNameReplyPacket ureply = (UUIDNameReplyPacket)replypacket;
                                                     foreach (UUIDNameReplyPacket.UUIDNameBlockBlock bblock in ureply.UUIDNameBlock)
@@ -249,57 +249,8 @@ namespace PubComb
             enabled = b;
             string s = "IMLocate is ";
             if (b) s += "Enabled"; else s += "Disabled";
-            SendUserAlert(s);
+            frame.SendUserAlert(s);
         }
 
-        private void SayToUser(string message)
-        {
-
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes(this.brand);
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        public void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            byte[] t = Utils.StringToBytes(message);
-            while (t.Length > 250)
-            {
-                message = Utils.BytesToString(t);
-                t = Utils.StringToBytes(message.Remove(message.Length-2));
-            }
-            packet.AlertData.Message = t;
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-    }
+   }
 }

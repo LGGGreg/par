@@ -103,30 +103,7 @@ namespace PubComb
             plugin.tabform.addATab(form, "Leet Speak");
             
         }
-        
-        private void SayToUser(string message)
-        {
-
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes(this.brand);
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        public void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
-        private Packet OutDialogFromViewer(Packet packet, IPEndPoint sim)
+         private Packet OutDialogFromViewer(Packet packet, IPEndPoint sim)
         {
             ScriptDialogReplyPacket DialogFromViewer = (ScriptDialogReplyPacket)packet;
             string message = Utils.BytesToString(DialogFromViewer.Data.ButtonLabel).Trim().ToLower();
@@ -135,27 +112,6 @@ namespace PubComb
                 return null;
             }
             return packet;
-        }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
         }
         private Packet SendingIM(Packet packet, IPEndPoint sim)
         {
@@ -176,15 +132,15 @@ namespace PubComb
             {
                 Enabled = true;
                 form.setBox(Enabled);
-
-                SendUserAlert("1337 Enabled");
+                
+                frame.SendUserAlert("1337 Enabled");
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-off"))
             {
                 Enabled = false;
 
-                SendUserAlert("1337 Disabled");
+                frame.SendUserAlert("1337 Disabled");
                 form.setBox(Enabled);
                 return "die";
             }
@@ -192,24 +148,24 @@ namespace PubComb
             {
                 int offset = this.brand.Length + 6;
                 form.setLevel(int.Parse(mssage.Substring(mssage.ToLower().IndexOf(this.brand.ToLower() + "-level") + offset).Trim()));
-                SendUserAlert("1337 level now set to " + mssage.Substring(mssage.ToLower().IndexOf(this.brand.ToLower() + "-level") + offset).Trim());
+                frame.SendUserAlert("1337 level now set to " + mssage.Substring(mssage.ToLower().IndexOf(this.brand.ToLower() + "-level") + offset).Trim());
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-help"))
             {
-                SayToUser("I am too lazy to write help");
+                frame.SayToUser("I am too lazy to write help");
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-about"))
             {
-                SayToUser("This program was made by LordGregGreg for the purpose ...");
-                SayToUser("Special Thanks to \"Philip Linden\" (yeah, thats not his actual sl name)\n" +
+                frame.SayToUser("This program was made by LordGregGreg for the purpose ...");
+                frame.SayToUser("Special Thanks to \"Philip Linden\" (yeah, thats not his actual sl name)\n" +
                     "and the OpenMetaverse project, and all it's contributors.\n");
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-"))
             {
-                SendUserDialog(this.brand + "", "leet ", "speek", "What do you want me to do?", new string[] { "ls-ON", "ls-OFF", "ls-HELP", "ls-ABOUT" });
+                frame.SendUserDialog(this.brand + "", "leet ", "speek", "What do you want me to do?", new string[] { "ls-ON", "ls-OFF", "ls-HELP", "ls-ABOUT" });
                 return "die";
             }
 
@@ -258,11 +214,11 @@ namespace PubComb
             Enabled = en;
             if (Enabled)
             {
-                SendUserAlert("1337 Enabled");
+                frame.SendUserAlert("1337 Enabled");
             }
             else
             {
-                SendUserAlert("1337 Disabled");
+                frame.SendUserAlert("1337 Disabled");
             }
         }
 

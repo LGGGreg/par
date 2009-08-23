@@ -70,9 +70,9 @@ namespace PubComb
                         string whatsup = Utils.BytesToString(nr.UUIDNameBlock[i].FirstName) + " " + Utils.BytesToString(nr.UUIDNameBlock[i].LastName) + " has just removed you from their freinds list!\n" +
                             "This was at " + System.DateTime.Now.ToShortDateString() + " : " + System.DateTime.Now.ToShortTimeString();
 
-                        SayToUser(whatsup);
-                        SendUserAlert(whatsup);
-                        SendUserDialog("Freindship", "Over", "Alert!", whatsup, new String[] { "DAMN!" });
+                        frame.SayToUser(whatsup);
+                        frame.SendUserAlert(whatsup);
+                        frame.SendUserDialog("Freindship", "Over", "Alert!", whatsup, new String[] { "DAMN!" });
                     }
                 }
             }
@@ -99,50 +99,7 @@ namespace PubComb
             return packet;
 
         }
-        private void SayToUser(string message)
-        {
-
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes("Retreat plugin");
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        private void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-
+        
 
     }
 }

@@ -59,13 +59,10 @@ namespace PubComb
         }
         public void readData()
         {
-            bool pass = false;
             setBox("phantom1");
             if (File.Exists("lyra.settings"))
             {
                 StreamReader re = File.OpenText("lyra.settings");
-                if (re.ReadLine() == "Enabled")
-                  pass = false;
                 string t = re.ReadLine();
                 setBox(t);
 

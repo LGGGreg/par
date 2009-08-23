@@ -78,14 +78,7 @@ namespace PubComb
                 }
             }
         }
-        private void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
+        
         public void objdesc(int locid, string desc)
         {
             ObjectDescriptionPacket packet = new ObjectDescriptionPacket();
@@ -110,27 +103,6 @@ namespace PubComb
                 temp[i].CacheMissType = (byte)1;
             }
             packet.ObjectData = temp;
-        }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
         }
         
         private Packet OutDialogFromViewer(Packet packet, IPEndPoint sim)
@@ -157,26 +129,26 @@ namespace PubComb
                 if (message.Contains("single"))
                 {
                     Mode = xtrafxMode.Single;
-                    SendUserAlert("XtraFX Mode changed to Single.");
+                    frame.SendUserAlert("XtraFX Mode changed to Single.");
                 }
                 else if (message.Contains("quad"))
                 {
                     Mode = xtrafxMode.Quad;
-                    SendUserAlert("XtraFX Mode changed to quad.");
+                    frame.SendUserAlert("XtraFX Mode changed to quad.");
                 }
                 else if (message.Contains("speak"))
                 {
                     Mode = xtrafxMode.Speak;
-                    SendUserAlert("XtraFX Mode changed to speaking on chanel 9000.");
+                    frame.SendUserAlert("XtraFX Mode changed to speaking on chanel 9000.");
                 }
 
                 else if (message.Contains("circle"))
                 {
                     Mode = xtrafxMode.Circles;
-                    SendUserAlert("XtraFX Mode changed to circles.");
+                    frame.SendUserAlert("XtraFX Mode changed to circles.");
                 }
                 else
-                    SendUserAlert("Mode not found.");
+                    frame.SendUserAlert("Mode not found.");
 
 
                 form.setMode(Mode); 
@@ -240,7 +212,7 @@ namespace PubComb
                         {
                             // trial: multi-beam
                             Vector3d position = new Vector3d(effect.TypeData, 32);
-
+                            Logger.Log("Sending a effect to " + Utils.BytesToHexString(effect.TypeData,"effect"), Helpers.LogLevel.Info);
                             ViewerEffectPacket[][][] ve = new ViewerEffectPacket[2][][];
                             for (int x = 0; x < 2; x++)
                             {
@@ -251,6 +223,8 @@ namespace PubComb
                                     for (int z = 0; z < 2; z++)
                                     {
                                         ve[x][y][z] = new ViewerEffectPacket();
+                                        ve[x][y][z].HasVariableBlocks = true;
+                                        ve[x][y][z].Type = PacketType.ViewerEffect;
                                         ve[x][y][z].AgentData = new ViewerEffectPacket.AgentDataBlock();
                                         ve[x][y][z].AgentData.AgentID = frame.AgentID;
                                         ve[x][y][z].AgentData.SessionID = frame.SessionID;
@@ -314,6 +288,8 @@ namespace PubComb
         public void sendSwirlPoint(Vector3d vec,byte[] color, float dur)
         {
             ViewerEffectPacket v = new ViewerEffectPacket();
+            v.Type = PacketType.ViewerEffect;
+            v.HasVariableBlocks = true;
             v.AgentData = new ViewerEffectPacket.AgentDataBlock();
             v.AgentData.AgentID = frame.AgentID;
             v.AgentData.SessionID = frame.SessionID;
@@ -338,6 +314,7 @@ namespace PubComb
         {
             //proxy.writeinthis(m, ConsoleColor.Black, ConsoleColor.DarkYellow);
             ScriptDialogReplyPacket p = new ScriptDialogReplyPacket();
+            p.HasVariableBlocks = false;
             p.AgentData = new ScriptDialogReplyPacket.AgentDataBlock();
             p.AgentData.AgentID = frame.AgentID;
             p.AgentData.SessionID = frame.SessionID;

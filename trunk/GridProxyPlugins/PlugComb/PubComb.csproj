@@ -332,20 +332,6 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
-      <Project>{D8BA1862-3FC4-4C62-8209-8CABA7667116}</Project>
-      <Name>OpenMetaverse</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\Types\OpenMetaverseTypes.csproj">
-      <Project>{528E86C4-38DD-435F-9458-4165C2B12D0A}</Project>
-      <Name>OpenMetaverseTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
-      <Project>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</Project>
-      <Name>GridProxy</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\coin-heads.PNG" />
   </ItemGroup>
   <ItemGroup>
@@ -353,5 +339,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LOST.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\omv\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
+      <Project>{AAE51CFC-4B7B-48E2-839D-9E84E724BF1C}</Project>
+      <Name>OpenMetaverse.StructuredData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\omv\OpenMetaverseCore\OpenMetaverseCore.csproj">
+      <Project>{4BAF8780-3FC9-43BA-8E8C-0FA0F8906179}</Project>
+      <Name>OpenMetaverseCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\omv\OpenMetaverseTypes\OpenMetaverseTypes.csproj">
+      <Project>{7AA481D1-DD13-471C-BE45-813ED445AFDB}</Project>
+      <Name>OpenMetaverseTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\omv\OpenMetaverse\OpenMetaverse.csproj">
+      <Project>{B75A200E-F746-45C3-8710-A434D5C056DE}</Project>
+      <Name>OpenMetaverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\omv\Programs\GridProxy\GridProxy.csproj">
+      <Project>{B8A51FDF-444D-4E9E-B9C1-AA3EC3D0F0B3}</Project>
+      <Name>GridProxy</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
