@@ -11,9 +11,6 @@
  *THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//First revision by LordGregGreg Back woot it works ish
-//doesnt let you choose a role to send them to
-//doesnt find hidden groups
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -98,12 +95,24 @@ namespace OpenMetaverse.TestClient
                     return "Unable to obtain UUID for group ";
                 }
             }
+            List<UUID> roles = new List<UUID>();
+            UUID role = UUID.Zero;
+            if (args.Length == ++place)
+            {
+                roles.Add(role);
+            }
+            while (args.Length < ++place)
+            {
+                if (UUID.TryParse(args[place], out role))
+                    roles.Add(role);
+            }
+
             //we now got everything in uuid form woot
             //TODO check if this failed, like if avatar isnt in the group or has permissions
             //TODO get better roles o.0
-            Client.Groups.Invite(groupid, new List<UUID>(new UUID[] { UUID.Zero }), avatarid);
-            
-            return "Invited to the group "+targetGroupName;
+            Client.Groups.Invite(groupid, roles, avatarid);
+
+            return "Invited to the group " + targetGroupName;
         }
 
         void Avatars_OnAvatarNameSearch(UUID queryID, Dictionary<UUID, string> avatars)
@@ -131,10 +140,10 @@ namespace OpenMetaverse.TestClient
                 {
                     if (matchedGroups.Count > 1)
                     {
-                        /* A.Biondi 
+                        /* A.Biondi
                          * The Group search doesn't work as someone could expect...
-                         * It'll give back to you a long list of groups even if the 
-                         * searchText (groupName) matches esactly one of the groups 
+                         * It'll give back to you a long list of groups even if the
+                         * searchText (groupName) matches esactly one of the groups
                          * names present on the server, so we need to check each result.
                          * UUIDs of the matching groups are written on the console.
                          */
@@ -152,7 +161,7 @@ namespace OpenMetaverse.TestClient
                             }
                         }
                         //if (string.IsNullOrEmpty(resolvedGroupName))
-                          //  resolvedGroupName = "Ambiguous name. Found " + matchedGroups.Count.ToString() + " groups (UUIDs on console)";
+                        //  resolvedGroupName = "Ambiguous name. Found " + matchedGroups.Count.ToString() + " groups (UUIDs on console)";
                     }
 
                 }
@@ -161,3 +170,4 @@ namespace OpenMetaverse.TestClient
         }
     }
 }
+
