@@ -1,6 +1,19 @@
-﻿using System;
+﻿/*
+ * Copyright (c) 2009, Day Oh
+ * Modified on Jan 2009 by LordGregGreg Back
+ *All rights reserved.
+ *
+ *Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ *
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the  Gregory Hendrickson nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+ *THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using System.Net;
@@ -19,6 +32,7 @@ public class useful : ProxyPlugin
 
     private static List<UUID> PeopleWhoIMedMe = new List<UUID>();
 
+
     public class SimInfo
     {
         public uint Handle;
@@ -30,7 +44,7 @@ public class useful : ProxyPlugin
     {
         this.frame = frame;
         this.proxy = frame.proxy;
-        this.proxy.AddDelegate(PacketType.AgentMovementComplete, Direction.Incoming, delegate(Packet packet, IPEndPoint sim)
+        /*this.proxy.AddDelegate(PacketType.AgentMovementComplete, Direction.Incoming, delegate(Packet packet, IPEndPoint sim)
         {
             RegionHandle = ((AgentMovementCompletePacket)packet).Data.RegionHandle;
             return packet;
@@ -40,47 +54,39 @@ public class useful : ProxyPlugin
             CameraCenter = ((AgentUpdatePacket)packet).AgentData.CameraCenter;
             return packet;
         });
+        */
+        
         //this.proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(OutChatFromViewerHandler));
-        this.proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(OutAgentUpdateHandler));
-        this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(InImprovedInstantMessageHandler));
-        this.proxy.AddDelegate(PacketType.ViewerEffect, Direction.Incoming, new PacketDelegate(InViewerEffectHandler));
+        //this.proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(OutAgentUpdateHandler));
+        //this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(InImprovedInstantMessageHandler));
+        //this.proxy.AddDelegate(PacketType.ViewerEffect, Direction.Incoming, new PacketDelegate(InViewerEffectHandler));
         this.proxy.AddDelegate(PacketType.AlertMessage, Direction.Incoming, new PacketDelegate(InAlertMessageHandler));
-        this.proxy.AddDelegate(PacketType.AvatarPropertiesRequest, Direction.Outgoing, new PacketDelegate(OutAvatarPropertiesRequestHandler));
+        //this.proxy.AddDelegate(PacketType.AvatarPropertiesRequest, Direction.Outgoing, new PacketDelegate(OutAvatarPropertiesRequestHandler));
+        this.proxy.AddDelegate(PacketType.GroupProfileReply, Direction.Incoming, new PacketDelegate(GroupProp));
         //this.proxy.AddDelegate(PacketType.AvatarSitResponse, Direction.Incoming, new PacketDelegate(InAvatarSitResponseHandler));
-        this.proxy.AddDelegate(PacketType.TerminateFriendship, Direction.Incoming, new PacketDelegate(InTerminateFriendshipHandler));
-        this.proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(InObjectUpdateHandler));
+        //this.proxy.AddDelegate(PacketType.TerminateFriendship, Direction.Incoming, new PacketDelegate(InTerminateFriendshipHandler));
+        //this.proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(InObjectUpdateHandler));
     }
 
     public override void Init()
     {
-        SayToUser("Useful plugin loaded");
+        frame.SayToUser("Useful plugin loaded");
     }
 
-    private void SayToUser(string message)
-    {
-        ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-        packet.ChatData.FromName = Utils.StringToBytes("Useful Plugin");
-        packet.ChatData.SourceID = UUID.Random();
-        packet.ChatData.OwnerID = frame.AgentID;
-        packet.ChatData.SourceType = (byte)2;
-        packet.ChatData.ChatType = (byte)1;
-        packet.ChatData.Audible = (byte)1;
-        packet.ChatData.Position = new Vector3(0, 0, 0);
-        packet.ChatData.Message = Utils.StringToBytes(message);
-        proxy.InjectPacket(packet, Direction.Incoming);
-    }
-
+    
     private Packet OutAgentUpdateHandler(Packet packet, IPEndPoint sim)
     {
+
         // slproxy sometimes loses track of which sim you're in...
         proxy.activeCircuit = sim;
         return packet;
     }
-
     private Packet InImprovedInstantMessageHandler(Packet packet, IPEndPoint sim)
     {
-        if (packet.Header.Resent)
-            return packet;
+        
+
+
+
         if (RegionHandle != 0)
         {
             SoundTriggerPacket sound = new SoundTriggerPacket();
@@ -92,10 +98,15 @@ public class useful : ProxyPlugin
             sound.SoundData.Position = CameraCenter;
             sound.SoundData.Gain = 0.5f;
             sound.Header.Reliable = false;
+            if (!File.Exists("mutesound.on"))
             proxy.InjectPacket(sound, Direction.Incoming);
         }
 
         ImprovedInstantMessagePacket im = (ImprovedInstantMessagePacket)packet;
+        //block repeated crap
+        
+        
+
         if (im.MessageBlock.Dialog == (byte)InstantMessageDialog.StartTyping)
         {
             if (PeopleWhoIMedMe.Contains(im.AgentData.AgentID) == false)
@@ -141,7 +152,7 @@ public class useful : ProxyPlugin
             }
             catch
             {
-                SayToUser("WARNING! " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure IM seems to have unusual data in its BinaryBucket!");
+                frame.SayToUser("WARNING! " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure IM seems to have unusual data in its BinaryBucket!");
                 return packet;
             }
 
@@ -162,7 +173,7 @@ public class useful : ProxyPlugin
                         sb.Append(Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure is to ");
                         sb.Append(RegionName + " " + RegionX.ToString() + ", " + RegionY.ToString() + ", " + RegionZ.ToString() + " ");
                         sb.Append("secondlife://" + RegionName.Replace(" ", "%20") + "/" + RegionX.ToString() + "/" + RegionY.ToString() + "/" + RegionZ.ToString());
-                        SayToUser(sb.ToString());
+                        frame.SayToUser(sb.ToString());
                     }
                 }
                 return null;
@@ -172,7 +183,7 @@ public class useful : ProxyPlugin
             {
                 if (RegionName == null)
                 {
-                    SayToUser("Couldn't resolve the destination of " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure: " + Utils.BytesToString(im.MessageBlock.BinaryBucket));
+                    frame.SayToUser("Couldn't resolve the destination of " + Utils.BytesToString(im.MessageBlock.FromAgentName) + "'s teleport lure: " + Utils.BytesToString(im.MessageBlock.BinaryBucket));
                 }
                 proxy.RemoveDelegate(PacketType.MapBlockReply, Direction.Incoming, replyCallback);
                 myTimer.Stop();
@@ -199,7 +210,7 @@ public class useful : ProxyPlugin
         {
             if (im.MessageBlock.BinaryBucket[0] == (byte)AssetType.Simstate)
             {
-                SayToUser(Utils.BytesToString(im.MessageBlock.FromAgentName) + " offered you a SimState :O");
+                frame.SayToUser(Utils.BytesToString(im.MessageBlock.FromAgentName) + " offered you a SimState :O");
                 return null;
             }
         }
@@ -207,7 +218,7 @@ public class useful : ProxyPlugin
         {
             if (im.MessageBlock.BinaryBucket[0] == (byte)AssetType.Simstate)
             {
-                SayToUser(im.AgentData.AgentID.ToString() + " offered you a SimState from an object at " + im.MessageBlock.Position.ToString() + " :O Message = " + Utils.BytesToString(im.MessageBlock.Message));
+                frame.SayToUser(im.AgentData.AgentID.ToString() + " offered you a SimState from an object at " + im.MessageBlock.Position.ToString() + " :O Message = " + Utils.BytesToString(im.MessageBlock.Message));
                 return null;
             }
         }
@@ -219,7 +230,6 @@ public class useful : ProxyPlugin
         }
         return packet;
     }
-
     private Packet InViewerEffectHandler(Packet packet, IPEndPoint sim)
     {
         ViewerEffectPacket p = (ViewerEffectPacket)packet;
@@ -233,7 +243,7 @@ public class useful : ProxyPlugin
                     if ((v.X < -1024f) || (v.X > 1024f) || (v.Y < -1024f) || (v.Y > 1024f) || (v.Z < -1024f) || (v.Z > 1024f))
                     {
                         v = new Vector3d();
-                        SayToUser("Possible ViewerEffect crash packet from " + block.AgentID.ToString());
+                        frame.SayToUser("Possible ViewerEffect crash packet from " + block.AgentID.ToString());
                     }
                     Buffer.BlockCopy(v.GetBytes(), 0, block.TypeData, 32, 24);
                 }
@@ -241,7 +251,6 @@ public class useful : ProxyPlugin
         }
         return (Packet)p;
     }
-
     private Packet InAlertMessageHandler(Packet packet, IPEndPoint sim)
     {
         AlertMessagePacket AlertMessage = (AlertMessagePacket)packet;
@@ -271,7 +280,12 @@ public class useful : ProxyPlugin
         }
         return packet;
     }
-
+    private Packet GroupProp(Packet packet, IPEndPoint sim)
+    {
+        GroupProfileReplyPacket p = (GroupProfileReplyPacket)packet;
+        frame.SayToUser(Utils.BytesToString(p.GroupData.Name) + " = " + p.GroupData.GroupID.ToString());
+        return packet;
+    }
     private Packet OutAvatarPropertiesRequestHandler(Packet requestpacket, IPEndPoint sim)
     {
         if (requestpacket.Header.Resent)
@@ -292,7 +306,7 @@ public class useful : ProxyPlugin
                         found = true;
                         string firstname = Utils.BytesToString(block.FirstName);
                         string lastname = Utils.BytesToString(block.LastName);
-                        SayToUser(firstname + " " + lastname + " = " + uuid.ToString());
+                        frame.SayToUser(firstname + " " + lastname + " = " + uuid.ToString());
                         return replypacket;
                     }
                 }
@@ -360,7 +374,7 @@ public class useful : ProxyPlugin
             proxy.InjectPacket(request, Direction.Outgoing);
             evt.WaitOne(10000, false);
             proxy.RemoveDelegate(PacketType.UUIDNameReply, Direction.Incoming, nameHandler);
-            SayToUser("Friendship terminated with " + name);
+            frame.SayToUser("Friendship terminated with " + name);
         }));
         myThread.Start();
         return packet;
@@ -379,7 +393,7 @@ public class useful : ProxyPlugin
                 int firstnamecount = 0;
                 int lastnamecount = 0;
                 int unknowncount = 0;
-                for (int i = 0; i < 3; i++)
+                for(int i =0;i<nvs.Length;i++)
                 {
                     if (nvs[i].IndexOf("Title ") == 0)
                         titlecount++;
@@ -393,7 +407,7 @@ public class useful : ProxyPlugin
 
                 if (!((titlecount == 1) && (firstnamecount == 1) && (lastnamecount == 1) && (unknowncount == 0)))
                 {
-                    SayToUser("Suspicious avatar NameValues, see console for details.");
+                    frame.SayToUser("Suspicious avatar NameValues, see console for details.");
                     Console.WriteLine(" = = = = Suspicious Namevalues: = = = =");
                     Console.WriteLine(nv);
                     nv = "Title STRING RW SV dick\n";
