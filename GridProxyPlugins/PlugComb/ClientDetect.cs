@@ -322,22 +322,6 @@ namespace PubComb
             form.setList(n); 
 
         }
-        private void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        private void SendAgentUserAlert(string message)
-        {
-            AgentAlertMessagePacket packet = new AgentAlertMessagePacket();
-            packet.AgentData = new AgentAlertMessagePacket.AgentDataBlock();
-            packet.AgentData.AgentID = frame.AgentID;
-            packet.AlertData.Message = Utils.StringToBytes(message);
-            packet.AlertData.Modal = true;
-            proxy.InjectPacket(packet, Direction.Incoming);
-            
-        }
         private Packet InKillObjectHandler(Packet packet, IPEndPoint sim)
         {
             

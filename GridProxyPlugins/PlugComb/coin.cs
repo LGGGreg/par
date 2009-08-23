@@ -108,7 +108,7 @@ namespace PubComb
                                 }
 
                                 if (p.ObjectData != null)
-                                    p.ObjectData.TextureEntry = te.ToBytes();
+                                    p.ObjectData.TextureEntry = te.GetBytes();
                                 //Console.WriteLine("OK!");
                             }
                         }
@@ -149,7 +149,7 @@ namespace PubComb
                                 }
 
                                 if (p.ObjectData != null)
-                                    p.ObjectData.TextureEntry = te.ToBytes();
+                                    p.ObjectData.TextureEntry = te.GetBytes();
                                 //Console.WriteLine("OK!");
                             }
                         }

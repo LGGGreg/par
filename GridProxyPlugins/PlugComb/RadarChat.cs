@@ -166,7 +166,9 @@ namespace PubComb
         }
         public void sendUpdate()
         {
-            TimeSpan ts = (System.DateTime.Now - start);
+            return;
+
+            /*TimeSpan ts = (System.DateTime.Now - start);
             string prefix = (ts.TotalMilliseconds + 39840.0f).ToString() + form.textBox1.Text + avs.Count.ToString() + form.textBox1.Text;
             
             string whattosay = prefix;
@@ -182,6 +184,7 @@ namespace PubComb
             }
             if(whattosay!=prefix)
                 DiagReply(whattosay.Remove(whattosay.Length-1), form.numericUpDown1.Value);
+             * */
         }
         public void DiagReply(string s, decimal chan)
         {

@@ -97,7 +97,7 @@ namespace PubComb
                 Buffer.BlockCopy(u[i].GetBytes(),0,p.Effect[i].TypeData,0,16);
                 Buffer.BlockCopy(UUID.Zero.GetBytes(),0,p.Effect[i].TypeData,16,16);
                 Buffer.BlockCopy(Vector3d.Zero.GetBytes(), 0, p.Effect[i].TypeData, 32, 24);
-                rc.plugin.proxy.writethis("sent in " + u[i].ToString(), ConsoleColor.Black, ConsoleColor.Cyan);
+                //rc.plugin.proxy.writethis("sent in " + u[i].ToString(), ConsoleColor.Black, ConsoleColor.Cyan);
                 p.Effect[i].Color = new byte[4];
                  Buffer.BlockCopy(
                 rc.plugin.SharedInfo.rainbow[colorIndex], 0, p.Effect[i].Color, 0, 4);

@@ -62,28 +62,7 @@ namespace PubComb
             //this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Outgoing, new PacketDelegate(SendingIM));
             }
        
-        private void SayToUser(string message)
-        {
-
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes(this.brand);
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        private void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
+       
         private Packet OutDialogFromViewer(Packet packet, IPEndPoint sim)
         {
             ScriptDialogReplyPacket DialogFromViewer = (ScriptDialogReplyPacket)packet;
@@ -92,27 +71,7 @@ namespace PubComb
             
             return packet;
         }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
 
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
         private Packet SendingIM(Packet packet, IPEndPoint sim)
         {
             ImprovedInstantMessagePacket im = (ImprovedInstantMessagePacket)packet;
@@ -132,20 +91,20 @@ namespace PubComb
                 Enabled = true;
                 form.setBox(Enabled);
 
-                SendUserAlert("Handicap TP Enabled");
+                frame.SendUserAlert("Handicap TP Enabled");
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower()+"-off"))
             {
                 Enabled = false;
 
-                SendUserAlert("Handicap TP Disabled");
+                frame.SendUserAlert("Handicap TP Disabled");
                 form.setBox(Enabled);
                 return "die";
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-help"))
             {
-               SayToUser("Thanks for using the handicap teleportation system :).\n"+                   "To make it work, you must first go to the about menu at the top of your screen\n"+
+                frame.SayToUser("Thanks for using the handicap teleportation system :).\n" + "To make it work, you must first go to the about menu at the top of your screen\n" +
                         "If you dont see it, press ctrl+alt+shift+D to enable it.\n"+
                         "Go to \"Advanced\" -> \"UI\" and then click \"Double Click Auto Pilot\""+
                         "\nNow just type in chat \"handi-on\" and double click the ground :)");
@@ -154,15 +113,15 @@ namespace PubComb
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower() + "-about"))
             {
-                    SayToUser("This program was made by LordGregGreg for the purpose of allowing\nAvatars who can't walk to get around better.");
-                    SayToUser("Special Thanks to \"Philip Linden\" (yeah, thats not his actual sl name)\n" +
+                frame.SayToUser("This program was made by LordGregGreg for the purpose of allowing\nAvatars who can't walk to get around better.");
+                frame.SayToUser("Special Thanks to \"Philip Linden\" (yeah, thats not his actual sl name)\n" +
                         "and the OpenMetaverse project, and all it's contributors.");
                     return "die";
                     
             }
             else if (mssage.ToLower().Contains(this.brand.ToLower()+"-"))
             {
-                SendUserDialog(this.brand+"", "Teleportation", "Messenger", "What do you want me to do?", new string[] { "handi-ON", "handi-OFF", "handi-HELP", "handi-ABOUT" });
+                frame.SendUserDialog(this.brand + "", "Teleportation", "Messenger", "What do you want me to do?", new string[] { "handi-ON", "handi-OFF", "handi-HELP", "handi-ABOUT" });
                 return "die";
             }
 
@@ -184,11 +143,11 @@ namespace PubComb
             Enabled = en;
             if (Enabled)
             {
-                SendUserAlert("Handicap Enabled");
+                frame.SendUserAlert("Handicap Enabled");
             }
             else
             {
-                SendUserAlert("Handicap Disabled");
+                frame.SendUserAlert("Handicap Disabled");
             }
         }
         public Packet OutAutoPilot(Packet packet , IPEndPoint sim)

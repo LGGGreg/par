@@ -38,8 +38,6 @@ namespace PubComb
         private ProxyFrame frame;
         private Proxy proxy;
         private CliIntForm1 form;
-        private string brand;
-
         private Vector3 mpos = new Vector3();
         private uint mid = new uint();
         public InventoryItem interceptor = new InventoryItem(UUID.Zero);
@@ -58,7 +56,6 @@ namespace PubComb
             //plug.tabform.addATab(form, "CliInt");
             this.frame = plug.frame;
             this.proxy = plug.proxy;
-            this.brand = "CliInt";
             proxy.AddDelegate(PacketType.AlertMessage, Direction.Incoming, new PacketDelegate(this.InAlertMessageHandler));
             proxy.AddDelegate(PacketType.ObjectUpdate, Direction.Incoming, new PacketDelegate(this.UpdateHandler));
             proxy.AddDelegate(PacketType.ImprovedTerseObjectUpdate, Direction.Incoming, new PacketDelegate(this.TerseUpdateHandler));

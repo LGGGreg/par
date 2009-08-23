@@ -33,7 +33,6 @@ namespace PubComb
         private ProxyFrame frame;
         private Proxy proxy;
         private LyraForm1 form;
-        private string brand;
         private bool pass = true;
         public void LoadNow()
         {
@@ -54,7 +53,7 @@ namespace PubComb
             //plug.tabform.addATab(form, "LYRA");
             this.frame = plug.frame;
             this.proxy = plug.proxy;
-            this.brand = "Lyra";
+            // this.brand = "Lyra";
             proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(SimChat));
             proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(Age));
         }
@@ -63,9 +62,9 @@ namespace PubComb
             
             if (p)
             {
-                SendUserAlert("Avatar Phantom Lock Disabled");
+                frame.SendUserAlert("Avatar Phantom Lock Disabled");
             }
-            else SendUserAlert("Avatar Phantom Lock Enabled");
+            else frame.SendUserAlert("Avatar Phantom Lock Enabled");
             
             form.setCheck(!pass);
         }
@@ -90,49 +89,8 @@ namespace PubComb
             return p;
         }
         
-        private void SayToUser(string message)
-        {
+        
 
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes(this.brand);
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
-        public void SendUserAlert(string message)
-        {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-
-            proxy.InjectPacket(packet, Direction.Incoming);
-
-        }
-        private void SendUserDialog(string first, string last, string objectName, string message, string[] buttons)
-        {
-            Random rand = new Random();
-            ScriptDialogPacket packet = new ScriptDialogPacket();
-            packet.Data.ObjectID = UUID.Random();
-            packet.Data.FirstName = Utils.StringToBytes(first);
-            packet.Data.LastName = Utils.StringToBytes(last);
-            packet.Data.ObjectName = Utils.StringToBytes(objectName);
-            packet.Data.Message = Utils.StringToBytes(message);
-            packet.Data.ChatChannel = (byte)rand.Next(1000, 10000);
-            packet.Data.ImageID = UUID.Zero;
-
-            ScriptDialogPacket.ButtonsBlock[] temp = new ScriptDialogPacket.ButtonsBlock[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                temp[i] = new ScriptDialogPacket.ButtonsBlock();
-                temp[i].ButtonLabel = Utils.StringToBytes(buttons[i]);
-            }
-            packet.Buttons = temp;
-            proxy.InjectPacket(packet, Direction.Incoming);
-        }
     }
 
 }

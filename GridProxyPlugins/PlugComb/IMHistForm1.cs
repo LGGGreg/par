@@ -83,7 +83,7 @@ namespace PubComb
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Clipboard.SetText(listBox1.SelectedItem.ToString());
-            imp.SendUserAlert(listBox1.SelectedItem.ToString());
+            imp.frame.SendUserAlert(listBox1.SelectedItem.ToString());
         }
     }
 }

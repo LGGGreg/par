@@ -112,15 +112,15 @@ namespace PubComb
 
         private void updateBlocked()
         {
-            lock (dcp.proxy.BlockCaps)
-            {
-                dcp.proxy.BlockCaps.Clear();
-                for (int i = 0; i < listBox2.Items.Count; i++)
-                {
-                    dcp.proxy.BlockCaps.Add(listBox2.Items[i].ToString());
-                }
-                saveData();
-            }
+           // lock (dcp.proxy.BlockCaps)
+            //{
+             //   dcp.proxy.BlockCaps.Clear();
+              //  for (int i = 0; i < listBox2.Items.Count; i++)
+               // {
+                //    dcp.proxy.BlockCaps.Add(listBox2.Items[i].ToString());
+                //}
+                //saveData();
+            //}
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
