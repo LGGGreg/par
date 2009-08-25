@@ -43,7 +43,7 @@ namespace OpenMetaverse.TestClient
 
         public override string Execute(string[] args, UUID fromAgentID)
         {
-            if (args.Length < 3)
+            if (args.Length < 1)
                 return Description;
             int place = 0;//for knowing what arg to grab
 
@@ -106,15 +106,16 @@ namespace OpenMetaverse.TestClient
                 }
                 Console.WriteLine("got a group id :D");
             }
+            
             List<UUID> roles = new List<UUID>();
             UUID role = UUID.Zero;
-            if (args.Length <= place)
+            if (args.Length <= ++place)
             {
                 Console.WriteLine("using default role");
                 roles.Add(role);
             }
             //Console.WriteLine("didnt crash yet");
-            while (!(args.Length < ++place))
+            while (args.Length > (place++)+1)
             {
                 if (UUID.TryParse(args[place], out role))
                     roles.Add(role);
