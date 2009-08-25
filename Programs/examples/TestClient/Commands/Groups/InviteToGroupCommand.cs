@@ -43,7 +43,7 @@ namespace OpenMetaverse.TestClient
 
         public override string Execute(string[] args, UUID fromAgentID)
         {
-            if (args.Length < 1)
+            if (args.Length < 3)
                 return Description;
             int place = 0;//for knowing what arg to grab
 
@@ -51,8 +51,9 @@ namespace OpenMetaverse.TestClient
             if (!UUID.TryParse(args[place].Trim(), out avatarid))
             {
                 //not a uuid, check if its a name
-                testC.Avatars.OnAvatarNameSearch += new AvatarManager.AvatarNameSearchCallback(Avatars_OnAvatarNameSearch);
+                AvatarManager.AvatarNameSearchCallback ncallback = new AvatarManager.AvatarNameSearchCallback(Avatars_OnAvatarNameSearch);
 
+                testC.Avatars.OnAvatarNameSearch += ncallback;
                 targetAvatarName = args[place] + " " + args[++place];
 
                 if (!Name2Key.ContainsKey(targetAvatarName.ToLower()))
@@ -60,9 +61,18 @@ namespace OpenMetaverse.TestClient
                     // Send the Query
                     Client.Avatars.RequestAvatarNameSearch(targetAvatarName, UUID.Random());
 
-                    NameSearchEvent.WaitOne(60000, false);
-                }
+                    NameSearchEvent.WaitOne(10000, false);
+                    testC.Avatars.OnAvatarNameSearch -= ncallback;
+                    if (Name2Key.ContainsKey(targetAvatarName.ToLower()))
+                    {
+                        avatarid = Name2Key[targetAvatarName.ToLower()];
+                    }
+                    else
+                    {
 
+                        return "Name lookup for " + targetAvatarName + " failed";
+                    }
+                }else
                 if (Name2Key.ContainsKey(targetAvatarName.ToLower()))
                 {
                     avatarid = Name2Key[targetAvatarName.ToLower()];
@@ -79,12 +89,12 @@ namespace OpenMetaverse.TestClient
                 targetGroupName = args[place++];
                 for (; place < args.Length; place++)
                     targetGroupName += " " + args[place];
-
+                Console.WriteLine("looking for the group named " + targetGroupName);
                 DirectoryManager.DirGroupsReplyCallback callback = new DirectoryManager.DirGroupsReplyCallback(Directory_OnDirGroupsReply);
                 Client.Directory.OnDirGroupsReply += callback;
                 GqueryID = Client.Directory.StartGroupSearch(DirectoryManager.DirFindFlags.Groups, targetGroupName, 0);
 
-                GetGroupsSearchEvent.WaitOne(60000, false);
+                GetGroupsSearchEvent.WaitOne(10000, false);
 
                 Client.Directory.OnDirGroupsReply -= callback;
                 GetGroupsSearchEvent.Reset();
@@ -94,14 +104,17 @@ namespace OpenMetaverse.TestClient
                 {
                     return "Unable to obtain UUID for group ";
                 }
+                Console.WriteLine("got a group id :D");
             }
             List<UUID> roles = new List<UUID>();
             UUID role = UUID.Zero;
-            if (args.Length == ++place)
+            if (args.Length <= place)
             {
+                Console.WriteLine("using default role");
                 roles.Add(role);
             }
-            while (args.Length < ++place)
+            //Console.WriteLine("didnt crash yet");
+            while (!(args.Length < ++place))
             {
                 if (UUID.TryParse(args[place], out role))
                     roles.Add(role);
@@ -121,8 +134,16 @@ namespace OpenMetaverse.TestClient
             {
                 if (kvp.Value.ToLower() == this.targetAvatarName.ToLower())
                 {
-                    Name2Key[this.targetAvatarName.ToLower()] = kvp.Key;
+                    if (Name2Key.ContainsKey(this.targetAvatarName.ToLower()))
+                    {
+                        Name2Key[this.targetAvatarName.ToLower()]= kvp.Key;
+                    }
+                    else
+                    {
+                        Name2Key.Add(this.targetAvatarName.ToLower(), kvp.Key);
+                    }
                     NameSearchEvent.Set();
+
                     return;
                 }
             }
@@ -157,9 +178,12 @@ namespace OpenMetaverse.TestClient
                             {
                                 groupid = groupRetrieved.GroupID;
                                 targetGroupName = groupRetrieved.GroupName;
+                                Console.WriteLine("Group UUID Found!");
                                 break;
                             }
                         }
+                        Console.WriteLine("Group search over!");
+                                
                         //if (string.IsNullOrEmpty(resolvedGroupName))
                         //  resolvedGroupName = "Ambiguous name. Found " + matchedGroups.Count.ToString() + " groups (UUIDs on console)";
                     }
