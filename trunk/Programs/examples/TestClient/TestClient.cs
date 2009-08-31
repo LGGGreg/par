@@ -197,14 +197,24 @@ namespace OpenMetaverse.TestClient
             if(update.Avatar)
             {
                 AdvAvatar avatar;
-                if (!AvatarsList.ContainsKey(prim.ID))
-                    AvatarsList.Add(prim.ID, (AdvAvatar)prim);
+                lock (AvatarsList)
+                {
+                    if (!AvatarsList.ContainsKey(prim.ID))
+                    {
+                        AdvAvatar av = new AdvAvatar();
+                        av.count = 0;
+                        av.cryolife = false;
+                        av.av = (Avatar)prim;
+                        AvatarsList.Add(prim.ID, av);
+                    }
+                }
 
                 avatar = AvatarsList[prim.ID];
 
-                if(avatar.ID!=UUID.Zero && avatar.count < 3)
+                if(avatar.av.ID!=UUID.Zero && avatar.count < 3)
                 {
-                    Self.InstantMessage(Self.Name, avatar.ID, "cryo::ping", Self.SessionID, InstantMessageDialog.StopTyping, InstantMessageOnline.Online, Self.SimPosition, simulator.RegionID, null);
+                    Console.WriteLine("pinging " + avatar.av.ID);
+                    Self.InstantMessage(Self.Name, avatar.av.ID, "cryo::ping", Self.SessionID, InstantMessageDialog.StopTyping, InstantMessageOnline.Online, Self.SimPosition, simulator.RegionID, null);
                     avatar.count++;
                 }
             }
@@ -283,8 +293,9 @@ namespace OpenMetaverse.TestClient
             return true;
         }
     }
-    public class AdvAvatar : Avatar
+    public class AdvAvatar
     {
+        public Avatar av;
         public int count = 1;
         public bool cryolife = false;
     }
