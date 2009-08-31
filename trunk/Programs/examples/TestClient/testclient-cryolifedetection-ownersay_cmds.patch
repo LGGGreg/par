@@ -1,0 +1,233 @@
+//ALL PATCHES IN THIS FILE ARE LICENSED AS SUCH
+//
+// Copyright (c) 2009, Kyle Thompson (Cryo)
+//All rights reserved.
+//
+//Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+//
+// Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+//  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//  * Neither the name of the  Kyle Thompson nor cryo nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+//THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Index: ClientManager.cs
+===================================================================
+--- ClientManager.cs	(revision 3107)
++++ ClientManager.cs	(working copy)
+@@ -162,6 +162,7 @@
+                         }
+ 
+                         Logger.Log("Logged in " + client.ToString(), Helpers.LogLevel.Info);
++                        client.Appearance.RequestSetAppearance();
+                         --PendingLogins;
+                     }
+                     else if (login == LoginStatus.Failed)
+Index: Commands/Appearance/AttachCommand.cs
+===================================================================
+--- Commands/Appearance/AttachCommand.cs	(revision 0)
++++ Commands/Appearance/AttachCommand.cs	(revision 0)
+@@ -0,0 +1,40 @@
++﻿using System;
++using OpenMetaverse;
++
++namespace OpenMetaverse.TestClient
++{
++    public class AttachCommand : Command
++    {
++        public AttachCommand(TestClient testClient)
++        {
++            Client = testClient;
++            Name = "attach";
++            Description = "Wear an object eg: 'attach /Objects/Object'";
++            Category = CommandCategory.Appearance;
++        }
++
++        public override string Execute(string[] args, UUID fromAgentID)
++        {
++            if (args.Length < 1)
++                return "Usage: attach [object path] eg: 'attach /Objects/Object'";
++
++            string target = String.Empty;
++
++            for (int ct = 0; ct < args.Length; ct++)
++            {
++                target = target + args[ct] + " ";
++            }
++
++            target = target.TrimEnd();
++
++            const int INVENTORY_TIMEOUT = 1000 * 30;
++
++            InventoryItem item = new InventoryItem(Client.Inventory.FindObjectByPath(Client.Inventory.Store.RootFolder.UUID,
++                                                        Client.Self.AgentID,target,INVENTORY_TIMEOUT));
++
++            Client.Appearance.Attach(item, AttachmentPoint.Default);
++
++            return "Attaching object " + item.UUID.ToString();
++        }
++    }
++}
+Index: Commands/Appearance/DetachCommand.cs
+===================================================================
+--- Commands/Appearance/DetachCommand.cs	(revision 0)
++++ Commands/Appearance/DetachCommand.cs	(revision 0)
+@@ -0,0 +1,49 @@
++﻿using System;
++using System.Collections.Generic;
++using OpenMetaverse;
++
++namespace OpenMetaverse.TestClient
++{
++    public class DetachCommand : Command
++    {
++        public DetachCommand(TestClient testClient)
++        {
++            Client = testClient;
++            Name = "detach";
++            Description = "Remove an object eg: 'attach RightHand'";
++            Category = CommandCategory.Appearance;
++        }
++
++        public override string Execute(string[] args, UUID fromAgentID)
++        {
++            if (args.Length < 1)
++                return "Usage: detach [attachment point] eg: 'attach RightHand'";
++
++            AttachmentPoint target = (AttachmentPoint)Enum.Parse(typeof(AttachmentPoint), args[0], true);
++            List<Primitive> attachments = Client.Network.CurrentSim.ObjectsPrimitives.FindAll(
++                delegate(Primitive prim) { return prim.ParentID == Client.Self.LocalID; }
++            );
++
++            for (int i = 0; i < attachments.Count; i++)
++            {
++                Primitive prim = attachments[i];
++                AttachmentPoint point = StateToAttachmentPoint(prim.PrimData.State);
++
++                if (point == target)
++                {
++                    InventoryItem item = new InventoryItem(prim.Properties.ItemID);
++                    Client.Appearance.Detach(prim.Properties.ItemID);
++                    return "Detaching object " + prim.Properties.ItemID + "(" + args[0] + ")";
++                }
++            }
++            return "No attachment at " + args[0];
++        }
++
++        public static AttachmentPoint StateToAttachmentPoint(uint state)
++        {
++            const uint ATTACHMENT_MASK = 0xF0;
++            uint fixedState = (((byte)state & ATTACHMENT_MASK) >> 4) | (((byte)state & ~ATTACHMENT_MASK) << 4);
++            return (AttachmentPoint)fixedState;
++        }
++    }
++}
+Index: TestClient.cs
+===================================================================
+--- TestClient.cs	(revision 3107)
++++ TestClient.cs	(working copy)
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Text.RegularExpressions;
+ using System.Threading;
+ using System.Reflection;
+ using System.Xml;
+@@ -15,6 +16,7 @@
+         public Dictionary<UUID, GroupMember> GroupMembers;
+         public Dictionary<UUID, AvatarAppearancePacket> Appearances = new Dictionary<UUID, AvatarAppearancePacket>();
+         public Dictionary<string, Command> Commands = new Dictionary<string, Command>();
++        public Dictionary<UUID, AdvAvatar> AvatarsList = new Dictionary<UUID, AdvAvatar>();
+         public bool Running = true;
+         public bool GroupCommands = false;
+         public string MasterName = String.Empty;
+@@ -53,12 +55,15 @@
+             Network.RegisterCallback(PacketType.AgentDataUpdate, new NetworkManager.PacketCallback(AgentDataUpdateHandler));
+             Network.OnLogin += new NetworkManager.LoginCallback(LoginHandler);
+             Self.OnInstantMessage += new AgentManager.InstantMessageCallback(Self_OnInstantMessage);
++            Self.OnChat += new AgentManager.ChatCallback(Self_OnChat);
+             Groups.OnGroupMembers += new GroupManager.GroupMembersCallback(GroupMembersHandler);
+             Inventory.OnObjectOffered += new InventoryManager.ObjectOfferedCallback(Inventory_OnInventoryObjectReceived);
+ 
+             Network.RegisterCallback(PacketType.AvatarAppearance, new NetworkManager.PacketCallback(AvatarAppearanceHandler));
+             Network.RegisterCallback(PacketType.AlertMessage, new NetworkManager.PacketCallback(AlertMessageHandler));
+ 
++            Objects.OnObjectTerseUpdate += new ObjectManager.ObjectUpdatedTerseCallback(Objects_OnObjectTerseUpdated);
++            Objects.OnObjectKilled += new ObjectManager.KillObjectCallback(Objects_OnObjectKilled);
+             VoiceManager = new VoiceManager(this);
+ 
+             updateTimer.Start();
+@@ -186,9 +191,45 @@
+ 
+             Logger.Log("[AlertMessage] " + Utils.BytesToString(message.AlertData.Message), Helpers.LogLevel.Info, this);
+         }
++        private void Objects_OnObjectTerseUpdated(Simulator simulator, Primitive prim, ObjectUpdate update, ulong regionHandle,
++            ushort timeDilation)
++        {
++            if(update.Avatar)
++            {
++                AdvAvatar avatar;
++                if (!AvatarsList.ContainsKey(prim.ID))
++                    AvatarsList.Add(prim.ID, (AdvAvatar)prim);
+ 
++                avatar = AvatarsList[prim.ID];
++
++                if(avatar.ID!=UUID.Zero && avatar.count < 3)
++                {
++                    Self.InstantMessage(Self.Name, avatar.ID, "cryo::ping", Self.SessionID, InstantMessageDialog.StopTyping, InstantMessageOnline.Online, Self.SimPosition, simulator.RegionID, null);
++                    avatar.count++;
++                }
++            }
++        }
++        private void Objects_OnObjectKilled(Simulator simulator, uint objectID)
++        {
++
++        }
+         private void Self_OnInstantMessage(InstantMessage im, Simulator simulator)
+         {
++            if (im.Dialog == InstantMessageDialog.StopTyping) return;
++            
++            #region CryoLife Detection
++            if (AvatarsList.ContainsKey(im.FromAgentID))
++            {
++                Regex pingPattern = new Regex(@".* \d*\.{1}\d*\.{1}\d* \({1}\d*\){1} .{3,5} \d* \d* \d*:\d*:\d* \({1}.*\){1}.*");
++                if (pingPattern.IsMatch(im.Message))
++                {
++                    AvatarsList[im.FromAgentID].count = 3;
++                    AvatarsList[im.FromAgentID].cryolife = true;
++                    Console.WriteLine("{0}({1}) is on CryoLife", im.FromAgentName, im.FromAgentID);
++                }
++            }
++#endregion
++
+             bool groupIM = im.GroupIM && GroupMembers != null && GroupMembers.ContainsKey(im.FromAgentID) ? true : false;
+ 
+             if (im.FromAgentID == MasterKey || (GroupCommands && groupIM))
+@@ -216,7 +257,15 @@
+                 return;
+             }
+         }
+-
++        private void Self_OnChat(string message, ChatAudibleLevel audible, ChatType type,
++            ChatSourceType sourceType, string fromName, UUID id, UUID ownerid, Vector3 position)
++        {
++            Console.WriteLine("<Chat ({0})> {1}: {2} (@{3})", type.ToString(), fromName, message, position.ToString());
++            if (ChatType.OwnerSay == type && Self.AgentID == ownerid && ChatSourceType.Object == sourceType)
++            {
++                ClientManager.Instance.DoCommandAll(message, id);
++            }
++        }
+         private bool Inventory_OnInventoryObjectReceived(InstantMessage offer, AssetType type,
+             UUID objectID, bool fromTask)
+         {
+@@ -233,4 +282,9 @@
+             return true;
+         }
+     }
++    public class AdvAvatar : Avatar
++    {
++        public int count = 1;
++        public bool cryolife = false;
++    }
+ }
