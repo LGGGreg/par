@@ -59,17 +59,18 @@ namespace PubComb
         }
         public void readData()
         {
-            setBox("phantom1");
+            string toset = "phantom1";
             if (File.Exists("lyra.settings"))
             {
                 StreamReader re = File.OpenText("lyra.settings");
-                string t = re.ReadLine();
-                setBox(t);
+                 toset = re.ReadLine();
+                
 
 
                 re.Close();
                 
             }
+            setBox(toset);
             setCheck(false);//turn off
         }
         private void saveData()

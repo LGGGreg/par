@@ -31,7 +31,7 @@ namespace PubComb
     public class ProfileFunPlugin : GTabPlug
     {
         private PubComb plugin;
-        private ProxyFrame frame;
+        public ProxyFrame frame;
         private Proxy proxy;
         private SimpleProfForm1 form;
         private PubComb.Aux_SharedInfo shared;

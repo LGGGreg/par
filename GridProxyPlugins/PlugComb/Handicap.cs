@@ -179,6 +179,7 @@ namespace PubComb
                             ulong RegionHandle = (((ulong)MapX) << 32) | ((ulong)MapY);
 
                             TeleportLocationRequestPacket tp = new TeleportLocationRequestPacket();
+                            tp.Type = PacketType.TeleportLocationRequest;
                             tp.AgentData = new TeleportLocationRequestPacket.AgentDataBlock();
                             tp.AgentData.AgentID = frame.AgentID;
                             tp.AgentData.SessionID = frame.SessionID;
