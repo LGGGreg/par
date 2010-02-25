@@ -32,6 +32,29 @@ using System.Windows.Forms;
 
 namespace PubComb
 {
+    public struct ObjectUpdate
+    {
+        /// <summary></summary>
+        public bool Avatar;
+        /// <summary></summary>
+        public Vector4 CollisionPlane;
+        /// <summary></summary>
+        public byte State;
+        /// <summary></summary>
+        public uint LocalID;
+        /// <summary></summary>
+        public Vector3 Position;
+        /// <summary></summary>
+        public Vector3 Velocity;
+        /// <summary></summary>
+        public Vector3 Acceleration;
+        /// <summary></summary>
+        public Quaternion Rotation;
+        /// <summary></summary>
+        public Vector3 AngularVelocity;
+        /// <summary></summary>
+        public Primitive.TextureEntry Textures;
+    }
     public class CliIntPlugin : GTabPlug
     {
         private PubComb plugin;
@@ -335,7 +358,7 @@ namespace PubComb
                         //continue;
 
                     #region Decode update data
-
+                    
                     ObjectUpdate update = new ObjectUpdate();
 
                     // LocalID

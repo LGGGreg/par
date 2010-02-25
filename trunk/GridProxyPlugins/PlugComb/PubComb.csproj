@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6D6C8460-B38E-4061-9348-6BC1D8E8B5E8}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\out\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -245,48 +245,63 @@
   <ItemGroup>
     <EmbeddedResource Include="AvatarForm1.resx">
       <DependentUpon>AvatarForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AweseomeSauceForm1.resx">
       <DependentUpon>AweseomeSauceForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CapsForm1.resx">
       <DependentUpon>CapsForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CinderForm1.resx">
       <DependentUpon>CinderForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientDetectForm1.resx">
       <DependentUpon>ClientDetectForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CliIntForm1.resx">
       <DependentUpon>CliIntForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CoinForm1.resx">
       <DependentUpon>CoinForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FileProtectForm1.resx">
       <DependentUpon>FileProtectForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HighForm1.resx">
       <DependentUpon>HighForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="IMHistForm1.resx">
       <DependentUpon>IMHistForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="InvFunForm1.resx">
       <DependentUpon>InvFunForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="leetForm1.resx">
       <DependentUpon>leetForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LyraForm1.resx">
       <DependentUpon>LyraForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HandiForm1.resx">
       <DependentUpon>HandiForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PennyForm1.resx">
       <DependentUpon>PennyForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -296,36 +311,47 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProtAnimForm1.resx">
       <DependentUpon>ProtAnimForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ProTextionForm1.resx">
       <DependentUpon>ProTextionForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RadarChatForm1.resx">
       <DependentUpon>RadarChatForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RainbowParticlesForm1.resx">
       <DependentUpon>RainbowParticlesForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RetreatForm1.resx">
       <DependentUpon>RetreatForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SimpleProfForm1.resx">
       <DependentUpon>SimpleProfForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SitAnywhereForm1.resx">
       <DependentUpon>SitAnywhereForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SitBlockForm1.resx">
       <DependentUpon>SitBlockForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SpamBlockForm1.resx">
       <DependentUpon>SpamBlockForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TabItem.resx">
       <DependentUpon>TabItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="VELogForm1.resx">
       <DependentUpon>VELogForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -341,24 +367,20 @@
     <None Include="Resources\LOST.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\omv\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
-      <Project>{AAE51CFC-4B7B-48E2-839D-9E84E724BF1C}</Project>
-      <Name>OpenMetaverse.StructuredData</Name>
+    <ProjectReference Include="..\..\OpenMetaverse.Utilities\OpenMetaverse.Utilities.csproj">
+      <Project>{1685F41E-F92C-484B-9FE1-44C22C3688DF}</Project>
+      <Name>OpenMetaverse.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\omv\OpenMetaverseCore\OpenMetaverseCore.csproj">
-      <Project>{4BAF8780-3FC9-43BA-8E8C-0FA0F8906179}</Project>
-      <Name>OpenMetaverseCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\omv\OpenMetaverseTypes\OpenMetaverseTypes.csproj">
-      <Project>{7AA481D1-DD13-471C-BE45-813ED445AFDB}</Project>
+    <ProjectReference Include="..\..\OpenMetaverseTypes\OpenMetaverseTypes.csproj">
+      <Project>{26DFD95A-7035-432F-A975-86BB1F63FABE}</Project>
       <Name>OpenMetaverseTypes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\omv\OpenMetaverse\OpenMetaverse.csproj">
-      <Project>{B75A200E-F746-45C3-8710-A434D5C056DE}</Project>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
+      <Project>{4106920D-E65D-4D8A-A1FF-B1B8AA54DF03}</Project>
       <Name>OpenMetaverse</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\omv\Programs\GridProxy\GridProxy.csproj">
-      <Project>{B8A51FDF-444D-4E9E-B9C1-AA3EC3D0F0B3}</Project>
+    <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
+      <Project>{FCE99575-8AB3-4A2F-A77E-3768D9AB0BC8}</Project>
       <Name>GridProxy</Name>
     </ProjectReference>
   </ItemGroup>

@@ -60,6 +60,7 @@ namespace PubComb
             plugin.SendUserAlert("Activated Sit");
             
             AgentUpdatePacket a = new AgentUpdatePacket();
+            a.Type = PacketType.AgentUpdate;
             a.AgentData = new AgentUpdatePacket.AgentDataBlock();
             a.AgentData.AgentID = frame.AgentID;
             a.AgentData.BodyRotation = Quaternion.Identity;

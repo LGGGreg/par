@@ -49,6 +49,7 @@ namespace PubComb
                 }
                 catch(Exception ar)
                 {
+                    this.pf.frame.SayToUser(ar.ToString());
                     web = "http://the-diy-life.com/super1337hax/LGGRedirect.php?loc=";
                 }
 

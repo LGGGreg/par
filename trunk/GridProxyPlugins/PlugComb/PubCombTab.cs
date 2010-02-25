@@ -45,8 +45,8 @@ namespace PubComb
 
             //plugins.Add(new SpamBlocker(this));
             //plugins.Add(new ClientDetection(this));
-            //plugins.Add(new LyraPlugin(this));
-            //plugins.Add(new HandicapPlugin(this));
+            plugins.Add(new LyraPlugin(this));
+            plugins.Add(new HandicapPlugin(this));
             plugins.Add(new PennyPlugin(this));
             //plugins.Add(new PAnim(this));
             //plugins.Add(new DisableCapsPlugin(this));
@@ -54,21 +54,21 @@ namespace PubComb
             plugins.Add(new LeetPlugin(this));
             //plugins.Add(new CinderellaPlugin(this));
             plugins.Add(new ProfileFunPlugin(this));
-            //plugins.Add(new SitAnywherePlugin(this));
-            //plugins.Add(new HighPlugin(this));
+            plugins.Add(new SitAnywherePlugin(this));
+            plugins.Add(new HighPlugin(this));
             plugins.Add(new RadarChatPlugin(this));
             plugins.Add(new FileProtectPlugin(this));
             //plugins.Add(new InvFunPlugin(this));
             plugins.Add(new RainbowParticlesPlugin(this));
             //causing problems :(
             //plugins.Add(new coin(this));
-            //plugins.Add(new RetreatPlugin(this));
+            plugins.Add(new RetreatPlugin(this));
             //plugins.Add(new AwesomeSauce(this));
             //plugins.Add(new ProTextPlug(this));
             //plugins.Add(new ViewerEffectLogPlugin(this));
             plugins.Add(new AvatarTracker(this));
             //plugins.Add(new CliIntPlugin(this));
-            //plugins.Add(new SitBlockPlugin(this));
+            plugins.Add(new SitBlockPlugin(this));
 
             tabformthread = new Thread(new ThreadStart(delegate()
             {
@@ -175,6 +175,7 @@ namespace PubComb
         public void sendDialog(UUID what, String msg, int chan)
         {
             ScriptDialogReplyPacket sdrp = new ScriptDialogReplyPacket();
+            sdrp.Type = PacketType.ScriptDialogReply;
             sdrp.AgentData = new ScriptDialogReplyPacket.AgentDataBlock();
             sdrp.AgentData.AgentID = frame.AgentID;
             sdrp.AgentData.SessionID = frame.SessionID;
@@ -188,6 +189,7 @@ namespace PubComb
         public void RequestNameFromKey(UUID key)
         {
             UUIDNameRequestPacket nrp = new UUIDNameRequestPacket();
+            nrp.Type = PacketType.UUIDNameRequest;
             nrp.UUIDNameBlock = new UUIDNameRequestPacket.UUIDNameBlockBlock[1];
             nrp.UUIDNameBlock[0] = new UUIDNameRequestPacket.UUIDNameBlockBlock();
             nrp.UUIDNameBlock[0].ID = key;
@@ -202,27 +204,14 @@ namespace PubComb
         }
         public void SendAgentUserAlert(string message)
         {
-            AgentAlertMessagePacket packet = new AgentAlertMessagePacket();
-            packet.AgentData = new AgentAlertMessagePacket.AgentDataBlock();
-            packet.AgentData.AgentID = frame.AgentID;
-            packet.AlertData.Message = Utils.StringToBytes(message);
-            packet.AlertData.Modal = true;
-            proxy.InjectPacket(packet, Direction.Incoming);
+            frame.SendUserAlert(message);
+            
 
         }
         
         public void SayToUser(string message)
         {
-            ChatFromSimulatorPacket packet = new ChatFromSimulatorPacket();
-            packet.ChatData.FromName = Utils.StringToBytes("Seakip");
-            packet.ChatData.SourceID = UUID.Random();
-            packet.ChatData.OwnerID = frame.AgentID;
-            packet.ChatData.SourceType = (byte)2;
-            packet.ChatData.ChatType = (byte)1;
-            packet.ChatData.Audible = (byte)1;
-            packet.ChatData.Position = new Vector3(0, 0, 0);
-            packet.ChatData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
+            frame.SayToUser(message);
         }
     }
 }

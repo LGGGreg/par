@@ -261,7 +261,7 @@ namespace PubComb
                             if (duration > effect.Duration) duration = effect.Duration;
                                 
                             //proxy.writethis("my pos is " + myPos.ToString() + " and target is " + TargetPosition.ToString() + " and myline is " + myLine.ToString(),ConsoleColor.Cyan,ConsoleColor.Black);
-                            for (int i = 0; i < (int)Math.Round(myLine.Length()); i++)
+                            for (float i = 0; i < (float)Math.Round(myLine.Length()); i+=1.0F)
                             {
                                 Vector3d circlePos = myPos + (Vector3d.Normalize(myLine)*i);
                                sendSwirlPoint(circlePos,effect.Color,duration);

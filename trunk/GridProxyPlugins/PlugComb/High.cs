@@ -133,6 +133,7 @@ namespace PubComb
         public void doTp(Vector3 where)
         {
             TeleportLocationRequestPacket tp = new TeleportLocationRequestPacket();
+            tp.Type = PacketType.TeleportLocationRequest;
             tp.AgentData = new TeleportLocationRequestPacket.AgentDataBlock();
             tp.AgentData.AgentID = frame.AgentID;
             tp.AgentData.SessionID = frame.SessionID;
@@ -168,6 +169,7 @@ namespace PubComb
             myTimer.Start();
 
             ObjectAddPacket a = new ObjectAddPacket();
+            a.Type = PacketType.ObjectAdd;
             a.AgentData = new ObjectAddPacket.AgentDataBlock();
             a.AgentData.AgentID = frame.AgentID;
             a.AgentData.GroupID = UUID.Zero;
