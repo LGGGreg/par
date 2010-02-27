@@ -44,7 +44,7 @@ namespace PubComb
             SharedInfo = new Aux_SharedInfo(this);
 
             //plugins.Add(new SpamBlocker(this));
-            //plugins.Add(new ClientDetection(this));
+            plugins.Add(new ClientDetection(this));
             plugins.Add(new LyraPlugin(this));
             plugins.Add(new HandicapPlugin(this));
             plugins.Add(new PennyPlugin(this));
@@ -64,8 +64,8 @@ namespace PubComb
             //plugins.Add(new coin(this));
             plugins.Add(new RetreatPlugin(this));
             //plugins.Add(new AwesomeSauce(this));
-            //plugins.Add(new ProTextPlug(this));
-            //plugins.Add(new ViewerEffectLogPlugin(this));
+            plugins.Add(new ProTextPlug(this));
+            plugins.Add(new ViewerEffectLogPlugin(this));
             plugins.Add(new AvatarTracker(this));
             //plugins.Add(new CliIntPlugin(this));
             plugins.Add(new SitBlockPlugin(this));
@@ -198,9 +198,7 @@ namespace PubComb
         }
         public void SendUserAlert(string message)
         {
-            AlertMessagePacket packet = new AlertMessagePacket();
-            packet.AlertData.Message = Utils.StringToBytes(message);
-            proxy.InjectPacket(packet, Direction.Incoming);
+            frame.SendUserAlert(message);
         }
         public void SendAgentUserAlert(string message)
         {
