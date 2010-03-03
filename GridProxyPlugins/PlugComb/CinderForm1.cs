@@ -10,7 +10,7 @@ using OpenMetaverse.Imaging;
 using OpenMetaverse;
 using OpenMetaverse.Packets;
 
-namespace PubComb
+namespace PubCombN
 {
     
     public partial class CinderForm1 : Form

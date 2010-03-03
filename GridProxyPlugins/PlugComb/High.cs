@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class HighPlugin : GTabPlug
     {
@@ -38,6 +38,11 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "SoHigh");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "SoHigh");
         }
         public HighPlugin(PubComb plug)
         {

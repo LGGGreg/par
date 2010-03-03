@@ -22,7 +22,7 @@ using OpenMetaverse.Packets;
 using OpenMetaverse.Imaging;
 using GridProxy;
 
-namespace PubComb
+namespace PubCombN
 {
     public class ProTextPlug : GTabPlug
     {
@@ -39,6 +39,10 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "ProTextion");
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "ProTextion");
         }
         public ProTextPlug(PubComb p)
         {

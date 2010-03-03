@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 using OpenMetaverse;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class FormAvatars : Form
     {

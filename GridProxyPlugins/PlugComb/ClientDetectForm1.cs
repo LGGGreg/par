@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using OpenMetaverse;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class ClientDetectForm1 : Form
     {

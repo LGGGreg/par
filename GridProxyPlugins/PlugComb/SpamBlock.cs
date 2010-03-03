@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class SpamBlocker : GTabPlug
     {
@@ -99,6 +99,10 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "SpamBlock");
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "SpamBlock");
         }
         public SpamBlocker(PubComb plug)
         {

@@ -26,7 +26,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class InvFunPlugin : GTabPlug
     {
@@ -48,6 +48,10 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "Inv Fun");
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "Inv Fun");
         }
         public InvFunPlugin(PubComb plug)
         {

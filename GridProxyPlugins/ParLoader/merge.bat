@@ -1,0 +1,2 @@
+ILMerge.exe /out=ParPlugins-v63.exe "ParProxy.exe" "XMLRPC.dll" "OpenMetaverseTypes.dll" "OpenMetaverse.Utilities.dll" "OpenMetaverse.StructuredData.dll" "OpenMetaverse.Http.dll" "OpenMetaverse.dll"  "Mono.Security.dll" "ManyMonkeysEncryptionUtils.dll" "log4net.dll" "HttpServer.dll" "GridProxy.dll" "Be.Windows.Forms.HexBox.dll" "PubComb.dll"
+pause

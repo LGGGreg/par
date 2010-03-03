@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class FileProtectForm1 : Form
     {

@@ -26,7 +26,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class ProfileFunPlugin : GTabPlug
     {
@@ -43,6 +43,13 @@ namespace PubComb
             plugin.tabform.addATab(form, "Profile Fun");
             form.readData();
             getProfile();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            getProfile();
+            return new tabInfo(form, "Profile Fun");
+            
         }
         public ProfileFunPlugin(PubComb plug)
         {

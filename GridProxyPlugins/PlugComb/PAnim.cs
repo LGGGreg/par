@@ -36,7 +36,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class PAnim : GTabPlug
     {
@@ -631,6 +631,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "PAnim");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "PAnim");
+            
         }
         public PAnim(PubComb plug)
         {

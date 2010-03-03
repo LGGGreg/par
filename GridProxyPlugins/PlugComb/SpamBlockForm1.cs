@@ -21,7 +21,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class SpamBlockForm1 : Form
     {

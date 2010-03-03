@@ -30,7 +30,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public struct ObjectUpdate
     {
@@ -70,6 +70,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "CliInt");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "CliInt");
+            
         }
 
         public CliIntPlugin(PubComb plug)

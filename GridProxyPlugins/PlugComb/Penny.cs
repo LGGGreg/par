@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class PennyPlugin : GTabPlug
     {
@@ -56,6 +56,11 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Penny");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "Penny");
         }
         public Packet ApHand(Packet packet, IPEndPoint sim)
         {

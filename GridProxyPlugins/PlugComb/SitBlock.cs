@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class SitBlockPlugin : GTabPlug
     {
@@ -39,6 +39,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Sit Block");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "Sit Block");
+            
         }
         public SitBlockPlugin(PubComb plug)
         {

@@ -32,7 +32,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using GridProxy;
 
-namespace PubComb
+namespace PubCombN
 {
 
     /// <summary>

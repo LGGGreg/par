@@ -24,7 +24,7 @@ using OpenMetaverse.Packets;
 using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
-namespace PubComb
+namespace PubCombN
 {
     public class AvatarTracker:GTabPlug
     {
@@ -40,6 +40,10 @@ namespace PubComb
         {
             plugin.tabform.addATab(form,"Avatar Loc");
             
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "Avatar Loc");
         }
         public AvatarTracker(PubComb plugin)
         {

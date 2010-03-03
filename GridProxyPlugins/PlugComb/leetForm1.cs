@@ -21,7 +21,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class leetForm1 : Form
     {

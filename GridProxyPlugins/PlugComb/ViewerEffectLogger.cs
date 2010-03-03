@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class ViewerEffectLogPlugin : GTabPlug
     {
@@ -39,6 +39,10 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "VE Logger");
             
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "VE Logger");
         }
         public ViewerEffectLogPlugin(PubComb plug)
         {

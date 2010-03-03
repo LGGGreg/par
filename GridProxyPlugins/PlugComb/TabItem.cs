@@ -21,7 +21,7 @@ using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class TabItem : Form
     {
@@ -148,11 +148,22 @@ namespace PubComb
 
     }
 
-}
-public interface GTabPlug
-{
+    public class tabInfo
+    {
+        public Form f;
+        public String s;
+        public tabInfo(Form inf, string ins)
+        {
+            f=inf;
+            s=ins;
+        }
+    }
+    public interface GTabPlug
+    {
 
-    void LoadNow();
+        void LoadNow();
+        tabInfo getInfo();
 
 
+    }
 }

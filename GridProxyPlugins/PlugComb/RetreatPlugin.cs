@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
 
     public class RetreatPlugin : GTabPlug
@@ -40,6 +40,11 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Retreat");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "Retreat");
         }
         public RetreatPlugin(PubComb plug)
         {

@@ -26,7 +26,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class SitAnywherePlugin : GTabPlug
     {
@@ -38,6 +38,10 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "SitAnywhere");
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "SitAnywhere");
         }
         public SitAnywherePlugin(PubComb plug)
         {

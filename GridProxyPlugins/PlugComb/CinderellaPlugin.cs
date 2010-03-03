@@ -22,7 +22,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
 
     public class CinderellaPlugin : GTabPlug
@@ -140,6 +140,10 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Cinderella");
             
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "Cinderella");
         }
         public void payMoney(int amount)
         {
