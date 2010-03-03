@@ -36,8 +36,8 @@ namespace PubCombN
         private PubComb.Aux_SharedInfo shared;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "SoHigh");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

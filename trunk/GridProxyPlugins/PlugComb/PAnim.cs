@@ -629,8 +629,8 @@ namespace PubCombN
         private Dictionary<UUID, gd1> dls = new Dictionary<UUID, gd1>();
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "PAnim");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

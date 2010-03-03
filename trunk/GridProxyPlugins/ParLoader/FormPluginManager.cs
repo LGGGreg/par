@@ -29,22 +29,37 @@ namespace ParLoader
         {
 
             Assembly assembly = Assembly.LoadFile(Path.GetFullPath(name));
-            foreach (Type t in assembly.GetTypes())
+            //assembly.g
+            try
             {
-                try
+                foreach (Type t in assembly.GetTypes())
                 {
-                    if (t.IsSubclassOf(typeof(ProxyPlugin)))
+                    try
                     {
-                        ConstructorInfo info = t.GetConstructor(new Type[] { typeof(ProxyFrame) });
-                        ProxyPlugin plugin = (ProxyPlugin)info.Invoke(new object[] { _Frame });
-                        plugin.Init();
-                        listView1.Items.Add(new ListViewItem(new []{assembly.ManifestModule.Name, Path.GetFullPath(name)}));
+                        if (t.IsSubclassOf(typeof(ProxyPlugin)))
+                        {
+                            ConstructorInfo info = t.GetConstructor(new Type[] { typeof(ProxyFrame) });
+                            ProxyPlugin plugin = (ProxyPlugin)info.Invoke(new object[] { _Frame });
+                            plugin.Init();
+                            listView1.Items.Add(new ListViewItem(new[] { assembly.ManifestModule.Name, Path.GetFullPath(name) }));
+                        }
+                    }
+                    catch (ReflectionTypeLoadException e)
+                    {
+                        String info = e.ToString()+"\n";
+                        foreach (Exception ee in e.LoaderExceptions)
+                        {
+                            MessageBox.Show(ee.ToString());
+                            info += ee.ToString() + "\n";
+                        }
+                        MessageBox.Show(info);
+                        Console.WriteLine(e.ToString());
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
 
         }

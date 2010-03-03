@@ -38,8 +38,8 @@ namespace PubCombN
         private UUID currentBastard = UUID.Zero;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Retreat");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

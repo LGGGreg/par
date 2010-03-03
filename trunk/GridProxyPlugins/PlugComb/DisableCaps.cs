@@ -36,8 +36,8 @@ namespace PubCombN
         private CapsForm1 form;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "DisableCaps");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

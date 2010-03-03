@@ -98,7 +98,8 @@ namespace PubCombN
         private List<uint> recSeq = new List<uint>();
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "SpamBlock");
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

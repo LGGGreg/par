@@ -100,8 +100,8 @@ namespace PubCombN
         }
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Leet Speak");
-            
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

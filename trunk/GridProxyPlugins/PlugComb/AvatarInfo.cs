@@ -38,8 +38,8 @@ namespace PubCombN
         public Thread formthread;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form,"Avatar Loc");
-            
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

@@ -37,8 +37,8 @@ namespace PubCombN
         public List<UUID> avs = new List<UUID>();
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "VE Logger");
-            
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

@@ -45,14 +45,14 @@ namespace PubCombN
         public Vector3d lastVec = Vector3d.One;
         int oldTime = 0;
         bool curentOn = false;
-        public PubComb plug;
+        public PubComb plugin;
         public RainbowParticlesForm1 form;
 
 
         public void LoadNow()
         {
-            plug.tabform.addATab(form, "Selection Beams");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {
@@ -60,12 +60,12 @@ namespace PubCombN
             return new tabInfo(form, "Selection Beams");
            
         }
-        public RainbowParticlesPlugin(PubComb plugin)
+        public RainbowParticlesPlugin(PubComb plug)
         {
-            plug = plugin;
+            plugin = plug;
             form = new RainbowParticlesForm1(this);
-            this.frame = plug.frame;
-            this.proxy = plug.proxy;
+            this.frame = plugin.frame;
+            this.proxy = plugin.proxy;
             this.proxy.AddDelegate(PacketType.ScriptDialogReply, Direction.Outgoing, new PacketDelegate(OutDialogFromViewer));
             this.proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(OutChatFromViewerHandler));
             this.proxy.AddDelegate(PacketType.ViewerEffect, Direction.Outgoing, new PacketDelegate(OutViewerEffectHandler));
@@ -206,10 +206,10 @@ namespace PubCombN
 
                         inject = true;
                         Buffer.BlockCopy(
-                            plug.SharedInfo.rainbow[form.xtrafx_Index], 0, effect.Color, 0, 4);
+                            plugin.SharedInfo.rainbow[form.xtrafx_Index], 0, effect.Color, 0, 4);
                         form.xtrafx_Index++;
 
-                        if (form.xtrafx_Index >= plug.SharedInfo.rainbow.Length)
+                        if (form.xtrafx_Index >= plugin.SharedInfo.rainbow.Length)
                         {
                             form.xtrafx_Index = 0;
                         }
@@ -256,12 +256,12 @@ namespace PubCombN
                         if (form.Mode == xtrafxMode.Circles)
                         {
                             Vector3d TargetPosition = new Vector3d(effect.TypeData, 32);
-                            int MapX = ((int)(plug.SharedInfo.RegionHandle >> 32) );
-                            int MapY = ((int)(plug.SharedInfo.RegionHandle & 0x00000000FFFFFFFF) );
+                            int MapX = ((int)(plugin.SharedInfo.RegionHandle >> 32) );
+                            int MapY = ((int)(plugin.SharedInfo.RegionHandle & 0x00000000FFFFFFFF) );
                             Vector3d myPos = new Vector3d(
-                                MapX + plug.SharedInfo.AvPosition.X,
-                                MapY + plug.SharedInfo.AvPosition.Y,
-                                 plug.SharedInfo.AvPosition.Z);
+                                MapX + plugin.SharedInfo.AvPosition.X,
+                                MapY + plugin.SharedInfo.AvPosition.Y,
+                                 plugin.SharedInfo.AvPosition.Z);
                             Vector3d myLine = TargetPosition - myPos;
                             float duration = effect.Duration * (float)(((double)38 - (myLine.Length()*(2/3))) / 20);
                             if (duration > effect.Duration) duration = effect.Duration;

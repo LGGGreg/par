@@ -115,7 +115,7 @@ namespace ParLoader
                 quiet
              */
 
-            ProxyConfig pc = new ProxyConfig("LGG Par Plugins via GridProxy v63", "LordGregGreg Back", args);
+            ProxyConfig pc = new ProxyConfig("LGG Par Plugins via GridProxy v64", "LordGregGreg Back", args);
 
             Proxy = new ProxyFrame(args, pc);
             

@@ -38,7 +38,8 @@ namespace PubCombN
         }
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "ProTextion");
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {
