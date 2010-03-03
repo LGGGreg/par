@@ -77,7 +77,7 @@ namespace PubCombN
 
             //this.proxy.AddDelegate(PacketType.ChatFromViewer, Direction.Outgoing, new PacketDelegate(OutChatFromViewerHandler));
             //this.proxy.AddDelegate(PacketType.AgentUpdate, Direction.Outgoing, new PacketDelegate(OutAgentUpdateHandler));
-            //this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(InImprovedInstantMessageHandler));
+            this.proxy.AddDelegate(PacketType.ImprovedInstantMessage, Direction.Incoming, new PacketDelegate(InImprovedInstantMessageHandler));
             //this.proxy.AddDelegate(PacketType.ViewerEffect, Direction.Incoming, new PacketDelegate(InViewerEffectHandler));
             this.proxy.AddDelegate(PacketType.AlertMessage, Direction.Incoming, new PacketDelegate(InAlertMessageHandler));
             this.proxy.AddDelegate(PacketType.AvatarPropertiesRequest, Direction.Outgoing, new PacketDelegate(OutAvatarPropertiesRequestHandler));
