@@ -40,9 +40,8 @@ namespace PubCombN
         private Dictionary<ulong, string> regionNames = new Dictionary<ulong, string>();
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Profile Fun");
-            form.readData();
-            getProfile();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

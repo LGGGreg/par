@@ -30,9 +30,8 @@ namespace PubCombN
     {
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Client Detection");
-            form.readData();
-
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

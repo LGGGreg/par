@@ -56,8 +56,8 @@ namespace PubCombN
         //private ImprovedInstantMessagePacket lastIM = null;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "IMHistory");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

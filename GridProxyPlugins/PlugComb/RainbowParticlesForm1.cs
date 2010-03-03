@@ -43,8 +43,8 @@ namespace PubCombN
         {
             string[] colors = input.ToLower().Split(new char[3] { ' ', ',', ':' });
             xtrafxString = input;
-            rp.plug.SharedInfo.rainbow= new byte[colors.Length][];
-            rp.plug.SayToUser("The colors we got were " + input + " and we got " + colors.Length.ToString() + " colors");
+            rp.plugin.SharedInfo.rainbow= new byte[colors.Length][];
+            rp.plugin.SayToUser("The colors we got were " + input + " and we got " + colors.Length.ToString() + " colors");
             lock (listBox1.Items)
             {
                 listBox1.Items.Clear();
@@ -55,44 +55,44 @@ namespace PubCombN
                     switch (colors[i])
                     {
                         case "red":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0x00, 0xFF };
                             break;
                         case "orange":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x80, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x80, 0x00, 0xFF };
                             break;
                         case "yellow":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0x00, 0xFF };
                             break;
                         case "lime":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x80, 0xFF, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x80, 0xFF, 0x00, 0xFF };
                             break;
                         case "green":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x00, 0xFF };
                             break;
                         case "turquoise":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x80, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0x80, 0xFF };
                             break;
                         case "cyan":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0xFF, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0xFF, 0xFF, 0xFF };
                             break;
                         case "blue":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0xFF, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0xFF, 0xFF };
                             break;
                         case "purple":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x80, 0x00, 0xFF, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x80, 0x00, 0xFF, 0xFF };
                             break;
                         case "pink":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0xFF, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0x00, 0xFF, 0xFF };
                             break;
                         case "black":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
                             break;
                         case "white":
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
                             break;
                         default:
-                            rp.plug.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
-                            rp.plug.SayToUser("Unknown color: " + colors[i] + " set to black");
+                            rp.plugin.SharedInfo.rainbow[i] = new byte[] { 0x00, 0x00, 0x00, 0xFF };
+                            rp.plugin.SayToUser("Unknown color: " + colors[i] + " set to black");
                             break;
                     }
                 }

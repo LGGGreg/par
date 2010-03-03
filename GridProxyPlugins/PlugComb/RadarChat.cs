@@ -39,8 +39,8 @@ namespace PubCombN
         public List<UUID> pending = new List<UUID>();
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Radar Chat");
-            form.readData();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {
@@ -76,16 +76,17 @@ namespace PubCombN
                             {
                                 shared.name2key.Add(name, b.ID);
                             }
-                            lock (pending)
+                            
+                        }
+                        lock (pending)
+                        {
+                            if (pending.Contains(b.ID))
                             {
-                                if (pending.Contains(b.ID))
+                                pending.Remove(b.ID);
+                                lock (form.listBox2.Items)
                                 {
-                                    pending.Remove(b.ID);
-                                    lock (form.listBox2.Items)
-                                    {
-                                        if(!form.listBox2.Items.Contains(shared.key2name[b.ID]))
-                                            form.listBox2.Items.Add(shared.key2name[b.ID]);
-                                    }
+                                    if (!form.listBox2.Items.Contains(shared.key2name[b.ID]))
+                                        form.listBox2.Items.Add(shared.key2name[b.ID]);
                                 }
                             }
                         }
@@ -211,11 +212,6 @@ namespace PubCombN
             EstateOwnerMessage(method, listParams);
         }
 
-        /// <summary>
-        /// Used for setting and retrieving various estate panel settings
-        /// </summary>
-        /// <param name="method">EstateOwnerMessage Method field</param>
-        /// <param name="listParams">List of parameters to include</param>
         public void EstateOwnerMessage(string method, List<string> listParams)
         {
             EstateOwnerMessagePacket estate = new EstateOwnerMessagePacket();

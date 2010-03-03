@@ -31,8 +31,8 @@ namespace PubCombN
         public PubComb plugin;
         public void LoadNow()
         {
-            plugin.tabform.addATab(form, "Coin");
-            form.CorrectImage();
+            tabInfo t = getInfo();
+            plugin.tabform.addATab(t.f, t.s);
         }
         public tabInfo getInfo()
         {

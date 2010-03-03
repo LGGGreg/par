@@ -75,6 +75,7 @@ namespace PubCombN
             //plugins.Add(new CliIntPlugin(this));
             plugins.Add(new SitBlockPlugin(this));
             plugins.Add(new ShadowPlugin(this));
+            plugins.Add(new useful(this));
 
             //tabformthread = new Thread(new ThreadStart(delegate()
             //{
