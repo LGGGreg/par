@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-namespace PubComb
+namespace PubCombN
 {
     partial class FormAvatars
     {

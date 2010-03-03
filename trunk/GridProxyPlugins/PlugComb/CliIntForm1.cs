@@ -20,7 +20,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace PubComb 
+namespace PubCombN 
 {
     public partial class CliIntForm1 : Form
     {

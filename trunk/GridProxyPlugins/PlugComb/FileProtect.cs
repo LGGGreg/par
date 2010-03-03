@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class FileProtectPlugin : GTabPlug
     {
@@ -39,6 +39,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "File Protect");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+
+            form.readData();
+            return new tabInfo(form, "File Protect");
         }
         public FileProtectPlugin(PubComb plug)
         {

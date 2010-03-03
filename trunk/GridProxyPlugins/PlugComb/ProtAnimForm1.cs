@@ -22,7 +22,7 @@ using System.IO;
 using System.Windows.Forms;
 
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class ProtAnimForm1 : Form
     {

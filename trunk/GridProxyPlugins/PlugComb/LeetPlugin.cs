@@ -26,7 +26,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class LeetPlugin : GTabPlug
     {
@@ -102,6 +102,10 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Leet Speak");
             
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "Leet Speak");
         }
          private Packet OutDialogFromViewer(Packet packet, IPEndPoint sim)
         {

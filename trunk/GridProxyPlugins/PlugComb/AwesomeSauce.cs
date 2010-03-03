@@ -24,7 +24,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class AwesomeSauce : GTabPlug
     {
@@ -78,6 +78,10 @@ namespace PubComb
         public void LoadNow()
         {
             plugin.tabform.addATab(form, "AwesomeSauce");
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "AwesomeSauce");
         }
         public AwesomeSauce(PubComb p)
         {

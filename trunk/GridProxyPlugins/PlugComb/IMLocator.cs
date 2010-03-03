@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class GregIm
     {
@@ -58,6 +58,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "IMHistory");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "IMHistory");
+            
         }
         public IMLocatePlugin(PubComb plug)
         {

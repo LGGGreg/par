@@ -24,7 +24,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using GridProxy;
 
-namespace PubComb
+namespace PubCombN
 {
     public enum xtrafxMode
     {
@@ -53,6 +53,12 @@ namespace PubComb
         {
             plug.tabform.addATab(form, "Selection Beams");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "Selection Beams");
+           
         }
         public RainbowParticlesPlugin(PubComb plugin)
         {

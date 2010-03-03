@@ -19,7 +19,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class CoinForm1 : Form
     {

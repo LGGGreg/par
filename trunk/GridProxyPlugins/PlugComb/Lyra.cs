@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class LyraPlugin : GTabPlug
     {
@@ -38,6 +38,10 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Lyra");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            return new tabInfo(form, "Lyra");
         }
         public LyraPlugin(PubComb plug)
         {

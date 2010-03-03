@@ -24,7 +24,7 @@ using GridProxy;
 using System.Windows.Forms;
 
 //Intelectual Rights Copyright to LordGregGreg Back
-namespace PubComb
+namespace PubCombN
 {
     public class ClientDetection:GTabPlug
     {
@@ -32,6 +32,13 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Client Detection");
             form.readData();
+
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "Client Detection");
+            
         }
         private PubComb plugin;
         private ProxyFrame frame;

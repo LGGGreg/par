@@ -24,7 +24,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace PubComb
+namespace PubCombN
 {
     public partial class RainbowParticlesForm1 : Form
     {

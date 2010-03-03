@@ -21,7 +21,7 @@ using OpenMetaverse;
 using OpenMetaverse.Packets;
 using System.Net;
 
-namespace PubComb
+namespace PubCombN
 {
     public class coin : GTabPlug
     {
@@ -33,6 +33,12 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "Coin");
             form.CorrectImage();
+        }
+        public tabInfo getInfo()
+        {
+            form.CorrectImage();
+            return new tabInfo(form, "Coin");
+            
         }
         public CoinState state = CoinState.Heads;
 

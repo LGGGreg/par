@@ -22,7 +22,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
 
     public class PubComb : ProxyPlugin
@@ -37,8 +37,13 @@ namespace PubComb
         private Thread tabformthread;
         List<GTabPlug> plugins = new List<GTabPlug>();
 
+        //private Form _WinForm;
+
         public PubComb(ProxyFrame frame)
         {
+            //MessageBox.Show("called");
+            
+            //this._WinForm=form;
             this.frame = frame;
             this.proxy = frame.proxy;
             SharedInfo = new Aux_SharedInfo(this);
@@ -69,14 +74,15 @@ namespace PubComb
             plugins.Add(new AvatarTracker(this));
             //plugins.Add(new CliIntPlugin(this));
             plugins.Add(new SitBlockPlugin(this));
+            plugins.Add(new ShadowPlugin(this));
 
-            tabformthread = new Thread(new ThreadStart(delegate()
-            {
-                tabform = new TabItem(this);
-                Application.Run(tabform);
-            }));
-            tabformthread.SetApartmentState(ApartmentState.STA);
-            tabformthread.Start();
+            //tabformthread = new Thread(new ThreadStart(delegate()
+            //{
+            //    tabform = new TabItem(this);
+            //    Application.Run(tabform);
+            //}));
+            //tabformthread.SetApartmentState(ApartmentState.STA);
+            //tabformthread.Start();
 
             
         }
@@ -87,9 +93,17 @@ namespace PubComb
               p.LoadNow();
             
         }
+        public List<GTabPlug> getPlugins()
+        {
+            //MessageBox.Show("getting type");
+                        
+            return plugins;
+        }
 
         public override void Init()
         {
+            //MessageBox.Show("inited");
+            
             SayToUser("Mega plugin loaded");
         }
 

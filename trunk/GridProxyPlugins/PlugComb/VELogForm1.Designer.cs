@@ -1,4 +1,4 @@
-﻿namespace PubComb
+﻿namespace PubCombN
 {
     partial class VELogForm1
     {

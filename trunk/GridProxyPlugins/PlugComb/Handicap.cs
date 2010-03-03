@@ -25,7 +25,7 @@ using GridProxy;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PubComb
+namespace PubCombN
 {
     public class HandicapPlugin : GTabPlug
     {
@@ -41,6 +41,11 @@ namespace PubComb
         {
             plugin.tabform.addATab(form, "HandiCap");
             form.readData();
+        }
+        public tabInfo getInfo()
+        {
+            form.readData();
+            return new tabInfo(form, "HandiCap");
         }
         public HandicapPlugin(PubComb plug)
         {
@@ -169,13 +174,14 @@ namespace PubComb
                             string before = System.Text.Encoding.GetEncoding("utf-8").GetString(genMsg.ParamList[2].Parameter);
                             float Z = (float)Double.Parse(before, System.Globalization.NumberStyles.Float,new System.Globalization.CultureInfo("en-us").NumberFormat)+2.0f;
         
-
+                            
                             //float Z =Utils.TryParseDouble float.Parse(before);  
                             form.addDebugInfo(Z.ToString());
                             form.addDebugInfo("\n");
 
                             uint MapX = (uint)(GlobalX & 0xFFFFFF00);
                             uint MapY = (uint)(GlobalY & 0xFFFFFF00);
+                            if (MapX == 0 && MapY == 0) return null;
                             ulong RegionHandle = (((ulong)MapX) << 32) | ((ulong)MapY);
 
                             TeleportLocationRequestPacket tp = new TeleportLocationRequestPacket();
