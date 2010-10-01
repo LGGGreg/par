@@ -28,8 +28,14 @@ using System.Windows.Forms;
 
 namespace PubComb
 {
-    public class ShadowPlugin : ProxyPlugin
+    public class ShadowPlugin:GTabPlug
     {
+        public void LoadNow()
+        {
+            plugin.tabform.addATab(form, "Client Detection");
+            form.readData();
+        }
+    
         private ProxyFrame frame;
         private Twofish fish;
         private System.IO.MemoryStream ms;

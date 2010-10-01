@@ -1,13 +1,12 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3C979E5D-4DA6-4801-BEF9-2A67273559D5}</ProjectGuid>
+    <ProjectGuid>{6DE749CA-7A8C-4BC3-A911-D85FC748931D}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon></ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>GridProxy</AssemblyName>
@@ -15,35 +14,13 @@
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>
-    </AppDesignerFolder>
+    <AppDesignerFolder></AppDesignerFolder>
     <RootNamespace>GridProxy</RootNamespace>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject></StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile>
-    </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
-    <DebugSymbols>True</DebugSymbols>
-    <FileAlignment>4096</FileAlignment>
-    <Optimize>False</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
-    <RegisterForComInterop>False</RegisterForComInterop>
-    <RemoveIntegerChecks>False</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
-    <NoStdLib>False</NoStdLib>
-    <NoWarn>1591,1574,0419,0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -51,9 +28,8 @@
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DefineConstants>TRACE;VISUAL_STUDIO</DefineConstants>
+    <DocumentationFile></DocumentationFile>
     <DebugSymbols>False</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <Optimize>True</Optimize>
@@ -65,106 +41,67 @@
     <NoStdLib>False</NoStdLib>
     <NoWarn>1591,1574,0419,0618</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DEBUG;VISUAL_STUDIO</DefineConstants>
+    <DocumentationFile></DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>False</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <RemoveIntegerChecks>False</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>False</NoStdLib>
+    <NoWarn>1591,1574,0419,0618</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <Name>System</Name>
+        <Name>System</Name>
     </Reference>
     <Reference Include="System.Xml">
-      <Name>System.Xml</Name>
+        <Name>System.Xml</Name>
     </Reference>
+    <Reference Include="XMLRPC">
+        <Name>XMLRPC</Name>
+      <HintPath>C:\Users\LGG\Desktop\Google Code Par Latest\branches\omv\bin\XMLRPC.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+        <Name>log4net</Name>
+      <HintPath>C:\Users\LGG\Desktop\Google Code Par Latest\branches\omv\bin\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
+      <Name>OpenMetaverse</Name>
+      <Project>{2BF78C59-45C3-49E8-881E-A6C4BF047EAB}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverseTypes\OpenMetaverseTypes.csproj">
+      <Name>OpenMetaverseTypes</Name>
+      <Project>{241CB050-DAB3-40CD-A826-D1E48098F565}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
+      <Name>OpenMetaverse.StructuredData</Name>
+      <Project>{051FEEC4-789E-4C2C-A2D3-857CC9E3C505}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GridProxy.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="GridProxyLoader.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Plugins\Analyst.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Plugins\ClientAO.cs">
-      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="XmlRpcCS\Logger.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\SimpleHttpRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcBoxcarRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcClientProxy.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcDeserializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcErrorCodes.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcExposedAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcRequestDeserializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcRequestSerializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcResponder.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcResponseDeserializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcResponseSerializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcSerializer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcServer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcSystemObject.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="XmlRpcCS\XmlRpcXmlTokens.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\HttpServer\HttpServer.csproj">
-      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
-      <Name>HttpServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
-      <Project>{BC2860B5-EA88-4D9C-9873-7BF56EAFC7A9}</Project>
-      <Name>OpenMetaverse.Http</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
-      <Project>{DC187B75-EE04-4A0D-B4A4-56EFA62535E3}</Project>
-      <Name>OpenMetaverse.StructuredData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
-      <Project>{D8BA1862-3FC4-4C62-8209-8CABA7667116}</Project>
-      <Name>OpenMetaverse</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse\Types\OpenMetaverseTypes.csproj">
-      <Project>{528E86C4-38DD-435F-9458-4165C2B12D0A}</Project>
-      <Name>OpenMetaverseTypes</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Reflection;
 using System.Xml;
@@ -16,7 +15,6 @@ namespace OpenMetaverse.TestClient
         public Dictionary<UUID, GroupMember> GroupMembers;
         public Dictionary<UUID, AvatarAppearancePacket> Appearances = new Dictionary<UUID, AvatarAppearancePacket>();
         public Dictionary<string, Command> Commands = new Dictionary<string, Command>();
-        public Dictionary<UUID, AdvAvatar> AvatarsList = new Dictionary<UUID, AdvAvatar>();
         public bool Running = true;
         public bool GroupCommands = false;
         public string MasterName = String.Empty;
@@ -52,21 +50,49 @@ namespace OpenMetaverse.TestClient
             Settings.SEND_AGENT_UPDATES = true;
             Settings.USE_ASSET_CACHE = true;
 
-            Network.RegisterCallback(PacketType.AgentDataUpdate, new NetworkManager.PacketCallback(AgentDataUpdateHandler));
-            Network.OnLogin += new NetworkManager.LoginCallback(LoginHandler);
-            Self.OnInstantMessage += new AgentManager.InstantMessageCallback(Self_OnInstantMessage);
-            Self.OnChat += new AgentManager.ChatCallback(Self_OnChat);
-            Groups.OnGroupMembers += new GroupManager.GroupMembersCallback(GroupMembersHandler);
-            Inventory.OnObjectOffered += new InventoryManager.ObjectOfferedCallback(Inventory_OnInventoryObjectReceived);
+            Network.RegisterCallback(PacketType.AgentDataUpdate, AgentDataUpdateHandler);
+            Network.LoginProgress += LoginHandler;
+            Self.IM += Self_IM;
+            Groups.GroupMembersReply += GroupMembersHandler;
+            Inventory.InventoryObjectOffered += Inventory_OnInventoryObjectReceived;            
 
-            Network.RegisterCallback(PacketType.AvatarAppearance, new NetworkManager.PacketCallback(AvatarAppearanceHandler));
-            Network.RegisterCallback(PacketType.AlertMessage, new NetworkManager.PacketCallback(AlertMessageHandler));
+            Network.RegisterCallback(PacketType.AvatarAppearance, AvatarAppearanceHandler);
+            Network.RegisterCallback(PacketType.AlertMessage, AlertMessageHandler);
 
-            Objects.OnObjectTerseUpdate += new ObjectManager.ObjectUpdatedTerseCallback(Objects_OnObjectTerseUpdated);
-            Objects.OnObjectKilled += new ObjectManager.KillObjectCallback(Objects_OnObjectKilled);
             VoiceManager = new VoiceManager(this);
 
             updateTimer.Start();
+        }
+
+        void Self_IM(object sender, InstantMessageEventArgs e)
+        {
+            bool groupIM = e.IM.GroupIM && GroupMembers != null && GroupMembers.ContainsKey(e.IM.FromAgentID) ? true : false;
+
+            if (e.IM.FromAgentID == MasterKey || (GroupCommands && groupIM))
+            {
+                // Received an IM from someone that is authenticated
+                Console.WriteLine("<{0} ({1})> {2}: {3} (@{4}:{5})", e.IM.GroupIM ? "GroupIM" : "IM", e.IM.Dialog, e.IM.FromAgentName, e.IM.Message, 
+                    e.IM.RegionID, e.IM.Position);
+
+                if (e.IM.Dialog == InstantMessageDialog.RequestTeleport)
+                {
+                    Console.WriteLine("Accepting teleport lure.");
+                    Self.TeleportLureRespond(e.IM.FromAgentID, true);
+                }
+                else if (
+                    e.IM.Dialog == InstantMessageDialog.MessageFromAgent ||
+                    e.IM.Dialog == InstantMessageDialog.MessageFromObject)
+                {
+                    ClientManager.Instance.DoCommandAll(e.IM.Message, e.IM.FromAgentID);
+                }
+            }
+            else
+            {
+                // Received an IM from someone that is not the bot's master, ignore
+                Console.WriteLine("<{0} ({1})> {2} (not master): {3} (@{4}:{5})", e.IM.GroupIM ? "GroupIM" : "IM", e.IM.Dialog, e.IM.FromAgentName, e.IM.Message,
+                    e.IM.RegionID, e.IM.Position);
+                return;
+            }
         }
 
         /// <summary>
@@ -74,9 +100,9 @@ namespace OpenMetaverse.TestClient
         /// </summary>
         /// <param name="login">The status of the login</param>
         /// <param name="message">Error message on failure, MOTD on success.</param>
-        public void LoginHandler(LoginStatus login, string message)
+        public void LoginHandler(object sender, LoginProgressEventArgs e)
         {
-            if (login == LoginStatus.Success)
+            if (e.Status == LoginStatus.Success)
             {
                 // Start in the inventory root folder.
                 CurrentDirectory = Inventory.Store.RootFolder;
@@ -114,13 +140,20 @@ namespace OpenMetaverse.TestClient
 
         public void ReloadGroupsCache()
         {
-            GroupManager.CurrentGroupsCallback callback =
-                    new GroupManager.CurrentGroupsCallback(Groups_OnCurrentGroups);
-            Groups.OnCurrentGroups += callback;
+            Groups.CurrentGroups += Groups_CurrentGroups;            
             Groups.RequestCurrentGroups();
             GroupsEvent.WaitOne(10000, false);
-            Groups.OnCurrentGroups -= callback;
+            Groups.CurrentGroups -= Groups_CurrentGroups;
             GroupsEvent.Reset();
+        }
+
+        void Groups_CurrentGroups(object sender, CurrentGroupsEventArgs e)
+        {
+            if (null == GroupsCache)
+                GroupsCache = e.Groups;
+            else
+                lock (GroupsCache) { GroupsCache = e.Groups; }
+            GroupsEvent.Set();
         }
 
         public UUID GroupName2UUID(String groupName)
@@ -141,17 +174,7 @@ namespace OpenMetaverse.TestClient
                 }
             }
             return UUID.Zero;
-        }
-
-        private void Groups_OnCurrentGroups(Dictionary<UUID, Group> pGroups)
-        {
-            if (null == GroupsCache)
-                GroupsCache = pGroups;
-            else
-                lock(GroupsCache) { GroupsCache = pGroups; }
-            GroupsEvent.Set();
-        }
-
+        }      
 
         private void updateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -160,143 +183,56 @@ namespace OpenMetaverse.TestClient
                     c.Think();
         }
 
-        private void AgentDataUpdateHandler(Packet packet, Simulator sim)
+        private void AgentDataUpdateHandler(object sender, PacketReceivedEventArgs e)
         {
-            AgentDataUpdatePacket p = (AgentDataUpdatePacket)packet;
-            if (p.AgentData.AgentID == sim.Client.Self.AgentID)
+            AgentDataUpdatePacket p = (AgentDataUpdatePacket)e.Packet;
+            if (p.AgentData.AgentID == e.Simulator.Client.Self.AgentID)
             {
                 GroupID = p.AgentData.ActiveGroupID;
-
-                GroupMembersRequestID = sim.Client.Groups.RequestGroupMembers(GroupID);
+                
+                GroupMembersRequestID = e.Simulator.Client.Groups.RequestGroupMembers(GroupID);
             }
         }
 
-        private void GroupMembersHandler(UUID requestID, UUID groupID, Dictionary<UUID, GroupMember> members)
+        private void GroupMembersHandler(object sender, GroupMembersReplyEventArgs e)
         {
-            if (requestID != GroupMembersRequestID) return;
+            if (e.RequestID != GroupMembersRequestID) return;
 
-            GroupMembers = members;
+            GroupMembers = e.Members;
         }
 
-        private void AvatarAppearanceHandler(Packet packet, Simulator simulator)
+        private void AvatarAppearanceHandler(object sender, PacketReceivedEventArgs e)
         {
+            Packet packet = e.Packet;
+            
             AvatarAppearancePacket appearance = (AvatarAppearancePacket)packet;
 
             lock (Appearances) Appearances[appearance.Sender.ID] = appearance;
         }
 
-        private void AlertMessageHandler(Packet packet, Simulator simulator)
+        private void AlertMessageHandler(object sender, PacketReceivedEventArgs e)
         {
+            Packet packet = e.Packet;
+            
             AlertMessagePacket message = (AlertMessagePacket)packet;
 
             Logger.Log("[AlertMessage] " + Utils.BytesToString(message.AlertData.Message), Helpers.LogLevel.Info, this);
         }
-        private void Objects_OnObjectTerseUpdated(Simulator simulator, Primitive prim, ObjectUpdate update, ulong regionHandle,
-            ushort timeDilation)
-        {
-            if(update.Avatar)
-            {
-                AdvAvatar avatar;
-                lock (AvatarsList)
-                {
-                    if (!AvatarsList.ContainsKey(prim.ID))
-                    {
-                        AdvAvatar av = new AdvAvatar();
-                        av.count = 0;
-                        av.cryolife = false;
-                        av.av = (Avatar)prim;
-                        AvatarsList.Add(prim.ID, av);
-                    }
-                }
-
-                avatar = AvatarsList[prim.ID];
-
-                if(avatar.av.ID!=UUID.Zero && avatar.count < 3)
-                {
-                    Console.WriteLine("pinging " + avatar.av.ID);
-                    Self.InstantMessage(Self.Name, avatar.av.ID, "cryo::ping", Self.SessionID, InstantMessageDialog.StopTyping, InstantMessageOnline.Online, Self.SimPosition, simulator.RegionID, null);
-                    avatar.count++;
-                }
-            }
-        }
-        private void Objects_OnObjectKilled(Simulator simulator, uint objectID)
-        {
-
-        }
-        private void Self_OnInstantMessage(InstantMessage im, Simulator simulator)
-        {
-            if (im.Dialog == InstantMessageDialog.StopTyping) return;
-            
-            #region CryoLife Detection
-            if (AvatarsList.ContainsKey(im.FromAgentID))
-            {
-                Regex pingPattern = new Regex(@".* \d*\.{1}\d*\.{1}\d* \({1}\d*\){1} .{3,5} \d* \d* \d*:\d*:\d* \({1}.*\){1}.*");
-                if (pingPattern.IsMatch(im.Message))
-                {
-                    AvatarsList[im.FromAgentID].count = 3;
-                    AvatarsList[im.FromAgentID].cryolife = true;
-                    Self.Chat(im.FromAgentName + " is on Cryolife (" + im.FromAgentID + ")", 666666, ChatType.Whisper);
-                    Console.WriteLine("{0}({1}) is on CryoLife", im.FromAgentName, im.FromAgentID);
-                }
-            }
-#endregion
-
-            bool groupIM = im.GroupIM && GroupMembers != null && GroupMembers.ContainsKey(im.FromAgentID) ? true : false;
-
-            if (im.FromAgentID == MasterKey || (GroupCommands && groupIM))
-            {
-                // Received an IM from someone that is authenticated
-                Console.WriteLine("<{0} ({1})> {2}: {3} (@{4}:{5})", im.GroupIM ? "GroupIM" : "IM", im.Dialog, im.FromAgentName, im.Message, im.RegionID, im.Position);
-
-                if (im.Dialog == InstantMessageDialog.RequestTeleport)
-                {
-                    Console.WriteLine("Accepting teleport lure.");
-                    Self.TeleportLureRespond(im.FromAgentID, true);
-                }
-                else if (
-                    im.Dialog == InstantMessageDialog.MessageFromAgent ||
-                    im.Dialog == InstantMessageDialog.MessageFromObject)
-                {
-                    ClientManager.Instance.DoCommandAll(im.Message, im.FromAgentID);
-                }
-            }
-            else
-            {
-                // Received an IM from someone that is not the bot's master, ignore
-                Console.WriteLine("<{0} ({1})> {2} (not master): {3} (@{4}:{5})", im.GroupIM ? "GroupIM" : "IM", im.Dialog, im.FromAgentName, im.Message,
-                    im.RegionID, im.Position);
-                return;
-            }
-        }
-        private void Self_OnChat(string message, ChatAudibleLevel audible, ChatType type,
-            ChatSourceType sourceType, string fromName, UUID id, UUID ownerid, Vector3 position)
-        {
-            Console.WriteLine("<Chat ({0})> {1}: {2} (@{3})", type.ToString(), fromName, message, position.ToString());
-            if (ChatType.OwnerSay == type && Self.AgentID == ownerid && ChatSourceType.Object == sourceType)
-            {
-                ClientManager.Instance.DoCommandAll(message, id);
-            }
-        }
-        private bool Inventory_OnInventoryObjectReceived(InstantMessage offer, AssetType type,
-            UUID objectID, bool fromTask)
+       
+        private void Inventory_OnInventoryObjectReceived(object sender, InventoryObjectOfferedEventArgs e)
         {
             if (MasterKey != UUID.Zero)
             {
-                if (offer.FromAgentID != MasterKey)
-                    return false;
+                if (e.Offer.FromAgentID != MasterKey)
+                    return;
             }
-            else if (GroupMembers != null && !GroupMembers.ContainsKey(offer.FromAgentID))
+            else if (GroupMembers != null && !GroupMembers.ContainsKey(e.Offer.FromAgentID))
             {
-                return false;
+                return;
             }
 
-            return true;
+            e.Accept = true;
+            return;
         }
-    }
-    public class AdvAvatar
-    {
-        public Avatar av;
-        public int count = 1;
-        public bool cryolife = false;
     }
 }

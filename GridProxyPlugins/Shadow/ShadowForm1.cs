@@ -157,7 +157,7 @@ namespace PubComb
                         "and the OpenMetaverse project, and all it's contributors.\n" +
                         "Also special thanks to ManyMonkeys for coding the TwoFish  and also the makers of TwoFish!\n\n"+
                  "If you plan to decompile and use this code, that is fine.  But please leave this message and access to it intact, that is all I ask. :)\n\n"+
-            "Go to http://www.ispartaaa.com/super1337hax/shadowTutorial.html for more info."
+            "."
             ,"Second Life Encryption - LordGregGreg",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     
         }

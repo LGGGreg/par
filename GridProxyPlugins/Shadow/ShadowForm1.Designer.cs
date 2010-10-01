@@ -31,10 +31,13 @@
             this.textBox2key = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bpanel = new System.Windows.Forms.Panel();
+            
             this.button2about = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1enabled = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            this.bpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox2key
@@ -70,6 +73,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(284, 21);
             this.panel1.TabIndex = 4;
+            //
+            // bpanel
+            //
+            this.bpanel.BackColor = System.Drawing.Color.Black;
+            this.bpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bpanel.Name = "bnpanel";
             // 
             // button2about
             // 
@@ -114,15 +123,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 264);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox2key);
+            this.bpanel.Controls.Add(this.panel1);
+            this.bpanel.Controls.Add(this.richTextBox1);
+            this.bpanel.Controls.Add(this.textBox2key);
+            this.Controls.Add(this.bpanel);
             this.HelpButton = true;
             this.Name = "Form1";
             this.Text = "Shadow";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.bpanel.ResumeLayout(false);
+            this.bpanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +145,7 @@
         private System.Windows.Forms.TextBox textBox2key;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel bpanel;
         private System.Windows.Forms.CheckBox checkBox1enabled;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2about;

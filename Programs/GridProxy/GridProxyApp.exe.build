@@ -11,7 +11,7 @@
 			  <fileset basedir=".">
 			  </fileset>
 		  </copy>
-		  <csc target="exe" debug="${build.debug}" unsafe="True" warnaserror="False" define="TRACE;DEBUG" nostdlib="False" main="" output="${build.dir}/${project::get-name()}.exe">
+		  <csc target="exe" debug="${build.debug}" unsafe="True" warnaserror="False" define="TRACE" nostdlib="False" main="" output="${build.dir}/${project::get-name()}.exe">
 			  <resources prefix="GridProxyApp" dynamicprefix="true" >
 			  </resources>
 			  <sources failonempty="true">
@@ -27,6 +27,12 @@
 				  <include name="${build.dir}/GridProxy.dll" />
 				  <include name="${build.dir}/OpenMetaverseTypes.dll" />
 			  </references>
+            <nowarn>
+                <warning number="1591" />
+                <warning number="1574" />
+                <warning number="0419" />
+                <warning number="0618" />
+            </nowarn>
 		  </csc>
 	  </target>
 	  <target name="clean">
