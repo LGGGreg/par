@@ -128,44 +128,44 @@ namespace OpenMetaverse.TestClient
             ++PendingLogins;
 
             TestClient client = new TestClient(this);
-            client.Network.OnLogin +=
-                delegate(LoginStatus login, string message)
+            client.Network.LoginProgress +=
+                delegate(object sender, LoginProgressEventArgs e)
                 {
-                    Logger.Log(String.Format("Login {0}: {1}", login, message), Helpers.LogLevel.Info, client);
+                    Logger.Log(String.Format("Login {0}: {1}", e.Status, e.Message), Helpers.LogLevel.Info, client);
 
-                    if (login == LoginStatus.Success)
+                    if (e.Status == LoginStatus.Success)
                     {
                         Clients[client.Self.AgentID] = client;
 
                         if (client.MasterKey == UUID.Zero)
                         {
-                            UUID query = UUID.Random();
-                            DirectoryManager.DirPeopleReplyCallback peopleDirCallback =
-                                delegate(UUID queryID, List<DirectoryManager.AgentSearchData> matchedPeople)
+                            UUID query = UUID.Zero;
+                            EventHandler<DirPeopleReplyEventArgs> peopleDirCallback =
+                                delegate(object sender2, DirPeopleReplyEventArgs dpe)
                                 {
-                                    if (queryID == query)
+                                    if (dpe.QueryID == query)
                                     {
-                                        if (matchedPeople.Count != 1)
+                                        if (dpe.MatchedPeople.Count != 1)
                                         {
                                             Logger.Log("Unable to resolve master key from " + client.MasterName, Helpers.LogLevel.Warning);
                                         }
                                         else
                                         {
-                                            client.MasterKey = matchedPeople[0].AgentID;
+                                            client.MasterKey = dpe.MatchedPeople[0].AgentID;
                                             Logger.Log("Master key resolved to " + client.MasterKey, Helpers.LogLevel.Info);
                                         }
                                     }
                                 };
 
-                            client.Directory.OnDirPeopleReply += peopleDirCallback;
-                            client.Directory.StartPeopleSearch(DirectoryManager.DirFindFlags.People, client.MasterName, 0, query);
+                            client.Directory.DirPeopleReply += peopleDirCallback;
+                            query = client.Directory.StartPeopleSearch(client.MasterName, 0);
                         }
 
                         Logger.Log("Logged in " + client.ToString(), Helpers.LogLevel.Info);
                         client.Appearance.RequestSetAppearance();
                         --PendingLogins;
                     }
-                    else if (login == LoginStatus.Failed)
+                    else if (e.Status == LoginStatus.Failed)
                     {
                         Logger.Log("Failed to login " + account.FirstName + " " + account.LastName + ": " +
                             client.Network.LoginMessage, Helpers.LogLevel.Warning);

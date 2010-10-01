@@ -111,11 +111,6 @@
       <Project>{26DFD95A-7035-432F-A975-86BB1F63FABE}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OpenMetaverse.Http\OpenMetaverse.Http.csproj">
-      <Name>OpenMetaverse.Http</Name>
-      <Project>{60FC57F9-A812-4B51-8244-B52C9CDFC4A6}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\..\OpenMetaverse.StructuredData\OpenMetaverse.StructuredData.csproj">
       <Name>OpenMetaverse.StructuredData</Name>
       <Project>{53714391-17C6-4252-ACB4-F08FE8BBF144}</Project>

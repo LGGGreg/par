@@ -104,5 +104,10 @@ namespace ParLoader
         {
             System.Diagnostics.Process.Start(e.LinkText);
         }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

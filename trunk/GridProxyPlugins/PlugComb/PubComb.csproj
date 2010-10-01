@@ -256,7 +256,10 @@
     <Compile Include="ViewerEffectLogger.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ManyMonkeysEncryptionUtils, Version=1.0.3196.40820, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ManyMonkeysEncryptionUtils, Version=1.0.3196.40820, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Shadow\bin\Release\ManyMonkeysEncryptionUtils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -400,20 +403,16 @@
     <None Include="Resources\LOST.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\OpenMetaverse.Utilities\OpenMetaverse.Utilities.csproj">
-      <Project>{1685F41E-F92C-484B-9FE1-44C22C3688DF}</Project>
-      <Name>OpenMetaverse.Utilities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\OpenMetaverseTypes\OpenMetaverseTypes.csproj">
-      <Project>{26DFD95A-7035-432F-A975-86BB1F63FABE}</Project>
+      <Project>{241CB050-DAB3-40CD-A826-D1E48098F565}</Project>
       <Name>OpenMetaverseTypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\OpenMetaverse\OpenMetaverse.csproj">
-      <Project>{4106920D-E65D-4D8A-A1FF-B1B8AA54DF03}</Project>
+      <Project>{2BF78C59-45C3-49E8-881E-A6C4BF047EAB}</Project>
       <Name>OpenMetaverse</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Programs\GridProxy\GridProxy.csproj">
-      <Project>{FCE99575-8AB3-4A2F-A77E-3768D9AB0BC8}</Project>
+      <Project>{6DE749CA-7A8C-4BC3-A911-D85FC748931D}</Project>
       <Name>GridProxy</Name>
     </ProjectReference>
   </ItemGroup>

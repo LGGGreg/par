@@ -79,6 +79,7 @@ namespace PubCombN
             a.AgentData.HeadRotation = Quaternion.Identity;
             a.AgentData.SessionID = frame.SessionID;
             a.AgentData.State = 0;
+            
 
             proxy.InjectPacket(a, Direction.Outgoing);
         }

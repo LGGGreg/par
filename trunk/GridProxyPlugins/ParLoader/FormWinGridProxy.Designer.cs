@@ -1075,7 +1075,7 @@
             // 
             this.buttonSaveRequestHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaveRequestHex.Font = new System.Drawing.Font("Arial", 3.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveRequestHex.Location = new System.Drawing.Point(594, 161);
+            this.buttonSaveRequestHex.Location = new System.Drawing.Point(594, 162);
             this.buttonSaveRequestHex.Name = "buttonSaveRequestHex";
             this.buttonSaveRequestHex.Size = new System.Drawing.Size(13, 13);
             this.buttonSaveRequestHex.TabIndex = 4;
@@ -1104,7 +1104,7 @@
             this.hexBoxRequest.Location = new System.Drawing.Point(0, 0);
             this.hexBoxRequest.Name = "hexBoxRequest";
             this.hexBoxRequest.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxRequest.Size = new System.Drawing.Size(611, 155);
+            this.hexBoxRequest.Size = new System.Drawing.Size(611, 156);
             this.hexBoxRequest.StringViewVisible = true;
             this.hexBoxRequest.TabIndex = 2;
             this.hexBoxRequest.UseFixedBytesPerLine = true;
@@ -1245,7 +1245,7 @@
             // 
             this.buttonExportRawHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExportRawHex.Font = new System.Drawing.Font("Arial", 3.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExportRawHex.Location = new System.Drawing.Point(594, 179);
+            this.buttonExportRawHex.Location = new System.Drawing.Point(594, 180);
             this.buttonExportRawHex.Name = "buttonExportRawHex";
             this.buttonExportRawHex.Size = new System.Drawing.Size(13, 13);
             this.buttonExportRawHex.TabIndex = 3;
@@ -1274,7 +1274,7 @@
             this.hexBoxResponse.Location = new System.Drawing.Point(0, 0);
             this.hexBoxResponse.Name = "hexBoxResponse";
             this.hexBoxResponse.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxResponse.Size = new System.Drawing.Size(611, 173);
+            this.hexBoxResponse.Size = new System.Drawing.Size(611, 174);
             this.hexBoxResponse.StringViewVisible = true;
             this.hexBoxResponse.TabIndex = 1;
             this.hexBoxResponse.UseFixedBytesPerLine = true;
@@ -1492,7 +1492,6 @@
             this.toolStripMenuItemPlugins.Name = "toolStripMenuItemPlugins";
             this.toolStripMenuItemPlugins.Size = new System.Drawing.Size(176, 22);
             this.toolStripMenuItemPlugins.Text = "Plugins";
-            this.toolStripMenuItemPlugins.Visible = false;
             this.toolStripMenuItemPlugins.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator14
@@ -1992,7 +1991,7 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(1096, 17);
             this.toolStripStatusLabel2.Spring = true;
-            this.toolStripStatusLabel2.Text = "ParProxy v65";
+            this.toolStripStatusLabel2.Text = "ParProxy v66";
             this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripQuickLaunch
@@ -2251,7 +2250,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormWinGridProxy";
-            this.Text = "Par Proxy v65";
+            this.Text = "Par Proxy v66";
             this.Load += new System.EventHandler(this.FormWinGridProxy_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panelMainWindow.ResumeLayout(false);
